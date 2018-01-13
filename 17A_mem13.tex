@@ -1,0 +1,23 @@
+We counted the number of labelled (colored) simple graphs that satisfy various conditions that can be expressed by quantificational schemata. 
+
+ Recall that a simple graph is 2-regualr if and only if it satisfies the schema:
+\begin{itemize}
+\item 
+\twor: $(\forall x)(\exists^{=2}y)Lxy$, which is equivalent to
+\item $(\forall x)(\exists y)(\exists z)(y\neq z\wedge(\forall w)(Lxw\equiv(w=y\vee w=z)))$.
+\end{itemize}
+Let $S$ be the conjunction of $\twor$ and $\sg$. We calculated $\card{\modn{S}{6}}$. We began by reminding ourselves that if $A$ is finite and $A\models S$ then $A$ is a disjoint union of cycles. This led immediately to the observation that if $A\in \modn{S}{6}$ then $A$ must consist of two disjoint triangles, or a single hexagon. So in order to complete our calculation, we just need to determine how many distinct ways we can label a structure of one or the other of these shapes. Suppose the unlabeled structure $\mathbb{T}$ consists of two triangles, call them the top triangle and the bottom triangle. We can label the top triangle with any set $X\subseteq[6]$ of size three, leaving $[6]-X$ to label the bottom triangle. At first blush, this suggests that there are $\binom{6}{3}$ distinct labelings of $\mathbb{T}$. But notice that we get the same labeled structure, if we use $[6]-X$ to label the top triangle, and $X$ to label the bottom triangle, so there are $\binom{6}{3}/2=10$ distinct labelings of $\mathbb{T}$. Next, suppose the unlabeled structure $\mathbb{H}$ consists of a single hexagon. We used our prior calculation that there are $6!$ strict linear orders of [n] to calculate the number of distinct labelings of $\mathbb{H}$. For each such linear order, we can ``wrap it around'' the hexagon starting from a fixed position to arrive at a labeling. It is clear that the reverse of any order gives the same labeling as the order itself, as do each of the orders that arise by starting at the $i$-th position of the given order, for $i>1$, and continuing on beyond the sixth position with the first $i-1$ elements of the given order. Thus, the total number of labelings of $\mathbb{H}$ is $6!/(6\cdot2)=60$. It follows that $\card{\modn{S}{6}}=10+60=70$.
+
+Next, we introduced a monadic predicate letter ``F'' to ``color'' the nodes of our graphs. We introduced a further condition, \emph{distinguished end}:
+\begin{itemize}
+\item $\mathsf{DE}: (\forall x)(\forall y)(Lxy\supset (Fx\oplus Fy))$.
+\end{itemize}
+
+We considered the schema $T$: the conjunction of \sg, \twor, and $\mathsf{DE}$.
+We noted that the connected graphs that satisfy $T$ are exactly the even length cycles. It follows at once that $\card{\modn{T}{n}}>0$ if and only if $n$ is an even number greater than 2. We introduced the notion of the \emph{spectrum} of a schema to describe this.
+\begin{definition}
+Let $S$ be a schema. $\spec{S}=\{n\mid \card{\modn{S}{n}}>0\}$.
+\end{definition}
+Thus, $\spec{T}=\{2i\mid i>1\}$.
+
+We calculated $\card{\modn{T}{6}}$. The only shape allowed in this case is the hexagon, and each hexagon admits two possible colorings that satisfy $\mathsf{DE}$. Hence, it follows from our earlier calculation that $\card{\modn{T}{6}}=2\cdot6!/(6\cdot2)=120$.

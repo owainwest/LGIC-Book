@@ -1,0 +1,90 @@
+\subsection{Expressive Completeness of Truth Functional Logic}
+\begin{definition}
+    We use the symbol $:=$ to mean ``is defined to be equal to''. $:=$ expresses a \emph{definition} of equality, whereas $=$ expresses a statement about equality.
+
+    If you're a coder, $x := 10$ is to logic/math as \verb|let x = 10| is to JavaScript, whereas $x = 10$ is to logic as \verb|x === 10| is to JavaScript.
+\end{definition}
+
+\subsubsection*{Propositions as a heuristic}
+It is sometimes useful to think of a schema $S$ as expressing a proposition, to whit, the set of truth assignments $A$ that satisfy $S$; of course, this needs to be relativized to a collection of sentence letters $X$ which includes all those occurring in $S$. We suggested the notation: 
+\[\prop{S}{X} = \{ A\mid A\  \mbox{is a truth assignment for $X$ and } A\models S\}.
+\]
+ When we use this notation without the subscript $X$, we assume $A$ is a truth assignment for exactly the set of sentence letters with occurrences in $S$. 
+
+\subsubsection*{Expressive Completeness}
+In the last section, we suggested using the notion of the proposition expressed by a schema as an intuitive vehicle for pursuing this investigation. Since the semantical correlate of a truth-functional schema is a set of truth assignments to some finite set of sentence letters, we can frame the question of the \emph{expressive completeness of truth-functional logic} in terms of propositions. Let $X$ be a non-empty finite set of sentence letters. We deploy the notation: $\mathbb{A}(X)$ for the set of truth assignments to the sentence letters $X$, and $\mathbb{S}(X)$ for the set of truth-functional schemata compounded from sentence letters all of which are members of $X$. 
+
+We provide the following inductive definition of $\mathbb{S}(X)$. 
+\begin{definition}
+Let $X$ be a nonempty finite set of sentence letters. $\mathbb{S}(X)$ is the smallest set $\mathbb{U}$ (in the sense of the subset relation) satisfying the following conditions.
+\begin{itemize}
+\item $X\subseteq \mathbb{U}$.
+\item If $\sigma$ and $\tau$ are strings over the finite alphabet $X\cup\{),(,\neg,\supset,\equiv,\vee,\wedge,\oplus\}$, and $\sigma,\tau\in\mathbb{U}$, then each of the strings $\neg\sigma, (\sigma\supset\tau),(\sigma\equiv\tau),(\sigma\vee\tau),(\sigma\wedge\tau),(\sigma\oplus\tau)$ belong to $\mathbb{U}$.\footnote{Here ``$(\sigma\supset\tau)$'' denotes the string with the initial symbol ``$($'' concatenated with the string denoted by $\sigma$ concatenated with the symbol ``$\supset$'' concatenated with the string denoted by $\tau$ and with terminal symbol ``$)$'', and likewise in all the other cases.}
+\end{itemize}
+\end{definition}
+
+\begin{aside}
+    This is simply a formal way of saying that all of our sentences have to use only the letters from $X$ and must be ``well-built'' in the sense that each connective has the correct number of arguments, with all the bracketing done correctly. For example, with $X := \{p, q, r\}$ then $S_1 := ((p \vee q) \land r)$ is well-built, whereas $S_2 := \vee p \land q$ is not. 
+\end{aside}
+
+
+
+If $\mfp\subseteq\mathbb{A}(X)$, we call $\mfp$ a \emph{proposition over} $X$. 
+
+Let $X$ be a non-empty finite set of sentence letters and let $\mfp$ be a proposition over $X$. Is there a schema $S\in\mathbb{S}(X)$ such that $\prop{S}{X}=\mfp$, ie can every proposition be expressed by some schema? In other words, is truth-functional logic \emph{expressively complete}? 
+
+\begin{theorem}[Expressive Completeness of Truth-functional Logic]\label{tflexpcomp-thm}
+Let $X$ be a non-empty finite set of sentence letters and let $\mfp$ be a proposition over $X$. There is a schema $S\in\mathbb{S}(X)$ such that $\prop{S}{X}=\mfp$.
+\end{theorem}
+
+\begin{aside}
+    This looks complicated, but it really isn't. In natural language, what it's saying is this: \emph{pick any subset $\mfp$} (your proposition) \emph{of truth assignments for a set of sentence letters $X$. Then there is a truth-functional schema $S$ using only letters from $X$} ($S\in\mathbb{S}(X)$) \emph{which is true only of those truth-assignments which are in $\mfp$} ($\prop{S}{X}=\mfp$). In other words, \emph{every proposion can be ``picked out'' by some schema}. This is why it's called \emph{expressive completeness}: truth-functional logic is ``expressively complete'' in that it can express every such proposition. 
+\end{aside}
+
+For the proof of Theorem \ref{tflexpcomp-thm}, the following terminology and lemma will be useful. 
+\begin{definition}
+Let $X$ be a non-empty finite set of sentence letters and let $S\in\mathbb{S}_X$.
+\begin{itemize}
+\item $S$ is a \emph{literal} over $X$ just in case $S = p$ or $S = \neg p$, for some $p\in X$.
+\item $S$ is a \emph{term} over $X$ just in case $S$ is a conjunction of literals over $X$ (we allow conjunctions of length 1).
+\item $S$ is in disjunctive normal form over $X$ if and only if $S$ is a disjunction of terms over $X$ (we allow disjunctions of length 1). 
+\end{itemize}
+\end{definition}
+If $\Lambda$ is a set of literals over $X$ we write $\bigwedge \Lambda$ to abbreviate a term which is formed as a conjunction of the literals in $\Lambda$. Similarly, if $\Gamma$ is a set of terms over $X$ we write $\bigvee\Gamma$ to abbreviate a schema in disjunctive normal form which is formed as a disjunction of the terms in $\Gamma$.
+
+\begin{example}
+    Let $S = \{a, b, c\}$. Then $\bigwedge S = a \land b \land c$, and $\bigvee S = a \vee b \vee c$.
+\end{example}
+
+\begin{lemma}\label{tflexpcomp-lem}
+Let $X$ be a non-empty finite set of sentence letters. For every $A\in\mathbb{A}(X)$ there is a schema $T_A$ which is a term over $X$ such that for every $A'\in\mathbb{A}(X)$
+\[A'\models T_A\ \ \ \mbox{if and only if}\ \ \ A'=A.\]
+\end{lemma}
+\begin{proof}
+Let $X$ be a finite set of sentence letters and suppose $A\in\mathbb{A}(X)$. For each $p\in X$, let $l_p = p$, if $A\models p$, and let $l_p = \neg p$, if $A\not\models p$. Let $\Lambda=\{l_p\mid p\in X\}$ and let $T_A = \bigwedge\Lambda$. It is easy to verify that
+for every $A'\in\mathbb{A}(X)$, 
+$A'\models T_A\ \ \ \mbox{if and only if}\ \ \ A'=A$. 
+\end{proof}    
+
+\begin{aside}
+    Once you become a bit more familiar with the terminology, things will become much easier. Indeed, this lemma is really simple - in plain English, it says that \emph{for every truth assignment, there is a schema which only uses logical ANDs that is satisfied by only that truth assignment}. When stated like that, of course, it seems obvious - if your truth assignment assigns true to $p$ you should have $p$ in your schema, and if your truth-assignment assigns false to $p$, your schema should include $\lnot p$, with all the literals joined up together by ANDs. 
+
+    The proof expresses that intuition symbolically - make sure you can understand the proof now, going over the relevant terminology and symbols if necessary. If you get stuck trying to interpret all that logical symbolism, please come into Office Hours and we'll be happy to help! Logic won't be any fun if the symbolism gets in the way of your ingenuity of understanding, so it's best if you take the time to get comfortable with all that at the start. 
+\end{aside}
+
+\begin{proof}[Proof of Theorem \ref{tflexpcomp-thm}]
+Fix a finite non-empty set of sentence letters $X$ and suppose $\mfp$ is a proposition over $X$. If $\mfp=\emptyset$, then pick $p\in X$ and note that $\prop{p\wedge\neg p}{X} = \mfp$. Otherwise, for each $A\in\mfp$, choose a term $T_A$, as guaranteed to exist by Lemma \ref{tflexpcomp-lem}, such that for every $A'\in\mathbb{A}(X)$, 
+$A'\models T_A\ \ \ \mbox{if and only if}\ \ \ A'=A$. Let $\Gamma = \{T_A\mid A\in\mfp\}$ and let $S=\bigvee\Gamma$. It is easy to verify that $\prop{S}{X}=\mfp$.
+\end{proof}
+
+\begin{aside}
+    Once again, the main difficulty here is the symbolism - the proof expresses a simple intuition in symbolic form. Try rewriting this proof in your own words!
+\end{aside}
+
+\begin{corollary}\label{dnf-cor}
+Every truth-functional schema is equivalent to a schema in disjunctive normal form.
+\end{corollary}
+
+\begin{aside}
+    Corolloraries are Theorems which follow very simply or quickly from another (often proved-right-above) theorem. Whenever you see a corollary in a math textbook or notes, you should always make sure you understand why it's a consequence of the just-proven theorem!
+\end{aside}

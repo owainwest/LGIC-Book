@@ -1,0 +1,49 @@
+\subsection{The expressive power of monadic quantification theory}
+
+With these results in hand, we proceeded to analyze the expressive power of monadic schemata. Recall the notions deployed in Problem Set 2, but now upgraded to apply to monadic schemata. 
+\begin{itemize}
+\item 
+A list of pure monadic schemata is \textit{succinct} if and only if no two schemata on the list are equivalent. 
+\item 
+A pure monadic schema \textit{implies a list of schemata} if and only if it implies every schema on the list.
+\item The \textit{power} of a pure monadic schema is the length of a longest succinct list of pure monadic schemata it implies.  
+\end{itemize}
+We continued to focus on the vocabulary consisting of the monadic predicate letters $F$ and $G$ and answered the following questions.
+\begin{question}\label{succinct-q}
+What is the length of a longest succinct list of pure monadic schemata (in the vocabulary consisting of just the monadic predicate letters $F$ and $G$)?
+\end{question}
+\emph{Answer}:
+It follows immediately from Corollary \ref{monad-cor}, part (\ref{equiv-item}) that the length of a longest such list is $2^{15}$, since a schema is determined, up to equivalence, by which of the structures $A_1,\ldots,A_{15}$ satisfy it.
+\begin{question}\label{pow-q}
+For which numbers $n$ is there a schema $S$ whose power is $n$?
+\end{question}
+\emph{Answer}:
+It follows from Corollary \ref{monad-cor}, parts (\ref{imp-item}) and (\ref{equiv-item}), that the power of a schema $S$ is determined by the size $j$ of $\{i\mid A_i\models S\ \mbox{and}\ 1\leq i\leq 15\}$, in particular, the power of $S$ is $2^{15-j}$; for pure schemata $S$, $j$ may be any number between 0 and 15. This answers Question \ref{pow-q}.
+
+\begin{definition}
+\begin{itemize}
+\item
+If $X$ is a finite set, we write $\card{X}$ for the number of members of $X$.
+\item
+If $S$ is a schema, we write $\modn{S}{n}$ for the set of structures $A$ such that $A\models S$ and $U^A=\{1,\ldots, n\}.$
+\end{itemize}
+\end{definition}
+\begin{question}\label{mspec-q}
+What is the length of a longest succinct list of pure schemata $S$ such that $\modn{S}{4}=4$?
+\end{question}
+
+\emph{Answer}:
+Let $\mathbb{V} = \{A\mid U^A=\{1,2,3,4\}\}$. Recall that $A\approx_M B$ if and only if for all pure monadic schemata $S$, $A\models S$ if and only $B\models S$. For $A\in \mathbb{V}$, let $\bm\hat{A}=\{B\in \mathbb{V}\mid B\approx_M A\}$. In order to answer the question, it suffices to determine the size of $\bm\hat{A}$ for each $A\in\mathbb{V}$. First, note that the size of $\bm\hat{A}$ is determined by the number of types realized by $A$. We computed these sizes:
+\begin{itemize}
+\item
+If $A$ realizes exactly 1 type, then the size of $\bm\hat{A}$ is 1. There are $\binom{4}{1}$ structures in $\mathbb{V}$ satisfying exactly 1 type.
+\item
+If $A$ realizes exactly 2 types, then the size of $\bm\hat{A}$ is $2^4-2$. There are $\binom{4}{2}$ structures in $\mathbb{V}$ satisfying exactly 2 types.
+\item
+If $A$ realizes exactly 3 types, then the size of $\bm\hat{A}$ is $\binom{4}{2}\cdot3!$. There are $\binom{4}{3}$ structures in $\mathbb{V}$ satisfying exactly 3 types.
+\item
+If $A$ realizes exactly 4 types, then the size of $\bm\hat{A}$ is 4!. There are $\binom{4}{4}$ structures in $\mathbb{V}$ satisfying exactly 4 types.
+\end{itemize}
+It is now easy to see that the answer to Question \ref{mspec-q} is 1; in particular, one such list consists of the single schema
+\[(\forall x)(Fx\wedge Gx)\vee(\forall x)(Fx\wedge \neg Gx)\vee(\forall x)(\neg Fx\wedge Gx)\vee(\forall x)(\neg Fx\wedge \neg Gx).\]
+

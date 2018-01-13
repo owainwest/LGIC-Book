@@ -1,0 +1,66 @@
+%On 02.24, we discussed functional relations, tournaments, and orderings. 
+\subsection{Functional relations}
+
+You may already have encountered functions, such as the mapping $f$ that sends a real number $x$ to its square $x^2$. If so, you probably saw this function represented in cartesian coordinates via a graph, that is, the set of all ordered pairs of real numbers $\op{x}{x^2}$ for $x\in\R$. For our purposes, we consider this as a structure, in particular, a directed graph $A$ with $U^A=\R$ and $L^A=\{\op{x}{x^2} \mid x\in\R\}$. This structure satisfies the following schemata.
+\begin{itemize}
+\item
+\tot: $(\forall x)(\exists y)Lxy$
+\item
+\sv: $(\forall x)(\forall y)(\forall z)((Lxy\wedge Lxz)\supset y=z)$
+\end{itemize}
+The first of these says that the $L$ is \emph{total}, that is, everything is related (here think ``mapped to'') at least one thing, and the second says that $L$ is \emph{single-valued}, that is, everything is mapped to at most one thing. Their conjunction, which we abbreviate to \fun, says that $L$ is a total function, that is, if $A\models\fun$, then $L^A$ is the graph of a total function with domain $U^A$ and range (contained in) $U^A$. We went on to consider some special types of function, namely injections, surjections, and bijections. An \emph{injection} is a 1-1 function; you may be familiar with the idea in terms of the ``horizontal line rule''; we applied this rule to verify that the squaring function mentioned above is not an injection. We schematize the property that ``$L$'' is the graph of an injection as follows.
+\begin{itemize}
+\item \inj: $(\forall x)(\forall y)(\forall z)((Lxz\wedge Lyz)\supset x=y)$
+\end{itemize}
+A \emph{surjection} is an onto function, that is, every member of the universe is the image of some input to the function, schematically:
+\begin{itemize}
+\item \sur: $(\forall x)(\exists y)Lyx$
+\end{itemize}
+We noted that the squaring function is not a surjection on \R: no negative number is the square of a real number. We observed that the function which maps a real number to its cube is both an injection and a surjection on \R;  we call such functions \emph{bijections} and we introduced \bij\ to abbreviate the conjunction of \inj\ and \sur.
+
+Since the only examples of functions we considered so far were either bijections (the cubing function) or neither injections nor surjections (the squaring function) we sought for examples of functions which are one but not the other. This led us to Dedekind's definition of ``infinite'', via the following route. We first observed that for any structure $A$ with a finite universe of discourse, $A\models \fun\wedge\inj$ if and only if $A\models\fun\wedge\sur$ (and hence, if and only if $A\models\fun\wedge\bij$). We then noted that there are functions which are injections but not surjections. For example, consider the structure $B$ where $U^B=\N$ and $L^B=\{\op{n}{n+1}\mid n\in\N\}$ and observe that $B\models\fun\wedge\inj\wedge\neg\sur$. It is similarly easy to construct functions which are surjections but not injections, for example, the function on \N\ that maps a number $n$ to $\lceil n/2\rceil$.  A set $X$ is said to be \emph{Dedekind infinite} if and only if there is a function with domain $X$ and range contained in $X$ which is injective but not surjective.
+
+Next, we touched briefly on the topic of multivariate functions; we restricted our attention to binary functions whose graphs we represent as the interpretation of a triadic predicate symbol $R$. The following schema \bfun\ expresses both totality and single-valuedness, that is, a structure $A$ satisfies \bfun\ if and only if $R^A$ is the graph of a total binary function on $U^A$..
+\begin{itemize}
+\item
+\bfun: $(\forall x)(\forall y)(\exists
+z)(\forall 
+w)(Rxyw\equiv w = z)$
+\end{itemize}
+The next schema \binj\ schematizes the notion of injection for binary functions, that is, a structure $A$ satisfies the conjunction of \bfun\ and \binj\ if and only if $R^A$ is the graph of an injective binary function.
+\begin{itemize}
+\item 
+\binj: $(\forall v)(\forall w)(\forall x)(\forall y)(\forall z)((Rvwz \wedge Rxyz)
+\supset (v = x \wedge w = y))$
+\end{itemize}
+We observed that if $A$ is a finite structure and $A\models\bfun\wedge\binj$, then $\card{U^A}=1$. On the other hand, we noted that the binary function which maps a pair of positive integers $m$ and $n$ to $2^m\cdot3^n$ is an injection. This shows that there are at least as many positive integers as there are positive rational numbers, since every positive rational number can be represented by a pair of integers. This may seem odd, since, in their usual order, between any two positive integers there are infinitely many rational numbers. 
+\subsection{Tournaments and orderings}
+
+We went on to consider (all-play-all, no-ties) tournaments. We say a directed graph is a \emph{tournament} if and only if it satisfies the conjunction of the following two conditions, called asymmetry and comparability. 
+\begin{itemize}
+\item \asy: $(\forall x)(\forall y)(Lxy\supset \neg Lyx)$
+\item \comp: $(\forall x)(\forall y)((x\neq y\supset (Lxy\vee Lyx)$
+\end{itemize}
+We abbreviate the conjunction of \asy\ and \comp\ to \tour. Finally, we picked out a particularly important class of tournaments, those without cycles. We characterized these as the \emph{transitive} tournaments, that is, those satisfying the following schema.
+\begin{itemize}
+\item \trans: $(\forall x)(\forall y)(\forall z)(Lxy\supset(Lyz\supset Lxz))$
+\end{itemize}
+Transitive tournaments are called \emph{strict linear orders}; we abbreviate the conjunction of \tour\ and \trans\ to \slo.
+\subsection{Counting functions and tournaments}
+
+We counted the number of finite structures with universe of discourse $\{1,\ldots,n\}$ that satisfy various conditions. We'd already noted that there are $2^{n^2}$ graphs and $2^{\binom{n}{2}}$ simple graphs with universe of discourse $\{1,\ldots,n\}$. We began by showing that
+\begin{itemize}
+\item
+$\card{\modn{\fun}{n}}= n^n$;
+\item
+$\card{\modn{(\fun\wedge\inj)}{n}}= n!$;
+\item
+$\card{\modn{\asy}{n}}= 3^{\binom{n}{2}}$;
+\item
+$\card{\modn{\tour}{n}}= 2^{\binom{n}{2}}$;
+\item
+$\card{\modn{\slo}{n}}= n!$;
+\item
+$\card{\modn{\bfun}{n}}= n^{(n^2)}$.
+\end{itemize}
+In each case, clear thinking and the product rule sufficed for the calculation. 

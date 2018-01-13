@@ -1,0 +1,35 @@
+\subsection{Equivalence Relations}
+Time to look at another important class of graphs (namely, equivalence relations) and how they can be put to use in generating schemata with a wide range of spectra. Recall that a graph $A$ is an \emph{equivalence relation} if and only if $L^A$ is reflexive, symmetric, and transitive, that is, if and only if $A\models\eqr$, where \eqr\ is the conjunction of the following schemata.
+\begin{itemize}
+\item
+\refl: $(\forall x)Lxx$
+\item
+\sym: $(\forall x)(\forall y)(Lxy\supset Lyx)$
+\item
+\trans: $(\forall x)(\forall y)(\forall z)(Lxy\supset(Lyz\supset Lxz))$
+\end{itemize}
+
+Now suppose we'd like to construct a schema $S$ such that
+\begin{itemize}
+\item
+$S$ implies \eqr, and
+\item
+$\spec{S}=\{3i+2\mid i\in\mathbb{Z}^+\cup\{0\}\}$.
+\end{itemize}
+The easiest way to have $S$ imply $\eqr$ is to formulate $S$ as a conjunction, one conjunct of which is \eqr\ itself. But what more should we say? Well, the universe $U^A$ of an equivalence relation $A$ is partitioned into mutually disjoint \emph{equivalence classes} by the relation $L^A$; for each $a\in U^A$, the equivalence class $\hat{a}$ of $a$, is $\{b\in U^A\mid \op{a}{b}\in L^A\}$. It follows that if we can construct a schema $T$ that says every equivalence class but one is of size three, and that the exceptional equivalence class is of size two, then our universe must have size $3i + 2$ for some $i$ ($i$ is the number of size-three equivalence classes). We could then take $S$ to be the conjunction of \eqr\ and $T$, and would be done. The following schema $T$ does the job.
+\begin{align*} 
+(\exists x_1)&(\exists x_2)(x_1\neq x_2\wedge (\forall w)(Lwx_1\equiv(w=x_1\vee w=x_2))\wedge\\
+&(\forall y_1) ((y_1\neq x_1\wedge y_1\neq x_2)\supset(\exists y_2)(\exists y_3)(y_1\neq y_2\wedge y_1\neq y_3\wedge y_2\neq y_3\wedge\\
+& (\forall v)(Lvy_1\equiv(v=y_1\vee v=y_2\vee v=y_3)))))
+\end{align*}
+Roughly, $T$ says that there are two distinguished elements $x_1, x_2$ which are related only to each other, and that all other elements $y_1$ have exactly two other elements $y_2, y_3$ (both of which are neither of the $x$'s) which are all connected in a triangle. 
+
+\begin{aside}
+    Go through the schema $T$ and write out exactly what each part is saying. Make sure you understand why it specifies that there are $3i + 2$ elements in the universe (for some $i$). 
+\end{aside}
+
+Of course, this can be generalized to show that for every $j$ and $0\leq k<j$, there is a schema $S$ such that $S$ implies \eqr, and $\spec{S}=\{nj+k\mid n\in \mathbb{N}\}$. 
+
+\begin{aside}
+    Using the counting quantifiers (and some new shorthand of your devising to say that $n$ elements are all in a cycle), give a schema which provides the above-mentioned generalization. 
+\end{aside}

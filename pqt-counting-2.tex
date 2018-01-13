@@ -1,0 +1,61 @@
+\subsection{Definability}
+
+Up to this point we have neglected schemata containing free variables. Today we will correct this oversight. 
+Recall the structure $A$ we discussed last time:
+$A$: $U^A=[3]$, $L^A=\{\op{1}{2},\op{1}{3}\}$.
+We considered the schema
+\[
+S(x):\ \ \ \neg(\exists y)Lyx.
+\]
+We observed that $S(x)$ picks out $1$ uniquely from the structure $A$. That is
+\[
+\{a\in U^A\mid A\models S[x|a]\}=\{1\}.
+\]
+$S(x)$ expresses the property of having in-degree zero. Since we only consider properties extensionally, we can also say that, in a given structure, $S(x)$ defines the set of nodes of in-degree zero. The concept of definability is central in logic (and many other disciplines). We enshrine it in a definition.
+\begin{definition}
+Let $S(x)$ be a schema with one free variable $x$ and let $A$ be a structure.
+We define $S[A]=\{a\in U^A\mid A\models S[x|a]\}$, that is, $S[A]$ is the set of nodes of $A$ that satisfy the schema $S(x)$ in $A$ when assigned to the variable $x$. We call $S[A]$ the \emph{set defined by} $S(x)$ in $A$. We say a set $V\subseteq U^A$ is 
+a \emph{definable subset of} $A$ if and only if there is a schema $S(x)$ such that $S[A]=V$.
+\end{definition}
+
+We pursued the example of the particular structure $A$ described above a bit further and noted that the set $\{2,3\}$ is defined by the schema
+\[
+S'(x):\ \ \ \neg(\exists y)Lxy.
+\]
+We asked whether either of the sets $\{2\}$ or $\{3\}$ is a definable subset of $A$. 
+We despaired of finding a schema which defined either of these sets.
+We noticed that the nodes labelled 2 and 3 appear to be ``indistinguishable from a structural point of view'' which is borne out by the fact that the function $h$ mapping 1 to 1, 2 to 3, and 3 to 2, is an automorphism of $A$. The relevance of this to the question of definability is the content of the following fundamental theorem.
+
+
+\iffalse
+
+
+Consider the schema 
+\[
+S(x):\ \ \ (\exists y)(\forall z)(Lxz\equiv z=y).
+\]
+Let $A$ be a graph. We define $S[A]=\{a\in U^A\mid A\models S[x|a]\}$, that is, $S[A]$ is the set of nodes of $A$ that satisfy the schema $S(x)$ in $A$ when assigned to the variable $x$. We call $S[A]$ the \emph{set defined by} $S(x)$ in $A$. In the case to hand, if $A$ is a simple graph, then $S[A]$ is the set of nodes of $A$ of degree 1. 
+
+Given a graph $A$, we will consider which subsets of $U^A$ are \emph{definable subsets of} $A$, that is for which $V\subseteq U^A$ is there a schema $S[x]$ such that $S[A]=V$. In the case of finite graphs, we will be able to give an entirely satisfactory analysis in terms of the symmetries of $A$, that is, the collection of automorphisms of $A$. Recall that $h$ is an \emph{automorphism} of $A$ if and only if $h$ is a bijection of $U^A$ onto $U^A$ and for all $a,b\in U^A$,
+\[
+\op{a}{b}\in L^A\mbox{ if and only if } \op{h(a)}{h(b)}\in L^A.
+\]
+In other words, $h$ is an automorphism of $A$ if and only if $h$ is an isomorphism of $A$ onto itself. We define $\aut{A}=\{h\mid h\mbox{ is an automorphism of }A\}$. The following theorem is fundamental.
+\fi
+\subsubsection{The Automorphism Theorem, Orbits, and Definability over finite structures}
+\begin{theorem}\label{aut-thm}
+Let $A$ be a graph and $h\in\aut{A}$. For every $a\in U^A$ and every schema $S(x)$,
+\[
+A\models S[x|a]\mbox{ if and only if }A\models S[x|h(a)]. 
+\]
+\end{theorem}
+
+Theorem \ref{aut-thm} enables us to give a characterization of the definable subsets of finite structures. 
+If $f$ is a function with domain $U$ and $V\subseteq U$, we define $f[V]=\{f(a)\mid a\in V\}$ (the $f$ \emph{image} of $V$). With this notation in hand, we can now state a corollary to Theorem \ref{aut-thm} which bears on definability.
+\begin{corollary}\label{aut-def-cor}
+Let $A$ be a graph and $h\in\aut{A}$. If $V$ is a definable subset of $A$, then $h[V]=V$.
+\end{corollary}
+Thus, in order to show that $V$ is \emph{not} a definable subset of $A$ it suffices to exhibit an $h\in\aut{A}$ and $a\in V$ such that $h(a)\not\in V$. Moreover, in the case of finite structures, the converse of Corollary \ref{aut-def-cor} is true.
+\begin{theorem}\label{fin-aut-def-thm}
+Let $A$ be a finite graph and $V\subseteq U^A$. $V$ is a definable subset of $A$, if for every $h\in\aut{A}$, $h[V]=V$.
+\end{theorem}

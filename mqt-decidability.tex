@@ -1,0 +1,223 @@
+\subsection{Decidability}
+
+Our next order of business it to establish the decidability of pure monadic schema, just as we did for truth-functional schema.\footnote{See Goldfard Chs. 25-26 for additional exposition on the decidability of pure monadic schema.}
+Our approach introduces notions that we will elaborate further, when we turn to study polyadic quantificational logic.
+
+\subsubsection*{Three views of structures}
+As a warm-up to the main event, we noted that we now have three (equivalent) ways of viewing structures, each of which may contribute a useful perspective, depending on the problem to hand. These are
+\begin{itemize}
+\item 
+the Canonical View, which consists of specifying the universe of discourse and extensions for each of the (finitely many) predicate letters in play,
+\item 
+the Types View, which consists of specifying a universe of discourse and sorting it into types, that is, maximally specific descriptions that can be framed in terms of the predicate letters in play, and
+\item 
+the Venn View, which pictures the extensions of all the predicate letters in play as intersecting regions contained in a rectangle that represents the universe of discourse.
+\end{itemize}
+
+\begin{aside}
+    Show that these three views are equivalent by giving a correspondence between them. For example, $x$ being of type $F \land \lnot G$ in the Types View corresponds to the statement that $x \in F \land x \not \in G$ in the Canonical view. 
+\end{aside}
+
+\subsubsection*{The small model theorem}
+We will prove the following \emph{Small Model Theorem} for monadic logic; the decidability of satisfiability of pure monadic schemata is a corollary to this result. 
+\begin{theorem}\label{smm-thm}
+Let $S$ be a pure monadic schema containing occurrences of at most $n$ distinct monadic predicate letters. If $S$ is satisfiable then there is a structure $A$ of size at most $2^n$ such that $A\models S$.
+\end{theorem}
+
+\begin{aside}
+    Why is decidability a corollary to Theorem \ref{smm-thm}? As a hint, think about why truth-functional logic is decidable.
+\end{aside}
+
+\subsubsection*{Monadic similarity}
+The proof of Theorem \ref{smm-thm} rests on a lemma, and so we first need to introduce some new concepts. In what follows, we will without loss of generality restrict our attention to monadic schemata in which only the predicate letters $F$ and $G$ occur\footnote{The choice of using only two variables $F$, $G$ is simply for notational and instructional convenience. The generalization to $n$ predicate letters is simple, and we will end up proving results for $n$ variables, not just two.}. First, a definition. 
+
+\begin{definition}
+    We say that two structures $A$ and $B$ are {\em monadically similar} and write $A \approx_M B$ if and
+only if they satisfy exactly the same pure monadic schemata.
+\end{definition}
+
+\begin{aside}
+    Show that monadic similarity is an \emph{equivalance relation}, ie it is reflexive ($A \approx_M A$), symmetric (if $A \approx_M B$, then $B \approx_M A$), and transitive (if $A \approx_M B$ and $B \approx_M C$, then $A \approx_M C$). 
+\end{aside}
+
+We now now turn towards developing our Lemma, which explores a sufficient condition for the monadic similarity of structures.
+
+
+\subsubsection*{Homomorphisms}
+
+A function $h$ is a mapping from one set, called the {\em domain} of $h$ to
+another set (it may be the same set), called the {\em range} of $h.$ For every
+element $a$ of the domain of $h$ we write ``$h(a)$'' to denote the element of
+the 
+range of $h$ to which it is mapped. We sometimes call $h(a)$ the $h$ {\em
+image} of 
+$a$ or the {\em image} of $a$ under $h.$ We sometimes use the notation
+$$h: X \longrightarrow Y$$
+to indicate that $h$ is a function with domain $X$ and range $Y.$
+If $h: X \longrightarrow Y$ we say that $h$ is {\em onto} if and only if for
+every 
+$b\in Y$ there is an $a \in X$ such that $h(a)=b.$
+In this case, we will also say that $h$ is $surjective.$
+
+Let $A$ and $B$ be structures. We call $h$ a {\em homomorphism from}
+$A$ {\em onto} $B$ just in case $h$ is an onto function with domain $U^A$
+and range $U^B$ satisfying the following condition:
+for every monadic predicate letter $P$ and every $m \in U^A,$
+\[ m \in P^A\ \ \ \mbox{if and only if}\ \ \ h(m) \in P^B.\]
+If there is a homomorphism from $A$ onto $B$, we say that $B$ is a {\em
+surjective homomorphic image} of $A.$
+
+\begin{aside}
+    Intuitively, a homomorphism is a function that loosely, \emph{``preserves the arrangement''} of elements in its domain, ie elements which are of type $P$ get mapped to an element in the range also of type $P$, etc.
+\end{aside}
+
+\subsubsection*{Example}
+
+As an example, consider the following structures.
+\[
+\begin{array}{ll}
+A: & U^A=\{n\mid n\mbox{ is a positive integer.}\}\\ 
+ & F^A=\{n\mid n\mbox{ is an even positive integer.}\}\\ 
+ & G^A=\{n\mid n\mbox{ is a prime positive integer.}\}
+\end{array}
+\]
+\[
+\begin{array}{ll}
+B: & U^B=\{n\mid n\mbox{ is a positive integer.}\}\\ 
+ & F^B=\{n\mid n\mbox{ is an odd positive integer.}\}\\ 
+ & G^B=\{n\mid n\mbox{ is a prime positive integer.}\}
+\end{array}
+\]
+
+Note that $A$ and $B$ both have the same regions occupied in their respective Venn diagrams, ie $F^A$ and $F^B$ are both nonempty, as are both $G^A$ and $G^B$. However, there is no homomorphism from $A$ onto $B$, nor any homomorphism from $B$ onto $A$. 
+
+\begin{aside}
+    Prove the last assertion. 
+\end{aside}
+
+Although $A$ and $B$ are not homomorphic, we will shortly see that $A$ and $B$ have a common surjective homomorphic image, ie that there is a structure $C$ such that there is a homomorphism from $A$ onto $C$ and a homomorphism from $B$ onto $C$.
+
+
+
+
+
+\subsubsection*{Homomorphisms and monadic similarity: the central lemma}
+
+The next lemma provides a useful sufficient condition for monadic similarity.
+\begin{lemma}\label{hom-lem}
+Let $A$ and $B$ be structures. If there is a homomorphism from $A$
+onto $B$, then $A$ is monadically similar to $B$. 
+\end{lemma}
+\emph{Proof}:
+Let $A$ and $B$ be structures and suppose that $h$ is a homomorphism of $A$
+onto $B.$ It suffices to show that for every simple monadic schema $S,$
+\[A\models S\ \ \mbox{if and only if}\ \ B\models S,\]
+since every pure monadic schema is a truth-functional compound of simple
+monadic schemata.
+
+We begin by observing that for every $c \in U^A$ and every one variable open
+schema $S,$ $A$ makes $S$ true with respect to the assignment of $c$ to
+``$x,$''
+ if and only if $B$ makes $S$ true with respect to the assignment of
+$h(c)$ to ``$x.$'' This follows immediately from the fact that $h$ is a
+homomorphism.
+
+Consider the simple schema $S$ and suppose that $S$ is the existential
+quantification of the the one variable open schema $T$.
+Suppose $A \models S.$ Then, for some $c \in U^A$,
+$A$ makes $T$ true with respect to the assignment of $c$ to
+``$x.$'' It follows that $B$ makes $T$ true with respect to the assignment of $h(c)$
+to ``$x.$'' Hence, $B \models S.$
+
+Conversely, suppose $B \models S.$
+Then, for some $c \in U^B$,
+$B$ makes $T$ true with respect to the assignment of $c$ to
+``$x.$'' Since $h$ is surjective, there is a $d \in U^A$ with $h(d) = c.$
+It follows at once that $A$ makes $T$ true with respect to the assignment of
+$d$ to ``$x.$'' Hence, $A \models S.$ 
+
+The case of universal quantification is handled similarly
+\qed
+
+\begin{aside}
+    Write out the universal case formally. The argument should be very similar to the existential case, so make sure you understand that!
+\end{aside}
+
+\subsubsection*{Types and monadic similarity}
+
+We recall our discussion of element types:
+\begin{itemize}
+\item $T_1(x): Fx\wedge Gx$
+\item $T_2(x): Fx\wedge \neg Gx$
+\item $T_3(x): \neg Fx\wedge Gx$
+\item $T_4(x): \neg Fx\wedge \neg Gx$
+\end{itemize}
+We say that a structure {\em realizes} a given type $T_i$ just in case it
+makes the existential simple schema $(\exists x)T_i$ true (ie, tere is at least one element of type $T_i$).
+\begin{example}\label{kinds-ex}
+The following structure realizes all four of the types listed above.
+\[A: U^A = \{1,2,3,4\}, F^A =\{1,3\}, G^A=\{1,2\}\]
+Moreover, the 14 proper substructures of $A$ realize exactly the fourteen
+proper nonempty subsets of the types listed above.
+\end{example}
+Lemma \ref{types-lem} yields a useful necessary and sufficient condition for monadic similarity. 
+\begin{lemma}\label{types-lem}
+$A$ and $B$ realize the same types if and only if they are
+monadically similar.
+\end{lemma} 
+\emph{Proof}:
+First, the forward direction. Suppose $A, B$ realize the same types. Then there is a single structure $C$ which is a surjective homomorphic image of both $A$ and $B$ (simply map every element of a given type in $A$ or $B$ onto a single element of that type in $C$). 
+
+Therefore, by our earlier result, $A$ is monadically similar to $C$ and $B$ is
+monadically similar to $C.$ It follows at once that $A$ is monadically similar
+to $B$ (as monadic similarity is an equivalent relation, and hence transitive). 
+
+The reverse direction follows immediately from the fact realization of a type is expressed by a pure monadic schema. \qed
+
+In the above proof, $C$ was a ``canonical model'' which realized the same types as $A, B$.  
+
+\subsubsection*{The small model theorem and the decidability of satisfiability}
+
+Theorem \ref{smm-thm} is an immediate corollary to Lemma \ref{types-lem}.
+
+\emph{Proof}(of Theorem \ref{smm-thm}): Suppose $S$ is a schema involving only the predicate letters $F, G$. Then it follows at once from Lemma \ref{types-lem} and Example \ref{kinds-ex}, that there is a collection $X$ of 15 structures each of size $\leq 4$,
+such that if $S$ is satisfiable, then there is a structure $C_i \in X$ such that $C_i \models S.$ 
+
+\begin{aside}
+    Why? Because there are only $15$ canonical models. There are $2^4$ subsets of types (since we have $2^2 = 4$ types), but only 15 of those are realizable (since for any nonempty model, at least one type must be realized). For $i \in [15]$, we let each $C_i$ realize different types; since there are only 15 possible realized types, it follows that every structure has some $C_i$ as its homomorphic image. These $C_i$ are our canonical models. 
+\end{aside}
+
+More generally, there is a collection $X$ of $2^{(2^n)}-1$ structures each of size $\leq 2^n$
+such that for any pure monadic schema $S$ involving only the predicate letters
+``$F_1,$''$\ldots$ ``$F_n,$'' if $S$ is satisfiable, then there is a structure $A \in X$
+such that $A \models S.$ \qed
+
+\begin{aside}
+    There are $2^n$ types given $n$ monadic predicate letters, so there are $2^{2^n}$ subsets of types, of which $2^{2^n} - 1$ are realizable.  
+\end{aside}
+
+\begin{corollary}
+For every schema $S$, if $S$ is satisfiable, then there is an $1\leq i\leq 15$ such that $A_i\models S$. 
+\end{corollary}
+
+\begin{corollary}
+There is a decision procedure to determine whether a pure
+monadic schema is satisfiable.
+\end{corollary}
+
+
+\begin{corollary}\label{monad-cor}
+\begin{item}
+\item\label{imp-item}
+Schema $S$ implies schema $T$  if and only if 
+\[\{i\mid A_i\models S\ \mbox{and}\ 1\leq i\leq 15\}\subseteq\{i\mid A_i\models T\ \mbox{and}\ 1\leq i\leq 15\}.\]
+\item\label{equiv-item}
+Schemata $S$ and $T$ are equivalent if and only if 
+\[\{i\mid A_i\models S\ \mbox{and}\ 1\leq i\leq 15\}=\{i\mid A_i\models T\ \mbox{and}\ 1\leq i\leq 15\}.\]
+\end{item}
+
+\begin{aside}
+    Show that these are all quick corollaries to the small model theorem. 
+\end{aside}
+\end{corollary}
+

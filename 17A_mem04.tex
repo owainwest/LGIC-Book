@@ -1,0 +1,174 @@
+\subsection{The expressive completeness theorem}
+
+\begin{theorem}[Expressive Completeness of Truth-functional Logic]\label{tflexpcomp-thm}
+Let $X$ be a non-empty finite set of sentence letters and let $\mfp$ be a proposition over $X$. There is a schema $S\in\mathbb{S}(X)$ such that $\prop{S}{X}=\mfp$.
+\end{theorem}
+
+\begin{aside}
+    This looks complicated, but it really isn't. In natural language, what it's saying is this: \emph{pick any subset $\mfp$} (your proposition) \emph{of truth assignments for a set of sentence letters $X$. Then there is a truth-functional schema $S$ using only letters from $X$} ($S\in\mathbb{S}(X)$) \emph{which is true only of those truth-assignments which are in $\mfp$} ($\prop{S}{X}=\mfp$). In other words, \emph{every proposion can be ``picked out'' by some schema}. This is why it's called \emph{expressive completeness}: truth-functional logic is ``expressively complete'' in that it can express every such proposition. 
+\end{aside}
+
+For the proof of Theorem \ref{tflexpcomp-thm}, the following terminology and lemma will be useful. 
+\begin{definition}
+Let $X$ be a non-empty finite set of sentence letters and let $S\in\mathbb{S}_X$.
+\begin{itemize}
+\item $S$ is a \emph{literal} over $X$ just in case $S = p$ or $S = \neg p$, for some $p\in X$.
+\item $S$ is a \emph{term} over $X$ just in case $S$ is a conjunction of literals over $X$ (we allow conjunctions of length 1).
+\item $S$ is in disjunctive normal form over $X$ if and only if $S$ is a disjunction of terms over $X$ (we allow disjunctions of length 1). 
+\end{itemize}
+\end{definition}
+If $\Lambda$ is a set of literals over $X$ we write $\bigwedge \Lambda$ to abbreviate a term which is formed as a conjunction of the literals in $\Lambda$. Similarly, if $\Gamma$ is a set of terms over $X$ we write $\bigvee\Gamma$ to abbreviate a schema in disjunctive normal form which is formed as a disjunction of the terms in $\Gamma$.
+
+\begin{aside}
+    For example, let $S = \{a, b, c\}$. Then $\bigwedge S = a \land b \land c$, and $\bigvee S = a \vee b \vee c$.
+\end{aside}
+
+\begin{lemma}\label{tflexpcomp-lem}
+Let $X$ be a non-empty finite set of sentence letters. For every $A\in\mathbb{A}(X)$ there is a schema $T_A$ which is a term over $X$ such that for every $A'\in\mathbb{A}(X)$
+\[A'\models T_A\ \ \ \mbox{if and only if}\ \ \ A'=A.\]
+\end{lemma}
+\begin{proof}
+Let $X$ be a finite set of sentence letters and suppose $A\in\mathbb{A}(X)$. For each $p\in X$, let $l_p = p$, if $A\models p$, and let $l_p = \neg p$, if $A\not\models p$. Let $\Lambda=\{l_p\mid p\in X\}$ and let $T_A = \bigwedge\Lambda$. It is easy to verify that
+for every $A'\in\mathbb{A}(X)$, 
+$A'\models T_A\ \ \ \mbox{if and only if}\ \ \ A'=A$. 
+\end{proof}    
+
+\begin{aside}
+    Once you become a bit more familiar with the terminology, things will become much easier. Indeed, this lemma is really simple - in plain English, it says that \emph{for every truth assignment, there is a schema which only uses logical ANDs that is satisfied by only that truth assignment}. When stated like that, of course, it seems obvious - if your truth assignment assigns true to $p$ you should have $p$ in your schema, and if your truth-assignment assigns false to $p$, your schema should include $\lnot p$, with all the literals joined up together by ANDs. 
+
+    The proof expresses that intuition symbolically - make sure you can understand the proof now, going over the relevant terminology and symbols if necessary. If you get stuck trying to interpret all that logical symbolism, please come into Office Hours and we'll be happy to help! Logic won't be any fun if the symbolism gets in the way of your ingenuity of understanding, so it's best if you take the time to get comfortable with all that at the start. 
+\end{aside}
+
+\begin{proof}[Proof of Theorem \ref{tflexpcomp-thm}]
+Fix a finite non-empty set of sentence letters $X$ and suppose $\mfp$ is a proposition over $X$. If $\mfp=\emptyset$, then pick $p\in X$ and note that $\prop{p\wedge\neg p}{X} = \mfp$. Otherwise, for each $A\in\mfp$, choose a term $T_A$, as guaranteed to exist by Lemma \ref{tflexpcomp-lem}, such that for every $A'\in\mathbb{A}(X)$, 
+$A'\models T_A\ \ \ \mbox{if and only if}\ \ \ A'=A$. Let $\Gamma = \{T_A\mid A\in\mfp\}$ and let $S=\bigvee\Gamma$. It is easy to verify that $\prop{S}{X}=\mfp$.
+\end{proof}
+
+\begin{aside}
+    Once again, the main difficulty here is the symbolism - the proof expresses a simple intuition in symbolic form. Try rewriting this proof in your own words!
+\end{aside}
+
+\begin{corollary}\label{dnf-cor}
+Every truth-functional schema is equivalent to a schema in disjunctive normal form.
+\end{corollary}
+
+
+
+\newpage
+\subsection{The power of a truth-functional schema: definition and examples}
+
+We will introduce the following useful terminology.
+\begin{definition} 
+For the following, all schemata are drawn from $\mathbb{S}(X)$ for a fixed non-empty finite set of sentence letters $X$.
+\begin{itemize}
+\item 
+A list of truth-functional schemata is \textit{succinct} if and only if no two schemata on the list are equivalent. 
+\item 
+A truth-functional schema \textit{implies a list of schemata} if and only if it implies every schema on the list.
+\item The \textit{power} of a truth-functional schema is the length of a longest succinct list of schemata it implies.  
+\end{itemize}
+\end{definition}
+\paragraph{Examples}
+
+For concreteness, we considered $X=\{p,q,r\}$. What is the length of a longest succinct list of truth-functional schemata over $X$? We arrived at the answer by proving an \emph{upper bound} and a \emph{lower bound} on this length.
+\begin{itemize}
+\item Upper bound: It is easy to verify that schemata $S$ and $S'$ are equivalent if and only if $\prop{S}{}=\prop{S'}{}$. Hence, the length of a succinct list of schemata cannot exceed the number of propositions over $X$, that is, the number of subsets of the set $\mathbb{A}(X)$. The size of $X$ is 3, so the size of $\mathbb{A}(X)$ is $2^3$, since determining a truth assignment to $X$ involves three binary choices (each letter can be assigned true or false, and you make that choice for each of the three letters). By the same reasoning, the number of propositions over $X$ is $2^{2^3}$, since determining a proposition involves deciding, for each of the $2^3$ truth assignments, whether to include or omit it. Hence, the length of the longest succinct list is no more than $2^{2^3} = 2^8 = 256$.  
+\item Lower bound: By Theorem \ref{tflexpcomp-thm}, for every proposition over $X$, there is a schema expressing it. Since schemata expressing distinct propositions are not equivalent, it follows at once that there is a succinct list of schemata of length 256.
+\end{itemize}
+So the longest such list is of length 256.
+
+We proceeded to compute the power, as defined above, of an exemplary schema; let's do $p\wedge (q\vee r)$ here. Note that a schema $S$ implies a schema $S'$ if and only if $\prop{S}{}\subseteq\prop{S'}{}$. Thus, the power of $S$ is the number of sets $Z$ satisfying the condition: 
+\begin{equation}\label{z-eq}
+\prop{S}{}\subseteq Z\subseteq \mathbb{A}(X). 
+\end{equation}
+The size of $\mfp=\prop{p\wedge (q\vee r)}{}$ is 3, so the size of $\mathbb{A}(X)-\mfp=5$. It follows at once that $2^5 =32$ sets $Z$ satisfy condition (\ref{z-eq}); hence, the power of $p\wedge (q\vee r)$ is 32.
+
+We went on to
+list the numbers which are powers of truth-functional schemata over $X=\{p,q,r\}$.
+\begin{itemize}
+\item First note that for every $S,S'\in\mathbb{S}(X)$ the power of $S$ = the power of $S'$ if and only if $\size{\prop{S}{X}}=\size{\prop{S'}{X}}$, where we use $\size{U}$ to denote the number of members of the finite set $U$. 
+\item In particular, if $\mfp=\prop{S}{X}$, then the power of $S = 2^{(8-|\mathfrak{P}|)}$.
+\item It follows at once that for each $S\in\mathbb{S}(X)$, the power of $S = 2^i$, for some $0\leq i\leq 8$.
+\end{itemize}
+
+More generally, suppose $Y$ is a finite set of sentence letters with $\size{Y}=n$. In this case
+\begin{itemize}
+\item $\size{\mathbb{A}(Y)}=2^n$, and 
+\item for each $S\in\mathbb{S}(Y)$, if $\mfp=\prop{S}{Y}$, then the power of $S = 2^{(2^n-|\mathfrak{P}|)}$.
+\end{itemize}
+
+\begin{aside}
+    Why is it that $S$ implies $S'$ iff $\mathbb{P}(S) \subseteq \mathbb{P}(S')$? If you need a refresher on the symbols, make sure to look up the definitions!
+\end{aside}
+
+\subsection{A question to ponder}
+\begin{definition}
+    We use the symbol $:=$ to mean ``is defined to be equal to''. $:=$ expresses a \emph{definition} of equality, whereas $=$ expresses a statement about equality.
+
+    If you're a coder, $x := 10$ is to logic/math as \verb|let x = 10| is to JavaScript, whereas $x = 10$ is to logic as \verb|x === 10| is to JavaScript.
+\end{definition}
+
+We ended by posing a question:
+What is the length of a longest succinct list of truth-functional schemata over $X := {p, q, r}$ each of which has power 32?
+
+\begin{aside}
+    Make sure you have all the relevant definitions in order - what does it mean for the power of a schema to be 32? What does it mean for a list of schemata to be succinct?  
+\end{aside}
+
+Well, from the definitions we know that a schema over $X := \{p, q, r\}$ has power 32 if and only if exactly three truth assignments satisfy it (why?). Hence the length of a longest such succinct list is exactly the number of subsets of size three contained in a set of size eight (why a set of size 8, given that we have 3 sentence letters?). In the next section, we'll take a break from logic proper to learn a bit about how we would determine how many such subsets there are. 
+
+\newpage
+\begin{mdframed}[linewidth=1]
+\section*{Concept Review}
+\textbf{Definitions}
+\begin{itemize}
+    \item A schema $S$ \emph{implies} a schema $T$ iff for all truth-assignments $A$, if $A \models S$ then $A \models T$. In other words, $S$ implies $T$ iff the proposition expressed by $S$ is a subset of the proposition expressed by $T$. 
+    \item A schema $S$ is \emph{equivalent} to a schema $T$ iff $S$ and $T$ are satisfied by exactly the same truth assignments (for all $A$, $A \models S$ iff $A \models T$). In other words, $S$ and $T$ are equivalent if they express the same proposition. 
+    \item $S$ is \emph{satisfiable} iff there is a truth assignment that satisfies it (there exists an $A$ such that $A \models S$)
+    \item $S$ is \emph{valid} iff all truth assignments satisfy it (for all $A$, $A \models S$)
+    \item $\mathbb{P}_X(S) = \{A | A \text{ is a truth assignment over } X \text{ and } A \models S\}$ is \emph{the proposition expressed by S}. It's the set of truth assignments that satisfy $S$ (where truth assignments are restricted to those for sentence letters in the set $X$). 
+    \item $\mathbb{A}(X)$ is the set of all truth assignments over $X$. 
+    \item A list of TF-schemata is called \emph{succinct} iff no two schema on the list are equivalent. 
+    \item The \emph{power} of a schema $S$ is the length of the longest succint list of schemata which $S$ implies. In other words, it's the number of nonequivalent schema which $S$ implies. 
+\end{itemize}
+
+\textbf{Expressive Completeness}
+
+For any (arbitrary) proposition, there is a truth-functional schema which expresses that proposition. We noted that a schema can pick out individual truth-assignments by conjoining literals for each of the sentence letters (for example, the truth assignment $A_1$ which maps $p = \top, q = \top, r = \top$ is picked out by the sentence $(p \land q \land r)$). Sentences of this form are called \emph{terms}. We further noted that a disjunction of such terms (one for each truth-assignment in our proposition) was sufficient to express any proposition. 
+
+\textbf{Power}
+
+Suppose we have a sentence $S$ over $n$ sentence letters which is satisfied by $k$ truth assignments. Then power of $S$ is $2^{2^n - k}$. To see why this is the case, note that there are $2^n$ truth assignments for $n$ sentence letters. If $S$ is satisfied by $k$ truth assignments, then those truth assignments must also satify $T$ if $S$ implies $T$. So we can't ``choose'' to include those $k$ truth-assignments in our proposition expressed by $T$ any more, because $\mathbb{P}_X(T)$ must include them. So we are left with $2^n - k$ truth-assignments which can be in $T$ or not. Since each of these $2^n - k$ truth assignments can be either in or out of the proposition expressed by $T$, the power of $S$ is then $2^{2^n - k}$.
+\end{mdframed}
+
+\newpage
+\begin{mdframed}[linewidth=1]
+\section*{Problems}
+\begin{enumerate}
+    \item How many truth-assignments to the given letters satisfy the following schema?
+    \[
+        (p_1 \supset q_1) \land ... \land (p_5 \supset q_5)
+    \]
+
+    \item How many truth-assignments over the given letters satisfy satisfy the following schema?
+    \[
+        p_1 \oplus p_2 \oplus p_3 \oplus p_4 \oplus p_5
+    \]
+
+    \item I claim that if $n$ people all shake hands with each other (once per pair), the total number of handshakes is $\frac{n(n-1)}{n}$. Prove this by induction. 
+\end{enumerate}
+\end{mdframed}
+\newpage
+\begin{mdframed}[linewidth=1]
+\section*{Solutions}
+\begin{enumerate}
+    \item $3^5$. Note that each of the terms of the form $p_i \supset q_i$ is satisfied in three cases (check the truth table) and apply the product rule. 
+
+    \item $2^4 = 16$. Remember that there are $2^{n-1}$ ways to pick an odd-sized subset from $n$ elements and that a sentence of the given form is satisfied iff an odd number of sentence letters are set to true. 
+
+    \item BASE CASE: $n = 2$. Two people shaking hands results in one handshake, and the formula gives us $\frac{2(2-1)}{2} = 1$ which is correct. Note that I pick $n = 2$ as the base case (not $n = 0$ or $n = 1$) because it doesn't really make sense to talk about those cases (since you need two people for a handshake). 
+
+    INDUCTIVE CASE: Assume that for $n$ people, the number of handshakes (let's denote it $H_n$) is $H_n = \frac{n(n-1)}{2}$. We want to show (henceforth ``wts'') that for $n + 1$ people the number of handshakes is $H_{n+1} = \frac{(n+1)n}{2}$. The number of handshakes between $n + 1$ people is clearly the number of handshakes for $n$ people ($H_n$) plus $n$, since our new person must shake hands with the $n$ others. So we have $H_{n+1} = H_n + n = \frac{n(n-1)}{2} + n = \frac{n^2 - n + 2n}{2} = \frac{n^2 + n}{2} = \frac{(n+1)n}{2}$, which is what we wanted to show. 
+
+\end{enumerate}
+\end{mdframed}

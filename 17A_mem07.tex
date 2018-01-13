@@ -1,0 +1,65 @@
+The central occupation of this week's classes will be an approach to establishing the decidability of satisfiability of pure monadic schemata complementary to that developed in sections 25 and 26 of \emph{Deductive Logic}. Our approach introduces notions that we will elaborate further, when we turn to study polyadic quantificational logic.
+\subsection{Three views of structures}
+
+As a warm-up to the main event, we noted that we now have three (equivalent) ways of viewing structures, each of which may contribute a useful perspective, depending on the problem to hand. These are
+\begin{itemize}
+\item 
+the Canonical View, which consists of specifying the universe of discourse and extensions for each of the (finitely many) predicate letters in play,
+\item 
+the Types View, which consists of specifying a universe of discourse and sorting it into types, that is, maximally specific descriptions that can be framed in terms of the predicate letters in play, and
+\item 
+the Venn View, which pictures the extensions of all the predicate letters in play as intersecting regions contained in a rectangle that represents the universe of discourse.
+\end{itemize}
+\subsection{The small model theorem}
+
+We will prove the following \emph{Small Model Theorem} for monadic logic; the decidability of satisfiability of pure monadic schemata is a corollary to this result. 
+\begin{theorem}\label{smm-thm}
+Let $S$ be a pure monadic schema containing occurrences of at most $n$ distinct monadic predicate letters. If $S$ is satisfiable then there is a structure $A$ of size at most $2^n$ such that $A\models S$.
+\end{theorem}
+\subsection{Monadic similarity}
+
+The proof of Theorem \ref{smm-thm} rests on the following lemma. In order to state the lemma, we need to introduce some new concepts. Suppose without loss of generality that we restrict our attention to monadic schemata in which only the predicate letters $F$ and $G$ occur. We say that two structures $A$ and $B$ are {\em monadically similar} if and
+only if they satisfy exactly the same pure monadic schemata.
+We explore a sufficient condition for the monadic similarity of structures.
+\subsection{Homomorphisms}
+
+A function $h$ is a mapping from one set, called the {\em domain} of $h$ to
+another set (it may be the same set), called the {\em range} of $h.$ For every
+element $a$ of the domain of $h$ we write ``$h(a)$'' to denote the element of
+the 
+range of $h$ to which it is mapped. We sometimes call $h(a)$ the $h$ {\em
+image} of 
+$a$ or the {\em image} of $a$ under $h.$ We sometiems use the notation
+$$h: X \longrightarrow Y$$
+to indicate that $h$ is a function with domain $X$ and range $Y.$
+If $h: X \longrightarrow Y$ we say that $h$ is {\em onto} if and only if for
+every 
+$b\in Y$ there is an $a \in X$ such that $h(a)=b.$
+In this case, we will also say that $h$ is $surjective.$
+
+Let $A$ and $B$ be structures. We call $h$ a {\em homomorphism from}
+$A$ {\em onto} $B$ just in case $h$ is an onto function with domain $U^A$
+and range $U^B$ satisfying the following condition:
+for every monadic predicate letter $P$ and every $m \in U^A,$
+\[ m \in P^A\ \ \ \mbox{if and only if}\ \ \ h(m) \in P^B.\]
+If there is a homomorphism from $A$ onto $B$, we say that $B$ is a {\em
+surjective homomorphic image} of $A.$
+\subsection{Examples}
+
+We illustrated the above notions with some examples. Consider the following structures.
+\[
+\begin{array}{ll}
+A: & U^A=\{n\mid n\mbox{ is a positive integer.}\}\\ 
+ & F^A=\{n\mid n\mbox{ is an even positive integer.}\}\\ 
+ & G^A=\{n\mid n\mbox{ is a prime positive integer.}\}
+\end{array}
+\]
+\[
+\begin{array}{ll}
+B: & U^B=\{n\mid n\mbox{ is a positive integer.}\}\\ 
+ & F^B=\{n\mid n\mbox{ is an odd positive integer.}\}\\ 
+ & G^B=\{n\mid n\mbox{ is a prime positive integer.}\}
+\end{array}
+\]
+
+We observed that though $A$ and $B$ have the same regions occupied in their respective Venn diagrams, and thus realize the same types, there is no homomorphism from $A$ onto $B$, nor is there a homomorphism from $B$ onto $A$. We will shortly see that $A$ and $B$ have a common surjective homomorphic image, that is, there is a structure $C$ such that there is a homomorphism from $A$ onto $C$ and a homomorphism from $B$ onto $C$.

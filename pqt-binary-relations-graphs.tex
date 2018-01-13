@@ -1,0 +1,93 @@
+\subsection{Binary Relations, Functions, and Graphs}
+We will now discuss several important properties which can hold of binary relations. Letting $L$ be our binary relation, we have the following definitions. 
+
+\begin{definition}
+$L^A$ is \emph{reflexive} if and only if
+\[A\models (\forall x)Lxx.\]
+\end{definition}
+
+\begin{definition}
+$L^A$ is \emph{irreflexive} if and only if
+\[A\models (\forall x)\neg Lxx.\]
+\end{definition}
+
+\begin{definition}
+$L^A$ is \emph{symmetric} if and only if
+\[A\models (\forall x)(\forall y)(Lxy\supset Lyx).\]
+\end{definition}
+
+\begin{definition}
+$L^A$ is \emph{asymmetric} if and only if
+\[A\models (\forall x)(\forall y)(Lxy\supset \neg Lyx).\]
+\end{definition}
+
+\begin{definition}
+$L^A$ is \emph{transitive} if and only if
+\[A\models (\forall x)(\forall y)(\forall z)(Lxy\supset (Lyz\supset Lxz)).\]
+\end{definition}
+
+\begin{definition}
+$A$ is a \emph{simple graph} if and only if $L^A$ is irreflexive and symmetric.
+\end{definition}
+
+\subsection*{Identity}
+A new logical dyadic predicate, identity, will  allows us to ``put the quant into quantification.''The identity relation ``$=$'' has a uniform interpretation over all structures $A$ namely $=^A$ is equal to $\{\op{a}{a}\mid a\in U^A\}$. Since the interpretation of the identity relation is uniform, we omit mention of it when we specify structures.\footnote{We call identity a \emph{logical} predicate (as opposed to your garden-variety, run-of-the-mill predicates) because of this uniform interpretation across all structures. It means the same thing regardless of which structure you're in, so it is of logical character}. 
+
+\begin{aside}
+    Identity is, of course, an equivalence relation. Prove this. 
+\end{aside}
+
+\subsection*{Numerical quantifiers}
+By making use of the identity relation, we can introduce, for each integer $k\geq 1$, the quantifiers ``there are at least $k$ $x$'s such that $S(x)$'', ``there are at most $k$ $x$'s such that $S(x)$'', and ``there are exactly  $k$ $x$'s such that $S(x)$'' as follows.
+\[
+\begin{array}{ll}
+(\exists^{k\leq}x)S(x):  & (\exists x_1)\ldots(\exists x_k)(\bigwedge_{1\leq i<j\leq k}x_i\neq x_j\wedge \bigwedge_{1\leq i\leq k}S(x_i))\\
+(\exists^{\leq k}x)S(x): & \neg (\exists^{k+1\leq}x)S(x)\\
+(\exists^{ = k}x)S(x): & (\exists^{\leq k}x)S(x)\wedge(\exists^{k\leq}x)S(x)
+\end{array}
+\]
+
+\begin{aside}
+    The crux of our proof of the Small Model Theorem for MQT was that realizing the same types corresponded to satisfying the same monadic sentences. Of course, realizing the same types does not mean that two structures satisfy the same sentences of PQT: the identity relation allows us to distinguish structures by \emph{counting} how many elements realize a given type. \emph{A priori}, this does not mean that decidability (which was a corollary of our SMT) fails for PQT - only that our particular proof of the SMT for MQT would fail for PQT. We will see more about the decidability of MQT in the future. 
+\end{aside}
+
+Let's use $\card{X}$ to denote the number of members of a set $X$ (you may have seen this notation before to mean ``absolute value''; its interpretation here is similar but distinct).    
+In order to clarify the import of these  numerical quantifiers, we introduce the notion of the \emph{set defined by a one variable open schema $S(x)$ in a structure $A$} (written $S[A]$):
+\[S[A]=\{a\in U^A\mid A\models S[x|a]\}.\] That is, $S[A]$ is the set of members of $U^A$ that satisfy $S(x)$ in $A$. Observe that $A\models(\exists^{k\leq}x)S(x)$ if and only if $k\leq\card{S[A]}$, and similarly for the other two newly introduced quantifiers. Our next goal is to use these quantifiers to define regular simple graphs.
+
+\subsection*{Graphs}
+Recall that a \emph{graph} is structure that interprets a single dyadic predicate letter ``$L$'' (these are sometimes also called directed graphs to emphasize that the edges have directionality). Unless otherwise stated, we will restrict our attention for the rest of the course to structures that are graphs; this restriction doesn't lose us much (all results we will derive are easily generalizable to structures with arbitrary relations) and it adds much tabgibility. A graph $A$ is \emph{simple} if and only if $L^A$ is both irreflexive and symmetric (ie the edges are undirected, and tehre are no ``self loops'' at any node). We introduced the abbreviation \sg\ for the conjunction of the schemata expressing irreflexivity and symmetry, which we abbreviated as \irr\ and \sym, respectively. For a structure $A$, $A \models \sg$ iff $A$ is a simple graph. 
+
+Note that for any two nodes $a, b$ in a simple graph, there can be \emph{at most one} edge $\langle a, b \rangle$ because the edge relation is a binary relation and hence a set (which disregards multiplicity). In the following definitions, suppose that $A$ is a simple graph with $a \in U^A$ (ie, $a$ is a node in the graph $A$). 
+
+\begin{definition}
+The \emph{neighborhood of $a$ in $A$} is $\nbh{a}{A} := \{b\in U^A\mid \op{a}{b}\in L^A\}$ (the set of all neighbours of $a$, eg the set of all nodes which $a$ is connected to). 
+\end{definition}
+
+\begin{definition}
+The \emph{degree of $a$ in $A$} is $\dg{a}{A} := \card{\{b\in U^A\mid \op{a}{b}\in L^A\}}$ (the number of neighbours of $a$, or equivalently the number of edges incident to $a$).
+\end{definition}
+
+
+\begin{definition}
+A simple graph is \emph{$k$-regular} if and only if all nodes of the graph have degree $k$. We can schematize this condition, using the dyadic predicate $L$ for the edge relation, as
+\[(\forall y)(\exists^{=k}x)Lyx.\]
+\end{definition}
+
+What do the collections of 1-regular and 2-regular simple graphs look like? Every 1-regular graph consists of a set of independent edges, and that a \emph{finite} 2-regular graph consists of a collection of independent simple cycles, that is, graphs that may be drawn in the plane as a disjoint finite collection of disjoint polygons. As well, the doubly-infinite simple chain is also 2-regular (think of the integers, where there is an edge $\langle a, b \rangle$ iff $a = b \pm 1$). Polygons and bi-infinite chains exhaust the possible connected components of 2-regular graphs.
+
+\subsection*{Counting graphs}
+
+Just as we did for truth-functional logic and MQT, we can also count satisfying structures to sentences of PQT. In particular, we will count graphs with a fixed universe of discourse. To that end, we have the following definition. 
+
+\begin{definition}
+We denote the set of simple graphs on $n$ nodes which satisfy a sentence $S$ by $\modn{S}{n}$, eg: \[\modn{S}{n}=\{A\mid A\models S\mbox{ and }U^A=\{1,\ldots,n\}\}.\] 
+\end{definition}
+
+Note that for every structure $A$, $A\models (\forall x)x=x$, thus  $\modn{(\forall x)x=x}{n}$ is the set of all graphs with universe of discourse $\{1,\ldots,n\}$. 
+
+Let's count the number of graphs $A$ with $U^A=\{1,2,3,4\}$ (by the previous comment, this is of course equal to $\card{\modn{(\forall x)x=x}{4}}$). Any such graph is determined by choosing which of the sixteen possible edges from $i$ to $j$ to draw, where $1\leq i\leq 4$ and $1\leq j\leq 4$; that is, a graph with this universe of discourse is determined by 16 binary choices, so, by the product rule, there are $2^{16}$ such graphs. Analogous reasoning leads to the conclusion that there are $2^{n^2}$ graphs with universe of discourse $\{1,\ldots, n\}$ (because there are $n^2$ pairs of nodes, and hence $2^{n^2}$ possible edge-sets). Similarly, since a simple graph with universe of discourse $\{1,\ldots, n\}$ is determined by making a choice from a collection of $\binom{n}{2}$ possible \emph{undirected} edges, there are $2^{\binom{n}{2}}$ simple graphs $A$ with $U^A=\{1,\ldots, n\}$. 
+
+\begin{aside}
+    How many 1-regular simple graphs are there with universe of discourse $\{1,\ldots, n\}$? 
+\end{aside}

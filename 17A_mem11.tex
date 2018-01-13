@@ -1,0 +1,54 @@
+\subsection{Some properties of binary relations}
+We went on to discuss several important properties of relations.
+\begin{itemize}
+\item
+$L^A$ is \emph{reflexive} if and only if
+\[A\models (\forall x)Lxx.\]
+\item
+$L^A$ is \emph{irreflexive} if and only if
+\[A\models (\forall x)\neg Lxx.\]
+\item
+$L^A$ is \emph{symmetric} if and only if
+\[A\models (\forall x)(\forall y)(Lxy\supset Lyx).\]
+\item
+$L^A$ is \emph{asymmetric} if and only if
+\[A\models (\forall x)(\forall y)(Lxy\supset \neg Lyx).\]
+\item
+$L^A$ is \emph{transitive} if and only if
+\[A\models (\forall x)(\forall y)(\forall z)(Lxy\supset (Lyz\supset Lxz)).\]
+\item
+$A$ is a \emph{simple graph} if and only if $L^A$ is irreflexive and symmetric.
+\end{itemize}
+\subsection{Identity}
+
+We continued our discussion of the expressive power of polyadic quantification theory. We started by introducing a new logical dyadic predicate, identity, which  allows us to ``put the quant into quantification.'' The identity relation ``$=$'' has a uniform interpretation over all structures $A$ namely $=^A$ is equal to $\{\op{a}{a}\mid a\in U^A\}$. Since the interpretation of the identity relation is uniform, we omit mention of it when we specify structures. 
+\subsection{Numerical quantifiers}
+By making use of the identity relation, we can introduce, for each integer $k\geq 1$, the quantifiers ``there are at least $k$ $x$'s such that $S(x)$'', ``there are at most $k$ $x$'s such that $S(x)$'', and ``there are exactly  $k$ $x$'s such that $S(x)$'' as follows.
+\[
+\begin{array}{ll}
+(\exists^{k\leq}x)S(x):  & (\exists x_1)\ldots(\exists x_k)(\bigwedge_{1\leq i<j\leq k}x_i\neq x_j\wedge \bigwedge_{1\leq i\leq k}S(x_i))\\
+(\exists^{\leq k}x)S(x): & \neg (\exists^{k+1\leq}x)S(x)\\
+(\exists^{ = k}x)S(x): & (\exists^{\leq k}x)S(x)\wedge(\exists^{k\leq}x)S(x)
+\end{array}
+\]
+Let's use $\card{X}$ to denote the number of members of a set $X$.    
+In order to clarify the import of these quantifiers we introduced the notion of the \emph{set defined by a one variable open schema $S(x)$ in a structure $A$} (written $S[A]$):
+\[S[A]=\{a\in U^A\mid A\models S[x|a]\}.\] That is, $S[A]$ is the set of members of $U^A$ that satisfy $S(x)$ in $A$. Observe that $A\models(\exists^{k\leq}x)S(x)$ if and only if $k\leq\card{S[A]}$, and similarly for the other two newly introduced quantifiers. We proceeded to explore the use of these quantifiers to define regular simple graphs.
+\subsection{Regular graphs}
+
+Recall that a \emph{graph} is structure that interprets a single dyadic predicate letter ``$L$'' (these are sometimes also called directed graphs to emphasize that the edges have directionality), and we declared that, unless otherwise clearly stated,  we will restrict our attention for (at least) this lecture and the next to structures that are graphs. A graph $A$ is \emph{simple} if and only if $L^A$ is both irreflexive and symmetric. We introduced the abbreviation \sg\ for the conjunction of the schemata expressing irreflexivity and symmetry, which we abbreviated as \irr\ and \sym, respectively. 
+
+Suppose $A$ is a simple graph and $a\in U^A$. The \emph{neighborhood of $a$ in $A$} is $\{b\in U^A\mid \op{a}{b}\in L^A\}$ and the \emph{degree of $a$} is $\card{\{b\in U^A\mid \op{a}{b}\in L^A\}}$. 
+That is, the degree of a node $a$ in a simple graph $A$ is the number of neighbors of $a$ in $A$, equivalently, the number of edges incident with $a$ in $A$. A simple graph is \emph{$k$-regular} if and only if all nodes of the graph have degree $k$. We can schematize this condition, using the dyadic predicate $L$ for the edge relation, as
+\[(\forall y)(\exists^{=k}x)Lyx.\]
+
+We discussed the collections of 1-regular and 2-regular simple graphs. We noted that every 1-regular graph consists of a set of independent edges, and that a \emph{finite} 2-regular graph consists of a collection of independent simple cycles, that is, graphs that may be drawn in the plane as a disjoint finite collection of disjoint polygons. We observed that the bi-infinite simple chain is also 2-regular and that polygons and bi-infinite chains exhaust the possible connected components of 2-regular graphs.
+\subsection{Counting graphs}
+
+We proceeded to count graphs with a fixed universe of discourse. We defined
+\[\modn{S}{n}=\{A\mid A\models S\mbox{ and }U^A=\{1,\ldots,n\}\}.\] Note that for every structure $A$, $A\models (\forall x)x=x$, thus  $\modn{(\forall x)x=x}{n}$ is the set of all graphs with universe of discourse $\{1,\ldots,n\}$. 
+%(This appeared to generate considerable discussion, if not confusion -- I hope that's dissipated by now.) 
+We counted the number of graphs $A$ with $U^A=\{1,2,3,4\}$ ($=\card{\modn{(\forall x)x=x}{4}}$) as follows. We noted that any such graph is determined by choosing which of the sixteen possible edges from $i$ to $j$ to draw, where $1\leq i\leq 4$ and $1\leq j\leq 4$; that is, a graph with this universe of discourse is determined by 16 binary choices, so, by the product rule, there are $2^{16}$ such graphs. We noted that analogous reasoning leads to the conclusion that there are $2^{n^2}$ graphs with universe of discourse $\{1,\ldots, n\}$. And similarly, since a simple graph with universe of discourse $\{1,\ldots, n\}$ is determined by making a choice from a collection of $\binom{n}{2}$ possible \emph{undirected} edges, there are $2^{\binom{n}{2}}$ simple graphs $A$ with $U^A=\{1,\ldots, n\}$. 
+
+We left it as a stimulating recreational activity to calculate the number of 1-regular simple graphs with universe of discourse $\{1,\ldots, n\}$. 
+

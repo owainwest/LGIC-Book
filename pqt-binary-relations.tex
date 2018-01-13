@@ -1,0 +1,56 @@
+\subsection{Binary Relations}
+We will now discuss several important properties which can hold of binary relations. Letting $L$ be our binary relation, we have the following definitions. 
+
+\begin{definition}
+$L^A$ is \emph{reflexive} if and only if
+\[A\models (\forall x)Lxx.\]
+\end{definition}
+
+\begin{definition}
+$L^A$ is \emph{irreflexive} if and only if
+\[A\models (\forall x)\neg Lxx.\]
+\end{definition}
+
+\begin{definition}
+$L^A$ is \emph{symmetric} if and only if
+\[A\models (\forall x)(\forall y)(Lxy\supset Lyx).\]
+\end{definition}
+
+\begin{definition}
+$L^A$ is \emph{asymmetric} if and only if
+\[A\models (\forall x)(\forall y)(Lxy\supset \neg Lyx).\]
+\end{definition}
+
+\begin{definition}
+$L^A$ is \emph{transitive} if and only if
+\[A\models (\forall x)(\forall y)(\forall z)(Lxy\supset (Lyz\supset Lxz)).\]
+\end{definition}
+
+\begin{definition}
+$A$ is a \emph{simple graph} if and only if $L^A$ is irreflexive and symmetric.
+\end{definition}
+
+\subsection*{Identity}
+A new logical dyadic predicate, identity, will  allows us to ``put the quant into quantification.''The identity relation ``$=$'' has a uniform interpretation over all structures $A$ namely $=^A$ is equal to $\{\op{a}{a}\mid a\in U^A\}$. Since the interpretation of the identity relation is uniform, we omit mention of it when we specify structures.\footnote{We call identity a \emph{logical} predicate (as opposed to your garden-variety, run-of-the-mill predicates) because of this uniform interpretation across all structures. It means the same thing regardless of which structure you're in, so it is of logical character}. 
+
+\begin{aside}
+    Identity is, of course, an equivalence relation. Prove this. 
+\end{aside}
+
+\subsection*{Numerical quantifiers}
+By making use of the identity relation, we can introduce, for each integer $k\geq 1$, the quantifiers ``there are at least $k$ $x$'s such that $S(x)$'', ``there are at most $k$ $x$'s such that $S(x)$'', and ``there are exactly  $k$ $x$'s such that $S(x)$'' as follows.
+\[
+\begin{array}{ll}
+(\exists^{k\leq}x)S(x):  & (\exists x_1)\ldots(\exists x_k)(\bigwedge_{1\leq i<j\leq k}x_i\neq x_j\wedge \bigwedge_{1\leq i\leq k}S(x_i))\\
+(\exists^{\leq k}x)S(x): & \neg (\exists^{k+1\leq}x)S(x)\\
+(\exists^{ = k}x)S(x): & (\exists^{\leq k}x)S(x)\wedge(\exists^{k\leq}x)S(x)
+\end{array}
+\]
+
+\begin{aside}
+    The crux of our proof of the Small Model Theorem for MQT was that realizing the same types corresponded to satisfying the same monadic sentences. Of course, realizing the same types does not mean that two structures satisfy the same sentences of PQT: the identity relation allows us to distinguish structures by \emph{counting} how many elements realize a given type. \emph{A priori}, this does not mean that decidability (which was a corollary of our SMT) fails for PQT - only that our particular proof of the SMT for MQT would fail for PQT. We will see more about the decidability of MQT in the future. 
+\end{aside}
+
+Let's use $\card{X}$ to denote the number of members of a set $X$ (you may have seen this notation before to mean ``absolute value''; its interpretation here is similar but distinct).    
+In order to clarify the import of these  numerical quantifiers, we introduce the notion of the \emph{set defined by a one variable open schema $S(x)$ in a structure $A$} (written $S[A]$):
+\[S[A]=\{a\in U^A\mid A\models S[x|a]\}.\] That is, $S[A]$ is the set of members of $U^A$ that satisfy $S(x)$ in $A$. Observe that $A\models(\exists^{k\leq}x)S(x)$ if and only if $k\leq\card{S[A]}$, and similarly for the other two newly introduced quantifiers. Our next goal is to use these quantifiers to define regular simple graphs.

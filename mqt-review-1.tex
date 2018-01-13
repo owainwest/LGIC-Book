@@ -1,0 +1,247 @@
+\subsection{Review}
+\begin{mdframed}[linewidth=1]
+\section*{Concept Review}
+\textbf{Definitions}
+\begin{itemize}
+    \item A \emph{one variable open schema} is a schema formed of predicates connected by truth-functional connectives (for example, $(Fx \land Gx)$). 
+    \item A \emph{simple monadic schema} is a schema in which some quantifier binds a one-variable open schema (for example, $(\forall x)(Fx \land Gx)$). 
+    \item A \emph{pure monadic schema} is schema which results from the truth-functional compounding of simple monadic schemata (for example, $(\forall x)(Fx \land Gx) \vee (\exists x)(Gx)$)
+    \item A sentence $S$ is satisfiable iff there is at least one structure $A$ such that $A \models S$. Note that this is analogous to the corresponding definition for TF-logic, the only difference being that $A$ is now a structure, not a truth-assignment. 
+    \item A sentence $S$ is valid iff for all structures $A$, $A \models S$
+    \item A sentence $S$ implies a sentence $T$ iff for all $A$, if $A \models S$, then $A \models T$
+    \item Sentences $S$ and $T$ are equivalent iff they are satisfied by exactly the same structures. 
+    \item A structure $A$ is said to ``be a counterexample to the claim that a sentence $S$ implies a sentence $T$'' iff $A \models S$ and $A \not \models T$. 
+    \item A structure $A$ is said to ``witness the inequivalence of sentences $S$ and $T$'' iff ($A \models S$ and $A \not \models T$), or ($A \models T$ and $A \not \models S$). 
+    \item Structures $A, B$ are said to be \emph{monadically similar} ($A \approx_M B$) iff they satisfy the same sentences. 
+    \item A function $h$ is \emph{surjective} (or \emph{onto})  if everything in the codomain is mapped to by $h$ (equivalently, the image of the function - which is the set of all things that get mapped to - is equal to the codomain). In the language of first order logic, the criterion for surjetivity is
+        \[
+             (\forall b \in B)(\exists a \in A)(h(a) = b)
+         \] 
+    \item A \emph{Homomorphism $h$ from $A$ onto $B$} satisfies the following three properties:
+    \begin{itemize}
+        \item $h$ is a function from $A$ to $B$.
+        \item $h$ is \emph{surjective (onto)}. 
+        \item $h$ is ``structure preserving''. This just means that the predicates which elements are members of are preserved under the homomorphism. You can think of this as elements of types in the Type View mapping onto elements in the corresponding type, or sections in the Venn View mapping onto their corresponding section. In the language of first order logic, the criterion for this is
+        \[
+            (\forall \text{ predicates }P)(\forall a \in A)(a \in P^A \equiv h(a)\in P^B)
+        \]
+    \end{itemize}
+
+\end{itemize}
+
+\textbf{Quantifiers}
+$\forall x$ is read ``for all $x$'', ``for every $x$'', or ``for each $x$''. A sentence of the form $$(\forall x)(\text{some statement about }x)$$ is true just in case ``some statement about $x$'' is true no matter what $x$ is. 
+
+$\exists x$ is read ``there exists an $x$''. A sentence of the form $$(\exists x)(\text{some statement about }x)$$ is true just in case ``some statement about $x$'' is true of at least one thing $x$. 
+
+\textbf{(Unary) Predicates}
+\emph{Predicates} are statements that are true of some things and not true of others. The correspond to the ``$\text{some statement about }x$'' segment of the aforementioned sentences. For example, ``$\bigcirc$ is an even number'' is a predicate that is true just of the elements of the set of even integers, and false of all other things. The set of things for which a predicate is true is called its \emph{extension}. For example, the extension of ``$\bigcirc$ is an even number'' is the set $\{0, 2, -2, 4, -4...\}$. 
+
+Instead of writing out the full dscription for predicates each time we use them in a schema, we represent predicates by \emph{predicate letters}. For example, we might say that $Fx$ represents the statement that ``$x$ is an even number''.
+
+\textbf{Structures}
+In truth-functional logic, the truth of a sentence was relative to the truth-assignments to its sentence letters, and that only. Structures play the same role for logic with quantifiers as truth-assignments do for truth-functional logic. 
+ 
+A structure $A$ consists of:
+\begin{itemize}
+    \item A set called the \emph{universe of A}, written $U^A$. This is the set of all things over which we are quantifying when we use a quantifier. 
+    \begin{itemize}
+        \item For example, if I asserted that $(\forall x)(x \text{ is even} \vee x \text{ is odd})$, you'd probably assume that I was talking about all integers, not all things in general. In this case, the universe would (implicitly) be the set of integers, then. This implicit universe is a function of natural language, which is context-dependent. In class, you'll normally explicitly be told that some set is the universe in consideration. 
+    \end{itemize}
+    \item Any number of monadic predicates ($F^A, G^A$, etc), all of which are (arbitrary) subsets of the universe. 
+    \begin{itemize}
+        \item Let $F^A$ be the set of even numbers, and $G^A$ be the set  of odd numbers. Then, within the universe of integers, the statement $(\forall x)(Fx \vee Gx)$ is a true statement, asserting that $(\forall x)(x \text{ is even} \vee x \text{ is odd})$.
+    \end{itemize}
+\end{itemize}
+If a sentence is true relative to some structure, we write $A \models S$ and say that ``$A$ satisfies $S$'' (as we did for TF-logic), ``$A$ is a model of $S$'', or ``$S$ is true in $A$''.
+
+\textbf{Bound vs. Free Quantifiers}
+A variable $x$ is said to be \emph{bound} if it is within the scope of some quantifier. $x$ is said to be \emph{free} if it is not bound. The truth of sentences including free variables cannot be evaluated without an \emph{assignment} of a value to those free variables. For example, the sentence ``$x$ is an even number'' means nothing without some assignment of a value (say, 2 or 3) to $x$. However, the sentence $(\forall x)(x \text{ is an integer} \supset x \text{ is even})$ can be evaluated (and is, of course, false). 
+
+\textbf{3 Views of Structures}
+We have three equivalent ways of looking at strctures, which are
+\begin{enumerate}
+    \item \textbf{The Canonical View}, which involves specifying the universe of discourse and extensions of predicates as sets. 
+    \item \textbf{The Types View}, which involves drawing a table with sections for each ``type''.
+    \item \textbf{The Venn View}, which involves drawing a venn diagram, wherein the circles represent extensions of predicates. 
+\end{enumerate}
+
+
+\textbf{Realizing Types} 
+We say that a structure realizes a type $T_i$ iff there is some element of the structure in the quadrant $T_i$ in the types view of our structure. 
+
+For example, with predicate letters $F, G$, the types would then be 
+\begin{itemize}
+    \item $T_1(x): Fx \land Gx$
+
+    \item $T_2(x): Fx \land \lnot Gx$
+
+    \item $T_3(x): \lnot Fx \land Gx$
+
+    \item $T_4(x): \lnot Fx \land \lnot Gx$
+\end{itemize}
+and then we would say that a structure realizes type $T_i$ iff it makes the sentence $(\exists x)(T_i(x))$ true. 
+
+\textbf{The Small Model Theorem}
+The Small Model Theorem states:
+\begin{theorem}
+Let $S$ be a pure monadic schema over $n$ predicate letters. If $S$ is satisfiable, then there is a structure $A$ with $|A| \leq 2^n$ with $A \models S$. 
+\end{theorem}
+
+This immediately gives as a corrolary the algorithmic decidability of satisfiability for MQT. To see this, we noted the following equivalence (the \emph{contrapositive})
+\[
+    (p \supset q) \equiv (\lnot q \supset \lnot p)
+\]
+Then the contrapositive of our theorem is: \emph{if there is no structure $A$ with $|A| \leq 2^n$ such that $A \models S$, then $A$ is not satisfiable}. Thus, we have to check only a finite number of models to see if $S$ is satisfiable or not, and hence satisfiability is algorithmically decidable. 
+
+\end{mdframed}
+
+
+
+\newpage
+\begin{mdframed}[linewidth=1]
+\section*{Problems}
+For the later problems, it will be immensely useful to you to draw tables that look like this. Try to interpret the schema as statements about which quadrants of the table can/must have elements in them for the schema to be satisfied or falsified (this is the ``types view''). 
+
+\begin{center}
+\begin{tabular}{l|l|l}
+ & $Fx$ & $\lnot Fx$ \\ \hline
+$Gx$  &  &  \\ \hline
+$\lnot Gx$ &  & 
+\end{tabular}
+\end{center}
+
+\begin{enumerate}
+    \item Are the following sentences equivalent? If not, does one imply the other?
+    \[
+        S: (\forall x)(Px)
+    \]
+    \[
+        T: \lnot(\exists x)(\lnot Px)
+    \]
+
+    \item Are the following sentences equivalent? If not, does one imply the other?
+    \[
+        S: (\exists x)(Px)
+    \]
+    \[
+        T: \lnot(\forall x)(\lnot Px)
+    \]
+
+    \item Are the following sentences equivalent? If not, does one imply the other?
+    \[
+        S: (\forall x)(Px) \land (\forall x)(Qx)
+    \]
+    \[
+        T: (\forall x)(Px \land Qx)
+    \]
+
+    \item Are the following sentences equivalent? If not, does one imply the other?
+    \[
+        S: (\exists x) (Px) \land (\exists x)(Qx)
+    \]
+    \[
+        T: (\exists x)(Px \land Qx)
+    \]
+
+    \item Are the following sentences equivalent? If not, does one imply the other?
+    \[
+        S: (\forall x)(Px) \vee (\forall x)(Qx)
+    \]
+    \[
+        T: (\forall x)(Px \vee Qx)
+    \]
+
+    \item     Let
+    \[
+        S : (\exists x)(Fx \land Gx) \land (\exists x)(\lnot Fx \land Gx) \land (\exists x)(Fx \land \lnot Gx) \land (\exists x)(\lnot Fx \land \lnot Gx)
+    \]
+    \[
+        T : (\forall x)(Fx \equiv Gx)
+    \]
+    \begin{enumerate}
+        \item How many structures with universe $U = \{1, 2, 3\}$ are counterexamples to the claim that $S$ implies $T$?
+
+        \item How many structures with universe $U = \{1, 2, 3, 4, 5\}$ are counterexamples to the claim that $S$ implies $T$?
+    \end{enumerate}
+
+    \item Let 
+    \[
+        S: (\forall x)(Fx \oplus Gx)
+    \]
+    \[
+        T: (\forall x)(Fx \equiv Gx)
+    \]
+    How many structures are there with universe $U = \{1, 2, 3, 4, 5\}$ which witness the inequivalence of $S$ and $T$?
+
+    \item Let 
+    \[
+        S: (\exists x)(Fx \land Gx)
+    \]
+    \[
+        T: (\forall x)(Fx \vee Gx)
+    \]
+    How many structures are there with universe $U = \{1, 2, 3, 4, 5\}$ which witness the inequivalence of $S$ and $T$?
+
+    \item  Let 
+\[
+    S: (\forall x)(Fx \oplus Gx)
+\]
+\[
+    T: (\forall x)(Fx) \oplus (\forall x)(Gx)
+\]
+Given universe $U = \{1, 2, 3, 4, 5\}$, how many counterexamples are there to the claim that $S$ implies $T$?
+
+\item Let 
+\[
+    S: (\forall x)(Fx \supset Gx)
+\]
+\[
+    T: (\forall x)(Fx) \supset (\forall x)(Gx)
+\]
+Given universe $U = \{1, 2, 3, 4, 5\}$, how many counterexamples are there to the claim that $S$ implies $T$?
+\end{enumerate}
+\end{mdframed}
+
+\newpage
+\begin{mdframed}[linewidth=1]
+\section*{Solutions}
+\begin{enumerate}
+    \item These are equivalent. The former asserts that everything has property $P$. The latter asserts that nothing does not have property $P$. These are equivalent statements. 
+
+    \item These are equivalent. The former asserts that there is something with property $P$. The latter asserts that it is not the case that everything is not $P$. These are equivalent statements. 
+
+    \item These are equivalent. The former asserts that everything is $P$, as well as that everything is $Q$. The latter asserts that everything is both $P$ and $Q$.
+
+    \item These are not equivalent, but $T$ implies $S$. $S$ asserts that there is something that is $P$, and there is something that is $Q$. $T$ asserts that there is something that is both $P$ and $Q$. Clearly if $T$ is true, $S$ must be as well. Hence $T$ implies $S$. The inequivalence of $S$ and $T$ is witnessed by the strcture $A$ with $U^A = \{1, 2\}$, $P^A = \{1\}$, $Q^A = \{2\}$. Then $A \models S$ but $A \not \models T$. 
+
+    \item These are not equivalent, but $S$ implies $T$. $S$ asserts that everything is $P$ or everything is $Q$. $T$ asserts that everything is at least one of $P$ or $Q$. Clearly if $S$ is true then so is $T$, hence $S$ implies $T$. The inequivalence of $S$ and $T$ is witnessed by the strcture $A$ with $U^A = \{1, 2\}$, $P^A = \{1\}$, $Q^A = \{2\}$. Then $A \models T$ but $A \not \models S$. 
+
+    \item 
+    \begin{enumerate}
+        \item 0. To satisfy $S$, there must be at least one element which is each of $(Fx \land Gx)$, $(Fx \land \lnot Gx)$, $(\lnot Fx \land Gx)$, and $(\lnot Fx \land \lnot Gx)$. We only have three elements though, so at least one of those categories won't have an element in it. Hence $S$ can't be satisfied in this universe. Hence there are no structures $A$ such that $A \models S$ and $A \not \models T$. 
+
+        \item $\binom{5}{2}\cdot 4! = 240$. To satisfy $S$, there must be at least one element which is each of $(Fx \land Gx)$, $(Fx \land \lnot Gx)$, $(\lnot Fx \land Gx)$, and $(\lnot Fx \land \lnot Gx)$. Think of these categories as ``boxes'' into which we are placing elements of our universe (draw a table to help yourself think problems like this through!). There are $\binom{5}{2}\cdot 4!$ ways to satisfy $S$. The $\binom{5}{2}$ term results from choosing two items from $U$ which will go into the same ``box''. Henceforth we think of these two elements as now being a ``package deal''. The $4!$ term is the number of ways we can order our four things (the three single elements, plus our ``package deal'') into the four ``boxes''. Note that any structure that satisfies $S$ cannot satisfy $T$. Hence all of the structures satisfying $S$ are counterexamples to the claim that $S$ implies $T$, and we have our answer. 
+    \end{enumerate}
+
+    \item $2^6$. Note that if a structure satisfies $S$ it cannot satisfy $T$, and similarly if one satisfies $T$ it cannot satisfy $S$. Hence it suffices to count the number of ways $S, T$ can each be satisfied and add those results together.
+
+    To satisfy $S$, every element of $U$ must be either $(Fx \land \lnot Gx)$ or $(\lnot Fx \land Gx)$. This corresponds to two choices for each of our $5$ elements, meaning there are $2^5$ ways to satisfy $S$. Note that none of these structures satisfy $T$.
+
+    Similar reasoning suffices to show that there are $2^5$ ways to satisfy $T$. None of these structures satisfy $S$.
+
+    Our answer is then $2^5 + 2^5 = 2^6$. 
+
+    \item $4^5 - 2\cdot 3^5 + 2^6 = 602$. 
+
+    Let's start by counting the number of structures which are counterexamples to the claim that $T$ implies $S$, since that direction is easier. For $T$ to be true, everything must be of the form $(Fx \land Gx)$, $(Fx \land \lnot Gx)$, or $(\lnot Fx \land Gx)$. For $S$ to be false, nothing can be of the form $(Fx \land Gx)$. hence for $T$ to be satisfied and $S$ to be falsified, everything must be of the form $(Fx \land \lnot Gx)$ or $(\lnot Fx \land Gx)$. Since we have two choices per element then, there are $2^5$ total ways to satisfy $T$ and not satisfy $S$. 
+
+    How many ways are there to satisfy $S$ and not satisfy $T$? Let's begin by counting the ones that satisfy $S$. These are the structures which have at least one element of the form $(Fx \land Gx)$. There are $4^5$ total assignments of our 5 elements to the four categories, $3^5$ of which place no element in $(Fx \land Gx)$. Hence there are $4^5 -3^5$ structures satifying $S$. From this number, we need to subtract the number that also satisfy $T$. $3^5$ structures satisfy $T$ (the structures in which every element is of the form $(Fx \land Gx)$, $(Fx \land \lnot Gx)$, or $(\lnot Fx \land Gx)$), so we subtract that from the number which satisfy $S$ to get $4^5 - 2\cdot 3^5$. Notice, however, that we \emph{took away all structures whose elements were only of the form $(Fx \land \lnot Gx)$ or $(\lnot Fx \land Gx)$ twice - once when we were counting the number that satisfied $S$, and another time when counting the number that satisfed $T$}. Hence we ``double subtracted'' $2^5$ possibilities, and we must add this back. This gives the result that there are $4^5 - 2\cdot 3^5 + 2^5$ structures satisfying $S$ which do not satisfy $T$. 
+
+    Adding these two results together, we get $2^5 + (4^5 - 2\cdot 3^5 + 2^5) = 4^5 - 2\cdot 3^5 + 2^6 = 602$. 
+
+    \item $2^5 - 2$. Note that $S$ is satisfied by $2^5$ truth assignments (each element can be in either the box $(Fx \land \lnot Gx)$ or the box $(Gx \land \lnot Fx)$). Of these, only two satisfy $T$ (the one in which all elements are in $(Gx \land \lnot Fx)$, and the one in which all elements are in $(Fx \land \lnot Gx)$). Hence there are $2^5 - 2$ truth assignments which satisfy $S$ and falsify $T$. 
+
+    \item $0$. There are $3^5$ truth-assignments satisfying $S$. Of these, none falsify $T$. 
+\end{enumerate}
+\end{mdframed}

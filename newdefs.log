@@ -1,0 +1,34 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.2.3)  5 JAN 2018 15:28
+entering extended mode
+**"C:/Users/user/Google Drive/UPenn/Miscellaneous/Book/newdefs.tex"
+("C:/Users/user/Google Drive/UPenn/Miscellaneous/Book/newdefs.tex"
+LaTeX2e <2015/10/01> patch level 2
+Babel <3.9n> and hyphenation patterns for 69 languages loaded.
+\c@example=\count79
+\c@question=\count80
+\c@principle=\count81
+\c@discussion=\count82
+\c@openproblem=\count83
+\c@fact=\count84
+\c@conjecture=\count85
+\c@theorem=\count86
+\c@lemma=\count87
+\c@definition=\count88
+\c@corollary=\count89
+\c@proposition=\count90
+)
+! Emergency stop.
+<*> ...Drive/UPenn/Miscellaneous/Book/newdefs.tex"
+                                                  
+*** (job aborted, no legal \end found)
+
+ 
+Here is how much of TeX's memory you used:
+ 258 strings out of 493634
+ 1738 string characters out of 3141318
+ 52604 words of memory out of 3000000
+ 3742 multiletter control sequences out of 15000+200000
+ 3640 words of font info for 14 fonts, out of 3000000 for 9000
+ 1025 hyphenation exceptions out of 8191
+ 9i,0n,13p,138b,8s stack positions out of 5000i,500n,10000p,200000b,50000s
+!  ==> Fatal error occurred, no output PDF file produced!

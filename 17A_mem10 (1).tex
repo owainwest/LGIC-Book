@@ -1,0 +1,80 @@
+\subsection{Quantifier alternation}
+Consider the following statements involving alternation of quantifiers.
+\begin{itemize}
+\item
+Everyone loves someone (or other).
+\[S_1:\ \ \ (\forall x)(\exists y)(x\ \mathrm{loves}\ y).\]
+\item
+There is someone whom everyone loves.
+\[S_2:\ \ \ (\exists y)(\forall x)(x\ \mathrm{loves}\ y).\]
+\item
+Everyone is loved by someone.
+\[S_3:\ \ \ (\forall y)(\exists x)(x\ \mathrm{loves}\ y).\]
+\item
+Someone loves everyone.
+\[S_4:\ \ \ (\exists x)(\forall y)(x\ \mathrm{loves}\ y).\]
+\end{itemize}
+The second statement implies the first, and the fourth implies the third. We gave  counterexamples to show that no other implications obtain. Consider the following three structures $A, B, C$. 
+\[
+\begin{array}{| c | c | c |}
+\hline
+ \mbox{Structure}& \mbox{Universe} & \mbox{Extension of }L\\
+  \hline			
+  A & \{a,b\} & \{\op{a}{a},\op{b}{b}\}\\
+  \hline
+  B & \{a,b\} & \{\op{b}{b},\op{a}{b}\}\\
+ \hline
+ C & \{a,b\} & \{\op{b}{b},\op{b}{a}\}\\
+ \hline  
+\end{array}
+\]
+Note that $A\models S_1$ and $A\models S_3$, while $A\not\models S_2$ and $A\not\models S_4$, from which it follows, by definition, that $S_1$ does not imply $S_2$, nor does $S_3$ imply $S_4$. Moreover $B\models S_2$, but $B\not\models S_3$, and $C\models S_4$, but $C\not\models S_1$; thus $S_2$ does not imply $S_3$, and $S_4$ does not imply $S_1$. Failure of the remaining (non-trivial) implications now follows. For example, $S_1$ does not imply $S_4$, for otherwise, since $S_2$ implies $S_1$, and $S_4$ implies $S_3$, it would follow that $S_2$ implies $S_3$, to which $B$ is a counterexample.
+We summarize the results of this discussion in the following matrix $\langle a_{ij}\mid 1\leq i,j\leq 4\rangle$, where $a_{ij} = 1$ if and only if the schema in the $i$-th row implies the schema in the $j$-th column.
+\[
+\begin{array}{| c | c | c | c | c|}
+\hline
+ S_i\mbox{ implies }S_j& S_1 & S_2 & S_3 & S_4\\
+  \hline			
+  S_1 & 1 & 0 & 0 & 0\\
+  \hline
+  S_2  & 1 & 1 & 0 & 0\\
+ \hline
+ S_3 & 0 & 0 & 1 & 0\\
+ \hline
+ S_4 & 0 & 0 & 1 & 1\\
+ \hline  
+\end{array}
+\]
+\subsection{Scope ambiguity}
+We proceeded to explore ``scope ambiguities.'' Consider the statement, ``everybody loves a lover.'' We observed that ``x is a lover'' can be schematized as $(\exists y)Lxy$, and corresponding to the two readings, ``everybody loves someone who is a lover'', and ``if someone is a lover, then everybody loves her'' we have the respective schematizations:
+\begin{itemize}
+\item
+\[(\forall z)(\exists x)((\exists y)Lxy\wedge Lzx),\mbox{ versus}\]
+\item
+\[(\forall x)((\exists y)Lxy\supset (\forall z)Lzx).\]
+\end{itemize}
+We observed that a structure $A$ satisfies the second schema if and only if either $L^A$ is empty or $L^A=U^A\times U^A$, the cartesian product of the universe of $A$ with itself. On the other hand, if a structure $B$ satisfies the first schema, then $L^B$ is non-empty; moreover, if $B$ consists of a pair of requiting lovers at least one of whom is not a narcissist, $B$ satisfies the first, but not the second, schema. Thus, neither disambiguation of the original sentence implies the other.
+\iffalse
+\subsection{Some properties of binary relations}
+We went on to discuss several important properties of relations.
+\begin{itemize}
+\item
+$L^A$ is \emph{reflexive} if and only if
+\[A\models (\forall x)Lxx.\]
+\item
+$L^A$ is \emph{irreflexive} if and only if
+\[A\models (\forall x)\neg Lxx.\]
+\item
+$L^A$ is \emph{symmetric} if and only if
+\[A\models (\forall x)(\forall y)(Lxy\supset Lyx).\]
+\item
+$L^A$ is \emph{asymmetric} if and only if
+\[A\models (\forall x)(\forall y)(Lxy\supset \neg Lyx).\]
+\item
+$L^A$ is \emph{transitive} if and only if
+\[A\models (\forall x)(\forall y)(\forall z)(Lxy\supset (Lyz\supset Lxz)).\]
+\item
+$A$ is a \emph{simple graph} if and only if $L^A$ is irreflexive and symmetric.
+\end{itemize}
+\fi
+

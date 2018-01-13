@@ -1,0 +1,211 @@
+
+
+Up to this point, we have focussed primarily on questions surrounding the expressive power of polyadic quantification: which classes of structures can be characterized by (sets of) schemata of polyadic quantification theory; which sets of numbers are the spectra of schemata; what subsets of the universe of discourse of a structure can be defined by schemata. Today we begin our study of implication in the context of polyadic quantification theory. As emphasized earlier, the mechanical decidability of validity of schemata (over a fixed, effectively presented vocabulary of sentence letters)
+in the case of truth-functional logic, follows immediately from 
+the definition of validity, since there are only finitely many truth assignments to a finite collection of sentence letters, and since the truth-value of a schema under any such assignment can be mechanically (even efficiently) evaluated. (As we discussed, it remains an open problem whether validity itself can be decided efficiently.) In the case of monadic quantification theory, though there are infinitely many structures interpreting the vocabulary of a fixed schema $S$, we were able to establish that we could effectively determine from $S$ a finite collection of finite structures such that $S$ is valid if and only if satisfied by every structure in this collection. Again, the satisfaction relation itself is mechanically decidable for finite structures, and thus validity of monadic schemata is mechanically decidable.
+
+When we come to polyadic quantification theory, the situation is dramatically different. We will later see that the set of valid schemata of polyadic quantification theory, even restricted to the language of directed graphs, is \emph{not} decidable (the Church-Turing Theorem), though it is semi-decidable (the G\"{o}del Completeness Theorem). Today, we begin a detailed study of systematic techniques to establish that a schema of polyadic quantification theory is valid.
+\iffalse
+For simplicity, let's just consider schemata in the vocabulary with identity and a single dyadic predicate letter $L$ (the language of love, or directed graphs, as the less romantic are wont to say). Let's remind ourselves of the relevant definitions.
+\begin{definition}
+A schema $S$ is \emph{valid} if and only if for every structure $A$, $A\models S$. We write \val\ for the set of valid schemata (in the language of directed graphs). A schema $S$ is \emph{finitely valid}\ if and only if for every structure $A$, with $U^A=[n]$, for some $n$, $A\models S$. We write \fval for the set of finitely valid schemata (in the language of directed graphs).
+\end{definition}
+
+If we consider the condition imposed by the definition of validity, there is no evident way to describe a procedure for determining if a schema is valid -- there are too many structures, and among them infinite structures $A$ for which we may have no mechanical procedure to determine whether $A$ satisfies a given schema. Finite validity, or at least it's complement, fares better. For any directed graph $A$ with universe $[n]$ and any schema $S$, we can mechanically decide whether $A\models S$. Moreover, we can design a procedure, call it $M$ to effectively enumerate all such graphs in a sequence $A_0, A_1, ldots$ and successively test whether $A_i\models S$ for a given schema $S$. If $S\not\in\fval$, then $M$ will eventually discover this, since in this case there is an $i$ such that $A_i\not\models S$. On the other hand, if $S\in\fval$, $M$ will run forever with input $S$ and we will get no information, ever waiting to see a non-existent counterexample to $S$. We say $M$ is a \emph{semi-decision procedure} for the complement of \fval:  given any schema $S$, $M$ correctly identifies $S$ as not finitely valid, if this is the case, and provides no information (the computation via $M$ \emph{diverges}) otherwise. In general, if there is a semi-decision procedure for a set $X$, we say $X$ is \emph{semi-decidable}. Note what is critical here: there is a decidable relation on finite graphs $A$ and schemata $S$, namely the relation of satisfaction, and a means of effectively enumerating all finite graphs. We can think of a finite graph which falsifies a schema $S$ as a proof that $S$ is \emph{not} valid. That is, we can think of the procedure $M$ as a proof-search procedure for non-finite-validity. Note, if there were such a procedure $M^*$ for finite validity, then finite validity would be decidable. Why? Because with input a given schema $S$, we could execute the procedures $M$ and $M^*$ simultaneously with input $S$. One of the two is guaranteed to terminate and yield the correct answer. In general, if a set $X$ and its complement are both semi-decidable, then $X$ is decidable. 
+
+Let's return to consider \val. Again, the definition of \val\ suggests no semi-decision procedure for either \val\ or its complement. Already many times during the course we have presented arguments to establish the validity of one schema or another, or for various general statements about finite graphs, \emph{etc.} Such arguments ahve been informal, but, let us hope, rigorous. That is, they proceeded by means that established  that their conclusions were valid or were implied by their premisses. Of course, the arguments were not entirely explicit, so it was always legitimate to ask for one step or another to be elaborated to clarify its legitimacy. We might wonder, was the original argument a proof of its conclusion, or only the argument with the elaboration -- if the original argument did not carry conviction, it wasn't a proof. Considerations of this sort lead to in the direction of demanding ever higher standards for the explicitness of proofs and ultimately to the quest for formal proof. In the context of polyadic quantification theory, we may represent this as the quest for a system of deduction with a decidable proof relation, that is, a mechanically decidable relation $\ded{D}{S}$ which holds between a sequence of schemata $D$ and a schema $S$ if and only if $D$ is a deduction of $S$ via the rules of the system. We require that the system allow to deduce only valid schemata, that is, it should have the \emph{Soundness Property}: if there a deduction $D$ such that $\ded{D}{S}$, then $S\in\val$. Moreover, it would be desirable if our system would allow us to deduce every valid schema, that is, that it would have the \emph{Completeness Property}: if $S\in\val$, then there is a deduction $D$ such that $\ded{D}{S}$. 
+\fi 
+\iffalse
+Now that we have concluded our analysis of definability over $B$ with the help of the Compactness Theorem, let's begin our exploration of a formal system of deduction for polyadic quantification theory. We'll start by considering the notion of a formal system in general terms, and articulate an abstract formulation of the goal of the project.
+
+The elaboration of formal systems of deduction for polyadic quantification caps a long effort to achieve the highest possible degree of rigor in mathematical argumentation. This search was in part motivated by the periodic appearance of contradictions in the mathematical theory of the continuum. This theory, whose genesis may be dated to the Pythagoreans' proof that the square root of two is irrational, was developed with great vigor in the seventeenth century, in connection with the rise of the new physics and its effort to provide a unified theory of the motion of both terrestrial and celestial bodies. As mathematical analysis (as the theory of the continuum came to be called) developed in the nineteenth century, and became ever more enmeshed with new areas of physics, such as the theory of heat, the need for a more rigorous foundation for the subject became ever more pressing. In particular, even the greatest of mathematicians, such as Augustin Cauchy, were hampered by the lack of a perspicuous notation for iterated quantification in formulating suitable convergence conditions guaranteeing continuity for the limits of sequences of functions. Throughout the nineteenth century several mathematicians, among them Bernard Bolzano, Georg Cantor, Cauchy, and Richard Dedekind, strove to place the subject of analysis on a firm footing by reducing the the theory of the continuum to the theory of the integers (arithmetic) through the use of sets or sequences of rational numbers; the outcome of these efforts came to be known as ``the arithmetization of analysis'' and was celebrated by David Hilbert, in his famous 1900 address to the International Congress of Mathematicians held in Paris, as one of the great achievements of nineteenth-century mathematics. Late in the century, Gottlob Frege sought an even greater economy in the basic principles required for the rigorous foundation of analysis through his attempt to reduce arithmetic to logic. Though this effort was ultimately doomed by Russell's paradox, Frege's articulation of a calculus for logical deduction was a signal achievement in the development of modern logic. In reaction to the paradoxes, Hilbert, in collaboration with various of his students, and a number of other mathematicians, developed \emph{formal systems} of logic of the sort expounded in contemporary treatments deductive logic such as Goldfarb's text. 
+
+From an epistemological point of view, one might insist that a mathematical proof should be self-certifying, that is, if the derivation \der{d}\ is a proof of the mathematical statement \stat{s}, then this should be immediately recognizable -- no further argument should be required to convince someone of this, for otherwise, it is not \der{d}\ itself, but only \der{d}\ supplemented with this additional argument, that constitutes a proof of \stat{s}. The notion of formal system takes this insistence to a natural limit: in a formal system the relation ``\der{d}\ is a proof of \stat{s}'' is mechanically decidable, that is, there is an algorithm which can be applied to the pair $\op{\der{d}}{\stat{s}}$ to determine whether the proof relation obtains. In a formal system of deduction $\forms{F}$ a derivation \der{d} consists of a finite sequence of schemata, and a statement \stat{s} is represented by a schema $S$. We write $\Pi_{\forms{F}}(\der{d},S)$ for ``\der{d}\ is a proof of $S$ in the formal system \forms{F}.'' The schema $S$ is a theorem of \forms{F}\ if and only if there is a derivation \der{d}\ such that $\Pi_{\forms{F}}(\der{d},S)$. We write $\vdash_{\forms{F}}S$ for ``S is a theorem of \forms{F}.'' In like fashion, we write $X\vdash_{\forms{F}}S$ for ``S is derivable from hypotheses $X$ in \forms{F}.''
+
+\begin{center}
+``Everybody loves a lover; I'm a lover'' implies \\
+``everybody loves everyone.'' \\
+$\{(\forall x) ((\exists y) Lxy \supset (\forall z) Lzx), (\exists x)(\exists
+y) Lxy \}$ implies $(\forall v)(\forall z) Lvz.$
+\end{center}
+\[
+\begin{array}{lll}
+\{1\}   & (1)\  (\exists x)(\exists y) Lxy &  \mathrm{P}\\
+\{1,2\}   & (2)\ (\exists y) Lwy  & (1)w\ \mathrm{EII}\\
+\{3\}   & (3)\ (\forall x) ((\exists y) Lxy \supset   & 
+\mathrm{P}\\
+  &\ \ \ \  (\forall z) Lzx)  & \\
+\{3\}   & (4)\ (\exists y) Lwy \supset   & (3)\ \mathrm{UI}\\
+  &\ \ \ \ (\forall z) Lzw & \\
+\{1,2,3\}   & (5)\ (\forall z) Lzw  & (2)(4)\ \mathrm{TF}\\
+\{1,2,3\}   & (6)\ Lvw  & (5)\ \mathrm{UI}\\
+\{1,\not 2,3\}   & (7)\ (\exists y) Lvy  & (5)\ \mathrm{EG};\{2\}\
+\mathrm{EIE}\\ 
+\{3\}   & (8)\ (\exists y) Lvy \supset (\forall z) Lzv  & (3)\ \mathrm{UI}\\
+\{1,3\}   & (9)\  (\forall z) Lzv & (7)(8)\ \mathrm{TF}\\
+\{1,3\}   & (10)\  (\forall v)(\forall z) Lzv & (9)\ \mathrm{UG}
+\end{array}
+\]
+\fi
+These techniques are embodied in the deductive apparatus for polyadic quantification theory expounded in Warren Golfarb's text \emph{Deductive Logic}. We started with an example of a deduction using the rules described on pages 183 -- 185 of the text
+which shows that if a relation is asymmetric, then it is irreflexive.
+\begin{center}
+$\{(\forall x)(\forall y)(Lxy\supset\neg Lyx)\}$ implies $(\forall x)\neg Lxx.$
+\end{center}
+\[
+\begin{array}{lll}
+\{1\}   & (1)\  (\forall x)(\forall y)(Lxy\supset\neg Lyx) &  \mathrm{P}\\
+\{1\}   & (2)\ (\forall y)(Lxy\supset\neg Lyx) & (1) \ \mathrm{UI}\\
+\{1\}   & (3)\ Lxx\supset\neg Lxx &  (2)\ \mathrm{UI}\\
+\{1\}   & (4)\ \neg Lxx   & (3)\ \mathrm{TF}\\
+\{1\}   & (5)\ (\forall x) \neg Lxx  & (4)\ \mathrm{UG}
+\end{array}
+\]
+\iffalse
+We next showed that if a relation is transitive and irreflexive, then it's asymmetric.
+\begin{center}
+$\{(\forall x)(\forall y)(\forall z)(Lxy\supset(Lyz\supset Lxz)), (\forall x)\neg Lxx\}$ implies $(\forall x)(\forall y)(Lxy\supset\neg Lyx).$
+\end{center}
+\[
+\begin{array}{lll}
+\{1\}   & (1)\  (\forall x)(\forall y)(\forall z)(Lxy\supset(Lyz\supset Lxz)) &  \mathrm{P}\\
+\{1\}   & (2)\ (\forall y)(\forall z)(Lxy\supset(Lyz\supset Lxz)) & (1) \ \mathrm{UI}\\
+\{1\}   & (3)\ (\forall z)(Lxy\supset(Lyz\supset Lxz)) &  (2)\ \mathrm{UI}\\
+\{1\}   & (4)\ Lxy\supset(Lyx\supset Lxx)   & (3)\ \mathrm{UI}\\
+\{5\}   & (5)\ (\forall x) \neg Lxx  & \ \mathrm{P}\\
+\{5\}   & (6)\ \neg Lxx  & (5)\ \mathrm{UI}\\
+\{1,5\}   & (7)\ (Lxy\supset\neg Lyx)  & (4,6)\ \mathrm{TF}\\
+\{1,5\}   & (8)\ (\forall y)(Lxy\supset\neg Lyx)  & (7)\ \mathrm{UG}\\
+\{1,5\}   & (9)\ (\forall x)(\forall y)(Lxy\supset\neg Lyx)  & (8)\ \mathrm{UG}
+\end{array}
+\]
+
+On 04.13, we continued our study of deduction, and began by giving a classic ``argument by cases.''
+\begin{center}
+$\{(\forall x)Fx\vee(\forall x)Gx\}$ implies $(\forall x)(Fx\vee Gx).$
+\end{center}
+\[
+\begin{array}{lll}
+\{1\}   & (1)\  (\forall x)Fx\vee(\forall x)Gx &  \mathrm{P}\\
+\{2\}   & (2)\ (\forall x)Fx &  \ \mathrm{P}\\
+\{2\}   & (3)\ Fx &  (2)\ \mathrm{UI}\\
+\{2\}   & (4)\ Fx\vee Gx   & (3)\ \mathrm{TF}\\
+\{2\}   & (5)\ (\forall x) (Fx\vee Gx)  & (4)\ \mathrm{UG}\\
+\{\}   & (6)\ (\forall x)Fx\supset(\forall x) (Fx\vee Gx)   & \{2\}(5)\ \mathrm{D}\\
+\{7\}   & (7)\ (\forall x)Gx &  \ \mathrm{P}\\
+\{7\}   & (8)\ Gx &  (7)\ \mathrm{UI}\\
+\{7\}   & (9)\ Fx\vee Gx   & (8)\ \mathrm{TF}\\
+\{7\}   & (10)\ (\forall x) (Fx\vee Gx)  & (9)\ \mathrm{UG}\\
+\{\}   & (11)\ (\forall x)Gx\supset(\forall x) (Fx\vee Gx)   & \{7\}(10)\ \mathrm{D}\\
+\{1\}   & (12)\ (\forall x) (Fx\vee Gx)  & (1,6,11)\ \mathrm{TF}\\
+\end{array}
+\]
+
+We followed with an example of argument by \emph{reductio ad absurdum}, that, in addition, illustrated use of the ``conversion of quantifiers'' rule, also known as ``driving a negation across a quantifier.'' 
+\begin{center}
+$(\exists y)(Py \supset (\forall x)Px)$ is valid
+\end{center}
+\[
+\begin{array}{lll}
+\{1\}   & (1)\ \neg (\exists y)(Py \supset (\forall x)Px)  & \mathrm{P}\\
+\{1\}   & (2)\ (\forall y) \neg (Py \supset (\forall x)Px)  & (1)\
+\mathrm{CQ}\\ 
+\{1\}   & (3)\ \neg (Py \supset (\forall x)Px)  & (2)\ \mathrm{UI}\\
+\{1\}   & (4)\ Py  & (3)\ \mathrm{TF}\\
+\{1\}   & (5)\ (\forall x)Px  & (4)\ \mathrm{UG}\\
+\{1\}   & (6)\ \neg (\forall x)Px \wedge (\forall x)Px  & (3)(5)\ \mathrm{TF}\\
+\{\}   & (7)\ \neg (\exists y)(Py \supset (\forall x)Px) \supset & \{1\}(6)\
+\mathrm{D}\\ 
+  &\ \ \ \ (\neg (\forall x)Px \wedge (\forall x)Px) \\
+\{\}   & (8)\ (\exists y)(Py \supset (\forall x)Px)  & (7)\ \mathrm{TF}
+\end{array}
+\]
+
+We next gave the first of a pair of deductions that legitimate extending the ``conversion of quantifiers rule'' to allow passing directly from $\neg(\forall x)S$ to $(\exists x)\neg S$ and \emph{vice versa}. I include the second here, though we did not cover it in class.
+\begin{center}
+$\{\neg(\forall x)Fx\}$ implies $(\exists x)\neg Fx.$
+\end{center}
+\[
+\begin{array}{lll}
+\{1\}   & (1)\  \neg(\forall x)Fx &  \mathrm{P}\\
+\{2\}   & (2)\ \neg(\exists x)\neg Fx & (1) \ \mathrm{P}\\
+\{2\}   & (3)\ (\forall x)\neg\neg Fx &  (2)\ \mathrm{CQ}\\
+\{2\}   & (4)\ \neg\neg Fx   & (3)\ \mathrm{UI}\\
+\{2\}   & (5)\ Fx   & (4)\ \mathrm{TF}\\
+\{2\}   & (6)\ (\forall x)Fx  & (5)\ \mathrm{UG}\\
+\{1,2\}   & (7)\ (\forall x)Fx\wedge\neg(\forall x)Fx  & (6)\ \mathrm{TF}\\
+\{1\}   & (8)\ \neg(\exists x)\neg Fx\supset((\forall x)Fx\wedge\neg(\forall x)Fx)  & \{2\}(7)\ \mathrm{D}\\
+\{1\}   & (9)\ (\exists x)\neg Fx  & (8)\ \mathrm{TF}
+\end{array}
+\]
+\begin{center}
+$\{(\exists x)\neg Fx\}$ implies $\neg(\forall x)Fx.$
+\end{center}
+\[
+\begin{array}{lll}
+\{1\}   & (1)\  (\forall x)Fx &  \mathrm{P}\\
+\{2\}   & (2)\ (\exists x)\neg Fx & (1) \ \mathrm{P}\\
+\{1\}   & (3)\ Fx &  (1)\ \mathrm{UI}\\
+\{1\}   & (4)\ \neg\neg Fx   & (3)\ \mathrm{TF}\\
+\{1\}   & (5)\ (\forall x)\neg\neg Fx   & (4)\ \mathrm{UG}\\
+\{1\}   & (6)\ \neg(\exists x)\neg Fx  & (5)\ \mathrm{CQ}\\
+\{1,2\}   & (7)\ \neg(\exists x)\neg Fx\wedge(\exists x)\neg Fx  & (6)\ \mathrm{TF}\\
+\{2\}   & (8)\ (\forall x)Fx\supset(\neg(\exists x)\neg Fx\wedge(\exists x)\neg Fx)  & \{1\}(7)\ \mathrm{D}\\
+\{1\}   & (9)\ \neg(\forall x)Fx  & (8)\ \mathrm{TF}
+\end{array}
+\]
+\iffalse
+We then extended the rules to include existential generalization and existential instantiation which allow us to mirror common informal forms of argument involving the existential quantifier. The following gives an example of their use.
+\begin{center}
+$\{(\forall x) ((\exists y) Lxy \supset (\forall z) Lzx), (\exists x)(\exists
+y) Lxy \}$ implies $(\forall v)(\forall z) Lvz.$
+\end{center}
+\[
+\begin{array}{lll}
+\{1\}   & (1)\  (\exists x)(\exists y) Lxy &  \mathrm{P}\\
+\{1,2\}   & (2)\ (\exists y) Lwy  & (1)w\ \mathrm{EII}\\
+\{3\}   & (3)\ (\forall x) ((\exists y) Lxy \supset   & 
+\mathrm{P}\\
+  &\ \ \ \  (\forall z) Lzx)  & \\
+\{3\}   & (4)\ (\exists y) Lwy \supset   & (3)\ \mathrm{UI}\\
+  &\ \ \ \ (\forall z) Lzw & \\
+\{1,2,3\}   & (5)\ (\forall z) Lzw  & (2)(4)\ \mathrm{TF}\\
+\{1,2,3\}   & (6)\ Lvw  & (5)\ \mathrm{UI}\\
+\{1,\not 2,3\}   & (7)\ (\exists y) Lvy  & (5)\ \mathrm{EG};\{2\}\
+\mathrm{EIE}\\ 
+\{3\}   & (8)\ (\exists y) Lvy \supset (\forall z) Lzv  & (3)\ \mathrm{UI}\\
+\{1,3\}   & (9)\  (\forall z) Lzv & (7)(8)\ \mathrm{TF}\\
+\{1,3\}   & (10)\  (\forall v)(\forall z) Lzv & (9)\ \mathrm{UG}
+\end{array}
+\]
+\newpage
+Finally, we added rules for deriving schemata involving the identity predicate and illustrated their use with the following deduction.
+\begin{center}
+$\{(\forall x) Rxx, \neg (\forall x)(\forall y) Rxy \}$
+implies $\neg (\exists x)(\forall y) x = y$.
+\end{center}
+\[
+\begin{array}{lll}
+\{1\}   & (1)\ (\forall x) Rxx  & \mathrm{P}\\
+\{2\}   & (2)\ \neg (\forall x)(\forall y) Rxy  & \mathrm{P}\\
+\{3\}   & (3)\ (\exists x)(\forall y) x = y  & \mathrm{P}\\
+\{3,4\}   & (4)\ (\forall y) u = y  & (3)u\ \mathrm{EII}\\
+\{1\}   & (5)\ Ruu  & (1)\ \mathrm{UI}\\
+\{3,4\}   & (6)\ u=y  & (4)\ \mathrm{UI}\\
+\{\}   & (7)\ u=y \supset (Ruu \equiv Ruy) & \mathrm{III}\\
+\{3,4\}   & (8)\ u=x  & (4)\ \mathrm{UI}\\
+\{\}   & (9)\ u=x \supset (Ruy \equiv Rxy) & \mathrm{III}\\
+\{1,3,   & (10)\ Rxy  & (5)(6)\ \mathrm{TF};\\
+\not4\} &  & (7)(8)\ \{4\}\ \mathrm{EIE} \\
+ & & (9)\\
+\{1,3\}   & (11)\ (\forall y)Rxy  & (10)\ \mathrm{UG}\\
+\{1,3\}   & (12)\ (\forall x)(\forall y)Rxy  & (11)\ \mathrm{UG}\\
+\{1,2,3\}   & (13)\ p \wedge \neg p  & (2)(12)\ \mathrm{TF}\\
+\{1,2\}   & (14)\ (\exists x)(\forall y) x = y  \supset
+& \{3\}(13)\ \mathrm{D}\\
+ & (p \wedge \neg p) & \\
+\{1,2\}   & (15)\ \neg (\exists x)(\forall y) x = y  & (14)\ \mathrm{TF}
+\end{array}
+\]
+\fi
+\fi

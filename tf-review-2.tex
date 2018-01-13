@@ -1,0 +1,83 @@
+\subsection{Review}
+\begin{mdframed}[linewidth=1]
+\section*{Concept Review}
+\textbf{Definitions}
+\begin{itemize}
+    \item A schema $S$ \emph{implies} a schema $T$ iff for all truth-assignments $A$, if $A \models S$ then $A \models T$. In other words, $S$ implies $T$ iff the proposition expressed by $S$ is a subset of the proposition expressed by $T$. 
+    
+    \item A schema $S$ is \emph{equivalent} to a schema $T$ iff $S$ and $T$ are satisfied by exactly the same truth assignments (for all $A$, $A \models S$ iff $A \models T$). In other words, $S$ and $T$ are equivalent if they express the same proposition. 
+
+    \item $\mathbb{P}_X(S) = \{A | A \text{ is a truth assignment over } X \text{ and } A \models S\}$ is \emph{the proposition expressed by S}. It's the set of truth assignments that satisfy $S$ (where truth assignments are restricted to those for sentence letters in the set $X$). 
+    
+    \item $\mathbb{A}(X)$ is the set of all truth assignments over $X$. 
+    
+    \item A list of TF-schemata is called \emph{succinct} iff no two schema on the list are equivalent. 
+    
+    \item The \emph{power} of a schema $S$ is the length of the longest succint list of schemata which $S$ implies. In other words, it's the number of nonequivalent schema which $S$ implies. 
+\end{itemize}
+
+\textbf{Fun With Counting}
+There are $n!$ ways to order a list of $n$ items. To see why, note that there are $n$ choices for the first element, $n - 1$ for the second, $n - 2$ for the third, resulting in $n(n - 1)(n - 2)...(1) = n!$ orderings. 
+
+There are $\oc{n}{k} := \frac{n!}{(n-k)!}$ ways to pick an ordered list of $k$ elements from $n$ elements, $k \leq n$. As before, there are $n$ choices for the first thing, $n-1$ for the second, all the way down to $n-k+1$ for the $k^{th}$. This gives us the answer $\prod_{i = n - k + 1}^ni = \prod_{i = 1}^ni / \prod_{i = 1}^{n - k}i = \frac{n!}{(n-k)!}$   
+
+There are $\binom{n}{k} := \frac{n!}{(n-k)!k!}$ ways to pick a subset of $k$ elements from $n$ elements, $k \leq n$. There are $\oc{n}{k}$ ordered lists of size $k$ from $n$. Since each subset of size $k$ corresponds to $k!$ orderings of those lists, we divide out by $k!$ to get $\frac{n!}{(n-k)!k!}$, which we denoted as $\binom{n}{k}$, read ``$n$ choose $k$''. 
+
+\textbf{Expressive Completeness}
+
+For any (arbitrary) proposition, there is a truth-functional schema which expresses that proposition. We noted that a schema can pick out individual truth-assignments by conjoining literals for each of the sentence letters (for example, the truth assignment $A_1$ which maps $p = \top, q = \top, r = \top$ is picked out by the sentence $(p \land q \land r)$). Sentences of this form are called \emph{terms}. We further noted that a disjunction of such terms (one for each truth-assignment in our proposition) was sufficient to express any proposition. 
+
+\textbf{Power}
+
+Suppose we have a sentence $S$ over $n$ sentence letters which is satisfied by $k$ truth assignments. Then power of $S$ is $2^{2^n - k}$. To see why this is the case, note that there are $2^n$ truth assignments for $n$ sentence letters. If $S$ is satisfied by $k$ truth assignments, then those truth assignments must also satify $T$ if $S$ implies $T$. So we can't ``choose'' to include those $k$ truth-assignments in our proposition expressed by $T$ any more, because $\mathbb{P}_X(T)$ must include them. So we are left with $2^n - k$ truth-assignments which can be in $T$ or not. Since each of these $2^n - k$ truth assignments can be either in or out of the proposition expressed by $T$, the power of $S$ is then $2^{2^n - k}$.
+\end{mdframed}
+
+\newpage
+\begin{mdframed}[linewidth=1]
+\section*{Problems}
+For the following problems, unless otherwise specified, let $X = \{p_1 p_, p_3, p_4\}$ be the set of sentence letters under consideration. 
+\begin{enumerate}
+    \item What is the power of $p_1 \equiv p_2$?
+
+    \item For four sentence letters as above, what is the length of the longest succinct list of schemata no two of which have the same power?
+
+    \item What is the length of the longest succint list of schemata (from four sentence letters) each having power 256?
+
+    \item What is the largest $n$ such that the conjunction of any two schema of power $n$ (with 4 sentence letters) is satisfiable?
+
+    \item How many ways can you choose 3 marbles from a bag of 15 marbles, assuming the marbles are all distinct? How many ways to take out all 15 marbles from the bag, one by one? 
+
+    \item How many ways are there to arrange $10$ people around a circular table, if we don't count rotations of the same order as being different?
+
+    \item Is there a schema of power 22? If so, give one. If not, explain why it's not possible.
+
+    \item How many non-equivalent schema over four letters have power greater than 256?
+\end{enumerate}
+\end{mdframed}
+
+\newpage
+\begin{mdframed}[linewidth=1]
+\section*{Solutions}
+\begin{enumerate}
+    \item $2^8 = 256$. For four sentence letters, $p_1 \equiv p_2$ has $2^3 = 8$ satisfying truth assignments. To see why this is the case, note that given a choice for $p_1$, $p_2$ is fixed. So we have two choices for $p_1$, one choice for $p_2$, and two choices each for $p_3$ and $p_4$.
+
+    Plugging in to our formula, we find that the power is $2^{2^4 - 8} = 2^{16 - 8} = 2^8$. 
+
+    \item 17. The power of a sentence $S$ on $n$ sentence letters with $k$ satisfying truth assignments is $2^{2^n - k}$. $k$ can take any value from $0$ through $16$ inclusive when $n = 4$ (since we have $2^4 = 16$ truth-assignments), meaning that the power can be any one of $2^{16}, 2^{15}, ... , 2^0$.
+
+    \item $\binom{16}{8}$. A schema on four sentence letters has power $256 = 2^8$ when it is satisfied by $8$ truth assignments (because $2^{2^4 - 8} = 2^8$). Since we have $2^4 = 16$ total truth assignments, the number of non-equivalent propositions of size 8 is the number of subsets of size 8 from 16, which is $\binom{16}{8}$. 
+
+    \item $n = 2^7 = 128$. With four sentence letters, we have $2^4 = 16$ truth assignments. A schema has power $2^7$ is satisfied by $16 - 7 = 9$ truth assignments. By the pigeonhole principle, two schemata of power $2^7$ (hence both satisfied by 9 things) must have some satisfying truth-assignment in common (because $9 + 9 = 18 > 16$). Hence the conjunction of any two schemata of power $2^7$ is satisfiable, because there must be a truth assignment that satisfies them both. 
+
+    Note that $2^7$ is the highest power that works, because being satisfied by less than 9 truth-assignments (therefore having a greater power) would mean that the two sentences need not have a satisfying truth-assignment in common. For example, if both sentences were satisfied by 8 truth assignments each, those sets of satisfying truth-assignments could be disjoint, hence the conjunction of the two sentences would not be satisfiable. 
+
+    \item $\binom{15}{3}$, $15!$
+
+    \item $9!$. There are $10!$ ways to order $10$ people around the table, but that considers different rotations of the same order as different seating arrangements. Since there are 10 rotations of any such ordering, we divide $10!$ by $10$, giving us the answer $9!$.
+
+    \item No. The power of a schema is always some power of 2. 22 is not a power of 2. 
+
+    \item $\sum_{i = 0}^7\binom{16}{i}$. We have $2^4 = 16$ total truth-assignments. The power of a schema $S$ on four sentence letters is greater than $256 = 2^8$ when $S$ is satisfied by less than $8$ truth-assignments (because our formula for power is $2^{2^n - k}$ with $n=4$ in this case, hence power is greater than $2^8$ when $k$ is less than 8). Hence our answer equal to the number of schema that express a proposition of size 0, plus the number that express a proposition of size 1.... plus the number that express a proposition of size 7. Remember that $\binom{n}{k}$ represents the number of size-$k$ subsets from $n$ things, and since propositions are simply subsets of truth-assignments, we arrive at our answer $\sum_{i = 0}^7\binom{16}{i}$.
+
+\end{enumerate}
+\end{mdframed}

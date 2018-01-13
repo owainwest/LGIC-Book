@@ -1,0 +1,17 @@
+\contentsline {part}{I\hspace {1em}Introduction}{2}
+\contentsline {section}{\numberline {1}What?}{2}
+\contentsline {section}{\numberline {2}Why?}{2}
+\contentsline {section}{\numberline {3}Mathematical Preliminaries}{2}
+\contentsline {subsection}{\numberline {3.1}Sets}{3}
+\contentsline {subsection}{\numberline {3.2}Functions and Relations}{5}
+\contentsline {subsection}{\numberline {3.3}Proof}{7}
+\contentsline {subsection}{\numberline {3.4}Graphs}{9}
+\contentsline {part}{II\hspace {1em}Propositional Logic}{10}
+\contentsline {section}{\numberline {4}Language and Structure}{10}
+\contentsline {part}{III\hspace {1em}First Order Logic}{13}
+\contentsline {part}{IV\hspace {1em}Semantics}{14}
+\contentsline {part}{V\hspace {1em}Syntax}{15}
+\contentsline {part}{VI\hspace {1em}Computation}{16}
+\contentsline {part}{VII\hspace {1em}Complexity}{17}
+\contentsline {part}{VIII\hspace {1em}Philosophy}{18}
+\contentsline {part}{IX\hspace {1em}Suggested Readings}{19}

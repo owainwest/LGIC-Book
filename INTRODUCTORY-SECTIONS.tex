@@ -1,0 +1,56 @@
+\documentclass{article}
+\usepackage{latexsym}
+\usepackage{bm}
+\usepackage{tikz}
+\usepackage{array}
+\usepackage{amssymb,amsmath, amsthm, upgreek, mathrsfs, bussproofs, stmaryrd}
+\usepackage{color}
+\usepackage{epigraph}
+\usepackage{mdframed}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{mdframed}
+\usepackage{caption}
+\usepackage{lipsum, needspace, lipsum}% just to generate some filler text
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true, %set true if you want colored links
+    linktoc=all,     %set to all if you want both sections and subsections linked
+    linkcolor=blue,  %choose some color if you want links to stand out
+}
+
+\setlength\parindent{0pt}
+\setlength{\parskip}{0.5em}
+\setcounter{section}{-1}
+\title{LGIC 010 Textbook}
+\author{Scott Weinstein, Owain West, Grace Zhang}
+
+\begin{document}
+\pagestyle{myheadings}
+\markboth{LGIC 010 Textbook\ \ \ \  Scott Weinstein, Owain West, Grace Zhang}{LGIC 010 Textbook\ \ \ \   Scott Weinstein, Owain West, Grace Zhang}
+\input{newdefs}
+
+% \newpage
+% \section{Owain's additions}\label{additions}
+% \input{book_contents}  
+
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+\input{prelude_v3.tex}
+\newpage
+
+\input{tf.tex}
+% \newpage
+
+% \input{mqt.tex}
+% \newpage
+
+% \input{pqt.tex}
+% \newpage
+
+% \input{appendix.tex}
+
+\end{document}

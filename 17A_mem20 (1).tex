@@ -1,0 +1,128 @@
+\subsection{Definability in Infinite Structures: Two Examples}
+
+We began to look at definability in infinite structures. 
+\subsubsection{The integers with the absolute value relation - a structure with many automorphisms}
+We first analyzed definability in the infinite graph $A$ described as follows:
+\begin{itemize}
+\item
+$U^A = \mathbb{Z}$, the set of all integers, $\{\ldots -2,-1,0,1,2,\ldots\}$; 
+\item
+$L^A=\{\op{i}{j}\mid j \mbox{ is the absolute value of } i\}$. (Recall that the absolute value of an integer $i$ is $i$, if $i\geq 0$, and is $-i$, if $i< 0$.) 
+\end{itemize}
+We observed that every permutation $g$ of $\mathbb{Z}^+$ can be extended to an automorphism $h$ of $A$ by setting $h(i)=g(i)$, for $i\in \mathbb{Z}^+$; $h(0)=0$; and $h(i)=-g(-i)$, for $i<0$. Let's write $\mathbb{Z}^-$ for the set of negative integers. Thus, $\autorbs{A}= \{\mathbb{Z}^+,\{0\},\mathbb{Z}^-\}$. Each orbit of $\aut{A}$ acting on $U^A$ is definable:
+\begin{itemize}
+\item 
+$S_1[A] = \mathbb{Z}^+$, where $S_1(x)$ is $(\exists y)(y\neq x \wedge Lyx)$;
+\item 
+$S_2[A] = \mathbb{Z}^-$, where $S_2(x)$ is $(\forall y)\neg Lyx$;
+\item 
+$S_3[A] = \{0\}$, where $S_3(x)$ is $\neg S_1(x)\wedge\neg S_2(x)$.
+\end{itemize} 
+Hence, there are exactly eight sets definable in $A$:
+\begin{enumerate}
+\item $\emptyset$,
+\item $\{0\}$,
+\item $\mathbb{Z}^+$,
+\item $\mathbb{Z}^-$,
+\item $\mathbb{Z}^+\cup\mathbb{Z}^-$,
+\item $\mathbb{Z}^+\cup\{0\}$,
+\item $\mathbb{Z}^-\cup\{0\}$,
+\item $\mathbb{Z}$.
+\end{enumerate}
+\iffalse
+At this point, one of you raised a very interesting question: to what extent can the structure $A$ itself be specified by a schema. As we'd already discussed:
+\begin{theorem}
+If $D$ is a finite graph, then there is a schema $S$ such that for every graph $D'$, 
+\[
+D'\models S \mbox{ if and only if } D'\cong D.
+\]
+\end{theorem}
+The following result, in sharp contrast, shows that \emph{no} infinite structure can be perfectly described by schemata. In order to state the result, we need to define $\theo{D}$, the \emph{complete theory of} $D$:
+\[
+\theo{D} = \{S\mid S \mbox{ is a schema and } D\models S\}. 
+\]
+\begin{theorem}\label{infnotcat-thm}
+For every infinite graph $D$, there is a graph $D'$, $D'\models\theo{D}$ and $D'\not\cong D$.
+\end{theorem}
+Theorem \ref{infnotcat-thm} is a corollary to the Compactness Theorem for polyadic quantification theory, a fundamental result we will study next week.
+\fi
+\subsubsection{The non-negative integers with the successor relation - a rigid structure}
+
+We next looked at another infinite structure $B$ where definability behaves very differently. $B$ is described as follows:
+\begin{itemize}
+\item
+$U^B= \mathbb{Z}^+\cup\{0\}$;
+\item
+$L^B=\{\op{i}{j}\mid j=i+1\}$.
+\end{itemize}
+
+We first observed that $\aut{B}=\{e\}$, that is, $B$ is a rigid structure. 
+This can be established by mathematical induction. Suppose $h$ is an automorphism of $B$. Since $0$ is the only node of $B$ with in-degree $0$, we must have $h(0)=0$. Now suppose, as induction hypothesis, that $h(n)=n$. Since $n+1$ is the only member of $U^B$ to which $n$ is related, it follows from the hypothesis that $h$ is an automorphism that $h(n+1)=n+1$. This completes the induction; thus, for all $k\in U^B$, $h(k)=k$. Hence, $\aut{B}=\{e\}$. 
+
+This argument suggests that for every $k\in U^B$, $\{k\}$ is definable over $B$. Let's show this, again by induction. First, the schema $S^0(x): (\forall y)\neg Lyx$ defines $\{0\}$ over $B$. Next, as induction hypothesis, suppose that $S^n(x)$ defines $\{n\}$ over $B$. Let $z$ be a variable which does not occur anywhere in $S^n(x)$ and let $S^n(z)$ be the result of replacing $x$ with $z$ at all its occurrences in $S^n(x)$. then the schema $(\exists z)(S^n(z)\wedge Lzx)$ defines $\{n+1\}$ over $B$. this completes the induction and establishes that for every $k\in U^B$, $\{k\}$ is definable over $B$. It follows at once that every finite subset of $U^B$ and every co-finite subset of $U^B$ is definable over $B$. 
+
+What other subsets of $U^B$ are definable over $B$? Note that since $B$ is rigid, 
+there is no possibility of exhibiting an automorphism $h$ of $B$ with $h[X]\neq X$, that is, the ``automorphism method'' is powerless to establish the undefinability of any subset of $U^B$ in $B$. Could it be that every subset of $U^B$ is definable over $B$? We will answer this question next time.
+
+\iffalse
+We show at once that for every infinite structure $C$ there is a subset $X\subseteq U^C$ which is \emph{not} definable over $C$. This result is a corollary to the celebrated Cantor Diagonal Theorem.
+\begin{theorem}[Cantor]\label{cantordiag-thm}
+Let $U$ be an infinite set and let $V_1, V_2, \ldots$ be a sequence of subsets of $U$. There is subset $W$ of $U$ such that for all $i\geq 1$, $W\neq V_i$.
+\end{theorem}
+\emph{Proof}: Suppose $U$ is an infinite set. Let $U^*= \{a_1, a_2, \ldots\}$ be a countably infinite subset of $U$ and let $V_1, V_2, \ldots$ be a sequence of subsets of $U$. Let $W=\{i\mid a_i\not\in V_i\}$. Note that for every $i$ $a_i\in W$ if and only if $a_i\not\in V_i$. It follows that for all $i$, $W\neq V_i$. \qed
+
+In order to apply Theorem \ref{cantordiag-thm} to questions about definable sets we require the following result.
+\begin{theorem}\label{countschema-thm}
+For every structure $C$, there is a sequence $V_1,V_2,\ldots$ of subsets of $U^C$ such that for every set $X$ definable over $C$, there is an $i$ such that $X=V_i$. 
+\end{theorem}
+\emph{Proof}: Every schema is a finite sequence of symbols drawn from a finite alphabet. Thus, we may arrange all schemata $S(x)$ in a list $S_1(x), S_2(x),\ldots$, first ordered by length, and then within length, alphabetically. We obtain a list $V_1,V_2,\ldots $ of all the sets definable over $C$ by setting $V_i=S_i[C]$ for all $i$. \qed
+
+The following result is an immediate consequence of  Theorems \ref{cantordiag-thm} and \ref{countschema-thm}.
+\begin{corollary}
+For every infinite structure $C$ there is a subset $X\subseteq U^C$ which is not definable over $C$.
+\end{corollary}
+
+Of course, this gives us no idea which particular sets are not definable over a given infinite structure. In the case of the graph $B$ introduced above, we will show that if a set is neither finite nor co-finite, it is \emph{not} definable over $B$. In order to establish this, we will deploy one of the fundamental properties of polyadic quantification theory: \emph{compactness}. First, some definitions requisite to the Compactness Theorem for Polyadic Quantification Theory.
+\begin{itemize}
+\item
+A schema $S$ is \emph{satisfiable} if and only if for some structure $A$, $A\models S$.
+\item
+A set of schemata $\Gamma$ is \emph{satisfiable} if and only if there is structure $A$ such that for every schema $S\in \Gamma$, $A\models S$.
+\item
+A set of schemata $\Gamma$ is \emph{finitely satisfiable} if and only if for every finite set $\Delta\subseteq\Gamma$, $\Delta$ is satisfiable.
+\end{itemize}
+\begin{theorem}[Compactness Theorem]\label{compact-thm}
+For every set $\Gamma$ of schemata  of polyadic quantification theory, if $\Gamma$ is finitely satisfiable, then $\Gamma$ is satisfiable. 
+\end{theorem}
+
+Though the Compactness Theorem makes no mention of the notion of a derivation, one of its well-known proofs proceeds via the elaboration of a sound and complete formal system for logical deduction. This development will occupy our attention for much of the remainder of the Term. But for the moment, let's see how we can apply the Compactness Theorem to complete the analysis of the definable subsets of the structure $B$ specified above.
+\begin{theorem}
+If $V\subseteq U^B$ is definable over $B$, then $V$ is finite or $V$ is co-finite.
+\end{theorem}
+\emph{Proof}:
+Suppose to the contrary, that there is a set $V$, definable over $B$, which is neither finite nor co-finite, and suppose that the schema $S(x)$ defines $V$ over $B$.  We derive a contradiction from this hypothesis.
+Let $\Lambda = \{ S\mid B\models S\}$; $\Lambda$ is the set of all schemata true in the structure $B$ and is often called the \emph{complete theory} of $B$. Let $y$ and $z$ be fresh variables which occur nowhere in $\Lambda$, $S(x)$, or any of the schemata $S^n(x)$ for $n\geq 0$ defined above. Define the set of schemata $\Gamma$ as follows.
+\[
+\Gamma = \Lambda\cup\{y\neq z,S(y),\neg S(z)\}\cup\{\neg S^n(y),\neg S^n(z)\mid n\geq 0\}.
+\]
+Let $\Delta$ be a finite subset of $\Gamma$. It follows from the fact that both $S[B]$ and $\neg S[B]$ are infinite, that $\Delta$ is satisfied by $B$ with suitable assignments from $U^B$ to the variables $y$ and $z$. Hence, by the Compactness Theorem, $\Gamma$ itself is satisfiable. Of course, if the structure $C$ satisfies $\Gamma$, then $C$ is not isomorphic to $B$ since the the elements of $U^C$ assigned to $y$ and $z$ in $C$ (call them $a$ and $b$ respectively) are not reachable in $C$ from the unique element of $C$ with no predecessor. We will show that there is an automorphism $h$ of $C$ with $h(a)=b$. This will yield the desired  contradiction, since $C\models S(y|a)$ and $C\models \neg S(z|b)$. Note that $B$, and hence $C$, satisfy the following schemata.
+\begin{itemize}
+\item
+$(\exists x)(\forall y)((\forall z)\neg Lzy \equiv x=y)$
+\item
+$(\forall x)(\exists y)(\forall z)(Lxz\equiv z=y)$
+\item
+$(\forall x)(\forall y)(\forall z)((Lxz\wedge Lyz)\supset x=y)$
+\item
+$(\forall x)\neg Lxx\\
+\vdots\\
+(\forall x)(\forall y_1)\ldots(\forall y_n)\neg Lxy_1\wedge Ly_1y_2\ldots\wedge Ly_nx\\
+\vdots$
+\end{itemize} 
+The first three schemata guarantee that $L^C$ is an injective functional relation which is ``almost'' surjective -- there is a unique element of $U^C$ which lacks a pre-image under the function whose graph is $L^C$. Note that this guarantees that $U^C$ is infinite. The final infinite list of schemata guarantee that the the function whose graph is $L^C$ contains no finite cycles. Since $C$ is not isomorphic to $B$ all this implies that $C$ consists of an $L^C$ chain that is isomorphic to $B$ and a non-empty set of $L^C$ chains each of which is isomorphic to $\mathbb{Z}$ (the set of all integers) equipped with its usual successor relation. But, since $a$ and $b$ must lie on one or two of these ``$\mathbb{Z}$-chains,'' there is an automorphism $h$ of $C$ with $h(a)=b$. \qed
+
+Now that we have concluded our analysis of definability over $B$ with the help of the Compactness Theorem, let's begin our exploration of a formal system of deduction for polyadic quantification theory. We'll start by considering the notion of a formal system in general terms, and articulate an abstract formulation of the goal of the project.
+
+The elaboration of formal systems of deduction for polyadic quantification caps a long effort to achieve the highest possible degree of rigor in mathematical argumentation. This search was in part motivated by the periodic appearance of contradictions in the mathematical theory of the continuum. This theory, whose genesis may be dated to the Pythagoreans' proof that the square root of two is irrational, was developed with great vigor in the seventeenth century, in connection with the rise of the new physics and its effort to provide a unified theory of the motion of both terrestrial and celestial bodies. As mathematical analysis (as the theory of the continuum came to be called) developed into the nineteenth century, and became ever more enmeshed with new areas of physics, such as the theory of heat, the need for a more rigorous foundation for the subject became ever more pressing. In particular, even the greatest of mathematicians, such as August Cauchy, were hampered by the lack of a perspicuous notation for iterated quantification in handling notions such as uniform convergence. 
+
+\fi

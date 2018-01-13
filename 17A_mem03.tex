@@ -1,0 +1,73 @@
+\subsection{The material conditional}
+
+We returned to our potential lovers and restricted attention to just two of them, 1 and 2. We asked how we could express the statement that all love is requited among these two. The natural mode of expression is: if 1 loves 2, then 2 loves 1, and if 2 loves 1, then 1 loves 2. In order to render this directly, we introduced the
+\begin{itemize}
+\item Material Conditional
+\[
+\begin{array}{|l|l|c|} \hline
+p   & q  &  p \supset q   \\ \hline
+\top & \top & \top  \\
+\top & \bot & \bot  \\
+\bot & \top & \top  \\   
+\bot & \bot & \top \\
+\hline
+\end{array}
+\]
+\end{itemize}
+Now, using the sentence letter $p_{11}, p_{12}, p_{21}, p_{22}$ as earlier interpreted, we can express the happy state that all love among 1 and 2 is requited by the schema
+\[ R: (p_{12}\supset p_{21}) \wedge (p_{21}\supset p_{12}).\]
+We asked in how many of the possible love scenarios among 1 and 2 is all love requited, and we computed that the answer is eight out of a total of sixteen such scenarios, by determining how many truth assignments to the sentence letters  $p_{11}, p_{12}, p_{21}, p_{22}$ satisfy the schema $R$.
+
+We discussed generalized conditionals as a route to motivating the truth-functional interpretation of the conditional offered above. We agreed that the statement ``if an integer is divisible by six, then it is divisible by three,'' is true, and thence that each of the following statements, which are instances of this general statement, are true.
+\begin{itemize}
+\item ``If twelve is divisible by six, then twelve is divisible by three.''
+\item ``If three is divisible by six, then three is divisible by three.''
+\item ``If two is divisible by six, then two is divisible by three.''
+\end{itemize}
+Therefore, if the conditional involved is to be understood truth-functionally, then its interpretation must satisfy the conditions imposed by the first, third, and fourth rows of the truth-table above. On the other hand, the falsity of the conditional ``if twelve is divisible by six, then twelve is divisible by seven,'' mandates the condition imposed by the second row of the truth-table above.
+\subsection{The centrality of satisfaction}
+
+We emphasized that the satisfaction relation is the fundamental semantic relation, it is where language and the world meet; in the case to hand, language consists of truth-functional schemata and the possible worlds they describe are truth assignments to sentence letters. As the course progresses, we will encounter more textured representations of the world (relational structures) and richer languages to describe them (monadic and polyadic quantification theory). We now define some of the central notions of truth-functional logic in terms of satisfaction. These definitions will generalize directly to the more textured structures and richer languages we encounter later. 
+\begin{definition}\label{tf-eq-sat-val-def}
+For the following definitions, we suppose that $S$ and $T$ are truth-functional schemata and that $A$ ranges over truth assignments to sets of sentence letters which include all those that occur in either $S$ or $T$.
+\begin{itemize}
+\item $S$ implies $T$ if and only if for every truth assignment $A$, if $A\models S$, then $A\models T$.
+\item $S$ is equivalent to $T$ if and only if $S$ implies $T$ and $T$ implies $S$.
+\item $S$ is satisfiable if and only if for some $A$, $A\models S$.
+\item $S$ is valid if and only if every truth assignment satisfies $S$. 
+\end{itemize}
+\end{definition}
+\subsection[Examples of equivalence and the material biconditional]{Examples of equivalence and the material biconditional\footnote{This section was omitted from Monday's lecture, but is worth reading nonetheless.}}
+
+We noted various equivalences, for example,  
+\begin{itemize}
+\item $p\oplus q$ is equivalent to $q\oplus p$ (commutativity of exclusive disjunction)  
+\item $(p\oplus q)\oplus r$ is equivalent to $p\oplus(q\oplus r)$ (associativity of exclusive disjunction).
+\end{itemize}
+We noted that both conjunction and inclusive disjunction are also commutative and associative, whereas the material conditional is neither. We encouraged the audience to think of examples of (binary) truth-functional connectives which are commutative but not associative, and associative but not commutative.
+   
+We introduced one further connective $\equiv$, the material biconditional. We specified its truth-functional interpretation by indicating that $p\equiv q$ is truth-functionally equivalent to both $(p\supset q)\wedge (q\supset p)$ and $\neg(p\oplus q)$. 
+\subsection{Propositions as a heuristic}
+It is sometimes useful to think of a schema $S$ as expressing a proposition, to whit, the set of truth assignments $A$ that satisfy $S$; of course, this needs to be relativized to a collection of sentence letters $X$ which includes all those occurring in $S$. We suggested the notation: 
+\[\prop{S}{X} = \{ A\mid A\  \mbox{is a truth assignment for $X$ and } A\models S\}.
+\]
+ When we use this notation without the subscript $X$, we assume $A$ is a truth assignment for exactly the set of sentence letters with occurrences in $S$. %Remember, this is merely a heuristic; ignore, if unhelpful!
+\subsection{Expressive completeness}
+
+We explored the expressive power of truth-functional logic. %(In lecture, we illustrated the proof of Theorem \ref{tflexpcomp-thm} below with an example built over the set of sentence letters $X=\{p,q,r\}$; here, we will give a general treatment, for comparison, and for completeness.) 
+In the last section, we suggested using the notion of the proposition expressed by a schema as an intuitive vehicle for pursuing this investigation. 
+Since the semantical correlate of a truth-functional schema is a set of truth assignments to some finite set of sentence letters, we can frame the question of the \emph{expressive completeness of truth-functional logic} in terms of propositions. Let $X$ be a non-empty finite set of sentence letters. We deploy the notation: $\mathbb{A}(X)$ for the set of truth assignments to the sentence letters $X$, and $\mathbb{S}(X)$ for the set of truth-functional schemata compounded from sentence letters all of which are members of $X$. 
+We provided the following inductive definition of $\mathbb{S}(X)$. 
+\begin{definition}
+Let $X$ be a nonempty finite set of sentence letters. $\mathbb{S}(X)$ is the smallest set $\mathbb{U}$ (in the sense of the subset relation) satisfying the following conditions.
+\begin{itemize}
+\item $X\subseteq \mathbb{U}$.
+\item If $\sigma$ and $\tau$ are strings over the finite alphabet $X\cup\{),(,\neg,\supset,\equiv,\vee,\wedge,\oplus\}$, and $\sigma,\tau\in\mathbb{U}$, then each of the strings $\neg\sigma, (\sigma\supset\tau),(\sigma\equiv\tau),(\sigma\vee\tau),(\sigma\wedge\tau),(\sigma\oplus\tau)$ belong to $\mathbb{U}$.\footnote{Here ``$(\sigma\supset\tau)$'' denotes the string with the initial symbol ``$($'' concatenated with the string denoted by $\sigma$ concatenated with the symbol ``$\supset$'' concatenated with the string denoted by $\tau$ and with terminal symbol ``$)$'', and likewise in all the other cases.}
+\end{itemize}
+\end{definition}
+
+If $\mfp\subseteq\mathbb{A}(X)$, we call $\mfp$ a \emph{proposition over} $X$. 
+Let $X$ be a non-empty finite set of sentence letters and let $\mfp$ be a proposition over $X$. Is there a schema $S\in\mathbb{S}(X)$ such that $\prop{S}{X}=\mfp$? In other words, is truth-functional logic \emph{expressively complete}? We will answer this question on Wednesday. 
+
+We briefly discussed how many propositions there are over a fixed finite set of sentence letters. Since this, and related questions, will bulk large in Wednesday's lecture, I've included this discussion in the preview of our next class meeting.
+%We will establish\begin{theorem}[Expressive Completeness of Truth-functional Logic]\label{tflexpcomp-thm}Let $X$ be a non-empty finite set of sentence letters and let $\mfp$ be a proposition over $X$. There is a schema $S\in\mathbb{S}(X)$ such that $\prop{S}{X}=\mfp$.\end{theorem}

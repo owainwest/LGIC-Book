@@ -1,0 +1,167 @@
+\subsection{Isomorphisms and automorphisms}
+
+We began with the following example. Consider the structures
+\begin{itemize}
+\item $A$: $U^A=[3]$, $L^A=\{\op{1}{2},\op{1}{3}\}$, and
+\item $B$: $U^B=[3]$, $L^B=\{\op{2}{1},\op{2}{3}\}$.
+\end{itemize}
+$A$ and $B$ look very similar. We can bring out their similarity by considering the the function $f:[3]\mapsto[3]$ with $f(1)=2$, $f(2)=1$, and $f(3)=3$. The function $f$ is a bijection and is edge-preserving, that is, for every $i,j\in[3]$, $\op{i}{j}\in L^A$ if and only if $\op{f(i)}{f(j)}\in L^B$. We say $f$ is an \emph{isomorphism} of $A$ onto $B$, and that $A$ and $B$ are \emph{isomorphic} (written $A\cong B$). These notions are so important that we pause to enshrine them in a definition.
+\begin{definition}
+A function $h$ is an \emph{isomorphism} from $A$ onto $B$ if and only if $h$ is a bijection from $U^A$ onto $U^B$ such that for all $a,b\in U^A$, $\op{a}{b}\in L^A$ if and only if $\op{h(a)}{h(b)}\in L^B$.
+
+$A$ \emph{is isomorphic to} $B$ ($A\cong B$) if and only if there is an isomorphism $h$ from $A$ onto $B$.
+\end{definition}
+
+Consider again the structure $A$ described above, but now consider the function $g$ with $g(1)=1$, $g(2)=3$, and $g(3)=2$. The function $g$ is an \emph{automorphism} of $A$, that is, an isomorphism of $A$ onto itself. Again, a definition is in order.
+\begin{definition}
+A function $h$ is an \emph{automorphism} of $A$  if and only if $h$ is an isomorphism of $A$ onto $A$. $\aut{A}=\{h\mid h\mbox{ is an automorphism of }A\}$.
+\end{definition}
+
+Note that if $A\cong B$, then for every schema $S$, $A\models S$ if and only if $B\models S$. 
+\subsection{The image of a structure}
+
+We continued to consider the structure $A$. We listed all the bijections of $[3]$ onto $[3]$.
+\[
+\begin{array}{|c|c|c|c|}
+\hline
+ &1&2&3\\
+\hline
+f_1&1&2&3\\
+\hline
+f_2&2&1&3\\
+\hline
+f_3&3&2&1\\
+\hline
+f_4&1&3&2\\
+\hline
+f_5&2&3&1\\
+\hline
+f_6&3&1&2\\
+\hline
+
+\end{array}
+\]
+We called this set of bijections $\symn{3}$ (more on this notation below) and introduced the notion of the \emph{image of} a structure $C$ with $U^C=[3]$ ($h[C]$) under $h\in\symn{3}$: $U^{h[C]}=U^C$ and $L^{h[C]}=\{\op{h(i)}{h(j)}\mid\op{i}{j}\in L^C\}$. It follows that for every such $C$ and $h$, $h$ is an isomorphism of $C$ onto $h[C]$. We next observed, with respect to the examples $A$ and $B$ above, that $B=f_2[A]$ and that $\aut{A}=\{f_1,f_4\}$. We also noted that $f_5[A]=B$ and that $f_3[A]=f_6[A]$ is a third isomorphic copy of $A$ distinct from both $A$ and $B$. That is, there are three labeled structures with universe $[3]$ that are isomorphic to $A$. We marveled at the identity 
+\begin{equation}\label{ose-eq}
+\card{\symn{3}}=\card{\aut{A}}\cdot (\mbox{the number of labeled copies of }A).
+\end{equation}
+ The next section contains a more substantial explanation of this identity than we had time for in class.
+\iffalse
+
+On 03.21, we began to look more closely at the use of automorphisms of a structure as a tool for counting the number of structures that satisfy a given schema. The ideas we developed will also be very important in connection with our upcoming study of definability.
+
+We focused our attention on a concrete example. Let $S$ be the conjunction of $\sg$ and $\oner$, that is, a graph $A$ satisfies $S$ if and only if $A$ is a 1-regular, simple graph. As we discussed earlier, every such finite graph $A$ has an even number, say $2n$, of nodes; moreover, if $A,B\models S$ and $\card{U^A}=\card{U^B}$, then $A$ is isomorphic to $B$. (Recall that $A$ \emph{is isomorphic to} $B$ if and only if there is an isomorphism $h$ from $A$ onto $B$; and that $h$ is an isomorphism from $A$ onto $B$ if and only if $h$ is a bijection from $U^A$ onto $U^B$ such that for all $a,b\in U^A$, $\op{a}{b}\in L^A$ if and only if $\op{h(a)}{h(b)}\in L^B$.) We devoted the class to calculating the value of $\modn{S}{2n}$ in two ways, both for the intrinsic interest of each, and for the opportunity to ``check our work.''
+
+Our first calculation involved an excursion through the concept of a \emph{group action}, though in class, we stuck to the concrete example quite closely, and may not even have uttered this phrase. But in this memoir, memoirs being what they are, we will take the liberty to invent an alternative past. So let's take a deep breath, or several shallow cleansing breaths, and ....
+\fi
+\subsection{A new way of counting labeled structures: the Orbit-Stabilizer Theorem}
+
+For every positive integer $k$ we write $[k]$ for $\{1,\ldots,k\}$ and $\symn{k}$ for the set of bijections from $[k]$ onto $[k]$ (also called the \emph{permutation group on} or the \emph{symmetric group on} $[k]$). These latter terms emphasize the following algebraic aspect: we may think of \symn{k}\ as an algebra with a binary operation $\circ$, a unary operation $^{-1}$, and a distinguished element $e$, where, for permutations $f,g\in\symn{k}$, $f\circ g$ is the permutation resulting from the composition of $f$ and $g$, that is, $f\circ g =h$ if and only if for every $i\in [k]$, $h(i) = f(g(i))$; $f^{-1}$ is the permutation which is the inverse of $f$; and $e$ stands for the identity function on $[k]$. With these understandings, you can verify that \symn{k}\ is a group: 
+\begin{itemize}
+\item   
+$\circ$ is an associative operation, that is, $(f\circ g)\circ h= f\circ (g\circ h)$, for all $f,g\in\symn{k}$;
+\item
+ $e$ is an identity with respect to $\circ$, that is, $e\circ f = f\circ e = f$, for all $f\in\symn{k}$; and 
+ \item
+ $f\circ f^{-1} = f^{-1}\circ f = e$, for all $f\in\symn{k}$.
+\end{itemize} 
+
+We write \sgraphn{k}\ for the set of simple graphs $A$ with $U^A = [k]$. For each $f\in\symn{k}$ and $A\in\sgraphn{k}$, we define $f[A]$ to be the graph with universe $[k]$ such that for all $i,j\in[n]$, $\op{f(i)}{f(j)}\in L^{f([A])}$ if and only if $\op{i}{j}\in L^A$. Note that $f$ is an isomorphism of $A$ onto $f[A]$. This is an example of a \emph{group action} -- the group \symn{k} \emph{acts on} the set \sgraphn{k}\ via the assignment of $f[A]$ to $A$. Verify that for all $A\in\sgraphn{k}$ and $f,g\in\symn{k}$, 
+\begin{itemize}
+\item
+$(f\circ g)[A]=f[g[A]]$, and 
+\item
+$e[A]=A$.
+\end{itemize}
+Recall that \aut{A}\ is the set of automorphisms of $A$. In the current context, for $A\in \sgraphn{k}$, \aut{A}\ is often called the \emph{stabilizer} of $A$, since $f\in\aut{A}$ if and only if $f[A] =A$. The \emph{orbit of} $A$  under the action of \symn{k}\ (written $\orb{A}{\symn{k}}$) is $\{h[A]\mid h\in\symn{k}\}$. The following result is a special case of the \emph{Orbit-Stabilizer Theorem}.
+\begin{theorem}\label{orb-stab-thm}
+For all $A\in\sgraphn{n}$,
+\[
+\card{\symn{n}}=\card{\orb{A}{\symn{n}}}\cdot\card{\aut{A}}.
+\]
+\end{theorem}
+%I present the proof, because several questions that arose yesterday suggest to me that you may find it illuminating. \\
+\emph{Proof}:
+Let $A\in\sgraphn{k}$. We define an equivalence relation $\sim$ on $\symn{k}$: for all $f,g\in\symn{k}$, $f\sim g$ if and only if $(f^{-1}\circ g)\in\aut{A}$. (You should verify that $\sim$ is an equivalence relation, for example, it is reflexive, that is, $f\sim f$, because $f^{-1}\circ f = e$ and $e\in \aut{A}$; continue and show $\sim$ is symmetric and transitive.) We establish the following two claims about $\sim$ from which the Theorem follows immediately.
+\begin{enumerate}
+\item
+each equivalence class of $\sim$ has size $\card{\aut{A}}$, and
+\item
+the number of equivalence classes of $\sim$ is $\card{\orb{A}{\symn{k}}}$.
+\end{enumerate}
+\emph{Ad} claim 1: Fix $f\in\symn{k}$. For each $h\in\aut{A}$ there is a unique $g\in\symn{k}$ such that $f^{-1}\circ g = h$. (Verify!) It follows at once that there is a bijection between $\{g\mid f\sim g\}$ and \aut{A}.\\
+\emph{Ad} claim 2: We show that for every $f,g\in\symn{k}$ $f[A]=g[A]$ if and only if $f\sim g$. We prove each direction of the bi-conditional. So suppose $f\sim g$. Then 
+$f^{-1}\circ g \in \aut{A}$. Hence, $(f^{-1}\circ g)[A] = A$. Hence, $f[(f^{-1}\circ g)[A]] = f[A]$. Hence, $(f\circ(f^{-1}\circ g))[A] = f[A]$. Hence, $((f\circ f^{-1})\circ g)[A] = f[A]$. Hence, $(e\circ g)[A] = f[A]$. Hence, $g[A]=f[A]$. In the other direction, suppose $f[A]=g[A]$. Then, $f^{-1}[f[A]]=f^{-1}[g[A]]$. Hence, $(f^{-1}\circ f)[A]=(f^{-1}\circ g)[A]$. Hence, $(f^{-1}\circ g)[A]=e[A]= A$. Hence, $f^{-1}\circ g\in \aut{A}$, that is, $f\sim g$. Thus, there is a bijection between the equivalence classes of $\sim$ and $\orb{A}{\symn{k}}$. \qed
+
+We now have the explanation of identity (\ref{ose-eq}), since 
+\[
+\card{\orb{A}{\symn{k}}}=\mbox{the number of labeled copies of }A.
+\]
+\iffalse
+We return to calculating the value of $\card{\modn{S}{2n}}$. As noted above, if $A,B\in\modn{S}{2n}$, then $A\cong B$. Let $A\in\modn{S}{2n}$. It follows at once that $\modn{S}{2n}=\orb{A}{\symn{2n}}$. Let's calculate $\card{\aut{A}}$, since Theorem \ref{orb-stab-thm} will then allow us to calculate $\card{\modn{S}{2n}}$. Observe that $A$ consists of $n$ independent edges. Imagine them standing upright and lined up horizontally in some order. Now any permutation of the edges generates an automorphism of $A$. Moreover, in the process of permuting the edges, we may choose to ``flip'' any subset of them having those land on the edge to which they are permuted ``head to foot'' and ``foot to head''. Since there are $n!$ permutations of the $n$ edges, and $2^n$ choices of which set of edges to flip, there are a total of $n!\cdot 2^n$ automorphisms of $A$. It therefore follows from Theorem \ref{orb-stab-thm} that $ \card{\modn{S}{2n}}= (2n)!/n!\cdot 2^n$.
+
+We also discussed a second direct method of calculating $\card{\modn{S}{2n}}$ which, thankfully, yielded the same result. We thought of constructing a member $A$ of $\modn{S}{2n}$ as follows. We successively choose the $n$ independent edges that constitute $A$. So for the first edge, we have $\binom{2n}{2}$ choices of a pair of nodes between which to place an edge, and for the second edge, we have $\binom{2n-2}{2}$ choices, .... So the number of ways we can choose a sequence of $n$ independent edges is
+\[
+\binom{2n}{2}\cdot\binom{2n-2}{2}\cdots\binom{4}{2}\cdot\binom{2}{2}= \frac{(2n)!}{2^n}.
+\]
+Now any \emph{set} of $n$ edges chosen via this process will appear as the result of $n!$ such sequences of choices; thus, the total number of members of $\modn{S}{2n}$ we can construct is 
+\[
+\frac{(2n)!}{n!\cdot 2^n}.
+\]
+\iffalse
+\bigskip
+\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
+
+On 03.21, we will explore a new topic, definability, but one of the primary tools we'll employ, automorphisms of structures, will be useful in various counting arguments of current interest.
+
+Up to this point we have neglected schemata containing free variables. Today we will correct this oversight. Consider the schema 
+\[
+S(x):\ \ \ (\exists y)(\forall z)(Lxz\equiv z=y).
+\]
+Let $A$ be a graph. We define $S[A]=\{a\in U^A\mid A\models S[x|a]\}$, that is, $S[A]$ is the set of nodes of $A$ that satisfy the schema $S(x)$ in $A$ when assigned to the variable $x$. We call $S[A]$ the \emph{set defined by} $S(x)$ in $A$. In the case to hand, if $A$ is a simple graph, then $S[A]$ is the set of nodes of $A$ of degree 1. 
+
+Given a graph $A$, we will consider which subsets of $U^A$ are \emph{definable subsets of} $A$, that is for which $V\subseteq U^A$ is there a schema $S[x]$ such that $S[A]=V$. In the case of finite graphs, we will be able to give an entirely satisfactory analysis in terms of the symmetries of $A$, that is, the collection of automorphisms of $A$. Recall that $h$ is an \emph{automorphism} of $A$ if and only if $h$ is a bijection of $U^A$ onto $U^A$ and for all $a,b\in U^A$,
+\[
+\op{a}{b}\in L^A\mbox{ if and only if } \op{h(a)}{h(b)}\in L^A.
+\]
+In other words, $h$ is an automorphism of $A$ if and only if $h$ is an isomorphism of $A$ onto itself. We define $\aut{A}=\{h\mid h\mbox{ is an automorphism of }A\}$. The following theorem is fundamental.
+\begin{theorem}\label{aut-thm}
+Let $A$ be a graph and $h\in\aut{A}$. For every $a\in U^A$ and every schema $S(x)$,
+\[
+A\models S[x|a]\mbox{ if and only if }A\models S[x|h(a)]. 
+\]
+\end{theorem}
+If $f$ is a function with domain $U$ and $V\subseteq U$, we define $f[V]=\{f(a)\mid a\in V\}$ (the $f$ \emph{image} of $V$). With this notation in hand, we can now state a corollary to Theorem \ref{aut-thm} which bears on definability.
+\begin{corollary}\label{aut-def-cor}
+Let $A$ be a graph and $h\in\aut{A}$. If $V$ is a definable subset of $A$, then $h[V]=V$.
+\end{corollary}
+Thus, in order to show that $V$ is \emph{not} a definable subset of $A$ is suffices to exhibit an $h\in\aut{A}$ and $a\in V$ such that $h(a)\not\in V$. Moreover, in the case of finite structures, the converse of Corollary \ref{aut-def-cor} is true.
+\begin{theorem}\label{fin-aut-def-thm}
+Let $A$ be a finite graph and $V\subseteq U^A$. $V$ is a definable subset of $A$, if for every $h\in\aut{A}$, $h[V]=V$.
+\end{theorem} 
+In order to prove Theorem \ref{fin-aut-def-thm}, and to apply it to questions of counting definable sets, it will be useful to introduce the notion of the \emph{orbit of a node} $a\in U^A$ \emph{under the action of} $\aut{A}$:
+\[
+\orb{a}{A}=\{h(a)\mid h\in\aut{A}\}.
+\]
+We define $\orbs{A}=\{\orb{a}{A}\mid a\in U^A\}.$ As a corollary to Corollary \ref{aut-def-cor} and Theorem \ref{fin-aut-def-thm} we have:
+\begin{corollary}\label{def-orbs-cor}
+Let $A$ be a finite graph and $V\subseteq U^A$. $V$ is a definable subset of $A$ if and only if either $V=\emptyset$ or there is a sequence of sets $O_1, \ldots,O_k$, where each $O_i\in\orbs{A}$, and $V = O_1\cup\ldots\cup O_k$.
+\end{corollary}
+It follows at once from Corollary \ref{def-orbs-cor}, that if $A$ is a finite graph, then the number of definable subsets of $A$ is $2^{\card{\orbs{A}}}$. We will analyze a few examples in class, using the tools we've developed.
+
+We will also look at another application of these ideas, namely to counting structures ``up to isomorphism.'' We refresh our memories concerning some important ideas introduced in \emph{Memoir 13}.
+\begin{itemize}
+\item Let $A$ and $B$ be graphs and let $f$ be a function with domain $U^A$ and range $U^B$. $f$ is an \emph{isomorphism from $A$ onto $B$} if and only if $f$ is a bijection and for all $i,j\in U^A$, $\op{i}{j}\in L^A$ if and only if $\op{f(i)}{f(j)}\in L^B$. 
+\item Let $A$ be a graph with $U^A=[n]$ and let $f$ be a permutation of $[n]$, that is, a bijection of $[n]$ onto $[n]$. We define $f[A]$ to be the graph with universe $[n]$ such that for all $i,j\in[n]$, $\op{f(i)}{f(j)}\in L^{f([A])}$ if and only if $\op{i}{j}\in L^A$.
+\item  Let $A$ and $B$ be graphs. $A$ is \emph{isomorphic to} $B$ if and only if there is an isomorphism $f$ from $A$ onto $B$.
+\end{itemize}  
+Let \symn{n}\ be the set of permutations of $[n]$ and let \graphn{n}\ be the set of graphs $A$ with $U^A = [n]$. Observe at once that for every $A\in\graphn{n}$ and $h\in\symn{n}$, $h$ is an isomorphism from $A$ onto $h[A]$. In analogy with our discussion of the ``action'' of \aut{A}\ on $U^A$, we may think of \symn{n}\ \emph{acting on} \graphn{n}. In particular, for $A\in\graphn{n}$, we define $\orb{A}{\symn{n}} = \{h[A]\mid h\in \symn{n}\}$. The following result is a special case of the \emph{Orbit-Stabilizer Theorem}.
+\begin{theorem}\label{orb-stab-thm}
+For all $A\in\graphn{n}$,
+\[
+\card{\symn{n}}=\card{\orb{A}{\symn{n}}}\cdot\card{\aut{A}}.
+\]
+\end{theorem} 
+We will discuss various applications of Theorem \ref{orb-stab-thm} to calculating $\card{\modn{S}{n}}$, and related counting problems.
+\fi
+\fi

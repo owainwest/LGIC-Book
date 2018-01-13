@@ -1,0 +1,29 @@
+Finally, we added rules for deriving schemata involving the identity predicate and illustrated their use with the following deduction.
+\begin{center}
+$\{(\forall x) Rxx, \neg (\forall x)(\forall y) Rxy \}$
+implies $\neg (\exists x)(\forall y) x = y$.
+\end{center}
+\[
+\begin{array}{lll}
+\{1\}   & (1)\ (\forall x) Rxx  & \mathrm{P}\\
+\{2\}   & (2)\ \neg (\forall x)(\forall y) Rxy  & \mathrm{P}\\
+\{3\}   & (3)\ (\exists x)(\forall y) x = y  & \mathrm{P}\\
+\{3,4\}   & (4)\ (\forall y) u = y  & (3)u\ \mathrm{EII}\\
+\{1\}   & (5)\ Ruu  & (1)\ \mathrm{UI}\\
+\{3,4\}   & (6)\ u=y  & (4)\ \mathrm{UI}\\
+\{\}   & (7)\ u=y \supset (Ruu \equiv Ruy) & \mathrm{III}\\
+\{3,4\}   & (8)\ u=x  & (4)\ \mathrm{UI}\\
+\{\}   & (9)\ u=x \supset (Ruy \equiv Rxy) & \mathrm{III}\\
+\{1,3,   & (10)\ Rxy  & (5)(6)\ \mathrm{TF};\\
+\not4\} &  & (7)(8)\ \{4\}\ \mathrm{EIE} \\
+ & & (9)\\
+\{1,3\}   & (11)\ (\forall y)Rxy  & (10)\ \mathrm{UG}\\
+\{1,3\}   & (12)\ (\forall x)(\forall y)Rxy  & (11)\ \mathrm{UG}\\
+\{1,2,3\}   & (13)\ p \wedge \neg p  & (2)(12)\ \mathrm{TF}\\
+\{1,2\}   & (14)\ (\exists x)(\forall y) x = y  \supset
+& \{3\}(13)\ \mathrm{D}\\
+ & (p \wedge \neg p) & \\
+\{1,2\}   & (15)\ \neg (\exists x)(\forall y) x = y  & (14)\ \mathrm{TF}
+\end{array}
+\]
+

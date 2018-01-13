@@ -1,0 +1,37 @@
+\subsection{Graphs}
+Recall that a \emph{graph} is structure that interprets a single dyadic predicate letter ``$L$'' (these are sometimes also called directed graphs to emphasize that the edges have directionality). Unless otherwise stated, we will restrict our attention for the rest of the course to structures that are graphs; this restriction doesn't lose us much (all results we will derive are easily generalizable to structures with arbitrary relations) and it adds much tabgibility. A graph $A$ is \emph{simple} if and only if $L^A$ is both irreflexive and symmetric (ie the edges are undirected, and tehre are no ``self loops'' at any node). We introduced the abbreviation \sg\ for the conjunction of the schemata expressing irreflexivity and symmetry, which we abbreviated as \irr\ and \sym, respectively. For a structure $A$, $A \models \sg$ iff $A$ is a simple graph. 
+
+Note that for any two nodes $a, b$ in a simple graph, there can be \emph{at most one} edge $\langle a, b \rangle$ because the edge relation is a binary relation and hence a set (which disregards multiplicity). In the following definitions, suppose that $A$ is a simple graph with $a \in U^A$ (ie, $a$ is a node in the graph $A$). 
+
+\begin{definition}
+The \emph{neighborhood of $a$ in $A$} is $\nbh{a}{A} := \{b\in U^A\mid \op{a}{b}\in L^A\}$ (the set of all neighbours of $a$, eg the set of all nodes which $a$ is connected to). 
+\end{definition}
+
+\begin{definition}
+The \emph{degree of $a$ in $A$} is $\dg{a}{A} := \card{\{b\in U^A\mid \op{a}{b}\in L^A\}}$ (the number of neighbours of $a$, or equivalently the number of edges incident to $a$).
+\end{definition}
+
+
+\begin{definition}
+A simple graph is \emph{$k$-regular} if and only if all nodes of the graph have degree $k$. We can schematize this condition, using the dyadic predicate $L$ for the edge relation, as
+\[(\forall y)(\exists^{=k}x)Lyx.\]
+\end{definition}
+
+What do the collections of 1-regular and 2-regular simple graphs look like? Every 1-regular graph consists of a set of independent edges, and that a \emph{finite} 2-regular graph consists of a collection of independent simple cycles, that is, graphs that may be drawn in the plane as a disjoint finite collection of disjoint polygons. As well, the doubly-infinite simple chain is also 2-regular (think of the integers, where there is an edge $\langle a, b \rangle$ iff $a = b \pm 1$). Polygons and bi-infinite chains exhaust the possible connected components of 2-regular graphs.
+
+\subsection*{Counting graphs}
+
+Just as we did for truth-functional logic and MQT, we can also count satisfying structures to sentences of PQT. In particular, we will count graphs with a fixed universe of discourse. To that end, we have the following definition. 
+
+\begin{definition}
+We denote the set of simple graphs on $n$ nodes which satisfy a sentence $S$ by $\modn{S}{n}$, eg: \[\modn{S}{n}=\{A\mid A\models S\mbox{ and }U^A=\{1,\ldots,n\}\}.\] 
+\end{definition}
+
+Note that for every structure $A$, $A\models (\forall x)x=x$, thus  $\modn{(\forall x)x=x}{n}$ is the set of all graphs with universe of discourse $\{1,\ldots,n\}$. 
+
+Let's count the number of graphs $A$ with $U^A=\{1,2,3,4\}$ (by the previous comment, this is of course equal to $\card{\modn{(\forall x)x=x}{4}}$). Any such graph is determined by choosing which of the sixteen possible edges from $i$ to $j$ to draw, where $1\leq i\leq 4$ and $1\leq j\leq 4$; that is, a graph with this universe of discourse is determined by 16 binary choices, so, by the product rule, there are $2^{16}$ such graphs. Analogous reasoning leads to the conclusion that there are $2^{n^2}$ graphs with universe of discourse $\{1,\ldots, n\}$ (because there are $n^2$ pairs of nodes, and hence $2^{n^2}$ possible edge-sets). Similarly, since a simple graph with universe of discourse $\{1,\ldots, n\}$ is determined by making a choice from a collection of $\binom{n}{2}$ possible \emph{undirected} edges, there are $2^{\binom{n}{2}}$ simple graphs $A$ with $U^A=\{1,\ldots, n\}$. 
+
+\begin{aside}
+    How many 1-regular simple graphs are there with universe of discourse $\{1,\ldots, n\}$? 
+\end{aside}
+

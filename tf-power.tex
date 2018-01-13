@@ -1,0 +1,102 @@
+\subsection{The Power of a Truth-Functional Schema}
+We will introduce the following useful terminology.
+\begin{definition} 
+For the following, all schemata are drawn from $\mathbb{S}(X)$ for a fixed non-empty finite set of sentence letters $X$.
+\begin{itemize}
+\item 
+A list of truth-functional schemata is \textit{succinct} if and only if no two schemata on the list are equivalent. 
+\item 
+A truth-functional schema \textit{implies a list of schemata} if and only if it implies every schema on the list.
+\item The \textit{power} of a truth-functional schema is the length of a longest succinct list of schemata it implies.  
+\end{itemize}
+\end{definition}
+
+\begin{example}
+    Let's consider $X=\{p,q,r\}$. What is the length of a longest succinct list of truth-functional schemata over $X$? We will arrive at the answer by proving an \emph{upper bound} and a \emph{lower bound} on this length.
+
+    \begin{itemize}
+        \item Upper bound: It is easy to verify that schemata $S$ and $S'$ are equivalent if and only if $\prop{S}{}=\prop{S'}{}$. Hence, the length of a succinct list of schemata cannot exceed the number of propositions over $X$, that is, the number of subsets of the set $\mathbb{A}(X)$. The size of $X$ is 3, so the size of $\mathbb{A}(X)$ is $2^3$, since determining a truth assignment to $X$ involves three binary choices (each letter can be assigned true or false, and you make that choice for each of the three letters). By the same reasoning, the number of propositions over $X$ is $2^{2^3}$, since determining a proposition involves deciding, for each of the $2^3$ truth assignments, whether to include or omit it. Hence, the length of the longest succinct list is no more than $2^{2^3} = 2^8 = 256$.
+
+        \item Lower bound: By Theorem \ref{tflexpcomp-thm}, for every proposition over $X$, there is a schema expressing it. Since schemata expressing distinct propositions are not equivalent, it follows at once that there is a succinct list of schemata of length 256.
+    \end{itemize}
+    So the longest such list is of length 256.
+\end{example}
+
+\begin{example}
+    Let's compute the power, as defined above, of $p\wedge (q\vee r)$. Note that a schema $S$ implies a schema $S'$ if and only if $\prop{S}{}\subseteq\prop{S'}{}$. Thus, the power of $S$ is the number of sets $Z$ satisfying the condition: 
+
+    \begin{equation}\label{z-eq}
+        \prop{S}{}\subseteq Z\subseteq \mathbb{A}(X). 
+    \end{equation}
+
+    The size of $\mfp=\prop{p\wedge (q\vee r)}{}$ is 3, so the size of $\mathbb{A}(X)-\mfp=5$. It follows at once that $2^5 =32$ sets $Z$ satisfy condition (\ref{z-eq}); hence, the power of $p\wedge (q\vee r)$ is 32.
+\end{example}
+
+\begin{aside}
+    Why is it that a schema $S$ implies a schema $S'$ if and only if $\prop{S}{}\subseteq\prop{S'}{}$? Go back to the definition of both $\prop{S}{}$ and schema implication if you need to. 
+
+    Here's a simple way to think about it, once you know the definitions: if $S$ implies $S'$ then there is no truth assignment that satisfies $S$ but does not satisfy $S'$ (otherwise $S$ wouldn't imply $S'$, by the definition of schema implication). Hence everything that is true in $S$ is true in $S'$, or symbolically, $\prop{S}{}\subseteq\prop{S'}{}$. When written that way, it seems really simple!
+
+    Often throughout your study of logic you will see things which, at the surface, look confusing like the statement we just considered. Make sure to always take the time to go back to definitions and understand things in your own words - it'll make logic \emph{much} more satisfying. 
+\end{aside}
+
+\begin{example}
+    Let's list the numbers which are powers of truth-functional schemata over $X=\{p,q,r\}$.
+
+    \begin{itemize}
+        \item First note that for every $S,S'\in\mathbb{S}(X)$ the power of $S$ = the power of $S'$ if and only if $\size{\prop{S}{X}}=\size{\prop{S'}{X}}$, where we use $\size{U}$ to denote the number of members of the finite set $U$. 
+
+        \item In particular, if $\mfp=\prop{S}{X}$, then the power of $S = 2^{(8-|\mathfrak{P}|)}$.
+
+        \item It follows at once that for each $S\in\mathbb{S}(X)$, the power of $S = 2^i$, for some $0\leq i\leq 8$.
+    \end{itemize}  
+\end{example}
+
+Generalizing our last example, suppose $Y$ is a finite set of sentence letters with $\size{Y}=n$. In this case
+\begin{itemize}
+\item $\size{\mathbb{A}(Y)}=2^n$, and 
+\item for each $S\in\mathbb{S}(Y)$, if $\mfp=\prop{S}{Y}$, then the power of $S = 2^{(2^n-|\mathfrak{P}|)}$.
+\end{itemize}
+
+\begin{example}
+    What is the length of a longest succinct list of truth-functional schemata over $X := {p, q, r}$ each of which has power 32?
+
+    \begin{aside}
+        Make sure you have all the relevant definitions in order - what does it mean for the power of a schema to be 32? What does it mean for a list of schemata to be succinct?  
+    \end{aside}
+
+    Well, from the definitions we know that a schema over $X := \{p, q, r\}$ has power 32 if and only if exactly three truth assignments satisfy it (why?). Hence the length of a longest such succinct list is exactly the number of subsets of size three contained in a set of size eight (why a set of size 8, given that we have 3 sentence letters?). In the next section, we'll take a break from logic proper to learn a bit about how we would determine how many such subsets there are. 
+\end{example}
+
+\subsubsection*{A Combinatorial Interlude}
+Our leading question from the end of the last section brings us to an interlude on permutations and combinations: how many ways can we select $k$ members of a set of size $n$? There is an ambiguity here: are we counting modes of selection, which involve the order of choices, or collections of members selected, where the order of selection is irrelevant? Once we recognize the ambiguity, we can proceed to count both. We will need notation for each, so let $\oc{n}{k}$ for the number of ordered sequences of $k$ distinct elements that can be drawn from a set of size $n$  and $\binom{n}{k}$ for the number of subsets of size $k$ that are included in set of size $n$. 
+
+Let's first evaluate $\oc{n}{k}$, the number of ordered sequences of size $k$ you can pick from a set of size $n$. Suppose we think of counting the ways $n$ students could fill a row of length $k$ in a lecture hall. Let's suppose the seats are labelled $1, 2, \ldots, k$. There are $n$ choices for the student to fill seat 1; once that seat is filled, there are $n-1$ choices for the student to fill seat 2; and so on until there are $(n-k)+1$ choices for the student to fill seat $k$. Hence, by the product rule, there are $n\cdot(n-1)\cdots((n-k)+1)$ ways of filling all $k$ seats, that is, $\oc{n}{k}=n\cdot(n-1)\cdots((n-k)+1)$. 
+
+Now that we have counted the number of ordered sequences, we can see how to count the number of subsets. By the same reasoning, each subset of size $k$ appears as the content of $k\cdot(k-1)\cdots2\cdot1$ ordered sequences of length $k$; this number is called $k$ \emph{factorial} and is often abbreviated as $k!$. Hence, 
+\[\binom{n}{k} = \frac{\oc{n}{k}}{k!}.\]  
+Observe that 
+\[\oc{n}{k}=\frac{n!}{(n-k)!}\]
+from which it follows that 
+\[\binom{n}{k} = \frac{n!}{k!\,(n-k)!}.\]
+This last formulation makes transparent a symmetry in the values of $\binom{n}{k}$, namely, for every $k$ between $0$ and $n$, $\binom{n}{k}=\binom{n}{n-k}$. This accords nicely with the observation that complementation induces a one-one correspondence between the subsets of size $k$ and the subsets of size $(n-k)$ that can be selected from a set of size $n$. Note also that it determines in a non-arbitrary way that the value of $0!$ is 1.
+
+\begin{aside}
+    Consider picking a panel of three students from a class of 10. How many ways can you do this? Is it the same as the number of ways you could pick 7 of the 10 students to \emph{not} be on the panel, using the non-picked students for the panel?
+\end{aside}
+
+Let's not forget how this all began. Since the The length of the longest succinct list of schemata with power 32 is number of subsets of size three contained in a set of size eight, it follows that the length of the longest such list is $\binom{8}{3}=56$.
+
+\subsubsection*{Counting the Length of an ``Implicational Anti-Chain''}
+Let's use our newfound ability to count selections to answer a different question: Is there a sequence of seventy schemata $S_1,\ldots,S_{70}\in\mathbb{S}(X)$ such that for every $1\leq i\neq j\leq 70,$ $S_i$ does \emph{not} imply $S_j$? Such a sequence of schemata is called an \emph{implicational anti-chain} (of length 70).
+
+As observed earlier, a schema $S\in\mathbb{S}(X)$ implies a schema $T\in\mathbb{S}(X)$ if and only if $\prop{S}{X}\subseteq\prop{T}{X}$. It follows that the answer to our question about an implicational anti-chain of length seventy will be the same as the answer to the following question about an anti-chain of length seventy with respect to the subset relation: Is there a list of seventy subsets of $\mathbb{A}(X)$, $P_1,\ldots,P_n$, such that for every $1\leq i\neq j\leq 70,$ $P_i$ is \emph{not} a subset of $P_j$? Note that if two finite sets, $P$ and $Q$, have the same number of members, and $P$ is not equal to $Q$, then $P$ is not a subset of $Q$ and $Q$ is not a subset of $P$. Therefore, if there are seventy distinct subsets of $\mathbb{A}(X)$ all of the same size, then the answer to our question is yes. Since $\mathbb{A}(X)$ has eight members, a positive answer to our question followed immediately by evaluating 
+\[
+\binom{8}{4}= \frac{8\cdot7\cdot6\cdot5}{4\cdot3\cdot2\cdot1}=70.
+\] 
+
+\begin{aside}
+    Prove that if two finite sets, $P$ and $Q$, have the same number of members, and $P$ is not equal to $Q$, then $P$ is not a subset of $Q$ and $Q$ is not a subset of $P$.
+\end{aside}
+
+Note that our argument merely shows that there is an implicational anti-chain of length 70; it does not establish that there is no longer implicational anti-chain consisting of schemata in $\mathbb{S}(X)$. This is, indeed, true, but a more sophisticated argument is required to establish this result, which follows from the famous Sperner's Theorem. For a reference on Sperner's Theorem, see\footnote{Van Lint and Wilson, \emph{A course in combinatorics}, Chapter 6: Dilworth's theorem and extremal set theory.}. 

@@ -1,0 +1,45 @@
+\subsection{Counting Satisfying Structures}
+
+Let's consider the problem of how to count the number of structures with a fixed universe of discourse that satisfy a given schema. For example, how many structures with universe of discourse $U=\{1,2,3,4,5,6\}$ interpreting the monadic predicate letters $F$ and $G$ satisfy the schema 
+\[S:\ \ \ (\forall x)(Fx\supset Gx).\] 
+
+\begin{aside}
+    From now on, we will use the notation $[n] := \{1,2,...n\}$
+\end{aside}
+
+We observed that a structure $A$ satisfies $S$ if and only if $F^A\subseteq G^A$. So we need to determine the number, call it $n$, of pairs of subsets $Y,Z$ of $U$ with $Y\subseteq Z$. The idea then is to count all the possible sets which $Z$ could be (there are $\sum_{i = 0}^6\binom{6}{i}$ of these) and multiply by every set which $Y$ could be, given $Z$ (if $Z$ is of size $i$, there are $2^i$ subsets of $Z$, so there are $2^i$ possibilities for $Y$). So, by using what we learned earlier about binomial coefficients, we see that 
+
+\begin{align*}
+    n& = \sum_{i = 0}^{i = 6}\binom{6}{i}2^i \\
+    & = \sum_{i = 0}^{i = 6}\binom{6}{i}2^i\cdot 1^{6-i}\\
+    &= (2 + 1)^6 \\
+    &= 3^6
+\end{align*}
+
+The next to last equality is justified by the celebrated \emph{Binomial Theorem}. For those of us with no taste for binomial coefficients, we move on to develop some theory which will give us a much simpler and direct combinatorial argument for the conclusion that $n= 3^6$.
+
+
+\subsubsection*{Element Types}
+
+Consider the following four one variable open schemata; we will call them (element) types.
+\begin{itemize}
+\item $T_1(x): Fx \wedge Gx$
+\item $T_2(x): Fx \wedge \neg Gx$
+\item $T_3(x): \neg Fx\wedge Gx$
+\item $T_4(x): \neg Fx\wedge \neg Gx$
+\end{itemize}
+Note that a structure $A$ satisfies the schema $S$ if and only if it contains no element satisfying the type $T_2$. Since a structure is determined by the type of each of its elements, there are as many structures with universe $U$ satisfying $S$ as there are ways of sorting the members of $U$ into the three remaining types. For each of the six members of $U$, there are three types into which it could be sorted, so by the product rule, the number of structures satisfying $S$ is $3^6$.
+
+
+\subsubsection*{Counting Counterexamples to an Alleged Implication}
+If $R$ and $R^*$ are monadic schemata we say that a structure $A$ is a \emph{counterexample} to the claim that $R$ implies $R^*$ if and only if $A\models R$ and $A\not\models R^*$.
+
+\begin{aside}
+    Note that $R$ implies $R^*$ iff the number of counterexamples as defined above is zero.
+\end{aside}
+
+Let's continue with the preceding example and counted the number of counterexamples to the claim that the schema $S$ implies the schema
+
+\[T:\ \ \ \ (\forall x)(Gx\supset Fx).\]
+
+Again, let's suppose that our structures have universe of discourse $U$ and interpret exactly the monadic predicate letters $F$ and $G$. If a structure $A$ satisfies both $S$ and $T$, then $F^A=G^A$. Hence, of the $3^6$ structures satisfying $S$, the number that also satisfy $T$ is $2^6$. So the number of counterexamples to the claim that $S$ implies $T$ (ie, structures which satisfy $S$ but not $T$) is $3^6 - 2^6$.  

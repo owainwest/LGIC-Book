@@ -1,0 +1,139 @@
+\subsection{Review}
+\begin{mdframed}[linewidth=1]
+\section*{Concept Review}
+\textbf{Definitions}
+\begin{itemize}
+    \item A truth-assignment $A$ for $X$ is a function which maps every sentence letter $q \in X$ to either $\top$ or $\bot$. $A(q)$ is the notation for the value $A$ associates with $q$.
+
+    \item A schema $S$ \emph{implies} a schema $T$ iff for all truth-assignments $A$, if $A \models S$ then $A \models T$.
+    
+    \item A schema $S$ is \emph{equivalent} to a schema $T$ iff $S$ and $T$ are satisfied by exactly the same truth assignments (for all $A$, $A \models S$ iff $A \models T$). 
+    
+    \item $S$ is \emph{satisfiable} iff there is a truth assignment that satisfies it (there exists an $A$ such that $A \models S$)
+    
+    \item $S$ is \emph{valid} iff all truth assignments satisfy it (for all $A$, $A \models S$)
+\end{itemize}
+
+\textbf{Syntax, Semantics}
+The \emph{syntax} of TF-logic is given by the rules for forming truth-functional schemata from sentence letters and connectives. The \emph{semantics} of TF-logic are given by a \emph{truth-assignment}, which associates with each letter a \emph{truth-value}.
+
+\textbf{Satisfying Sentences}
+The \emph{truth-values} of the individual sentence letters in a schema are propagated to the whole schema by means of \emph{truth-tables} which give fixed semantic interpretations to each of the \emph{connectives}. We say that a truth-assignment $A$ \emph{satisfies} a sentence $S$ (written $A \models S$) iff the sentence $S$ evaluates to $\top$ under the truth-assignment $A$. Otherwise, we write $A \not \models S$ and say that $A$ does not satisfy $S$. 
+ 
+\end{mdframed}
+
+\newpage
+\begin{mdframed}[linewidth=1]
+\section*{Problems}
+\begin{enumerate}
+    \item Is ``the University of Pennsylvania has a Logic major'' a statement? Why or why not? 
+
+    \item Is ``should I major in Logic?'' a statement? Why or why not?
+
+    \item Using the sentence letters $p_{ij}$, $q \leq i, j \leq 4$ to stand for ``person $i$ loves person $j$''. Schematize the following statements:
+    \begin{enumerate}
+        \item Person 1 loves everyone else.
+
+        \item There is a Shakespearean love triangle (\emph{i.e.}, no one has their love requited) between people 1, 2, 3, and person 4 is a Scrooge (he does not love anyone, even himself). 
+
+        \item Everyone loves, exclusively, people with numbers lower than themselves. 
+    \end{enumerate}
+
+    \item How many truth-assignments to the given letters satisfy the following schema?
+    \[
+        (p_1 \supset q_1) \land ... \land (p_5 \supset q_5)
+    \]
+
+    \item How many truth-assignments to the set of sentence letters $X_n=
+    \{p_1,q_1,\ldots,p_n,q_n\}$ satisfy the following schema $S_n$? Express your answer as a function of $n$ and prove that it is correct by mathematical induction. 
+    \[
+      (p_1 \supset q_1) \land ... \land (p_n \supset q_n)  
+    \]
+
+    \item How many truth-assignments over the given letters satisfy the following schema?
+    \[
+        p_1 \oplus p_2 \oplus p_3 \oplus p_4 \oplus p_5
+    \]
+
+     \item Is the following sentence valid, satisfiable but not valid, or unsatisfiable?
+    \[
+        (a \equiv b) \supset (a \vee \lnot b)
+    \]
+
+    \item Valid, satisfiable, or unsatisfiable?
+    \[
+        (b \vee (b \supset a)) \land (\lnot b \vee (a \supset b))
+    \]
+
+    \item Valid, satisfiable, or unsatisfiable?
+    \[
+        (a \equiv b) \land (b \equiv c) \land (a \oplus b)
+    \]
+
+    \item How many truth-assignments for the given letters satisfy 
+    \[
+         (a \equiv b) \land (b \equiv c) \land (c \equiv d)
+     \] 
+
+     \item How many truth-assignments to the given letters satisfy
+    \[
+        (a \oplus b) \vee (b \oplus c) \vee (c \oplus d)
+    \]
+
+    \item I claim that if $n$ people all shake hands with each other (once per pair), the total number of handshakes is $\frac{n(n-1)}{2}$. Prove this by induction. 
+\end{enumerate}
+\end{mdframed}
+\newpage
+\begin{mdframed}[linewidth=1]
+\section*{Solutions}
+\begin{enumerate}
+    \item Yes, it is.\footnote{Although, one might insist that there remains an element of context dependence owing to an ambiguity in the proper name ``University of Pennsylvania'' - those in Indiana County, Pennsylvania might well use it to refer to a different institution. This observation invites reflection upon the intriguing question whether (virtually) all sentences of ordinary language are to some extent context dependent (at least without non-ordinary supplementation).}  
+
+    \item No, it is not. It is not a statement because it expresses a question, which is not determinitely true or false. 
+
+    With that being said, you should - of course - major in logic\footnote{Provided you like it and want to.}.
+
+    \item 
+    \begin{enumerate}
+        \item $p_{11} \land p_{12} \land p_{13} \land p_{14}$
+
+        \item $((p_{12} \land p_{23} \land p_{31}) \vee (p_{13} \land p_{21} \land p_{32})) \land \lnot(p_{41} \vee p_{42} \vee p_{43} \vee p_{44})$
+
+        \item $p_{21} \land p_{31} \land p_{32} \land p_{41} \land p_{42} \land p_{43}$
+    \end{enumerate}
+
+    \item $3^5$. Note that each of the terms of the form $p_i \supset q_i$ is satisfied in three cases (check the truth table) and apply the product rule. 
+
+    \item $3^n$ for $n \geq 1$. 
+
+    BASE CASE: Verify, via the truth table for the material conditional, that three of the four truth assignments to $X_1=\{p_1,q_1\}$ satisfy the schema $S_1$. 
+
+    INDUCTION STEP: Suppose that $3^n$ of the  $4^n$ truth-assignments to $X_n$ satisfy $S_n$:
+    \[ 
+    (p_1 \supset q_1) \land ... \land (p_n \supset q_n). 
+    \]
+    Let $A$ be one such truth-assignment. Verify, using the truth-table for the material conditional, that $A$ may be extended to exactly  three distinct truth-assignments to the sentence letters $X_{n+1}$ each of which satisfies $S_{n+1}$. It follows that   there are $3\cdot3^n=3^{n + 1}$ truth-assignments to the sentences letters $X_{n+1}$ that satisfy $S_{n + 1}$: 
+    \[ 
+    (p_1 \supset q_1) \land ... \land (p_n \supset q_n) 
+    \land (p_{n + 1} \supset q_{n + 1}). 
+    \] 
+    %Note that there are $3$ satisfying assignments to $S$ and $s_{n + 1}$ which satisfy $S \oplus s_{n + 1}$. By hypothesis there are $3^n$ truth assignments satisfying $(p_1 \supset q_1) \land ... \land (p_n \supset q_n) = S_n$. By the product rule then, there are $3^n \cdot 3 = 3^{n + 1}$ total satisfying assignments to $S_n \land s_{n + 1}$ as required. 
+
+    \item $2^4 = 16$. Remember that there are $2^{n-1}$ ways to pick an odd-sized subset from $n$ elements and that a sentence of the given form is satisfied iff an odd number of sentence letters are set to true. 
+
+    \item This is valid. Suppose $A$ is a truth-assignment to the sentence letters $a$ and $b$. Note that if $A(a \equiv b)=\bot$, then $A$ satisfies the given schema. So suppose $A(a \equiv b)=\top$. Then $A(a)=A(b)$, hence either $A(a)=\top$ or $A(b)=\bot$. Thus $A(a \vee \lnot b)=\top$. %holds (since one of $a$ or $\lnot b$ must be true, hence the consequent is true, hence the conditional is true). If $a$ is not equivalent to $b$, then the conditional holds because false implies anything. 
+
+    \item Valid. Suppose $A$ is a truth-assignment to the sentence letters $a$ and $b$. If $A(b)=\top$, then $A$ clearly satisfies the left conjunct. If $A(b)=\bot$, then $A(b \supset a)=\top$, hence $A$ satisfies the left conjunct  as well. Similarly, if $A(b)=\top$, then $A$ satisfies the right conjunct, and if $A(b)=\bot$, then $A(\lnot b)=\top$, hence again $A$ satisfies the right conjunct. 
+
+    \item Unsatisfiable. Suppose $A$ is a truth-assignment to the sentence letters $a,b$ and $c$ and $A$ satisfies both $a\equiv b$  and $b\equiv c$. It follows that $A$ satisfies $a\equiv c$ (in other words, $\equiv$ is \emph{transitive}). But then $A$ does not satisfy $a \oplus c$, since this is truth-functionally equivalent to $\lnot (a\equiv c)$. So the schema is unsatisfiable. 
+
+    \item 2. Picking true/false for $a$ fixes the truth-values of the remaining letters. 
+
+    \item 14. To get this answer, we note that there are 16 ($2^4$) truth-assignments in total; count the number which do not satisfy our sentence, and subtract that number from 16. The sentence is only not satisfied when each of $a, b, c, d$ have the same truth-value, so there are 2 non-satisfying truth-assignments. This means there are $16 - 2 = 14$ satisfying truth assignments. 
+
+    \item BASE CASE: $n = 2$. Two people shaking hands results in one handshake, and the formula gives us $\frac{2(2-1)}{2} = 1$ which is correct. Note that we pick $n = 2$ as the base case (not $n = 0$ or $n = 1$) because it doesn't really make sense to talk about those cases (since you need two people for a handshake). 
+
+    INDUCTIVE CASE: Assume that for $n$ people, the number of handshakes (let's denote it $H_n$) is $H_n = \frac{n(n-1)}{2}$. We want to show (henceforth ``wts'') that for $n + 1$ people the number of handshakes is $H_{n+1} = \frac{(n+1)n}{2}$. The number of handshakes between $n + 1$ people is clearly the number of handshakes for $n$ people ($H_n$) plus $n$, since our new person must shake hands with the $n$ others. So we have $H_{n+1} = H_n + n = \frac{n(n-1)}{2} + n = \frac{n^2 - n + 2n}{2} = \frac{n^2 + n}{2} = \frac{(n+1)n}{2}$, which is what we wanted to show. 
+
+\end{enumerate}
+\end{mdframed}

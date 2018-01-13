@@ -1,0 +1,135 @@
+\subsection{Introduction}
+
+It's now time to begin out systematic treatment of truth-functional logic.
+
+Throughout the course we will see a few different systems for formalizing statements. Each consists of a formal language to represent statements, and a way to interpret the meaning of statements in that language. Truth-functional logic is the simplest of these systems we will learn. 
+
+
+\subsection{Components of Truth Functional Logic}
+
+\begin{enumerate}
+    \item Language (the \emph{Syntax})
+    \begin{enumerate}
+        \item sentence letters
+        \item connectives
+    \end{enumerate}
+    \item Interpretation (the \emph{Semantica})
+    \begin{enumerate}
+        \item A function that assigns $\top$ or $\bot$ (true or false) to each sentence letter, called a \textbf{truth-assignment}
+        \item Fixed \textbf{truth-functional semantics} for each connective
+    \end{enumerate}
+\end{enumerate}
+
+\textbf{Sentence letters} such as $p, q, r, \ldots$ schematize statements (in natural language) which are true or false, and \textbf{connectives} such as $\wedge, \vee, \neg, \supset, \ldots$ are used to combine sentence letters into compound schemata. 
+
+\begin{aside}
+For example, we might say that $p$ represents the statement ``it is a Wednesday''. This would be reasonable, since it's definitely either true or false that today is Wednesday. On the other hand, ``is today Wednesday?'' isn't a statement, so we wouldn't encode it as a sentence letter. Truth-functional logic deals with the truth or falsity of \emph{statements} only. 
+\end{aside}
+
+\subsection{Definitions of some truth-functional connectives}
+Consider using the sentence letter $p_{ij}$ to schematize the statement ``$i$ loves $j$,'' where $1\leq i,j,\leq 4$. For example, $p_{11}$ schematizes the statement ``1 loves 1'', or briefly, ``1 is a narcissist.'' 
+
+Suppose we wish to schematize the following statements using those sentence letters: 
+
+\begin{enumerate}
+\item all of 1, 2, 3, and 4 are narcissists;\label{allnar}
+\item none of 1, 2, 3, and 4 are narcissists;\label{nonar}
+\item at least one of 1, 2, 3, and 4 is a narcissist;\label{onenar}
+\item an odd number of 1, 2, 3, and 4 are narcissists.\label{oddnar}
+%\item if 1 is a narcissist, then at least two of 1, 2, 3, and 4 are narcissists.
+\end{enumerate} 
+
+In order to do so, we introduce the following truth-functional connectives. For each connective, we display its truth-functional interpretation via a table indicating the truth value of the compound schema as a function of the truth values of its components.
+\begin{itemize}
+\item Conjunction (and):
+\[
+\begin{array}{|l|l|c|} \hline
+p   & q  &  (p \wedge q)   \\ \hline
+\top & \top & \top  \\
+\top & \bot & \bot  \\
+\bot & \top & \bot  \\
+\bot & \bot & \bot \\
+\hline
+\end{array}
+\]
+\item Negation (not):
+\[
+\begin{array}{|l|c|} \hline
+p   &  \neg p    \\ \hline
+\top & \bot  \\
+\bot & \top  \\
+\hline
+\end{array}
+\]
+\item Inclusive Disjunction (or)
+\[
+\begin{array}{|l|l|c|} \hline
+p   & q  &  (p \vee q)   \\ \hline
+\top & \top & \top  \\
+\top & \bot & \top  \\
+\bot & \top & \top  \\   
+\bot & \bot & \bot \\
+\hline
+\end{array}
+\]
+
+\item Exclusive Disjunction (exclusive or, xor)
+\[
+\begin{array}{|l|l|c|} \hline
+p   & q  &  (p \oplus q)   \\ \hline
+\top & \top & \bot  \\
+\top & \bot & \top  \\
+\bot & \top & \top  \\
+\bot & \bot & \bot  \\
+\hline
+\end{array}
+\]
+
+
+Note that the truth/falsity of a compound schema is completely determined by, or purely a function of, the truth/falsity of its components. Hence, the term ``truth-functional logic.''
+
+\end{itemize}
+We can now schematize conditions \ref{allnar} -- \ref{oddnar} in the above example as follows.
+
+\begin{enumerate}
+\item[S1:] $((p_{11}\wedge p_{22})\wedge p_{33})\wedge p_{44}$\label{sallnar}
+\item[S2:] $((\neg p_{11}\wedge\neg p_{22})\wedge\neg p_{33})\wedge\neg p_{44}$\label{snonar}
+\item[S3:] $((p_{11}\vee p_{22})\vee p_{33})\vee p_{44}$\label{sonenar}
+\item[S4:] $((p_{11}\oplus p_{22})\oplus p_{33})\oplus p_{44}$\label{sevennar}
+\end{enumerate}
+
+The first three are quite straightforward to verify; the fourth we will prove later in Proposition \ref{parity-prop}. 
+
+
+\subsection{Truth assignments}
+
+Given a truth-functional schema like $((p \wedge q) \vee r)$, we cannot determine whether the schema is true or false unless we know whether $p$, $q$, and $r$ are true or false. That is, any schema requires a truth-assignment to its sentence letters before it can be evaluated. 
+
+\begin{definition}[Truth-assignment]
+Let $X$ be a set of sentence letters. A truth-assignment $A$ for $X$ is a mapping which associates with each sentence letter $q\in X$ one of the two truth values $\top$ or $\bot$; we write $A(q)$ for the value that $A$ associates to $q$. 
+
+Suppose $S$ is a truth-functional schema such that every sentence letter with an occurrence in $S$ is a member of $X$. We say a truth assignment $A$ for $X$ satisfies such a schema $S$ ($A\models S$) if and only if $S$ receives the value $\top$ relative to the truth assignment $A$. 
+\end{definition}
+
+\begin{example}
+Take the schema $S = ((p \wedge q) \vee r)$, with truth assignment $A$ such that $A(p) = \top$, $A(q) = \bot$, and $A(r) = \bot$, we have that $S$ receives the value $\bot$. In other words $A$ does not satisfy $S$. ($A \not \models S$).
+\end{example}
+
+
+\subsection{An Inductive Proof}
+\begin{proposition}\label{parity-prop}
+For every $n\geq 2$ and every set $X=\{q_1,\ldots,q_n\}$ of $n$ distinct sentence letters, a truth assignment $A$ for $X$ satisfies the schema
+\[S_n: (\ldots(q_1\oplus q_2)\ldots\oplus q_n)\]
+if and only if $A$ assigns an odd number of the sentence letters in $X$ the value $\top$.
+\end{proposition}
+\emph{Proof}: We proved the proposition by induction on $n$. 
+\begin{itemize}
+\item Basis: Examination of the truth table for $\oplus$ suffices to establish the proposition for the case $n=2$.
+\item Induction Step: Suppose the proposition holds for a number $k\geq 2$, that is, 
+for every truth assignment $A$ for $\{q_1,\ldots,q_k\}$, $A\models S_k$ if and only if $A$ assigns an odd number of the sentence letters in $\{q_1,\ldots,q_k\}$ the value $\top$; this is our induction hypothesis.
+We proceed to show that the proposition also holds for $k+1$. Let $A'$ be an assignment to the sentence letters 
+$\{q_1,\ldots,q_{k+1}\}$ and let $A$ be its restriction to $\{q_1,\ldots,q_k\}$. We consider two cases. First, suppose that $A'(q_{k+1}) = \top$. In this case, $A'\models S_{k+1}$ if and only if $A\not\models S_k$ if and only if (by our induction hypothesis) $A$ assigns an even number of the sentence letters $\{q_1,\ldots,q_k\}$ the value $\top$. Hence, if $A'(q_{k+1}) = \top$, then $A'\models S_{k+1}$ if and only if $A'$ assigns an odd number of the sentence letters in $\{q_1,\ldots,q_{k+1}\}$ the value $\top$. On the other hand, suppose that $A'(q_{k+1}) = \bot$. In this case, $A'\models S_{k+1}$ if and only if $A\models S_k$ if and only if (by our induction hypothesis) $A$ assigns an odd number of the sentence letters $\{q_1,\ldots,q_k\}$ the value $\top$. Hence, if $A'(q_{k+1}) = \bot$, then $A'\models S_{k+1}$ if and only if $A'$ assigns an odd number of the sentence letters in $\{q_1,\ldots,q_{k+1}\}$ the value $\top$. This concludes the proof, since either $A'(q_{k+1}) = \top$ or $A'(q_{k+1}) = \bot$. 
+
+\end{itemize}
+
+%\end{document}

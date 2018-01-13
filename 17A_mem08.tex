@@ -1,0 +1,105 @@
+\subsection{Homomorphisms and monadic similarity: the central lemma}
+
+The next lemma provides a useful sufficient condition for monadic similarity.
+\begin{lemma}\label{hom-lem}
+Let $A$ and $B$ be structures. If there is a homomorphism from $A$
+onto $B$, then $A$ is monadically similar to $B.$ 
+\end{lemma}
+\emph{Proof}:
+Let $A$ and $B$ be structures and suppose that $h$ is a homomorphism of $A$
+onto $B.$ It suffices to show that for every simple monadic schema $S,$
+\[A\models S\ \ \mbox{if and only if}\ \ B\models S,\]
+since every pure monadic schema is a truth-functional compound of simple
+monadic schemata.
+
+We begin by observing that for every $c \in U^A$ and every one variable open
+schema $S,$ $A$ makes $S$ true with respect to the assignment of $c$ to
+``$x,$''
+ if and only if $B$ makes $S$ true with respect to the assignment of
+$h(c)$ to ``$x.$'' This follows immediately from the fact that $h$ is a
+homomorphism.
+
+Consider the simple schema $S$ and suppose that $S$ is the existential
+quantification of the the one variable open schema $T$ (the case of universal
+quantification is treated similarly).
+Suppose $A \models S.$ Then, for some $c \in U^A$,
+$A$ makes $T$ true with respect to the assignment of $c$ to
+``$x.$'' It follows that $B$ makes $T$ true with respect to the assignment of $h(c)$
+to ``$x.$'' Hence, $B \models S.$
+
+Conversely, suppose $B \models S.$
+Then, for some $c \in U^B$,
+$B$ makes $T$ true with respect to the assignment of $c$ to
+``$x.$'' Since $h$ is surjective, there is a $d \in U^A$ with $h(d) = c.$
+It follows at once that $A$ makes $T$ true with respect to the assignment of
+$d$ to ``$x.$'' Hence, $A \models S.$ \qed
+\subsection{Types and monadic similarity}
+
+We recall our discussion of element types:
+\begin{itemize}
+\item $T_1(x): Fx\wedge Gx$
+\item $T_2(x): Fx\wedge \neg Gx$
+\item $T_3(x): \neg Fx\wedge Gx$
+\item $T_4(x): \neg Fx\wedge \neg Gx$
+\end{itemize}
+We say that a structure {\em realizes} a given type $T_i$ just in case it
+makes the existential simple schema $(\exists x)T_i$ true.
+\begin{example}\label{kinds-ex}
+The following structure realizes all four of the types listed above.
+\[A: U^A = \{1,2,3,4\}, F^A =\{1,3\}, G^A=\{1,2\}\]
+Moreover, the 14 proper substructures of $A$ realize exactly the fourteen
+proper nonempty subsets of the types listed above.
+\end{example}
+Lemma \ref{hom-lem} yields a useful necessary and sufficient condition for monadic similarity. 
+\begin{lemma}\label{types-lem}
+$A$ and $B$ realize the same types if and only if they are
+monadically similar.
+\end{lemma} 
+\emph{Proof}:
+If $A$ and $B$ realize the same types, then there is a single
+structure $C$ which is a surjective homomorphic image of both $A$ and $B.$
+Therefore, by our earlier result, $A$ is monadically similar to $C$ and $B$ is
+monadically similar to $C.$ It follows at once that $A$ is monadically similar
+to $B.$ The reverse implication follows immediately from the fact realization of a type is expressed by a pure monadic schema. \qed
+\subsection{The small model theorem and the decidability of satisfiability}
+
+Theorem \ref{smm-thm} is an immediate corollary to Lemma \ref{types-lem}.
+
+\emph{Proof}(of Theorem \ref{smm-thm}):
+It follows at once from Lemma \ref{types-lem} and Example \ref{kinds-ex}, that there is a collection $X$ of 15 structures each of size $\leq 4$
+such that for any pure monadic schema $S$ involving only the predicate letters
+``$F$'' and ``$G$,'' if $S$ is satisfiable, then there is a structure $A \in X$
+such that $A \models S.$ 
+More generally, there is a collection $X$ of $2^{(2^n)}-1$ structures each of size $\leq 2^n$
+such that for any pure monadic schema $S$ involving only the predicate letters
+``$F_1,$''$\ldots$ ``$F_n,$'' if $S$ is satisfiable, then there is a structure $A \in X$
+such that $A \models S.$ \qed
+\begin{corollary}
+There is a decision procedure to determine whether a pure
+monadic schema is satisfiable.
+\end{corollary}
+\subsection{The small model theorem and the decidability of satisfiability: an elaboration}
+
+We elaborated the proof of the Small Model Theorem. Again, we focused on the case of schemata involving only the monadic predicate letters $F$ and $G$. We drew pictures, in ``Types View'', of 15 structures $A_1,\ldots,A_{15}$ each with universe of discourse included in $\{1,2,3,4\}$ and no two with the same universe of discourse.  Recall the element types:
+\begin{itemize}
+\item $T_1(x): Fx\wedge Gx$
+\item $T_2(x): Fx\wedge \neg Gx$
+\item $T_3(x): \neg Fx\wedge Gx$
+\item $T_4(x): \neg Fx\wedge \neg Gx$
+\end{itemize}
+We constructed the structures $A_i$ by letting $j$ realize the type $T_j(x)$ for each $j\in U^{A_i}$. Let $A$ be an arbitrary structure. It is clear from our construction that there is an $i$ such that $A_i$ realizes exactly the same types as $A$. Moreover, since $A_i$ has exactly one element realizing any type that it realizes, $A_i$ is a surjective homomorphic image of $A$. It follows at once from the result of our last class that $A$ is monadically similar to $A_i$, that is, they satisfy exactly the same set of pure monadic schemata. Having thus concluded the proof, we turned to deriving a list of useful corollaries.
+\begin{corollary}\label{monad-cor}
+\begin{enumerate}
+\item
+For every schema $S$, if $S$ is satisfiable, then there is an $1\leq i\leq 15$ such that $A_i\models S$. 
+\item
+There is an algorithmic decision procedure to determine whether a schema $S$ is satisfiable.
+\item\label{imp-item}
+Schema $S$ implies schema $T$  if and only if 
+\[\{i\mid A_i\models S\ \mbox{and}\ 1\leq i\leq 15\}\subseteq\{i\mid A_i\models T\ \mbox{and}\ 1\leq i\leq 15\}.\]
+\item\label{equiv-item}
+Schemata $S$ and $T$ are equivalent if and only if 
+\[\{i\mid A_i\models S\ \mbox{and}\ 1\leq i\leq 15\}=\{i\mid A_i\models T\ \mbox{and}\ 1\leq i\leq 15\}.\]
+\end{enumerate}
+\end{corollary}
+

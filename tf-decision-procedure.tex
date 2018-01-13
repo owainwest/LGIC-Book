@@ -1,0 +1,11 @@
+\subsection{Is There An Efficient Decision Procedure For Truth-Functional Logic?}
+
+It is easy to see that the finitary character of the semantics for truth-functional logic immediately yields an algorithm to decide the satisfiability of schemata of truth-functional logic. In particular, suppose $S\in\mathbb{S}(X)$ for some finite set of sentence letters $X$. Note first that for each truth-assignment $A\in\mathbb{A}(X)$ there is a simple and efficient algorithm, call it $M$, to determine whether $A \models S$. Thus, in order to test the satisfiability of $S$, we need only list $\mathbb{A}(X)$ in some canonical order $A_1,\ldots, A_{2^{|X|}}$ and use $M$ to test whether the successive $A_i$ satisfy $S$. 
+
+\begin{aside}
+    Come up with an algorithm for checking whether $A \models S$ for $A\in\mathbb{A}(X)$ and analyze its runtime complexity as a function of the length (in terms of the number of connectives) of $S$. 
+\end{aside}
+
+Of course, this algorithm is not efficient, in the sense that it's running time is potentially exponential in the length of its input. The question whether there is an efficient algorithm to decide the satisfiability of truth-functional schemata, called the $P = NP$ problem, is generally regarded as one of the most significant open mathematical problems of our time, and carries with it a \$1,000,000 prize for its solution as well as eternal mathematical glory. For further information visit: 
+
+\verb|http://www.claymath.org/millennium-problems/p-vs-np-problem|.

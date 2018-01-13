@@ -1,0 +1,69 @@
+\subsection{Syntax}
+
+\subsubsection*{Open Sentences}
+Consider again the argument that ``Lassie is a collie, and all collies are mortal. \emph{Therefore} Lassie is mortal''. Intuitively, the validity of this argument does not depend on the particular name ``Lassie'' being used; it would be equally valid with any name in place of ``Lassie.'' 
+
+We can achieve this kind of generality by the use of variables in place of particular names. We will form new expressions called \emph{ open sentences} by putting variables $x,y,z,\dots$ for the placeholders in monadic predicates. For example, ``$x$ is a collie'' is an open sentence.
+
+Open sentences are not statements. They are true or false with respect to assignments of values to the variables they contain. For example, the open sentence ``$x$ is an even number'' is true with respect to the assignment $x := 16$ and false with respect to the assignment of $x := 17$. This gives a good justification of why we use the word ``open'' - ie, the truth of the sentence is an ``open question'' in absence of information about $x$. We use the notation $S[x|a]$ to denote the sentence resulting from the the substitution of the constant $a$ for all free occurrences of the variable $x$ in the sentence $S$. 
+
+We may, of course, form compounds of open sentences using truth-functional connectives. For example, the following open sentences are truth-functionally complex.
+\begin{itemize}
+\item $\frac{x}{6} = 0 \supset \frac{x}{3} = 0$.
+\item $x$ is a collie and $x$ weighs less than 300 kg. 
+\end{itemize}
+We may use our prior understanding of the truth-functional connectives to determine the truth-values of such open sentences with respect to particular assignments of values to their variables.  
+
+
+
+\subsubsection*{The Existential Quantifier}
+Consider the statement that ``there is a prime number''. How would we express this? Supposing we had a sentence $P(x)$ which says that $x$ is prime, we would want to say something along the lines of ``there is an $x$ such that $P(x)$''\footnote{Note that $P(x)$ is an open sentence.}. In order to do this, we introduce the existential quantifier $\exists$. Our sentence, ``there exists an $x$ such that $P(x)$'' can then be written as 
+\[
+    (\exists x)(P(x))
+\]
+We say that the quantifier here \emph{binds} $x$. In general, a quantifier $Qx$ binds every instance of $x$ in the outermost parentheses following it. 
+
+Note that $(\exists x)(P(x))$ has a truth-value, without any assignment to $x$. This is because every variable in the sentence is \emph{bound} by a quantifier, and so no assignments need to be made. 
+We call a sentence in which every variable is bound a \emph{closed} sentence. 
+
+\begin{aside}
+    In the sentence $(\exists x)(F(x)) \land x > 3$, the first occurrence of $x$ is bound, whereas the second is not. As such, the two instances of $x$ \emph{may refer to different elements of our universe}. In other words, the sentence is equivalent to $(\exists x)(F(x)) \land y > 3$, which makes it clear that the sentence is still open (since it needs an assignment to $y$ to have a truth-value). 
+\end{aside}
+
+Note that a variable may have both free and bound occurrences within a single sentence:
+\begin{itemize}
+\item $(\exists x)$($x$ is an even number) $\wedge$ ($x$ is a prime number); \end{itemize}
+and may have occurrences bound by distinct quantifiers: 
+\begin{itemize}
+\item $(\exists x)$($x$ is an even number) $\wedge$ $(\exists x)$($x$ is a prime number).
+\end{itemize} 
+
+
+\subsubsection*{The Universal Quantifier}
+Let's now consider the universal quantifier, which allows us to say that a property holds of ``everything''. For example, we can render the statement
+\begin{itemize}
+\item all numbers are even or odd
+\end{itemize}
+as
+\begin{itemize}
+\item $(\forall x)$ [($x$ is an even number) or ($x$ is an odd number)].
+\end{itemize}
+The last statement is true iff for any integer assignment to $x$, the open statement within the square brackets is satisfied. In other words, the statement is true for any integer substution for $x$. Given this interpretation, we are justified in reading the above sentence as ``for all $x$, $x$ is even or $x$ is odd''. 
+
+Note that context determines our \emph{universe of discourse} - when we say ``all numbers'' in this context, we intend that the variable of quantification range over all integers and not, for example, all complex numbers.
+
+
+\subsubsection*{Monadic Schemata}
+As we did in the case of truth-functional logic, we will introduce a schematic language for monadic quantificational logic. We specify the following categories of monadic schemata.
+\begin{itemize}
+\item 
+A \emph{ one variable open schema} is a truth functional compound of expressions
+such as \\
+$Fx , Gx , Hx , \ldots .$
+\item
+A \emph{ simple monadic schema} is the existential or universal quantification of
+a one variable open schema with variable of quantification $x.$
+\item
+A \emph{ pure monadic schema} is a truth functional compound of simple monadic
+schemata. 
+\end{itemize}

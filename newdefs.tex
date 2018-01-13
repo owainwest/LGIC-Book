@@ -1,0 +1,257 @@
+\iffalse
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\fi
+% \newtheorem{example}{Example}
+%\newcommand{\card}[1]{\mbox{$\mathsf{card}(#1)$}}
+\newtheorem{example}{Example}
+\newtheorem{question}{Question}
+\newtheorem{principle}{Principle}
+\newtheorem{discussion}{Discussion}
+%\newtheorem{dispar}{}%[equation*]{}
+\newcommand{\bd}[1]{\mbox{$\mathrm{Bd}(#1)$}}
+\newcommand{\fo}[1]{\mbox{$\mathrm{FO}^{#1}$}}
+%\def\A{\mbox{A}}
+\def\llfp{\mbox{$\mathsf{LFP}$}}
+\def\se{\mbox{$\mathsf{S}$}}
+%\def\sA{\mbox{A}}
+%\def\sB{\mbox{B}}
+%\def\B{\mbox{B}}
+\def\on{\mbox{$\mathrm{On}$}}
+\def\int{\mbox{$\mathbb{I}$}}
+\def\nnint{\mbox{$\mathbb{N}$}}
+\def\pint{\mbox{$\mathbb{N}^+$}}
+\def\max{\mbox{$\mathrm{max}$}}
+\def\val{\mbox{$\mathsf{VAL}$}}
+\def\fval{\mbox{$\mathsf{FVAL}$}}
+\newcommand{\theo}[1]{\mbox{${\mathsf{Th}}(#1)$}}
+\newcommand{\pari}[1]{\mbox{${\mathsf{parity}}(#1)$}}
+\newcommand{\mi}[1]{\mbox{${\mathsf{min}}(#1)$}}
+\newcommand{\ma}[1]{\mbox{${\mathsf{max}}(#1)$}}
+\newcommand{\prn}[1]{\mbox{${\mathsf Pr}_n(#1)$}}
+\newcommand{\pr}[1]{\mbox{${\mathsf Pr}(#1)$}}
+\newcommand{\lang}[1]{\mbox{${\mathsf{#1}}$}}
+\newcommand{\thinf}[1]{\mbox{${\rm Th}^\infty(#1)$}}
+\newcommand{\aut}[1]{\mbox{$\mathsf{Aut}(#1)$}}
+\newcommand{\Def}[1]{\mbox{$\mathsf{Def}(#1)$}}
+\newcommand{\lth}[2]{\mbox{${\mathsf Th}^{#1}(#2)$}}
+\newcommand{\typek}[2]{\mbox{$\mathsf{type}_{k}(#1,#2)$}}
+\newcommand{\type}[2]{\mbox{$\mathsf{type}(#1,#2)$}}
+\newcommand{\nbh}[2]{\mbox{$\mathsf{nbh}(#1,#2)$}}
+\newcommand{\ded}[2]{\mbox{$\mathsf{ded}(#1,#2)$}}
+\newcommand{\dg}[2]{\mbox{$\mathsf{deg}(#1,#2)$}}
+\newcommand{\types}[1]{\mbox{$\mathsf{types}(#1)$}}
+\newcommand{\orb}[2]{\mbox{$\mathsf{orb}(#1,#2)$}}
+\newcommand{\prop}[2]{\mbox{$\mathbb{P}_{#2}(#1)$}}
+\newcommand{\oc}[2]{\mbox{$(#1)_{#2}$}}
+\newcommand{\orbs}[1]{\mbox{$\mathsf{Orbs}(#1)$}}
+\newcommand{\autorbs}[1]{\mbox{$\mathsf{Orbs}(#1,\aut{#1})$}}
+\newcommand{\symn}[1]{\mbox{$\mathbb{S}_{#1}$}}
+\newcommand{\graphn}[1]{\mbox{$\mathbb{D}_{#1}$}}
+\newcommand{\sgraphn}[1]{\mbox{$\mathbb{G}_{#1}$}}
+\newcommand{\Iso}[1]{\mbox{$\mathsf{Iso}(#1)$}}
+
+%\def\foxk{\mbox{$\preceq_{\foke}$}}
+%\def\exk{\mbox{$\preceq_{\lke}$}}
+%\def\nxk{\mbox{$\preceq^{n}_{\foke}$}}
+%\def\n1xk{\mbox{$\preceq^{n+1}_{\foke}$}}
+%\def\fokeq{\mbox{$\equiv_{L^{k}}$}}
+%\def\keq{\mbox{$\equiv_{L^{k}_{\infty , \omega}}$}}
+\def\thke{\mbox{${\rm Th}^k_{\exists}$}}
+\def\pq{\mbox{$\mathbf{P}^q$}}
+\def\mfp{\mbox{$\mathfrak{P}$}}
+\def\kinf{\mbox{$K_{\infty}$}}
+\def\univk{\mbox{${\cal U}^k$}}
+\def\gnalpha{\mbox{$G(n,n^{-\alpha})$}}
+\def\foxk{\mbox{$\preceq^{k}$}}
+\def\dfoxk{\mbox{$\not\preceq^{k}$}}
+\def\exk{\mbox{$\preceq_{\infty\omega}^k$}}
+\def\dexk{\mbox{$\not\preceq_{\infty\omega}^k$}}
+\def\nxk{\mbox{$\preceq^{k,n}$}}
+\def\n1xk{\mbox{$\preceq^{k,n+1}$}}
+\def\dn1xk{\mbox{$\not\preceq^{k,n+1}$}}
+\def\fokeq{\mbox{$\equiv^{k}$}}
+\def\nfokeq{\mbox{$\equiv^{k,n}$}}
+\def\keq{\mbox{$\equiv^{k}_{\infty\omega}$}}
+\def\loeq{\mbox{$\equiv_{\infty\omega}$}}
+\def\dkeq{\mbox{$\not\equiv^{k}_{\infty\omega}$}}
+%\def\qr{\mbox{\rm qr}}
+%\def\dom{\mbox{\rm dom}}
+%\newcommand{\dom}[1]{\mbox{$|#1|$}}
+\newcommand{\dom}[1]{\mbox{$\mathsf{dom}$}(#1)}
+\newcommand{\ran}[1]{\mbox{$\mathsf{rng}$}(#1)}
+\newcommand{\hull}[1]{\mbox{$\mathcal{H}$}(#1)}
+\newcommand{\phx}{\mbox{$\varphi(y,x_1, \ldots, x_n)$}}
+\newcommand{\ephx}{\mbox{$\exists y \varphi(y,x_1,
+\ldots, x_n)$}}
+\newcommand{\nas}{\mbox{$a_1, \ldots, a_n$}}
+\def\*{\makebox[10mm]{}}
+%\def\N{\mbox{\rm N}}
+\def\N{\mbox{$\mathbb{N}$}}
+\def\NP{\mbox{\rm NP}}
+\def\fraisse{\mbox{\rm Fra\"{\i}ss\'{e}}}
+\def\Co-NP{\mbox{\rm Co-NP}}
+\def\ie{\mbox{\em i.e. }}
+\def\as{\mbox{\rm a.s. }}
+\def\fs{\mbox{$\cal F$}}
+\def\irr{\mbox{$\mathsf{Irr}$}}
+\def\nle{\mbox{$\mathsf{NLE}$}}
+\def\nre{\mbox{$\mathsf{NRE}$}}
+\def\succ{\mbox{$\mathsf{Succ}$}}
+\def\pred{\mbox{$\mathsf{Pred}$}}
+\def\dense{\mbox{$\mathsf{Dense}$}}
+\def\sym{\mbox{$\mathsf{Sym}$}}
+\def\sg{\mbox{$\mathsf{SG}$}}
+\def\tot{\mbox{$\mathsf{Tot}$}}
+\def\asy{\mbox{$\mathsf{Asy}$}}
+\def\sv{\mbox{$\mathsf{SV}$}}
+\def\fun{\mbox{$\mathsf{Fun}$}}
+\def\bfun{\mbox{$\mathsf{Bfun}$}}
+\def\inj{\mbox{$\mathsf{Inj}$}}
+\def\binj{\mbox{$\mathsf{Binj}$}}
+\def\sur{\mbox{$\mathsf{Sur}$}}
+\def\bij{\mbox{$\mathsf{Bij}$}}
+\def\tour{\mbox{$\mathsf{Tour}$}}
+\def\trans{\mbox{$\mathsf{Trans}$}}
+\def\slo{\mbox{$\mathsf{SLO}$}}
+\def\comp{\mbox{$\mathsf{Comp}$}}
+\def\twor{\mbox{$\mathsf{2reg}$}}
+\def\oner{\mbox{$\mathsf{1reg}$}}
+\def\eqr{\mbox{$\mathsf{Eq}$}}
+\def\refl{\mbox{$\mathsf{Refl}$}}
+\def\R{\mbox{$\mathbb{R}$}}
+\def\PT{\mbox{$\mathrm{PTIME}$}}
+\def\PS{\mbox{$\mathrm{PSPACE}$}}
+\def\LFP{\mbox{$\mathrm{LFP}$}}
+\def\PFP{\mbox{$\mathrm{PFP}$}}
+\def\IFP{\mbox{$\mathrm{IFP}$}}
+\def\valf{\mbox{$\mathrm{Val}_f$}}
+\newcommand{\ceiling}[1]{\mbox{$\lceil#1\rceil$}}
+\newcommand{\cn}[1]{\mbox{$\chi^{\ast}(#1)$}}
+%\newcommand{\cn}[1]{\mbox{$\mathrm{Cn}(#1)$}}
+\newcommand{\ffoe}[1]{\mbox{$L^{#1}(\exists)$}}
+\newcommand{\ki}[1]{\mbox{$K^{\infty}_{#1}$}}
+%\newcommand{\qr}[1]{\mbox{${\rm qr}(#1)$}}
+\newcommand{\qr}[1]{\mbox{$\mathsf{qr}(#1)$}}
+\newcommand{\edges}[1]{\mbox{${\rm Edges}(#1)$}}
+%\newcommand{\mod}[1]{\mbox{$\mathrm{Mod}(#1)$}}
+\newcommand{\size}[1]{\mbox{$|#1|$}}
+\newcommand{\card}[1]{\mbox{$|#1|$}}
+%\newcommand{\size}[1]{\mbox{${\mathsf size}(#1)$}}
+\newcommand{\gsize}[1]{\mbox{$\mathsf{size}(#1)$}}
+%\newcommand{\card}[1]{\mbox{${\mathsf card}(#1)$}}
+\newcommand{\spec}[1]{\mbox{$\mathsf{Spec}(#1)$}}
+\newcommand{\cons}[1]{\mbox{$\mathsf{Cn}(#1)$}}
+%\renewcommand{\mod}[1]{\mbox{$\mathsf{Mod}(#1)$}}
+\newcommand{\modn}[2]{\mbox{$\mathsf {mod}(#1,#2)$}}
+\newcommand{\modc}[2]{\mbox{$\mathrm{Mod}_{\mathcal{#1}}(#2)$}}
+\newcommand{\mc}[1]{\mbox{$\mathsf{#1}$}}
+\newcommand{\ord}[1]{\mbox{${\mathsf ord}({#1})$}}
+\newcommand{\struct}[1]{\mbox{$\mathsf{#1}$}}
+\newcommand{\stat}[1]{\mbox{$\mathsf{#1}$}}
+\newcommand{\der}[1]{\mbox{$\mathsf{#1}$}}
+\newcommand{\forms}[1]{\mbox{$\mathbb{#1}$}}
+\newcommand{\ksupinf}{\mbox{$K^{\infty}$}}
+\newcommand{\safesub}[2]{\mbox{$#1 \leq_s #2$}}
+\newcommand{\rigidsub}[2]{\mbox{$#1 \leq_i #2$}}
+\newcommand{\speciall}[3]{\mbox{$#2 \leq_{#1}^{\otimes} #3$}}
+\newcommand{\speciallns}[2]{\mbox{$#1 \leq^{\otimes} #2$}}
+\newcommand{\cl}[4]{\mbox{${\rm cl}^{#1,#2}(#3,#4)$}}
+\newcommand{\stone}[3]{\mbox{$S^{#1}_{#2}(#3)$}}
+%\newcommand{\type}[3]{\mbox{$\mathsf{type}^{#1}_{#2}(#3)$}}
+%\def\fo{\mbox{\rm FO}}
+\def\leqi{\mbox{$\leq_{i}$}}
+\def\ext{\mbox{\rm EXT}}
+%\def\mod{\mbox{\rm Mod}}
+\def\Mod{\mbox{\rm Mod}}
+%\def\card{\mbox{\rm card}}
+%\def\ran{\mbox{\rm ran}}
+%\def\modf{\mbox{\rm Mod$_f$}}
+\newcommand{\modf}[1]{\mbox{$\mathrm{Mod}_f(#1)$}}
+\def\poly{\mbox{\rm P}}
+\def\ekgame{\mbox{$\exists^k$-game}}
+\def\foe{\mbox{\rm FO$(\exists)$}}
+\def\foe+{\mbox{\rm FO$(\exists^+)$}}
+\def\fokec{\mbox{$\mathrm{FO}^k(\exists^+\wedge)$}}
+\def\finmodalpha{\mbox{$K^{\alpha}_{\infty}$}}
+\def\fope{\mbox{$\fo^{+}(\exists)$}}
+\def\folfp{\mbox{\rm FO+LFP}}
+%\def\fok{\mbox{$L^k$}}
+\def\fok{\mbox{$\mathsf{FO}^k$}}
+\def\foke+{\mbox{$\mathrm{FO}^k(\exists^+)$}}
+\def\2fo{\mbox{$\mathsf{FO}^2$}}
+\def\3fo{\mbox{$\mathsf{FO}^3$}}
+\def\kfo+1{\mbox{$\mathsf{FO}^{k+1}$}}
+\def\en{\mbox{$\mathsf{n}$}}
+%\def\foke{\mbox{$L^k(\exists)$}}
+\def\lomega{\mbox{$L^{\omega}_{\infty\omega}$}}
+\def\lk{\mbox{$L^k_{\infty\omega}$}}
+\newcommand{\lio}[1]{\mbox{$L^{#1}_{\infty\omega}$}}
+\newcommand{\lo}[1]{\mbox{$L_{{#1}\omega}$}}
+\def\lke{\mbox{$L^k_{\infty\omega}(\exists)$}}
+\def\lke+{\mbox{$L^k_{\infty\omega}(\exists^+)$}}
+\def\lomegae{\mbox{$L^{\omega}_{\infty\omega}(\exists)$}}
+\def\lomegae+{\mbox{$L^{\omega}_{\infty\omega}(\exists^+)$}}
+\def\linf{\mbox{$L_{\infty\omega}$}}
+\def\linfe{\mbox{$L_{\infty\omega}(\exists)$}}
+\def\linfe+{\mbox{$L_{\infty\omega}(\exists^+)$}}
+\def\iso{\cong}
+%\def\and{\wedge}
+\def\orr{\vee}
+\def\inf{\infty}
+% \def\qed{\hfill\rule{2mm}{2mm}}
+\def\lfp{\mbox{\rm lfp}}
+\def\sr{\mbox{$\mathrm{sr}$}}
+\def\psr{\mbox{$\mathrm{psr}$}}
+\def\ifp{\mbox{\rm ifp}}
+\def\pfp{\mbox{\rm pfp}}
+\def\Type{\mbox{\rm Type}}
+%\input{gothic11}
+%\def\A{\mbox{\gothic A}}
+\def\A{A}
+\def\B{B}
+\def\sA{A}
+\def\sB{B}
+%\def\sA{\mbox{\scriptgothic A}}
+%\def\sB{\mbox{\scriptgothic B}}
+%\def\B{\mbox{\gothic B}}
+\def\eg{\mbox{\em e.g. }}
+\def\hom{\mbox{\rm HOM}}
+%\def\cat{\hat{\phantom{o}}}
+\def\cat{*}
+\def\datalogn{\mbox{\rm Datalog($\neq,\neg$)}}
+\def\datalog{\mbox{\rm Datalog}}
+\def\los{\mbox{\rm \Los}}
+\def\cnk{\mbox{$\bigwedge L^{k}(\exists)$}}
+\def\dsk{\mbox{$\bigvee L^{k}(\exists)$}}
+\def\cnk+{\mbox{$\bigwedge L^{k}(\exists^+)$}}
+\def\dsk+{\mbox{$\bigvee L^{k}(\exists^+)$}}
+\def\cdk{\mbox{$\bigwedge (\bigvee L^{k}(\exists ))$}}
+\def\dck{\mbox{$\bigvee (\bigwedge L^{k}(\exists ))$}}
+\def\infL{\mbox{$L^{\omega}_{\infty\omega}$}}
+\def\LFP{\mbox{\rm LFP}}
+\def\FO{\mbox{\rm FO}}
+%\newcommand{\dke}[1]{\mbox{$\bigvee L^{#1}(\exists)$}}
+\newcommand{\dke}[1]{\mbox{$\bigvee L^{#1}(\exists^+)$}}
+\newtheorem{openproblem}{Open Problem}
+\newtheorem{fact}{Fact}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{corollary}{Corollary}
+\def\fr{\mbox{$\mathcal{FR}$}}
+\newcommand{\powerset}[1]{\mbox{$\mathcal{P}(#1)$}}
+\newtheorem{proposition}{Proposition}
+\newenvironment{hs}{\begin{rm}}{\end{rm}}
+\newcommand{\op}[2]{\mbox{$\langle #1,#2 \rangle$}}
+%\newcommand{\ot}[3]{\mbox{$\langle #1,#2,#3 \rangle$}}
+%\newcommand{\binom}[2]{\mbox{$\fracwithdelims()[0pt] #1,#2$}}
+\newcommand{\ot}[3]{\mbox{$\langle #1,#2,#3 \rangle$}}
+\newenvironment{aside}
+  {\begin{mdframed}[%
+      leftline=false,rightline=false,leftmargin=2em,rightmargin=2em,%
+          innerleftmargin=0pt,innerrightmargin=0pt,linewidth=0.75pt,%
+      skipabove=7pt,skipbelow=7pt]\small}
+  {\end{mdframed}}

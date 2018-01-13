@@ -1,0 +1,69 @@
+\subsection{The Spectrum of a Schema}
+Let's introduce a monadic predicate letter $F$ to ``color'' the nodes of our graphs. A new condition, \emph{distinguished end}, says that the ``colouring'' of the nodes in our ordering alternates between adjacent elements. 
+
+\[
+  \mathsf{DE}: (\forall x)(\forall y)(Lxy\supset (Fx\oplus Fy))  
+\]
+
+Consider the schema $T$ which is the conjunction of \sg, \twor, and $\mathsf{DE}$. The connected graphs that satisfy $T$ are exactly the even length cycles. It follows at once that $\card{\modn{T}{n}}>0$ if and only if $n$ is an even number greater than 2. The notion of the \emph{spectrum} of a schema describes this property of having (at least one) model of a given size. Writing $\mathbb{Z}^+$ for the set of positive integers, we have the definition:
+
+
+\begin{definition}
+Let $S$ be a schema. Then 
+\[
+\spec{S}=\{n\in \mathbb{Z}^+\mid \modn{S}{n}\neq\emptyset\}.
+\]
+ie the spectrum of a schema $S$ is the set of all universe sizes for which $S$ has a model. 
+
+If a schema $S$ has a model whose universe if of positive integer size $n$, we say that $S$ \emph{admits} $n$. Then $\spec{S}$ is exactly the set of positive integers $n$ such that $S$ admits $n$.
+\end{definition}
+
+For example, $\spec{T}=\{2i\mid i>1\}$.
+
+Let's calculate $\card{\modn{T}{6}}$. The only shape allowed in this case is the hexagon, and each hexagon admits two possible colorings that satisfy $\mathsf{DE}$ (one where the initial element in our ordering is coloured, and one where it is not). Hence, it follows from our earlier calculation that $\card{\modn{T}{6}}=2\cdot6!/(6\cdot2)=120$.
+
+ 
+\subsection*{Finite Sets and Co-finite Sets are Spectra}
+
+Let $F$ be a finite set of positive integers. A basic question which you might ask is: ``is there a schema $S$ such that $\spec{S}=F$?''. In order to begin answering this, we'll start with singletons and show that for every positive integer $n$, there is a schema, call it $\mathsf{S}_n$  such that $\spec{\mathsf{S}_n}=\{n\}$. In particular, we may take $\mathsf{S}_n$ to be the following schema, which says that there are at least $n$ but not at least $n + 1$ elements in any satisfying structure. 
+\[
+(\exists x_1)\ldots(\exists x_n)\bigwedge_{1\leq i<j\leq n}x_i\neq x_j\wedge \neg(\exists x_1)\ldots(\exists x_{n+1})\bigwedge_{1\leq i<j\leq n+1}x_i\neq x_j
+\]
+
+It follows at once that every finite set of positive integers $F=\{n_1,\ldots,n_k\}$ is the spectrum of some schema, as
+\[
+\spec{\mathsf{S}_{n_1}\vee\ldots\vee\mathsf{S}_{n_k}}= F.
+\]
+Moreover, 
+\[
+\spec{\neg(\mathsf{S}_{n_1}\vee\ldots\vee\mathsf{S}_{n_k})}= \mathbb{Z}^+ - F.
+\]
+Thus, every finite set of positive integers and the complement of every finite set of positive integers is a spectrum (the latter sets are called \emph{co-finite}).
+
+
+\subsection*{Complementation and the Spectrum Problem}
+It is actually quite unusual that the spectrum of the negation of a schema $S$ is equal to the complement of the spectrum of $S$. Let's consider the following example.
+
+Recall the schema $\sg\wedge\oner$ which defines the collection of 1-regular simple graphs. We've already noticed that $\spec{\sg\wedge\oner}$ is the set of even numbers, that is, $\spec{\sg\wedge\oner}=\{2i\mid i\in\mathbb{Z}^+\}$. On the other hand, $\spec{\neg(\sg\wedge\oner)}=\mathbb{Z}^+$.
+\begin{aside}
+    Why is $\spec{\neg(\sg\wedge\oner)}=\mathbb{Z}^+$?
+\end{aside}
+This behavior is actually typical. Later in the course we may be in a position to prove the following important fact: if the spectrum of a schema $S$ is neither finite nor cofinite, then the spectrum of the negation of $S$ is not equal to the complement of the spectrum of $S$. 
+
+You may also ask: ``is there a schema $S$ such that the complement of the spectrum of $S$ is not the spectrum of any schema whatsoever?'' Nobody knows the answer to this question. It is, however, known that a set of positive integers is a spectrum if and only if it is in the complexity class $\mathsf{NE}$, the set of problems solvable in non-deterministic (linear) exponential time on a Turing machine. For those of you who might like to learn more about this open problem, the paper ``Fifty Years of the Spectrum Problem'' is a great place to start. 
+
+\subsection*{Further Examples of Infinite, Co-infinite Spectra}
+One can easily modify the schema $\sg\wedge\oner$ to give an example of a schema whose spectrum is the set of odd numbers. The modified schema states the condition that there is an isolated node $w$, and every node other than $w$ has degree one, in addition to ensuring that any satisfying structure is a simple graph. This suffices to make any satisfying structure a collection of disjoint pairs plus one isolated element, and hence of odd size. 
+
+\begin{aside}
+    Write out the above described schema formally. 
+\end{aside}
+
+Time for a more substantial example: a schema $S$ with $\spec{S}=\{k^2\mid k\in \mathbb{Z}^+\}$. The schema involves a triadic predicate letter $H$ and a monadic predicate $F$. $S$ is the conjunction of the following schemata.
+\begin{itemize}
+\item $(\forall x)(\forall y)((Fx\wedge Fy)\supset(\exists z)(\forall w)(Hxyw\equiv w=z))$
+\item $(\forall x)(\forall y)(\forall z)(Hxyz\supset (Fx\wedge Fy))$
+\item $(\forall x)(\exists y)(\exists z)Hyzx$
+\item $(\forall x)(\forall y)(\forall z)(\forall w)(\forall v)((Hxyv\wedge Hzwv)\supset (x=z\wedge y=w))$
+\end{itemize}
+Suppose $A\models S$. The conjunction of the first two schemata guarantee that $H^A$ is the graph of a binary function mapping $F^A\times F^A$ to $U^A$. Further conjoining the third and fourth schemata guarantee that this function is a bijection, thereby insuring that $\card{U^A}$ is a perfect square (in particular, $\card{U^A} = \card{F^A}^2$).

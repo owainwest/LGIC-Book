@@ -1,0 +1,43 @@
+\subsection*{Showing Satisfiability}
+
+Our last consideration will be the problem of establishing that a set of schemata $X$ is satisfiable. As we have noted, there is no uniform approach to this problem, since the collection of satisfiable schemata is \emph{not} semi-decidable. As such, showing satisfiability of a sentence $X$ amounts to constructing a structure $A$ such that $A \models X$. 
+
+We give an example. Let $S$ be the conjunction of the following schemata.
+\begin{itemize}
+\item 
+$(\forall x)(\forall y)(\forall z)((Lxy \wedge Lyz) \supset Lxz)$
+\item
+$(\forall x)(\forall y)(x\neq y\supset(Lxy \vee Lyx))$
+\item
+$(\forall x) \neg Lxx$
+\item 
+$(\forall x)((\exists y)Lxy\supset(\exists y)(Lxy\wedge (\forall z)\neg (Lxz\wedge Lzy)))$
+\item 
+$(\forall x)((\exists y)Lyx\supset(\exists y)(Lyx\wedge (\forall z)\neg (Lyz\wedge Lzx)))$
+\item
+$\neg(\forall x)(\exists y)Lyx$
+\item
+$\neg(\forall x)(\exists y)Lxy$
+\end{itemize}
+For each $n\geq 2$, let $R^n$ be the schema, 
+\[
+(\exists x_1)\ldots(\exists x_n)\bigwedge_{1\leq i< j\leq n}Lx_ix_j.
+\]
+Finally, let $X=\{S\}\cup\{R^n\mid n\geq 2\}$.
+
+Is $X$ satisfiable? The first conjunct denotes transitivity, the second comparability, and the third irreflexivity, so we know we are working with a strict linear order. The fourth and fifth conjuncts say that successor and predecessor are both discrete. The sizth and seventh conjuncts say that there is a first and last element, respectively. The last set of schemata suffices to say that we must have infinitely many elements. 
+
+At first, you may think that $X$ is not satisfiable - after all, a discrete linear order with endpoints certainly sounds like it must be finite. Intuition is often tricky when dealing with the infinite, though, so it's best to be careful. In fact, the union of the first seven schemata with any finite subset $\Delta$ of the set $\{R^n \mid n \geq 2\}$ is satisfiable - if $m$ is the largest integer for which $R^m$ appears in $\Delta$, a strict linear order of size $m$ suffices. So ever finite subset of $X$ is satisfiable, and hence by the Compactness Theorem, $X$ itself is satisfiable. 
+
+Since $X$ is satisfiable, we must be able to construct some model for $A$ it. One such structure $A$ is defined as follows. 
+
+\begin{itemize}
+\item
+$U^A=  \mathbb{Z}$.
+\item
+$L^A=\{\op{i}{j}\mid (0\leq i\mbox{ and } j<0)\mbox{ or }(i<j \mbox{ and }  (0\leq i,j\mbox{ or } i,j<0))\}$.
+\end{itemize}
+
+\begin{aside}
+    Explain why $A \models X$. 
+\end{aside}

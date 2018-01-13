@@ -1,0 +1,88 @@
+\subsection{Counting labeled 1-regular graphs}
+
+Let $S$ be the conjunction of $\sg$ and $\oner$, that is, a graph $A$ satisfies $S$ if and only if $A$ is a 1-regular, simple graph. As we discussed earlier, every such finite graph $A$ has an even number, say $2n$, of nodes; moreover, if $A,B\models S$ and $\card{U^A}=\card{U^B}$, then $A$ is isomorphic to $B$. 
+\iffalse
+%(Recall that $A$ \emph{is isomorphic to} $B$ if and only if there is an isomorphism $h$ from $A$ onto $B$; and that $h$ is an isomorphism from $A$ onto $B$ if and only if $h$ is a bijection from $U^A$ onto $U^B$ such that for all $a,b\in U^A$, $\op{a}{b}\in L^A$ if and only if $\op{h(a)}{h(b)}\in L^B$.) 
+\fi
+We calculate the value of $\modn{S}{2n}$ in two ways, both for the intrinsic interest of each, and for the opportunity to ``check our work.''
+\subsubsection{Via the Orbit-Stabilizer Theorem}
+
+Let $A\in\modn{S}{2n}$. As we've just noted above, if $B\in\modn{S}{2n}$, then $A\cong B$. It follows at once that 
+\begin{equation}\label{vos-eq}
+\modn{S}{2n}=\orb{A}{\symn{2n}}.
+\end{equation}
+ Let's calculate $\card{\aut{A}}$, since Theorem \ref{orb-stab-thm} will then allow us to calculate $\card{\modn{S}{2n}}$. Observe that $A$ consists of $n$ independent edges. Imagine them standing upright and lined up horizontally in some order. Now any permutation of the edges generates an automorphism of $A$. Moreover, in the process of permuting the edges, we may choose to ``flip'' any subset of them having those land on the edge to which they are permuted ``head to foot'' and ``foot to head''. Since there are $n!$ permutations of the $n$ edges, and $2^n$ choices of which set of edges to flip, there are a total of $n!\cdot 2^n$ automorphisms of $A$. Hence, by Theorem \ref{orb-stab-thm} and equation (\ref{vos-eq}), 
+ \[
+ \card{\modn{S}{2n}}= (2n)!/n!\cdot 2^n.
+ \]
+\subsubsection{Directly}
+
+Here is a second direct method of calculating $\card{\modn{S}{2n}}$ which, thankfully, yields the same result. We construct a member $A$ of $\modn{S}{2n}$ as follows. We successively choose the $n$ independent edges that constitute $A$. So for the first edge, we have $\binom{2n}{2}$ choices of a pair of nodes between which to place an edge, and for the second edge, we have $\binom{2n-2}{2}$ choices, .... So the number of ways we can choose a sequence of $n$ independent edges is
+\[
+\binom{2n}{2}\cdot\binom{2n-2}{2}\cdots\binom{4}{2}\cdot\binom{2}{2}= \frac{(2n)!}{2^n}.
+\]
+Now any \emph{set} of $n$ edges chosen via this process will appear as the result of $n!$ such sequences of choices; thus, the total number of members of $\modn{S}{2n}$ we can construct is 
+\[
+\frac{(2n)!}{n!\cdot 2^n}.
+\]
+\subsection{Definability}
+
+Up to this point we have neglected schemata containing free variables. Today we will correct this oversight. 
+Recall the structure $A$ we discussed last time:
+$A$: $U^A=[3]$, $L^A=\{\op{1}{2},\op{1}{3}\}$.
+We considered the schema
+\[
+S(x):\ \ \ \neg(\exists y)Lyx.
+\]
+We observed that $S(x)$ picks out $1$ uniquely from the structure $A$. That is
+\[
+\{a\in U^A\mid A\models S[x|a]\}=\{1\}.
+\]
+$S(x)$ expresses the property of having in-degree zero. Since we only consider properties extensionally, we can also say that, in a given structure, $S(x)$ defines the set of nodes of in-degree zero. The concept of definability is central in logic (and many other disciplines). We enshrine it in a definition.
+\begin{definition}
+Let $S(x)$ be a schema with one free variable $x$ and let $A$ be a structure.
+We define $S[A]=\{a\in U^A\mid A\models S[x|a]\}$, that is, $S[A]$ is the set of nodes of $A$ that satisfy the schema $S(x)$ in $A$ when assigned to the variable $x$. We call $S[A]$ the \emph{set defined by} $S(x)$ in $A$. We say a set $V\subseteq U^A$ is 
+a \emph{definable subset of} $A$ if and only if there is a schema $S(x)$ such that $S[A]=V$.
+\end{definition}
+
+We pursued the example of the particular structure $A$ described above a bit further and noted that the set $\{2,3\}$ is defined by the schema
+\[
+S'(x):\ \ \ \neg(\exists y)Lxy.
+\]
+We asked whether either of the sets $\{2\}$ or $\{3\}$ is a definable subset of $A$. 
+We despaired of finding a schema which defined either of these sets.
+We noticed that the nodes labelled 2 and 3 appear to be ``indistinguishable from a structural point of view'' which is borne out by the fact that the function $h$ mapping 1 to 1, 2 to 3, and 3 to 2, is an automorphism of $A$. The relevance of this to the question of definability is the content of the following fundamental theorem.
+
+
+\iffalse
+
+
+Consider the schema 
+\[
+S(x):\ \ \ (\exists y)(\forall z)(Lxz\equiv z=y).
+\]
+Let $A$ be a graph. We define $S[A]=\{a\in U^A\mid A\models S[x|a]\}$, that is, $S[A]$ is the set of nodes of $A$ that satisfy the schema $S(x)$ in $A$ when assigned to the variable $x$. We call $S[A]$ the \emph{set defined by} $S(x)$ in $A$. In the case to hand, if $A$ is a simple graph, then $S[A]$ is the set of nodes of $A$ of degree 1. 
+
+Given a graph $A$, we will consider which subsets of $U^A$ are \emph{definable subsets of} $A$, that is for which $V\subseteq U^A$ is there a schema $S[x]$ such that $S[A]=V$. In the case of finite graphs, we will be able to give an entirely satisfactory analysis in terms of the symmetries of $A$, that is, the collection of automorphisms of $A$. Recall that $h$ is an \emph{automorphism} of $A$ if and only if $h$ is a bijection of $U^A$ onto $U^A$ and for all $a,b\in U^A$,
+\[
+\op{a}{b}\in L^A\mbox{ if and only if } \op{h(a)}{h(b)}\in L^A.
+\]
+In other words, $h$ is an automorphism of $A$ if and only if $h$ is an isomorphism of $A$ onto itself. We define $\aut{A}=\{h\mid h\mbox{ is an automorphism of }A\}$. The following theorem is fundamental.
+\fi
+\subsubsection{The Automorphism Theorem, Orbits, and Definability over finite structures}
+\begin{theorem}\label{aut-thm}
+Let $A$ be a graph and $h\in\aut{A}$. For every $a\in U^A$ and every schema $S(x)$,
+\[
+A\models S[x|a]\mbox{ if and only if }A\models S[x|h(a)]. 
+\]
+\end{theorem}
+
+Theorem \ref{aut-thm} enables us to give a characterization of the definable subsets of finite structures. 
+If $f$ is a function with domain $U$ and $V\subseteq U$, we define $f[V]=\{f(a)\mid a\in V\}$ (the $f$ \emph{image} of $V$). With this notation in hand, we can now state a corollary to Theorem \ref{aut-thm} which bears on definability.
+\begin{corollary}\label{aut-def-cor}
+Let $A$ be a graph and $h\in\aut{A}$. If $V$ is a definable subset of $A$, then $h[V]=V$.
+\end{corollary}
+Thus, in order to show that $V$ is \emph{not} a definable subset of $A$ it suffices to exhibit an $h\in\aut{A}$ and $a\in V$ such that $h(a)\not\in V$. Moreover, in the case of finite structures, the converse of Corollary \ref{aut-def-cor} is true.
+\begin{theorem}\label{fin-aut-def-thm}
+Let $A$ be a finite graph and $V\subseteq U^A$. $V$ is a definable subset of $A$, if for every $h\in\aut{A}$, $h[V]=V$.
+\end{theorem}

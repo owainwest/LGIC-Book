@@ -1,0 +1,44 @@
+\subsection{Introduction to Monadic Quantification Theory}
+
+It's now time to graduate from our humble beginnings in Truth-Functional Logic. We will now begin to consider a more expressive logic, which we'll call \emph{Monadic Quantification Theory}\footnote{An alternative name for this logic might be \emph{Monadic First-Order Logic}}. 
+This is desirable because statements have significant logical form beyond the structure that can be
+exhibited in terms of truth-functional compounding. For example, the conjunction of the first two statements below implies, but does not truth-functionally imply, the third.
+
+\begin{itemize}
+\item All collies are mortal. 
+\item Lassie is a collie.
+\item Lassie is mortal.
+\end{itemize}
+
+In order to analyze this example, consider the following statements: 
+\begin{itemize}
+\item Lassie is a collie.
+\item Scout is a collie.
+\item Rin-Tin-Tin is a collie.
+\end{itemize}
+
+These statements share the \emph{monadic predicate}\footnote{Also known as a \emph{unary relation}.} ``$\bigcirc$\ is a collie.''
+Monadic predicates, unlike statements, are not true or false; rather, they are
+\emph{true of} some objects and \emph{false of} other objects.
+For example, ``$\bigcirc$ is a prime number'' is true of 2,3,5 and 7, and false of all even
+numbers greater than 2.
+
+\begin{definition}[Monadic Predicate]
+    A \emph{monadic predicate} is a property (which may or may not hold) of any single element. For example, ``$x$ is red'' asserts that the monadic predicate ``$\bigcirc$ is red'' is true of $x$. 
+\end{definition}
+
+\begin{definition}[Extension of a Monadic Predicate]\footnote{Other treatments of logic forego the notion of a ``monadic predicate'' completely and only focus on extensions. We prefer to distinguish between the two, in order to to highlight that predicates are intensional (and hence cannot be objects of study in logic), whereas the extension of a predicate is a definite mathematical object which is a fair object of study.}
+    The \emph{extension} of a monadic predicate is the collection of objects of which the monadic predicate is true. For example, the extension of the monadic predicate ``$\bigcirc$ is an even natural number'' is the set $\{0,2,4,6...\}.$
+
+    % More mathematically, the extension of a monadic predicate $\varphi(x)$ on a universe $U^A$ is the $F \subseteq U^A$ such that $f \in F \iff \varphi[f] \models A$.
+
+    You can think of the monadic predicate as ``picking out'' some subset of what you're talking about (your ``universe of discourse''). The subset which the monadic predicate ``picks out'' is its extension. 
+\end{definition}
+
+\begin{aside}
+    What is the extension of the monadic predicate ``$\bigcirc$ is a prime number less than 10''? What is the extension of the monadic predicate ``$\bigcirc$ is an even prime number''?
+\end{aside}
+
+Note that distinct monadic predicates might have the same extension - for example, the extensions of ``$\bigcirc$ is a warm--blooded reptile'' and ``$\bigcirc$ is a better movie than Legally Blonde'' are the same (namely, they are the emptyset\footnote{We maintain that Legally Blonde is the best movie ever and will not accept counterarguments.}) We say that monadic predicates with the same extension are \emph{coextensive}. Note that coextensive predicates are logically equivalent. 
+
+We will focus on statements whose truth depends only on the extensions of the monadic predicates which occur in them. We call such sentential contexts in which interchange of coextensive predicates preserves truth-value \emph{extensional}. We will focus solely on extensional contexts - that is, we will distinguish sentences based only on their logical content. Our focus on extensional contexts is the natural continuation of our earlier focus on truth-functional contexts.

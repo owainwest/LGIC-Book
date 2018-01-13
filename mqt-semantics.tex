@@ -1,0 +1,43 @@
+\subsection{Semantics}
+
+We now introduce \emph{structures} as interpretations of monadic schemata. These play the role that truth-assignments played in the context of truth-functional logic, in that they bridge the gap between the syntactic objects of our (newly strengthened) language and their truth-values.
+
+In order to specify a structure $A$ for a schema $S$ we need to
+\begin{itemize}
+\item specify a nonempty set $U^A,$ the universe of $A$;
+\item specify sets $F^A, G^A, \ldots $ each of which is a subset of $U^A$ as
+the extensions of the monadic predicate letters which occur in $S$;
+\item specify an element $a \in U^A$ to assign to the variable $x,$ if $x$
+occurs free in $S.$ 
+\end{itemize}
+
+\begin{aside}
+    Item (1) sets aside all the objects that are under our consideration (ie, all the objects we're referring to when we quantify). Item (2) specifies for which elements of $U^A$ have the properties $F^A$, $G^A$, etc (or, equivalently, which $x \in U^A$ are such that $x \in F^A$, etc). Item (3) makes sure that we substitute in definite values for free variables, if there are any, so that we can evaluate our sentence's truth. 
+\end{aside}
+
+When the variable $x$ has no free occurrences in the schema $S$, we write $A \models S$ as shorthand for ``the schema $S$ is true in the
+structure $A,$'' alternatively ``the structure $A$ satisfies the schema $S$.'' Otherwise, we write $A\models S[a]$ as shorthand for ``the structure $A$ satisfies the schema $S$ relative to the assignment of $a$ to the variable $x$.'' 
+
+
+\subsubsection*{Validity, satisfiability, implication, and equivalence}
+
+We extend the notions of validity, satisfiability, implication, and equivalence to monadic quantificational schemata.
+\begin{itemize}
+\item
+A monadic schema $S$ is \emph{ valid} if and only if for every structure $A, A
+\models S.$
+\item
+A monadic schema $S$ is \emph{ satisiable} if and only if for some structure $A,
+A \models S.$
+\item
+A monadic schema $S$ \emph{ implies} a monadic schema $T$ if and only if for
+every structure $A,$ if $A \models S,$ then $A \models T.$
+\item
+Monadic schemata $S$ and $T$ are equivalent if and only if $S$ implies $T$, and $T$ implies $S$. 
+\end{itemize}
+
+\begin{aside}
+    A schema being valid means it is true in all possible interpretations, or as logicians like to say, ``all possible worlds''. A schema is satisfiable if it's true in at least one possible world. 
+
+    Show that if $S$ implies $T$, $\mathbb{S}$ is the set of structures $S$ is true in, and $\mathbb{T}$ is the set of structures that $T$ is true in, then $\mathbb{S} \subseteq \mathbb{T}$.  
+\end{aside}

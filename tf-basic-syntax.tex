@@ -1,0 +1,97 @@
+\subsection{Basic Syntax of Truth-Functional Logic}
+Consider using the sentence letter $p_{ij}$ to schematize the statement ``$i$ loves $j$,'' where $1\leq i,j,\leq 4$. For example, $p_{11}$ schematizes the statement ``1 loves 1'', or briefly, ``1 is a narcissist.'' 
+
+Suppose we wish to schematize the following statements using those sentence letters: 
+
+\begin{enumerate}
+\item all of 1, 2, 3, and 4 are narcissists;\label{allnar}
+\item none of 1, 2, 3, and 4 are narcissists;\label{nonar}
+\item at least one of 1, 2, 3, and 4 is a narcissist;\label{onenar}
+\item an odd number of 1, 2, 3, and 4 are narcissists.\label{oddnar}
+\end{enumerate} 
+
+In order to do so, we introduce the following truth-functional connectives. For each connective, we display its truth-functional interpretation via a table indicating the truth value of the compound schema as a function of the truth values of its components.
+\begin{itemize}
+\item Conjunction (and):
+\[
+\begin{array}{|l|l|c|} \hline
+p   & q  &  (p \wedge q)   \\ \hline
+\top & \top & \top  \\
+\top & \bot & \bot  \\
+\bot & \top & \bot  \\
+\bot & \bot & \bot \\
+\hline
+\end{array}
+\]
+\item Negation (not):
+\[
+\begin{array}{|l|c|} \hline
+p   &  \neg p    \\ \hline
+\top & \bot  \\
+\bot & \top  \\
+\hline
+\end{array}
+\]
+\item Inclusive Disjunction (or)
+\[
+\begin{array}{|l|l|c|} \hline
+p   & q  &  (p \vee q)   \\ \hline
+\top & \top & \top  \\
+\top & \bot & \top  \\
+\bot & \top & \top  \\   
+\bot & \bot & \bot \\
+\hline
+\end{array}
+\]
+
+\item Exclusive Disjunction (exclusive or, xor)
+\[
+\begin{array}{|l|l|c|} \hline
+p   & q  &  (p \oplus q)   \\ \hline
+\top & \top & \bot  \\
+\top & \bot & \top  \\
+\bot & \top & \top  \\
+\bot & \bot & \bot  \\
+\hline
+\end{array}
+\]
+
+\item Material Conditional
+\[
+\begin{array}{|l|l|c|} \hline
+p   & q  &  (p \supset q)   \\ \hline
+\top & \top & \top  \\
+\top & \bot & \bot  \\
+\bot & \top & \top  \\   
+\bot & \bot & \top \\
+\hline
+\end{array}
+\]
+
+\item Material Biconditional
+\[
+\begin{array}{|l|l|c|} \hline
+p   & q  &  (p \equiv q)   \\ \hline
+\top & \top & \top  \\
+\top & \bot & \bot  \\
+\bot & \top & \bot  \\   
+\bot & \bot & \top \\
+\hline
+\end{array}
+\]
+\end{itemize}
+
+
+The definitions of the truth-functional connectives suffice to determine the truth/falsity of a compound schema completely in terms of (eg as a function of) the truth/falsity of its components. Hence, the term ``truth-functional logic.'' 
+
+
+We can now schematize conditions \ref{allnar} -- \ref{oddnar} in the above example as follows.
+
+\begin{enumerate}
+\item[S1:] $((p_{11}\wedge p_{22})\wedge p_{33})\wedge p_{44}$\label{sallnar}
+\item[S2:] $((\neg p_{11}\wedge\neg p_{22})\wedge\neg p_{33})\wedge\neg p_{44}$\label{snonar}
+\item[S3:] $((p_{11}\vee p_{22})\vee p_{33})\vee p_{44}$\label{sonenar}
+\item[S4:] $((p_{11}\oplus p_{22})\oplus p_{33})\oplus p_{44}$\label{sevennar}
+\end{enumerate}
+
+The first three are quite straightforward to verify; the fourth we will prove later in Proposition \ref{parity-prop}. 

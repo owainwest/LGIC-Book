@@ -1,0 +1,147 @@
+
+We then extended the rules to include existential generalization and existential instantiation which allow us to mirror common informal forms of argument involving the existential quantifier. The following gives an example of their use.
+\begin{center}
+$\{(\forall x) ((\exists y) Lxy \supset (\forall z) Lzx), (\exists x)(\exists
+y) Lxy \}$ implies $(\forall v)(\forall z) Lzv.$
+\end{center}
+\[
+\begin{array}{lll}
+\{1\}   & (1)\  (\exists x)(\exists y) Lxy &  \mathrm{P}\\
+\{1,2\}   & (2)\ (\exists y) Lwy  & (1)w\ \mathrm{EII}\\
+\{3\}   & (3)\ (\forall x) ((\exists y) Lxy \supset   & 
+\mathrm{P}\\
+  &\ \ \ \  (\forall z) Lzx)  & \\
+\{3\}   & (4)\ (\exists y) Lwy \supset   & (3)\ \mathrm{UI}\\
+  &\ \ \ \ (\forall z) Lzw & \\
+\{1,2,3\}   & (5)\ (\forall z) Lzw  & (2)(4)\ \mathrm{TF}\\
+\{1,2,3\}   & (6)\ Lvw  & (5)\ \mathrm{UI}\\
+\{1,\not 2,3\}   & (7)\ (\exists y) Lvy  & (5)\ \mathrm{EG};\{2\}\
+\mathrm{EIE}\\ 
+\{3\}   & (8)\ (\exists y) Lvy \supset (\forall z) Lzv  & (3)\ \mathrm{UI}\\
+\{1,3\}   & (9)\  (\forall z) Lzv & (7)(8)\ \mathrm{TF}\\
+\{1,3\}   & (10)\  (\forall v)(\forall z) Lzv & (9)\ \mathrm{UG}
+\end{array}
+\]
+
+%\newpage
+\iffalse
+Finally, we added rules for deriving schemata involving the identity predicate and illustrated their use with the following deduction.
+\begin{center}
+$\{(\forall x) Rxx, \neg (\forall x)(\forall y) Rxy \}$
+implies $\neg (\exists x)(\forall y) x = y$.
+\end{center}
+\[
+\begin{array}{lll}
+\{1\}   & (1)\ (\forall x) Rxx  & \mathrm{P}\\
+\{2\}   & (2)\ \neg (\forall x)(\forall y) Rxy  & \mathrm{P}\\
+\{3\}   & (3)\ (\exists x)(\forall y) x = y  & \mathrm{P}\\
+\{3,4\}   & (4)\ (\forall y) u = y  & (3)u\ \mathrm{EII}\\
+\{1\}   & (5)\ Ruu  & (1)\ \mathrm{UI}\\
+\{3,4\}   & (6)\ u=y  & (4)\ \mathrm{UI}\\
+\{\}   & (7)\ u=y \supset (Ruu \equiv Ruy) & \mathrm{III}\\
+\{3,4\}   & (8)\ u=x  & (4)\ \mathrm{UI}\\
+\{\}   & (9)\ u=x \supset (Ruy \equiv Rxy) & \mathrm{III}\\
+\{1,3,   & (10)\ Rxy  & (5)(6)\ \mathrm{TF};\\
+\not4\} &  & (7)(8)\ \{4\}\ \mathrm{EIE} \\
+ & & (9)\\
+\{1,3\}   & (11)\ (\forall y)Rxy  & (10)\ \mathrm{UG}\\
+\{1,3\}   & (12)\ (\forall x)(\forall y)Rxy  & (11)\ \mathrm{UG}\\
+\{1,2,3\}   & (13)\ p \wedge \neg p  & (2)(12)\ \mathrm{TF}\\
+\{1,2\}   & (14)\ (\exists x)(\forall y) x = y  \supset
+& \{3\}(13)\ \mathrm{D}\\
+ & (p \wedge \neg p) & \\
+\{1,2\}   & (15)\ \neg (\exists x)(\forall y) x = y  & (14)\ \mathrm{TF}
+\end{array}
+\]
+
+We considered the problem of establishing that a schema $S$ is not implied by a set of schemata $X$, or equivalently, that the set of schemata $X\cup\{\neg S\}$ is not satisfiable. As we noted last time, there is no uniform approach to this problem, that is, the collection of satisfiable schemata is \emph{not} semi-decidable.
+
+Let $X$ be the conjunction of the following schemata.
+\begin{itemize}
+\item 
+$(\forall x)(\forall y)(\forall z)((Lxy \wedge Lyz) \supset Lxz)$
+\item
+$(\forall x)(\forall y)(x\neq y\supset(Lxy \vee Lyx))$
+\item
+$(\forall x) \neg Lxx$
+\item 
+$(\forall x)(\exists y)(Lxy\wedge (\forall z)\neg (Lxz\wedge Lzy))$
+\item 
+$(\forall x)(\exists y)(Lyx\wedge (\forall z)\neg (Lyz\wedge Lzx))$
+\item
+$(\forall x)(\exists y)(Lyx\wedge Fy)$
+\item
+$(\forall x)(\exists y)(Lxy\wedge Fy)$
+\item
+$(\forall x)(\forall y)((Fx\wedge Fy\wedge Lxy)\supset (\exists z)(Fz\wedge Lxz\wedge Lzy))$
+\end{itemize}
+
+We showed that $X\not\models(\forall x)Lxx$, that is, we showed $X$ is satisfiable by constructing a structure $A$ with $A\models X$. The structure $A$ is defined as follows. Recall that $\mathbb{Z}$ is the set of integers and $\mathbb{Q}^+$ is the set of positive rational numbers.
+\begin{itemize}
+\item
+$U^A= \mathbb{Q}^+\times\mathbb{Z}=\{\op{r}{i}\mid r\in\mathbb{Q}^+\mbox{ and}\ i\in \mathbb{Z}\}$ (the cartesian product of $\mathbb{Q}^+$ and $\mathbb{Z}$).
+\item
+$L^A=\{\op{\op{r}{i}}{\op{s}{j}}\mid r<s\}\cup\{\op{\op{r}{i}}{\op{s}{j}}\mid r=s\mbox{ and }i<j\}$.
+\end{itemize}
+
+We gave another example of demonstrating satisfiability, this time for an infinite collection of schemata. Let $S$ be the conjunction of the following schemata.
+\begin{itemize}
+\item 
+$(\forall x)(\forall y)(\forall z)((Lxy \wedge Lyz) \supset Lxz)$
+\item
+$(\forall x)(\forall y)(x\neq y\supset(Lxy \vee Lyx))$
+\item
+$(\forall x) \neg Lxx$
+\item 
+$(\forall x)((\exists y)Lxy\supset(\exists y)(Lxy\wedge (\forall z)\neg (Lxz\wedge Lzy)))$
+\item 
+$(\forall x)((\exists y)Lyx\supset(\exists y)(Lyx\wedge (\forall z)\neg (Lyz\wedge Lzx)))$
+\item
+$\neg(\forall x)(\exists y)Lyx$
+\item
+$\neg(\forall x)(\exists y)Lxy$
+\end{itemize}
+For each $n\geq 2$, let $R^n$ be the schema, 
+\[
+(\exists x_1)\ldots(\exists x_n)\bigwedge_{1\leq i< j\leq n}Lx_ix_j.
+\]
+Finally, let $X=\{S\}\cup\{R^n\mid n\geq 2\}$. We gave two proofs that $X$ is satisfiable. The first appealed to the 
+\begin{theorem}[Compactness Theorem]
+Let $\Sigma$ be a set of schemata of polyadic quantification theory. If every finite $\Delta\subseteq\Sigma$ is satisfiable, then $\Sigma$ is satisfiable.
+\end{theorem}
+
+\emph{First Proof}:
+Observe that for every $n\geq 2$, $\{S\}\cup \{R^m\mid m\leq n\}$ is satisfied by a linear order of length $n$. Hence, by the Compactness Theorem, $X$ is satisfiable. \qed
+
+\emph{Second Proof}: Define the structure $B$ as follows.
+\begin{itemize}
+\item
+$U^B=  \mathbb{Z}$.
+\item
+$L^B=\{\op{i}{j}\mid (0\leq i\mbox{ and } j<0)\mbox{ or }(i<j \mbox{ and }  (0\leq i,j\mbox{ or } i,j<0))\}$.
+\end{itemize}
+Observe that $B\models X$. \qed
+\end{document}
+\begin{itemize}
+\item $(\forall x)(Fx\supset(\exists y)(\neg Fy\wedge(\forall z)(Lxz\equiv y=z)))$
+\end{itemize}
+For each $n\geq 2$, let $R_n$ be the schema
+\[
+(\forall y)(\neg Fy\supset(\exists x_1)\ldots(\exists x_n)\bigwedge_{1\leq i<j\leq n}(x_i\neq x_j\wedge Fx_i\wedge Lx_iy));
+\]
+and for each $n\geq 2$, let $T_n$ be the schema
+\[
+(\exists x_1)\ldots(\exists x_n)\bigwedge_{1\leq i<j\leq n}(x_i\neq x_j\wedge \neg Fx_i).
+\]
+Let $X=\{S,R_n,T_n\mid n\geq 2\}$. We showed that $X$ is satisfiable by constructing a structure $B$ with $B\models X$.
+\begin{itemize}
+\item
+$U^B= \mathbb{Z}^+$.
+\item
+$F^B=\{2i\mid i\in\mathbb{Z}^+\}$.
+\item
+$L^B = \{\op{2^i\cdot j}{j}\mid i\in\mathbb{Z}^+\mbox{ and } j\not\in F^B\}$.
+\end{itemize}
+
+We next returned to a slightly more systematic discussion of the G\"{o}del Completeness Theorem and the Church-Turing Undecidability Theorem which together limn the scope and limits of the mechanization of logic. We say that a dyadic relation $R$ on strings over some finite alphabet $\Sigma$ is \emph{decidable} if and only if there is a mechanical procedure $M$ for determining whether or not $R(D,S)$ holds for every pair of strings $D,S$ over $\Sigma$; that is, with input $(D,S)$, $M$ outputs $I$ (for ``In'') if $R(D,S)$ holds, and $O$ (for ``Out''), if $R(D,S)$ does not hold; $R$ is \emph{semi-decidable} if and only if there is a mechanical procedure $M$ that outputs $I$ if and only if $R(D,S)$ holds -- note that $M$ may lack output, if $R(D,S)$ fails to hold.  
+\fi

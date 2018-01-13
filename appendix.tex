@@ -1,0 +1,36 @@
+\section{Appendix: A Proof of the Compactness Theorem}
+We prove the Compactness Theorem for First-Order Logic (PQT). 
+
+\begin{theorem}(Compactness)
+Let $T$ be a set of schemata. If every finite $T_0 \subseteq T$ is satisfiable, $T$ is satisfiable. 
+\end{theorem}
+
+\begin{definition}
+Let $X$ be a nonempty set. A collection $\mathcal{F}$ of subsets of $X$ has the \emph{finite intersection property} if every (nonempty) finite intersection of sets in $\mathcal{F}$ is nonempty. 
+\end{definition}
+
+\begin{definition}
+Let $X$ be a nonempty set. A collection $\mathcal{F}$ of subsets of $X$ is a \emph{filter} iff
+\begin{enumerate}
+    \item $\mathcal{F} \neq \emptyset$
+    \item $\emptyset \not \in \mathcal{F}$
+    \item $A, B \in \mathcal{F}$ implies $A \cap B \in \mathcal{F}$ ($\mathcal{F}$ is \emph{closed under intersection})
+    \item $A \in \mathcal{F}$ and $A \subseteq B \subseteq X$ implies $B \in \mathcal{F}$ ($\mathcal{F}$ is \emph{closed under supersets}). 
+\end{enumerate}
+\end{definition}
+
+
+\begin{lemma}
+Suppose $\mathcal{F}$ is acollection of subsets of $X$ with the finite intersection property. Let $\mathcal{F}'$ be the collection of nonempty finite intersections of elements of $\mathcal{F}$, and let 
+\[
+    \mathcal{F}^* := \{Y \subseteq X \mid (\exists Z \in \mathcal{F}')(Z \subseteq Y)\}
+\]
+Then $\mathcal{F}^*$ is a filter. 
+\end{lemma}
+\begin{aside}
+    Prove that each of the properties of a filter hold for $\mathcal{F}^*$. For example, $(1)$ holds because $\mathcal{F}$ is nonempty, and $(2)$ follows from the finite intersection property. 
+\end{aside}
+
+\begin{definition}
+An \emph{ultrafilter} $\mathcal{U}$ on a set $X$ is maximal filter (wrt containment), eg if $\mathcal{U} \subseteq \mathcal{U}'$ and $\mathcal{U}'$ is also a filter on $X$, then $\mathcal{U} = \mathcal{U}'$. 
+\end{definition}

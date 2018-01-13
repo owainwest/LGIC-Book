@@ -1,0 +1,174 @@
+\subsection{Monadic Quantification Theory}
+\subsubsection{Sub-sentential logical structure: monadic predicates}
+ 
+We then initiated our study of monadic quantification theory. Statements have significant logical form beyond the structure that can be
+exhibited in terms of truth-functional compounding. For example, the conjunction of the first two statements below implies, but does not truth-functionally imply, the third.
+%\begin{dispar}\label{lassie-ex}
+\begin{itemize}
+\item All collies are mortal. 
+\item Lassie is a collie.
+\item Lassie is mortal.
+\end{itemize}
+%\end{dispar}
+In order to analyze this example, we considered the following statements.
+\begin{itemize}
+\item Lassie is a collie.
+\item Scout is a collie.
+\item Rin-Tin-Tin is a collie.
+\end{itemize}
+These statements share the {\em monadic predicate} ``$\bigcirc$\ is a collie.''
+Monadic predicates, unlike statements, are not true or false; rather, they are
+{\em true of} some objects and {\em false of} other objects.
+For example, ``$\bigcirc$ is a prime number'' is true of 2,3,5 and 7, and false of all even
+numbers greater than 2.
+\subsubsection{The extension of a monadic predicate}
+
+The {\em extension} of a monadic predicate is the collection of objects of
+which it is true. The extension of the monadic predicate ``$\bigcirc$ is an even number'' is the
+set $\{2,4,6,\ldots \}.$
+The extension of the monadic predicate ``$\bigcirc$ is an even prime number''
+is the set
+ $\{2 \}.$
+The extension of the monadic predicate ``$\bigcirc$ is an even prime number
+greater than 2''
+is the empty set. 
+
+Distinct monadic predicates may have the same extension. For example, the
+extension of the predicate ``$\bigcirc$ is a warm--blooded reptile'' is also
+the empty set as is the extension of the predicate
+``$\bigcirc$ is a collie weighing more than 300 kilograms.''
+We say that monadic predicates with the same extension are {\em coextensive}.
+
+We will focus on statements whose truth depends only on the extensions of the
+monadic predicates which occur in them. We call such sentential contexts 
+in which interchange of coextensive predicates preserves truth--value {\em
+extensional}. Our focus on extensional contexts is the natural continuation of
+our earlier focus on truth--functional contexts.
+\subsubsection{Open sentences and the use of variables}
+
+Consider again the argument above.
+Intuitively, the validity of this argument does not depend on the particular
+name ``Lassie'' being used; it would be equally valid with any name in place of
+``Lassie.'' 
+This generality may be brought out by the use of variables in place of
+particular names. 
+We will form new expressions called {\em open sentences} by putting variables
+``$x,y,z,\dots $'' for the placeholders in monadic predicates.
+Open sentences are not statements. They are true or false with respect to
+assignments of values to the variables they contain. For example, the open
+sentence ``$x$ is an even number'' is true with respect to the assignment of 16
+to 
+``$x$'' and false with respect to the assignment of 17  to ``$x$'' and false
+with respect to the assignment of Lassie to ``$x$.''
+\subsubsection{Truth-functional compounding of open sentences}
+
+We may form compounds of open sentences using truth--functional connectives.
+For example, the following open sentences are truth--functionally complex.
+\begin{itemize}
+\item If $x$ is divisible by six, then $x$ is divisible by three.
+\item $x$ is a collie and it is not the case that $x$ weighs more than 300 kg. 
+\end{itemize}
+We may use our prior understanding of the truth--functional connectives to
+determine the truth--values of such open sentences with respect to particular
+assignments of values to their variables.  
+\subsubsection{Existential Quantification}
+
+We proceeded to introduce the existential quantifier. Consider the statement,
+``there is an even prime number.''
+We render this statement as the application of the existential quantifier to the open sentence,
+\begin{itemize}
+\item $x$ is an even number $\wedge$ $x$ is a prime number, thus
+\item $(\exists x)$($x$ is an even number $\wedge$ $x$ is a prime number).
+\end{itemize}
+This last sentence is true just in case there is an assignment of some object to
+the variable $x$ with respect to which the preceding open sentence is true.
+\subsubsection{Free and bound occurrences of variables}
+
+ Consider again the example the example above. 
+\begin{itemize}
+\item $x$ is an even number $\wedge$ $x$ is a prime number
+\item $(\exists x)$($x$ is an even number $\wedge$ $x$ is a prime number)
+\end{itemize}
+As noted, the first of these sentences is not simply true or false, it is true or false with respect to an assignment to the variable ``$x$''; we say in this instance that the occurrences of the variable ``$x$'' are \emph{free} in this sentence. On the other hand, the occurrences of the variable $x$ are \emph{bound} by the existential quantifier in the second sentence; this sentence is true or false independent of any assignment to the variable $x$. Note that a variable may have both free and bound occurrences within a single sentence:
+\begin{itemize}
+\item $(\exists x)$($x$ is an even number) $\wedge$ ($x$ is a prime number); \end{itemize}
+and may have occurrences bound by distinct quantifiers: 
+\begin{itemize}
+\item $(\exists x)$($x$ is an even number) $\wedge$ $(\exists x)$($x$ is a prime number).
+\end{itemize}
+\subsubsection{Universal Quantification}
+
+Next we consider the use of the universal quantifier. We can render the statement
+\begin{itemize}
+\item all numbers are even or odd
+\end{itemize}
+as
+\begin{itemize}
+\item $(\forall x)$ [($x$ is an even number) or ($x$ is an odd number)].
+\end{itemize}
+The last statement is true, just in case whatever integer is assigned to the variable $x$ satisfies the open statement within the square brackets. Here we see the contextual determination of a \emph{universe of discourse} -- when we say ``all numbers'' in this context, we intend that the variable of quantification range over all integers and not, for example, all complex numbers.
+\subsubsection{Monadic Schemata}
+
+As we did in the case of truth-functional logic, we will introduce a schematic language for monadic quantificational logic. We specify the following categories of monadic schemata.
+\begin{itemize}
+\item 
+A {\em one variable open schema} is a truth functional compound of expressions
+such as \\
+$Fx , Gx , Hx , \ldots .$
+\item
+A {\em simple monadic schema} is the existential or universal quantification of
+a one variable open schema with variable of quantification $x.$
+\item
+A {\em pure monadic schema} is a truth functional compound of simple monadic
+schemata. 
+\end{itemize}
+\subsubsection{Structures as interpretations of monadic schemata}
+
+We introduce \emph{structures} as interpretations of monadic schemata. These play the role that truth-assignments played in the context of truth-functional logic.
+In order to specify a structure $A$ for a schema $S$ we need to
+\begin{itemize}
+\item specify a nonempty set $U^A,$ the universe of $A$;
+\item specify sets $F^A, G^A, \ldots $ each of which is a subset of $U^A$ as
+the extensions of the monadic predicate letters which occur in $S$;
+\item specify an element $a \in U^A$ to assign to the variable $x,$ if $x$
+occurs free in $S.$ 
+\end{itemize}
+When the variable $x$ has no free occurrences in the schema $S$, we write $A \models S$ as shorthand for ``the schema $S$ is true in the
+structure $A,$'' alternatively ``the structure $A$ satisfies the schema $S$.'' Otherwise, we write $A\models S[a]$ as shorthand for ``the structure $A$ satisfies the schema $S$ relative to the assignment of $a$ to the variable $x$.''  
+\subsubsection{Validity, satisfiability, implication, and equivalence}
+
+We extend the notions of validity, satisfiability, implication, and equivalence to monadic quantificational schemata.
+\begin{itemize}
+\item
+A monadic schema $S$ is {\em valid} if and only if for every structure $A, A
+\models S.$
+\item
+A monadic schema $S$ is {\em satisiable} if and only if for some structure $A,
+A \models S.$
+\item
+A monadic schema $S$ {\em implies} a monadic schema $T$ if and only if for
+every structure $A,$ if $A \models S,$ then $A \models T.$
+\item
+Monadic schemata $S$ and $T$ are equivalent if and only if $S$ implies $T$, and $T$ implies $S$. 
+\end{itemize}
+\subsubsection{Counting the number of structures with fixed universe of discourse that satisfy a schema}
+
+We discussed how to count the number of structures with a fixed universe of discourse that satisfy a given schema. We asked, how many structures with universe of discourse $U=\{1,2,3,4,5,6\}$ interpreting the monadic predicate letters $F$ and $G$ satisfy the schema 
+\[S:\ \ \ (\forall x)(Fx\supset Gx).\] 
+We observed that a structure $A$ satisfies $S$ if and only if $F^A\subseteq G^A$. So we need to determine the number, call it $n$, of pairs of subsets $Y,Z$ of $U$ with $Y\subseteq Z$. By using what we learned earlier about binomial coefficients, we see that 
+\[n=\sum_{i=0}^{i=6}\binom{6}{i}2^i = \sum_{i=0}^{i=6}\binom{6}{i}2^i\cdot 1^{6-i}=(2+1)^6 = 3^6.\]
+The next to last equality is justified by the celebrated \emph{Binomial Theorem}. For those of us with no taste for binomial coefficients, we will discuss a much simpler and direct combinatorial argument for the conclusion that $n= 3^6$.
+\subsubsection{Element Types}
+
+Consider the following four one variable open schemata; we will call them (element) types.
+\begin{itemize}
+\item $T_1(x): Fx\wedge Gx$
+\item $T_2(x): Fx\wedge \neg Gx$
+\item $T_3(x): \neg Fx\wedge Gx$
+\item $T_4(x): \neg Fx\wedge \neg Gx$
+\end{itemize}
+Note that a structure $A$ satisfies the schema $S$ if and only if it contains no element satisfying the type $T_2$. Since a structure is determined by the type of each of its elements, there are as many structures with universe $U$ satisfying $S$ as there are ways of sorting the members of $U$ into the three remaining types. For each of the six members of $U$, there are three types into which it could be sorted, so by the product rule, the number of structures satisfying $S$ is $3^6$.
+\subsubsection{Counting counterexamples to an alleged implication}
+If $R$ and $R^*$ are monadic schemata we say that a structure $A$ is a \emph{counterexample} to the claim that $R$ implies $R^*$ if and only if $A\models R$ and $A\not\models R^*$. We continued with the preceding example and counted the number of counterexamples to the claim that the schema $S$ implies the schema
+\[T:\ \ \ \ (\forall x)(Gx\supset Fx).\]
+Again, we suppose that our structures have universe of discourse $U$ and interpret exactly the monadic predicate letters $F$ and $G$. If a structure $A$ satisfies both $S$ and $T$, then $F^A=G^A$. Hence, of the $3^6$ structures satisfying $S$, the number that also satisfy $T$ is $2^6$, that is, the number of subsets of $U$, assigned within a single structure to both $F$ and $G$. So the number of counterexamples to the claim that $S$ implies $T$ is $3^6 - 2^6$.  
