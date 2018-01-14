@@ -6,13 +6,13 @@
 \end{definition}
 
 \subsubsection*{Propositions as a heuristic}
-It is sometimes useful to think of a schema $S$ as expressing a proposition, to whit, the set of truth assignments $A$ that satisfy $S$; of course, this needs to be relativized to a collection of sentence letters $X$ which includes all those occurring in $S$. We suggested the notation: 
+It is sometimes useful to think of a schema $S$ as expressing a proposition, to whit, the set of truth assignments $A$ that satisfy $S$; of course, this needs to be relativized to a collection of sentence letters $X$ which includes all those occurring in $S$. We will use the notation: 
 \[\prop{S}{X} = \{ A\mid A\  \mbox{is a truth assignment for $X$ and } A\models S\}.
 \]
  When we use this notation without the subscript $X$, we assume $A$ is a truth assignment for exactly the set of sentence letters with occurrences in $S$. 
 
 \subsubsection*{Expressive Completeness}
-In the last section, we used the notion of the proposition expressed by a schema as an intuitive vehicle for pursuing this investigation. Since the semantical correlate of a truth-functional schema is a set of truth assignments to some finite set of sentence letters, we can frame the question of the \emph{expressive completeness of truth-functional logic} in terms of propositions. Let $X$ be a non-empty finite set of sentence letters. We deploy the notation: $\mathbb{A}(X)$ for the set of truth assignments to the sentence letters $X$, and $\mathbb{S}(X)$ for the set of truth-functional schemata compounded from sentence letters all of which are members of $X$. 
+In the last section, we used the notion of the proposition expressed by a schema as an intuitive vehicle for pursuing the investigation of the expressive power of truth-functional schemata. Since the semantical correlate of a truth-functional schema is a set of truth assignments to some finite set of sentence letters, we can frame the question of the \emph{expressive completeness of truth-functional logic} in terms of propositions. Let $X$ be a non-empty finite set of sentence letters. We deploy the notation: $\mathbb{A}(X)$ for the set of truth assignments to the sentence letters $X$, and $\mathbb{S}(X)$ for the set of truth-functional schemata compounded from sentence letters all of which are members of $X$. 
 
 We provide the following inductive definition of $\mathbb{S}(X)$. 
 \begin{definition}
@@ -31,14 +31,14 @@ Let $X$ be a nonempty finite set of sentence letters. $\mathbb{S}(X)$ is the sma
 
 If $\mfp\subseteq\mathbb{A}(X)$, we call $\mfp$ a \emph{proposition over} $X$. 
 
-Let $X$ be a non-empty finite set of sentence letters and let $\mfp$ be a proposition over $X$. Is there a schema $S\in\mathbb{S}(X)$ such that $\prop{S}{X}=\mfp$, ie can every proposition be expressed by some schema? In other words, is truth-functional logic \emph{expressively complete}? 
+Let $X$ be a non-empty finite set of sentence letters and let $\mfp$ be a proposition over $X$. Is there a schema $S\in\mathbb{S}(X)$ such that $\prop{S}{X}=\mfp$, \emph{i.e.}, can every proposition be expressed by some schema? In other words, is truth-functional logic \emph{expressively complete}? 
 
 \begin{theorem}[Expressive Completeness of Truth-functional Logic]\label{tflexpcomp-thm}
 Let $X$ be a non-empty finite set of sentence letters and let $\mfp$ be a proposition over $X$. There is a schema $S\in\mathbb{S}(X)$ such that $\prop{S}{X}=\mfp$.
 \end{theorem}
 
 \begin{aside}
-    This looks complicated, but it really isn't. In natural language, what it's saying is this: \emph{pick any subset $\mfp$} (your proposition) \emph{of truth assignments for a set of sentence letters $X$. Then there is a truth-functional schema $S$ using only letters from $X$} ($S\in\mathbb{S}(X)$) \emph{which is true only of those truth-assignments which are in $\mfp$} ($\prop{S}{X}=\mfp$). In other words, \emph{every proposion can be ``picked out'' by some schema}. This is why it's called \emph{expressive completeness}: truth-functional logic is ``expressively complete'' in that it can express every such proposition. 
+    This looks complicated, but it really isn't. In natural language, what it's saying is this: \emph{pick any subset $\mfp$} (your proposition) \emph{of truth assignments for a set of sentence letters $X$. Then there is a truth-functional schema $S$ using only letters from $X$} ($S\in\mathbb{S}(X)$) \emph{which is true  of exactly those truth-assignments which are in $\mfp$} ($\prop{S}{X}=\mfp$). In other words, \emph{every proposion can be ``picked out'' by some schema}. This is why it's called \emph{expressive completeness}: truth-functional logic is ``expressively complete'' in that it can express every such proposition. 
 \end{aside}
 
 For the proof of Theorem \ref{tflexpcomp-thm}, the following terminology and lemma will be useful. 
@@ -53,7 +53,7 @@ Let $X$ be a non-empty finite set of sentence letters and let $S\in\mathbb{S}_X$
 If $\Lambda$ is a set of literals over $X$ we write $\bigwedge \Lambda$ to abbreviate a term which is formed as a conjunction of the literals in $\Lambda$. Similarly, if $\Gamma$ is a set of terms over $X$ we write $\bigvee\Gamma$ to abbreviate a schema in disjunctive normal form which is formed as a disjunction of the terms in $\Gamma$.
 
 \begin{example}
-    Let $S = \{a, b, c\}$. Then $\bigwedge S = a \land b \land c$, and $\bigvee S = a \vee b \vee c$.
+    Let $\Lambda = \{a, b, c\}$. Then $\bigwedge \Lambda = a \land b \land c$, and $\bigvee \Lambda = a \vee b \vee c$.
 \end{example}
 
 \begin{lemma}\label{tflexpcomp-lem}
@@ -67,9 +67,10 @@ $A'\models T_A\ \ \ \mbox{if and only if}\ \ \ A'=A$.
 \end{proof}    
 
 \begin{aside}
-    Once you become a bit more familiar with the terminology, things will become much easier. Indeed, this lemma is really simple - in plain English, it says that \emph{for every truth assignment, there is a schema which only uses logical ANDs that is satisfied by only that truth assignment}. When stated like that, of course, it seems obvious - if your truth assignment assigns true to $p$ you should have $p$ in your schema, and if your truth-assignment assigns false to $p$, your schema should include $\lnot p$, with all the literals joined up together by ANDs. 
+    Once you become a bit more familiar with the terminology, things will become much easier. Indeed, this lemma is really simple - in plain English, it says that \emph{for every truth assignment, there is a schema which only uses logical ANDs and NOTs that is satisfied by exactly that truth assignment}. When stated like that, of course, it seems obvious - if your truth assignment assigns true to $p$ you should have $p$ in your schema, and if your truth-assignment assigns false to $p$, your schema should include $\lnot p$, with all the literals joined up together by ANDs. 
 
-    The proof expresses that intuition symbolically - make sure you can understand the proof now, going over the relevant terminology and symbols if necessary. If you get stuck trying to interpret all that logical symbolism, please come into Office Hours and we'll be happy to help! Logic won't be any fun if the symbolism gets in the way of your ingenuity of understanding, so it's best if you take the time to get comfortable with all that at the start. 
+    The proof expresses that intuition symbolically - make sure you can understand the proof now, going over the relevant terminology and symbols if necessary. If you get stuck trying to interpret all that logical symbolism, please come into Office Hours and we'll be happy to help! Logic won't be any fun if the symbolism gets in the way of your %ingenuity of 
+    understanding, so it's best if you take the time to get comfortable with all that at the start. 
 \end{aside}
 
 \begin{proof}[Proof of Theorem \ref{tflexpcomp-thm}]
