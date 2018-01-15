@@ -13,7 +13,7 @@
 
     \item A list of TF-schemata is called \emph{succinct} iff no two schemata on the list are equivalent. 
     
-    \item The \emph{power} of a schema $S$ is the length of the longest succinct list of schemata which $S$ implies. %In other words, it's the number of nonequivalent schema which $S$ implies. 
+    \item The \emph{power} of a schema $S$ relative to a set of sentence letters $X$ that includes all those with occurrences in $S$ is the length of the longest succinct list of schemata drawn from $\mathbb{S}(X)$ which $S$ implies. (When $X$ is unspecified, we suppose it to be exactly the set of sentences letters which occur in $S$.) %In other words, it's the number of nonequivalent schema which $S$ implies. 
 \end{itemize}
 
 \textbf{Fun With Counting}
@@ -35,15 +35,15 @@ Suppose we have a sentence $S$ over $n$ sentence letters which is satisfied by $
 \newpage
 \begin{mdframed}[linewidth=1]
 \section*{Problems}
-For the following problems, unless otherwise specified, let $X = \{p_1, p_2, p_3, p_4\}$ be the set of sentence letters under consideration. 
+Let $X = \{p_1, p_2, p_3, p_4\}$.  
 \begin{enumerate}
-    \item What is the power of $p_1 \equiv p_2$?
+    \item What is the power of $p_1 \equiv p_2$ relative to $X$?
 
-    \item For four sentence letters as above, what is the length of the longest succinct list of schemata no two of which have the same power?
+    \item What is the length of the longest succinct list of schemata drawn from $\mathbb{S}(X)$ no two of which have the same power?
 
-    \item What is the length of the longest succint list of schemata (from four sentence letters) each having power 256?
+    \item What is the length of the longest succinct list of schemata drawn from $\mathbb{S}(X)$ each having power 256?
 
-    \item What is the largest $n$ such that the conjunction of any two schema of power $n$ (with 4 sentence letters) is satisfiable?
+    \item What is the largest $n$ such that the conjunction of any two schema of power $n$ drawn from $\mathbb{S}(X)$ is satisfiable?
 
     \item How many ways can you choose 3 marbles from a bag of 15 marbles, assuming the marbles are all distinct? How many ways to take out all 15 marbles from the bag, one by one? 
 
@@ -51,7 +51,8 @@ For the following problems, unless otherwise specified, let $X = \{p_1, p_2, p_3
 
     \item Is there a schema of power 22? If so, give one. If not, explain why it's not possible.
 
-    \item How many non-equivalent schema over four letters have power greater than 256?
+    \item What is the length of the longest succinct list of schemata drawn from $\mathbb{S}(X)$ each having power greater than 256?
+%\item How many non-equivalent schema over four letters have power greater than 256?
 \end{enumerate}
 \end{mdframed}
 
@@ -63,11 +64,11 @@ For the following problems, unless otherwise specified, let $X = \{p_1, p_2, p_3
 
     Plugging in to our formula, we find that the power is $2^{2^4 - 8} = 2^{16 - 8} = 2^8$. 
 
-    \item 17. The power of a sentence $S$ on $n$ sentence letters with $k$ satisfying truth assignments is $2^{2^n - k}$. $k$ can take any value from $0$ through $16$ inclusive when $n = 4$ (since we have $2^4 = 16$ truth-assignments), meaning that the power can be any one of $2^{16}, 2^{15}, ... , 2^0$.
+    \item 17. The power of a schema $S$ on $n$ sentence letters with $k$ satisfying truth assignments is $2^{2^n - k}$. $k$ can take any value from $0$ through $16$ inclusive when $n = 4$ (since we have $2^4 = 16$ truth-assignments), meaning that the power can be any one of $2^{16}, 2^{15}, ... , 2^0$.
 
-    \item $\binom{16}{8}$. A schema on four sentence letters has power $256 = 2^8$ when it is satisfied by $8$ truth assignments (because $2^{2^4 - 8} = 2^8$). Since we have $2^4 = 16$ total truth assignments, the number of non-equivalent propositions of size 8 is the number of subsets of size 8 from 16, which is $\binom{16}{8}$. 
+    \item $\binom{16}{8}$. A schema on four sentence letters has power $256 = 2^8$ when it is satisfied by $8$ truth assignments (because $2^{2^4 - 8} = 2^8$). Since we have $2^4 = 16$ total truth assignments, the number of pairwise inequivalent schemata each satisfied by 8 truth-assignments is the number of subsets of size 8 drawn from a set of size 16, which is $\binom{16}{8}$. 
 
-    \item $n = 2^7 = 128$. With four sentence letters, we have $2^4 = 16$ truth assignments. A schema has power $2^7$ is satisfied by $16 - 7 = 9$ truth assignments. By the pigeonhole principle, two schemata of power $2^7$ (hence both satisfied by 9 things) must have some satisfying truth-assignment in common (because $9 + 9 = 18 > 16$). Hence the conjunction of any two schemata of power $2^7$ is satisfiable, because there must be a truth assignment that satisfies them both. 
+    \item $n = 2^7 = 128$. With four sentence letters, we have $2^4 = 16$ truth assignments. A schema that has power $2^7$ is satisfied by $16 - 7 = 9$ truth assignments. By the pigeonhole principle, two schemata of power $2^7$ (hence both satisfied by 9 things) must have some satisfying truth-assignment in common (because $9 + 9 = 18 > 16$). Hence the conjunction of any two schemata of power $2^7$ is satisfiable, because there must be a truth assignment that satisfies them both. 
 
     Note that $2^7$ is the highest power that works, because being satisfied by less than 9 truth-assignments (therefore having a greater power) would mean that the two sentences need not have a satisfying truth-assignment in common. For example, if both sentences were satisfied by 8 truth assignments each, those sets of satisfying truth-assignments could be disjoint, hence the conjunction of the two sentences would not be satisfiable. 
 
@@ -77,7 +78,7 @@ For the following problems, unless otherwise specified, let $X = \{p_1, p_2, p_3
 
     \item No. The power of a schema is always some power of 2. 22 is not a power of 2. 
 
-    \item $\sum_{i = 0}^7\binom{16}{i}$. We have $2^4 = 16$ total truth-assignments. The power of a schema $S$ on four sentence letters is greater than $256 = 2^8$ when $S$ is satisfied by less than $8$ truth-assignments (because our formula for power is $2^{2^n - k}$ with $n=4$ in this case, hence power is greater than $2^8$ when $k$ is less than 8). Hence our answer equal to the number of schema that express a proposition of size 0, plus the number that express a proposition of size 1.... plus the number that express a proposition of size 7. Remember that $\binom{n}{k}$ represents the number of size-$k$ subsets from $n$ things, and since propositions are simply subsets of truth-assignments, we arrive at our answer $\sum_{i = 0}^7\binom{16}{i}$.
+    \item $\sum_{i = 0}^7\binom{16}{i}$. We have $2^4 = 16$ total truth-assignments. The power of a schema $S$ on four sentence letters is greater than $256 = 2^8$ when $S$ is satisfied by less than $8$ truth-assignments (because our formula for power is $2^{2^n - k}$ with $n=4$ in this case, hence power is greater than $2^8$ when $k$ is less than 8). Hence our answer equal to the number of schemata that express a proposition of size 0, plus the number that express a proposition of size 1.... plus the number that express a proposition of size 7. Remember that $\binom{n}{k}$ represents the number of size-$k$ subsets from $n$ things, and since propositions are simply subsets of truth-assignments, we arrive at our answer $\sum_{i = 0}^7\binom{16}{i}$.
 
 \end{enumerate}
 \end{mdframed}
