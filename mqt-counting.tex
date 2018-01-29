@@ -7,10 +7,13 @@ Let's consider the problem of how to count the number of structures with a fixed
     From now on, we will use the notation $[n] := \{1,2,...n\}$
 \end{aside}
 
-We observed that a structure $A$ satisfies $S$ if and only if $F^A\subseteq G^A$. So we need to determine the number, call it $n$, of pairs of subsets $Y,Z$ of $U$ with $Y\subseteq Z$. The idea then is to count all the possible sets which $Z$ could be (there are $\sum_{i = 0}^6\binom{6}{i}$ of these) and multiply by every set which $Y$ could be, given $Z$ (if $Z$ is of size $i$, there are $2^i$ subsets of $Z$, so there are $2^i$ possibilities for $Y$). So, by using what we learned earlier about binomial coefficients, we see that 
+Observe that a structure $A$ satisfies $S$ if and only if $F^A\subseteq G^A$. So we need to determine the number of pairs of sets $Y,Z$ such that $Y\subseteq Z\subseteq[6]$. Let's call this number $N$. We proceed to compute $N$ as follows.
+
+First, recall that for every $0\leq i\leq 6$, the number of sets $Z\subseteq[6]$ of size $i$ is $\binom{6}{i}$. Second, recall that that the number of subsets of a set of size $i$ is $2^i$. It follows that the number of pairs $Y,Z$ with $Y\subseteq Z\subseteq[6]$, for sets $Z$ of size $i$ is $\binom{6}{i}2^i$. Therefore,
+%Observe that a structure $A$ satisfies $S$ if and only if $F^A\subseteq G^A$. So we need to determine the number, call it $n$, of pairs of subsets $Y,Z$ of $U$ with $Y\subseteq Z$. The idea then is to count all the possible sets which $Z$ could be (there are $\sum_{i = 0}^6\binom{6}{i}$ of these) and multiply by every set which $Y$ could be, given $Z$ (if $Z$ is of size $i$, there are $2^i$ subsets of $Z$, so there are $2^i$ possibilities for $Y$). So, by using what we learned earlier about binomial coefficients, we see that 
 
 \begin{align*}
-    n& = \sum_{i = 0}^{i = 6}\binom{6}{i}2^i \\
+    N& = \sum_{i = 0}^{i = 6}\binom{6}{i}2^i \\
     & = \sum_{i = 0}^{i = 6}\binom{6}{i}2^i\cdot 1^{6-i}\\
     &= (2 + 1)^6 \\
     &= 3^6
@@ -38,7 +41,7 @@ If $R$ and $R^*$ are monadic schemata we say that a structure $A$ is a \emph{cou
     Note that $R$ implies $R^*$ iff the number of counterexamples as defined above is zero.
 \end{aside}
 
-Let's continue with the preceding example and counted the number of counterexamples to the claim that the schema $S$ implies the schema
+Let's continue with the preceding example and count the number of counterexamples to the claim that the schema $S$ implies the schema
 
 \[T:\ \ \ \ (\forall x)(Gx\supset Fx).\]
 

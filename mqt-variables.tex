@@ -5,7 +5,8 @@ Consider again the argument that ``Lassie is a collie, and all collies are morta
 
 We can achieve this kind of generality by the use of variables in place of particular names. We will form new expressions called \emph{ open sentences} by putting variables $x,y,z,\dots$ for the placeholders in monadic predicates. For example, ``$x$ is a collie'' is an open sentence.
 
-Open sentences are not statements. They are true or false with respect to assignments of values to the variables they contain. For example, the open sentence ``$x$ is an even number'' is true with respect to the assignment $x := 16$ and false with respect to the assignment of $x := 17$. This gives a good justification of why we use the word ``open'' - ie, the truth of the sentence is an ``open question'' in absence of information about $x$. We use the notation $S[x|a]$ to denote the sentence resulting from the the substitution of the constant $a$ for all free occurrences of the variable $x$ in the sentence $S$. 
+Open sentences are not statements. They are true or false with respect to assignments of values to the variables they contain. For example, the open sentence ``$x$ is an even number'' is true with respect to the assignment $x := 16$ and false with respect to the assignment of $x := 17$. This gives a good justification of why we use the word ``open'' - ie, the truth of the sentence is an ``open question'' in absence of information about $x$. 
+%We use the notation $S[x|a]$ to denote the sentence resulting from the the substitution of the constant $a$ for all free occurrences of the variable $x$ in the sentence $S$. 
 
 We may, of course, form compounds of open sentences using truth-functional connectives. For example, the following open sentences are truth-functionally complex.
 \begin{itemize}
@@ -25,11 +26,11 @@ We say that the quantifier here \emph{binds} $x$. In general, a quantifier $Qx$ 
 
 Note that $(\exists x)(P(x))$ has a truth-value, without any assignment to $x$. This is because every variable in the sentence is \emph{bound} by a quantifier, and so no assignments need to be made. 
 We call a sentence in which every variable is bound a \emph{closed} sentence. 
-
+\iffalse
 \begin{aside}
     In the sentence $(\exists x)(F(x)) \land x > 3$, the first occurrence of $x$ is bound, whereas the second is not. As such, the two instances of $x$ \emph{may refer to different elements of our universe}. In other words, the sentence is equivalent to $(\exists x)(F(x)) \land y > 3$, which makes it clear that the sentence is still open (since it needs an assignment to $y$ to have a truth-value). 
 \end{aside}
-
+\fi
 Note that a variable may have both free and bound occurrences within a single sentence:
 \begin{itemize}
 \item $(\exists x)$($x$ is an even number) $\wedge$ ($x$ is a prime number); \end{itemize}
@@ -54,7 +55,7 @@ Note that context determines our \emph{universe of discourse} - when we say ``al
 
 
 \subsubsection*{Monadic Schemata}
-As we did in the case of truth-functional logic, we will introduce a schematic language for monadic quantificational logic. We specify the following categories of monadic schemata.
+As we did in the case of truth-functional logic, we will introduce a schematic language for monadic quantificational logic. In this case, we use capital letters such as $F$, $G$ and $H$ to schematize monadic predicates (we call these \emph{monadic predicate letters}, and lowercase letters such as $x, y$ and $z$ as variables. We specify the following categories of monadic schemata.
 \begin{itemize}
 \item 
 A \emph{ one variable open schema} is a truth functional compound of expressions

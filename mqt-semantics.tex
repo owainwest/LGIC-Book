@@ -12,7 +12,9 @@ occurs free in $S.$
 \end{itemize}
 
 \begin{aside}
-    Item (1) sets aside all the objects that are under our consideration (ie, all the objects we're referring to when we quantify). Item (2) specifies for which elements of $U^A$ have the properties $F^A$, $G^A$, etc (or, equivalently, which $x \in U^A$ are such that $x \in F^A$, etc). Item (3) makes sure that we substitute in definite values for free variables, if there are any, so that we can evaluate our sentence's truth. 
+    Item (1) specifies a \emph{universe of discourse}, that is, a collection of objects over which our variables of quantification range. % all the objects that are under our consideration (ie, all the objects we're referring to when we quantify). 
+    Item (2) specifies the extension of each monadic predicate letter occurring in any schema under consideration. %for which elements of $U^A$ have the properties $F^A$, $G^A$, etc (or, equivalently, which $x \in U^A$ are such that $x \in F^A$, etc). 
+    Item (3) makes sure that we assign definite values to free variables, if there are any, so that we can evaluate our sentence's truth. 
 \end{aside}
 
 When the variable $x$ has no free occurrences in the schema $S$, we write $A \models S$ as shorthand for ``the schema $S$ is true in the
@@ -21,7 +23,7 @@ structure $A,$'' alternatively ``the structure $A$ satisfies the schema $S$.'' O
 
 \subsubsection*{Validity, satisfiability, implication, and equivalence}
 
-We extend the notions of validity, satisfiability, implication, and equivalence to monadic quantificational schemata.
+We extend the notions of validity, satisfiability, implication, and equivalence to (closed) monadic quantificational schemata. 
 \begin{itemize}
 \item
 A monadic schema $S$ is \emph{ valid} if and only if for every structure $A, A
@@ -37,7 +39,7 @@ Monadic schemata $S$ and $T$ are equivalent if and only if $S$ implies $T$, and 
 \end{itemize}
 
 \begin{aside}
-    A schema being valid means it is true in all possible interpretations, or as logicians like to say, ``all possible worlds''. A schema is satisfiable if it's true in at least one possible world. 
+    A schema being valid means it is true in all possible interpretations, or as some would say, ``all possible worlds''. A schema is satisfiable if it's true in at least one possible world. 
 
-    Show that if $S$ implies $T$, $\mathbb{S}$ is the set of structures $S$ is true in, and $\mathbb{T}$ is the set of structures that $T$ is true in, then $\mathbb{S} \subseteq \mathbb{T}$.  
+    %Show that if $S$ implies $T$, $\mathbb{S}$ is the set of structures $S$ is true in, and $\mathbb{T}$ is the set of structures that $T$ is true in, then $\mathbb{S} \subseteq \mathbb{T}$.  
 \end{aside}

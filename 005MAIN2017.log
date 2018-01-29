@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  15 JAN 2018 06:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  29 JAN 2018 11:28
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1230,28 +1230,24 @@ Package mdframed Info: mdframed detected package amsthm
  changed the theorem header of amsthm
 (mdframed)              on input line 38.
 ) [29]
-(./mqt-variables.tex
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 29.
- [30]) [31] (./mqt-semantics.tex
+(./mqt-variables.tex [30]) [31] (./mqt-semantics.tex
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 14.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 39.
+(mdframed)              on input line 41.
 ) [32] (./mqt-counting.tex
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 6.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 37.
-Package mdframed Info: Not enough space on this page on input line 39.
+(mdframed)              on input line 40.
+Package mdframed Info: Not enough space on this page on input line 42.
 
 [33]
-Package mdframed Info: Not enough space on this page on input line 39.
+Package mdframed Info: Not enough space on this page on input line 42.
 ) [34] (./mqt-decidability.tex
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
@@ -1556,9 +1552,9 @@ Package rerunfilecheck Info: File `005MAIN2017.out' has not changed.
 (rerunfilecheck)             Checksum: D79F3E51684B2136CA1559F7862B48AD;2368.
  ) 
 Here is how much of TeX's memory you used:
- 26747 strings out of 493089
- 496313 string characters out of 6134842
- 683251 words of memory out of 5000000
+ 26744 strings out of 493089
+ 496276 string characters out of 6134842
+ 683252 words of memory out of 5000000
  29183 multiletter control sequences out of 15000+600000
  30594 words of font info for 121 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1599,10 +1595,10 @@ msfonts/cm/cmtt10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/am
 sfonts/euler/eufm10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/
 amsfonts/euler/eufm7.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public
 /amsfonts/symbols/msbm10.pfb>
-Output written on 005MAIN2017.pdf (98 pages, 767209 bytes).
+Output written on 005MAIN2017.pdf (98 pages, 764418 bytes).
 PDF statistics:
- 1335 PDF objects out of 1440 (max. 8388607)
- 1187 compressed objects within 12 object streams
- 502 named destinations out of 1000 (max. 500000)
+ 1330 PDF objects out of 1440 (max. 8388607)
+ 1182 compressed objects within 12 object streams
+ 499 named destinations out of 1000 (max. 500000)
  277 words of extra memory for PDF output out of 10000 (max. 10000000)
 
