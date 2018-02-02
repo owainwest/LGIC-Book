@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  29 JAN 2018 11:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  2 FEB 2018 08:23
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1251,66 +1251,65 @@ Package mdframed Info: Not enough space on this page on input line 42.
 ) [34] (./mqt-decidability.tex
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 17.
+(mdframed)              on input line 18.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 27.
+(mdframed)              on input line 28.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 39.
+(mdframed)              on input line 40.
  [35]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 70.
+(mdframed)              on input line 71.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 94.
+(mdframed)              on input line 95.
  [36]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 142.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 186.
+(mdframed)              on input line 143.
  [37]
-Package mdframed Info: Not enough space on this page on input line 188.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 195.
+(mdframed)              on input line 196.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 219.
+(mdframed)              on input line 221.
 ) [38]
 (./mqt-expressive-power.tex
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 39.
+(mdframed)              on input line 42.
  [39]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 54.
+(mdframed)              on input line 57.
 ) [40] (./mqt-review-1.tex
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 2.
+Package mdframed Info: Box was splittet wrong
+ starting loop to iterate the splitting point
+(mdframed)              on input line 99.
  [41]
 Package mdframed Info: Box was splittet wrong
  starting loop to iterate the splitting point
-(mdframed)              on input line 97.
+(mdframed)              on input line 99.
  [42] [43]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 102.
-Package mdframed Info: Not enough space on this page on input line 204.
+(mdframed)              on input line 104.
+Package mdframed Info: Not enough space on this page on input line 206.
 Package mdframed Info: Box was splittet wrong
  starting loop to iterate the splitting point
-(mdframed)              on input line 204.
+(mdframed)              on input line 206.
 
 [44] [45]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 207.
-Package mdframed Info: Not enough space on this page on input line 247.
+(mdframed)              on input line 209.
+Package mdframed Info: Not enough space on this page on input line 249.
  [46])) [47] (./pqt.tex (./pqt-intro.tex) [48]
 (./pqt-quantifier-alternation.tex
 Package mdframed Info: mdframed detected package amsthm 
@@ -1552,10 +1551,10 @@ Package rerunfilecheck Info: File `005MAIN2017.out' has not changed.
 (rerunfilecheck)             Checksum: D79F3E51684B2136CA1559F7862B48AD;2368.
  ) 
 Here is how much of TeX's memory you used:
- 26744 strings out of 493089
- 496276 string characters out of 6134842
+ 26743 strings out of 493089
+ 496269 string characters out of 6134842
  683252 words of memory out of 5000000
- 29183 multiletter control sequences out of 15000+600000
+ 29182 multiletter control sequences out of 15000+600000
  30594 words of font info for 121 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,12n,68p,10433b,824s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1595,10 +1594,10 @@ msfonts/cm/cmtt10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/am
 sfonts/euler/eufm10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/
 amsfonts/euler/eufm7.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public
 /amsfonts/symbols/msbm10.pfb>
-Output written on 005MAIN2017.pdf (98 pages, 764418 bytes).
+Output written on 005MAIN2017.pdf (98 pages, 763648 bytes).
 PDF statistics:
- 1330 PDF objects out of 1440 (max. 8388607)
- 1182 compressed objects within 12 object streams
+ 1327 PDF objects out of 1440 (max. 8388607)
+ 1179 compressed objects within 12 object streams
  499 named destinations out of 1000 (max. 500000)
  277 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,10 +1,11 @@
 \subsection{Decidability}
 
-Our next order of business it to establish the decidability of pure monadic schema, just as we did for truth-functional schema.\footnote{See Goldfard Chs. 25-26 for additional exposition on the decidability of pure monadic schema.}
+Our next order of business it to establish the decidability of pure monadic schemata, just as we did for truth-functional schemata.\footnote{See Warren Goldfard, \emph{Deductive Logic}, Chs.~25-26 for an alternative treatment of the decidability of pure monadic schemata.}
 Our approach introduces notions that we will elaborate further, when we turn to study polyadic quantificational logic.
 
 \subsubsection*{Three views of structures}
-As a warm-up to the main event, we noted that we now have three (equivalent) ways of viewing structures, each of which may contribute a useful perspective, depending on the problem to hand. These are
+%As a warm-up to the main event, we noted 
+Note that we now have three (equivalent) ways of viewing structures, each of which may contribute a useful perspective, depending on the problem to hand. These are
 \begin{itemize}
 \item 
 the Canonical View, which consists of specifying the universe of discourse and extensions for each of the (finitely many) predicate letters in play,
@@ -15,11 +16,11 @@ the Venn View, which pictures the extensions of all the predicate letters in pla
 \end{itemize}
 
 \begin{aside}
-    Show that these three views are equivalent by giving a correspondence between them. For example, $x$ being of type $F \land \lnot G$ in the Types View corresponds to the statement that $x \in F \land x \not \in G$ in the Canonical view. 
+    Show that these three views are equivalent by giving a correspondence between them. For example, $x$ being of type $F \land \lnot G$ in the Types View corresponds to the statement that $x \in\mbox{ the extension of } F \land x \not \in\mbox{ the extension of } G$ in the Canonical view. 
 \end{aside}
 
 \subsubsection*{The small model theorem}
-We will prove the following \emph{Small Model Theorem} for monadic logic; the decidability of satisfiability of pure monadic schemata is a corollary to this result. 
+We will prove the following \emph{Small Model Theorem} for monadic logic; the decidability of the satisfiability of pure monadic schemata is a corollary to this result. 
 \begin{theorem}\label{smm-thm}
 Let $S$ be a pure monadic schema containing occurrences of at most $n$ distinct monadic predicate letters. If $S$ is satisfiable then there is a structure $A$ of size at most $2^n$ such that $A\models S$.
 \end{theorem}
@@ -29,7 +30,7 @@ Let $S$ be a pure monadic schema containing occurrences of at most $n$ distinct 
 \end{aside}
 
 \subsubsection*{Monadic similarity}
-The proof of Theorem \ref{smm-thm} rests on a lemma, and so we first need to introduce some new concepts. In what follows, we will without loss of generality restrict our attention to monadic schemata in which only the predicate letters $F$ and $G$ occur\footnote{The choice of using only two variables $F$, $G$ is simply for notational and instructional convenience. The generalization to $n$ predicate letters is simple, and we will end up proving results for $n$ variables, not just two.}. First, a definition. 
+The proof of Theorem \ref{smm-thm} rests on a lemma; in order to state this lemma, we first need to introduce some new concepts. In what follows, we will, without loss of generality, restrict our attention to monadic schemata in which only the predicate letters $F$ and $G$ occur.\footnote{The restriction to two monadic predicate letters is simply for pedagogical purposes. The generalization to $n$ predicate letters is simple, and we will end up proving results for $n$ variables, not just two.}. %First, a definition. 
 
 \begin{definition}
     We say that two structures $A$ and $B$ are {\em monadically similar} and write $A \approx_M B$ if and
@@ -37,10 +38,10 @@ only if they satisfy exactly the same pure monadic schemata.
 \end{definition}
 
 \begin{aside}
-    Show that monadic similarity is an \emph{equivalance relation}, ie it is reflexive ($A \approx_M A$), symmetric (if $A \approx_M B$, then $B \approx_M A$), and transitive (if $A \approx_M B$ and $B \approx_M C$, then $A \approx_M C$). 
+    Show that monadic similarity is an \emph{equivalance relation}, \emph{i.~e.}, it is reflexive ($A \approx_M A$), symmetric (if $A \approx_M B$, then $B \approx_M A$), and transitive (if $A \approx_M B$ and $B \approx_M C$, then $A \approx_M C$). 
 \end{aside}
 
-We now now turn towards developing our Lemma, which explores a sufficient condition for the monadic similarity of structures.
+We now turn towards developing the machinery required to establish our lemma, which provides a sufficient condition for the monadic similarity of structures.
 
 
 \subsubsection*{Homomorphisms}
@@ -68,7 +69,7 @@ If there is a homomorphism from $A$ onto $B$, we say that $B$ is a {\em
 surjective homomorphic image} of $A.$
 
 \begin{aside}
-    Intuitively, a homomorphism is a function that loosely, \emph{``preserves the arrangement''} of elements in its domain, ie elements which are of type $P$ get mapped to an element in the range also of type $P$, etc.
+    Intuitively, a homomorphism is a function that loosely, \emph{``preserves the arrangement''} of elements in its domain, \textit{i.e.}, elements which are of type $P$ get mapped to an element in the range also of type $P$, \textit{etc.}
 \end{aside}
 
 \subsubsection*{Example}
@@ -95,7 +96,7 @@ Note that $A$ and $B$ both have the same regions occupied in their respective Ve
     Prove the last assertion. 
 \end{aside}
 
-Although $A$ and $B$ are not homomorphic, we will shortly see that $A$ and $B$ have a common surjective homomorphic image, ie that there is a structure $C$ such that there is a homomorphism from $A$ onto $C$ and a homomorphism from $B$ onto $C$.
+Although $A$ and $B$ are not homomorphic, we will shortly see that $A$ and $B$ have a common surjective homomorphic image, \textit{i.e.}, that there is a structure $C$ such that there is a homomorphism from $A$ onto $C$ and a homomorphism from $B$ onto $C$.
 
 
 
@@ -153,7 +154,7 @@ We recall our discussion of element types:
 \item $T_4(x): \neg Fx\wedge \neg Gx$
 \end{itemize}
 We say that a structure {\em realizes} a given type $T_i$ just in case it
-makes the existential simple schema $(\exists x)T_i$ true (ie, tere is at least one element of type $T_i$).
+makes the existential simple schema $(\exists x)T_i$ true (\textit{i.e.}, there is at least one element of type $T_i$).
 \begin{example}\label{kinds-ex}
 The following structure realizes all four of the types listed above.
 \[A: U^A = \{1,2,3,4\}, F^A =\{1,3\}, G^A=\{1,2\}\]
@@ -166,15 +167,15 @@ $A$ and $B$ realize the same types if and only if they are
 monadically similar.
 \end{lemma} 
 \emph{Proof}:
-First, the forward direction. Suppose $A, B$ realize the same types. Then there is a single structure $C$ which is a surjective homomorphic image of both $A$ and $B$ (simply map every element of a given type in $A$ or $B$ onto a single element of that type in $C$). 
+First, the forward direction. Suppose $A, B$ realize the same types. Then there is a single structure $C$ which is a surjective homomorphic image of both $A$ and $B$ -- simply define $C$ so that it has exactly one element of each of the types realized in $A$ and $B$ and no other elements.% (simply map every element of a given type in $A$ or $B$ onto a single element of that type in $C$). 
 
 Therefore, by our earlier result, $A$ is monadically similar to $C$ and $B$ is
 monadically similar to $C.$ It follows at once that $A$ is monadically similar
-to $B$ (as monadic similarity is an equivalent relation, and hence transitive). 
+to $B$ (as monadic similarity is an equivalent relation, and hence symmetric and transitive). 
 
-The reverse direction follows immediately from the fact realization of a type is expressed by a pure monadic schema. \qed
+The reverse direction follows immediately from the fact that realization of a type is expressed by a pure monadic schema. \qed
 
-In the above proof, $C$ was a ``canonical model'' which realized the same types as $A, B$.  
+In the above proof, $C$ was a ``canonical model'' which realized the exactly the same types as $A, B$.  
 
 \subsubsection*{The small model theorem and the decidability of satisfiability}
 
@@ -182,22 +183,22 @@ Theorem \ref{smm-thm} is an immediate corollary to Lemma \ref{types-lem}.
 
 \emph{Proof}(of Theorem \ref{smm-thm}): Suppose $S$ is a schema involving only the predicate letters $F, G$. Then it follows at once from Lemma \ref{types-lem} and Example \ref{kinds-ex}, that there is a collection $X$ of 15 structures each of size $\leq 4$,
 such that if $S$ is satisfiable, then there is a structure $C_i \in X$ such that $C_i \models S.$ 
-
+\iffalse
 \begin{aside}
     Why? Because there are only $15$ canonical models. There are $2^4$ subsets of types (since we have $2^2 = 4$ types), but only 15 of those are realizable (since for any nonempty model, at least one type must be realized). For $i \in [15]$, we let each $C_i$ realize different types; since there are only 15 possible realized types, it follows that every structure has some $C_i$ as its homomorphic image. These $C_i$ are our canonical models. 
 \end{aside}
-
+\fi
 More generally, there is a collection $X$ of $2^{(2^n)}-1$ structures each of size $\leq 2^n$
 such that for any pure monadic schema $S$ involving only the predicate letters
 ``$F_1,$''$\ldots$ ``$F_n,$'' if $S$ is satisfiable, then there is a structure $A \in X$
 such that $A \models S.$ \qed
 
 \begin{aside}
-    There are $2^n$ types given $n$ monadic predicate letters, so there are $2^{2^n}$ subsets of types, of which $2^{2^n} - 1$ are realizable.  
+    There are $2^n$ types given $n$ monadic predicate letters, so there are $2^{2^n}$ subsets of types, of which $2^{2^n} - 1$ are jointly realizable in structures with \emph{non-empty} universe of discourse.  
 \end{aside}
 
 \begin{corollary}
-For every schema $S$, if $S$ is satisfiable, then there is an $1\leq i\leq 15$ such that $A_i\models S$. 
+For every pure monadic schema $S$ involving only the monadic predicate letters $F$ and $G$, if $S$ is satisfiable, then there is an $1\leq i\leq 15$ such that $A_i\models S$. 
 \end{corollary}
 
 \begin{corollary}
@@ -207,14 +208,15 @@ monadic schema is satisfiable.
 
 
 \begin{corollary}\label{monad-cor}
-\begin{item}
-\item\label{imp-item}
-Schema $S$ implies schema $T$  if and only if 
-\[\{i\mid A_i\models S\ \mbox{and}\ 1\leq i\leq 15\}\subseteq\{i\mid A_i\models T\ \mbox{and}\ 1\leq i\leq 15\}.\]
-\item\label{equiv-item}
-Schemata $S$ and $T$ are equivalent if and only if 
+For all pure monadic schemata $S$ and $T$ involving only the monadic predicate letters $F$ and $G$,
+\begin{itemize}
+\item[]\label{imp-item}
+$S$ implies  $T$  if and only if 
+\[\{i\mid A_i\models S\ \mbox{and}\ 1\leq i\leq 15\}\subseteq\{i\mid A_i\models T\ \mbox{and}\ 1\leq i\leq 15\},\mbox{ and}\]
+\item[]\label{equiv-item}
+$S$ and $T$ are equivalent if and only if 
 \[\{i\mid A_i\models S\ \mbox{and}\ 1\leq i\leq 15\}=\{i\mid A_i\models T\ \mbox{and}\ 1\leq i\leq 15\}.\]
-\end{item}
+\end{itemize}
 
 \begin{aside}
     Show that these are all quick corollaries to the small model theorem. 
