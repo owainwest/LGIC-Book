@@ -1,6 +1,6 @@
 \subsection{Decidability}
 
-Our next order of business it to establish the decidability of pure monadic schemata, just as we did for truth-functional schemata.\footnote{See Warren Goldfard, \emph{Deductive Logic}, Chs.~25-26 for an alternative treatment of the decidability of pure monadic schemata.}
+Our next order of business is to establish the decidability of pure monadic schemata, just as we did for truth-functional schemata.\footnote{See Warren Goldfard, \emph{Deductive Logic}, Chs.~25-26 for an alternative treatment of the decidability of pure monadic schemata.}
 Our approach introduces notions that we will elaborate further, when we turn to study polyadic quantificational logic.
 
 \subsubsection*{Three views of structures}
@@ -30,7 +30,7 @@ Let $S$ be a pure monadic schema containing occurrences of at most $n$ distinct 
 \end{aside}
 
 \subsubsection*{Monadic similarity}
-The proof of Theorem \ref{smm-thm} rests on a lemma; in order to state this lemma, we first need to introduce some new concepts. In what follows, we will, without loss of generality, restrict our attention to monadic schemata in which only the predicate letters $F$ and $G$ occur.\footnote{The restriction to two monadic predicate letters is simply for pedagogical purposes. The generalization to $n$ predicate letters is simple, and we will end up proving results for $n$ variables, not just two.}. %First, a definition. 
+The proof of Theorem \ref{smm-thm} rests on two lemmas; in order to state these lemmas, we first need to introduce some new concepts. In what follows, we will, without loss of generality, restrict our attention to monadic schemata in which only the predicate letters $F$ and $G$ occur.\footnote{The restriction to two monadic predicate letters is simply for pedagogical purposes. The generalization to $n$ predicate letters is straightforward, as we observe below.}%simple, and we will end up proving results for $n$ variables, not just two.}. %First, a definition. 
 
 \begin{definition}
     We say that two structures $A$ and $B$ are {\em monadically similar} and write $A \approx_M B$ if and
@@ -41,7 +41,7 @@ only if they satisfy exactly the same pure monadic schemata.
     Show that monadic similarity is an \emph{equivalance relation}, \emph{i.~e.}, it is reflexive ($A \approx_M A$), symmetric (if $A \approx_M B$, then $B \approx_M A$), and transitive (if $A \approx_M B$ and $B \approx_M C$, then $A \approx_M C$). 
 \end{aside}
 
-We now turn towards developing the machinery required to establish our lemma, which provides a sufficient condition for the monadic similarity of structures.
+We now turn towards developing the machinery required to establish our lemmas.% which will provide a useful sufficient condition for the monadic similarity of structures.
 
 
 \subsubsection*{Homomorphisms}
@@ -154,20 +154,20 @@ We recall our discussion of element types:
 \item $T_4(x): \neg Fx\wedge \neg Gx$
 \end{itemize}
 We say that a structure {\em realizes} a given type $T_i$ just in case it
-makes the existential simple schema $(\exists x)T_i$ true (\textit{i.e.}, there is at least one element of type $T_i$).
+makes the pure schema $(\exists x)T_i$ true (\textit{i.e.}, there is at least one element of type $T_i$). Moreover, we say that $a\in U^A$ \emph{realizes} $T_i$ in $A$ if and only if $A\models T_i[x|a]$.
 \begin{example}\label{kinds-ex}
 The following structure realizes all four of the types listed above.
 \[A: U^A = \{1,2,3,4\}, F^A =\{1,3\}, G^A=\{1,2\}\]
 Moreover, the 14 proper substructures of $A$ realize exactly the fourteen
-proper nonempty subsets of the types listed above.
+proper nonempty subsets of the types listed above. For future reference, we list all fifteen of these structures as $A_1,\ldots,A_{15}$. Note that for every $i$, if $A_i$ realizes a given type $T$, then there is exactly one element of $A_i$ that realizes $T$. For this reason, we call these structures \emph{small models} - they are of minimal size among those structures that satisfy a given set of types.
 \end{example}
-Lemma \ref{types-lem} yields a useful necessary and sufficient condition for monadic similarity. 
+Lemma \ref{types-lem} provides a useful necessary and sufficient condition for monadic similarity. 
 \begin{lemma}\label{types-lem}
 $A$ and $B$ realize the same types if and only if they are
 monadically similar.
 \end{lemma} 
 \emph{Proof}:
-First, the forward direction. Suppose $A, B$ realize the same types. Then there is a single structure $C$ which is a surjective homomorphic image of both $A$ and $B$ -- simply define $C$ so that it has exactly one element of each of the types realized in $A$ and $B$ and no other elements.% (simply map every element of a given type in $A$ or $B$ onto a single element of that type in $C$). 
+First, the forward direction. Suppose $A, B$ realize the same types. Then there is a single structure $C$ which is a surjective homomorphic image of both $A$ and $B$ -- indeed, we may choose $C$ to be that $A_i$ as defined above, which realizes exactly the same types as $A$ and $B$. Since $A_i$ has exactly one element that realizes each of these types, we map every element that realizes a given type in $A$ (or in $B$) onto the unique element that realizes that type in $A_i$. These maps are clearly surjective homomorphisms. %simply define $C$ so that it has exactly one element of each of the types realized in $A$ and $B$ and no other elements.% (simply map every element of a given type in $A$ or $B$ onto a single element of that type in $C$). 
 
 Therefore, by our earlier result, $A$ is monadically similar to $C$ and $B$ is
 monadically similar to $C.$ It follows at once that $A$ is monadically similar
@@ -175,24 +175,25 @@ to $B$ (as monadic similarity is an equivalent relation, and hence symmetric and
 
 The reverse direction follows immediately from the fact that realization of a type is expressed by a pure monadic schema. \qed
 
-In the above proof, $C$ was a ``canonical model'' which realized the exactly the same types as $A, B$.  
+%In the above proof, $C$ was a ``canonical model'' which realized the exactly the same types as $A, B$.  
 
 \subsubsection*{The small model theorem and the decidability of satisfiability}
 
 Theorem \ref{smm-thm} is an immediate corollary to Lemma \ref{types-lem}.
 
-\emph{Proof}(of Theorem \ref{smm-thm}): Suppose $S$ is a schema involving only the predicate letters $F, G$. Then it follows at once from Lemma \ref{types-lem} and Example \ref{kinds-ex}, that there is a collection $X$ of 15 structures each of size $\leq 4$,
-such that if $S$ is satisfiable, then there is a structure $C_i \in X$ such that $C_i \models S.$ 
+\emph{Proof}(of Theorem \ref{smm-thm}): %Suppose $S$ is a schema involving only the predicate letters $F, G$. 
+It follows at once from Lemma \ref{types-lem} and Example \ref{kinds-ex}, that for every pure monadic schema $S$ involving only the monadic predicate letters $F$ and $G$, if $S$ is satisfiable, then there is an $1\leq i\leq 15$ such that $A_i\models S$. To conclude the proof, recall that for every $i$, $U^{A_i}\subseteq[4]$. 
+%that there is a collection $X$ of 15 structures each of size $\leq 4$,such that if $S$ is satisfiable, then there is a structure $C_i \in X$ such that $C_i \models S.$ 
 \iffalse
 \begin{aside}
     Why? Because there are only $15$ canonical models. There are $2^4$ subsets of types (since we have $2^2 = 4$ types), but only 15 of those are realizable (since for any nonempty model, at least one type must be realized). For $i \in [15]$, we let each $C_i$ realize different types; since there are only 15 possible realized types, it follows that every structure has some $C_i$ as its homomorphic image. These $C_i$ are our canonical models. 
 \end{aside}
 \fi
-More generally, there is a collection $X$ of $2^{(2^n)}-1$ structures each of size $\leq 2^n$
-such that for any pure monadic schema $S$ involving only the predicate letters
-``$F_1,$''$\ldots$ ``$F_n,$'' if $S$ is satisfiable, then there is a structure $A \in X$
-such that $A \models S.$ \qed
-
+In general, suppose that $S$ is a schema involving only the monadic predicate letters
+``$F_1,$''$\ldots$ ``$F_n,$.'' Let $t=2^n$ and $k = 2^t -1$. (In this case, $t$ is the number of types, and $k$ is the number of structures up to monadic similarity.) In like fashion, we can construct a list of $k$ ``small models,'' $A_1,\ldots, A_k$, each with universe of discourse a nonempty subset of $[t]$, such that if $S$ is satisfiable, then for some $i$, $A_i\models S$. 
+%More generally, there is a collection $X$ of $2^{(2^n)}-1$ structures each of size $\leq 2^n$ such that for any pure monadic schema $S$ involving only the predicate letters``$F_1,$''$\ldots$ ``$F_n,$'' if $S$ is satisfiable, then there is a structure $A \in X$ such that $A \models S.$ 
+\qed
+\iffalse
 \begin{aside}
     There are $2^n$ types given $n$ monadic predicate letters, so there are $2^{2^n}$ subsets of types, of which $2^{2^n} - 1$ are jointly realizable in structures with \emph{non-empty} universe of discourse.  
 \end{aside}
@@ -200,7 +201,7 @@ such that $A \models S.$ \qed
 \begin{corollary}
 For every pure monadic schema $S$ involving only the monadic predicate letters $F$ and $G$, if $S$ is satisfiable, then there is an $1\leq i\leq 15$ such that $A_i\models S$. 
 \end{corollary}
-
+\fi
 \begin{corollary}
 There is a decision procedure to determine whether a pure
 monadic schema is satisfiable.
@@ -219,7 +220,7 @@ $S$ and $T$ are equivalent if and only if
 \end{itemize}
 
 \begin{aside}
-    Show that these are all quick corollaries to the small model theorem. 
+    Show that these are all quick corollaries to the proof of the Small Model Theorem. 
 \end{aside}
 \end{corollary}
 

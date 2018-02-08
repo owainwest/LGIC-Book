@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  2 FEB 2018 08:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  8 FEB 2018 16:52
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1272,10 +1272,7 @@ Package mdframed Info: mdframed detected package amsthm
  [37]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 196.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 221.
+(mdframed)              on input line 222.
 ) [38]
 (./mqt-expressive-power.tex
 Package mdframed Info: mdframed detected package amsthm 
@@ -1551,8 +1548,8 @@ Package rerunfilecheck Info: File `005MAIN2017.out' has not changed.
 (rerunfilecheck)             Checksum: D79F3E51684B2136CA1559F7862B48AD;2368.
  ) 
 Here is how much of TeX's memory you used:
- 26743 strings out of 493089
- 496269 string characters out of 6134842
+ 26742 strings out of 493089
+ 496258 string characters out of 6134842
  683252 words of memory out of 5000000
  29182 multiletter control sequences out of 15000+600000
  30594 words of font info for 121 fonts, out of 8000000 for 9000
@@ -1594,10 +1591,10 @@ msfonts/cm/cmtt10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/am
 sfonts/euler/eufm10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/
 amsfonts/euler/eufm7.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public
 /amsfonts/symbols/msbm10.pfb>
-Output written on 005MAIN2017.pdf (98 pages, 763648 bytes).
+Output written on 005MAIN2017.pdf (98 pages, 764256 bytes).
 PDF statistics:
- 1327 PDF objects out of 1440 (max. 8388607)
- 1179 compressed objects within 12 object streams
- 499 named destinations out of 1000 (max. 500000)
+ 1325 PDF objects out of 1440 (max. 8388607)
+ 1177 compressed objects within 12 object streams
+ 498 named destinations out of 1000 (max. 500000)
  277 words of extra memory for PDF output out of 10000 (max. 10000000)
 
