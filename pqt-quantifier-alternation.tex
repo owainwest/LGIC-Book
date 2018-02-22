@@ -10,19 +10,61 @@ Everyone loves someone (or other).
 There is someone whom everyone loves.
 \[S_2:\ \ \ (\exists y)(\forall x)(x\ \mathrm{loves}\ y).\]
 \item
-Everyone is loved by someone.
+Everyone is loved by someone (or other).
 \[S_3:\ \ \ (\forall y)(\exists x)(x\ \mathrm{loves}\ y).\]
 \item
-Someone loves everyone.
+There is someone who loves everyone.
 \[S_4:\ \ \ (\exists x)(\forall y)(x\ \mathrm{loves}\ y).\]
 \end{itemize}
-Of course, each of these statements means something different (ie none are equivalent) - and so we see immediately that \emph{the order in which quantifiers appear matters}. 
-
+The second statement implies the first, and the fourth implies the third. 
+%None of these statements means something different (ie none are equivalent) - and so we see immediately that \emph{the order in which quantifiers appear matters}. 
 \begin{aside}
-    Give an intuitive argument to show, although no two of the above statements are equivalent, that $S_2$ implies $S_1$, and that $S_4$ implies $S_3$. 
+    Give an intuitive argument to show %, although no two of the above statements are equivalent, 
+    that $S_2$ implies $S_1$, and that $S_4$ implies $S_3$. 
 \end{aside}
 
-Aside from the implications $S_2 \implies S_1$ and $S_4 \implies S_3$, no other implications hold. To see this, we give structures which act as a counterexamples to each purported implication. Consider the following three structures $A, B, C$. 
+%Aside from the implications $S_2 \implies S_1$ and $S_4 \implies S_3$, no other implications hold. To see this, 
+In order to show that no other implications hold,
+we introduce schemata to represent the statements $S_1,\ldots,S_4$, and the notion of a structure suitable for their interpretation.
+
+\subsection*{Schemata and Structures}
+
+Just as we did in the case of truth-functional logic and monadic quantification theory, we introduce a formal language for schematizing statements involving polyadic predicates. The only change to the vocabulary of monadic quantification theory is the addition of polyadic predicate letters. For example, we introduce dyadic predicate letters such as $L\ \fbox{1}\ \fbox{2}$ to schematize dyadic predicates such as $\fbox{1}$ loves $\fbox{2}$ or $\fbox{1}\leq \fbox{2}$.
+We may then use this dyadic predicate letter to schematize the four statements above as follows.
+\begin{itemize}
+\item $S_1:\ \ \ (\forall x)(\exists y)(Lxy)$
+\item $S_2:\ \ \ (\exists y)(\forall x)(Lxy)$
+\item $S_3:\ \ \ (\forall y)(\exists x)(Lxy)$
+\item $S_4:\ \ \ (\exists x)(\forall y)(Lxy)$
+\end{itemize}
+
+We now extend the notion of a structure to the case of polyadic quantification theory. Again, a structure $A$ is determined by the specification of a nonempty set $U^A$, the universe of discourse of $A$, over which the variables of quantification range, and specifications of extensions of the polyadic predicates which appear in schemata that the structure will be used to interpret. Thus, in the case to hand, the specification of $A$ will require assigning to the dyadic predicate letter $L$, a set $L^A$ of ordered pairs of elements from $U^A$ as its extension. That is, $L^A\subseteq U^A\times U^A$, where $U^A\times U^A$ is the \emph{Cartesian product} of $U^A$ with itself -- the set $\{\op{a}{b}\mid a,b\in U^A\}$. 
+
+The interpretation of the logical vocabulary, that is, truth-functional connectives and quantifiers, is the same in both monadic and polyadic quantification theory. Thus, we may introduce without further ado the notion of a schema $S$ of polyadic quantification being true in (or satisfied by) a structure $A$ that assigns extensions to all the polyadic predicate letters appearing in $S$ (written $A\models S$). If $S$ contains free variables, we must of course supplement the structure $S$ with assignments of elements from $U^A$ to those free variables. For example, we write
+\[A\models S[(x|a)(y|b)]\]
+for ``the structure $A$ satisfies the schema $S$ with respect to the assignments of $a$ to $x$ and $b$ to $y$.'' This notation is used with the understanding that no variables other than $x$ and $y$ occur free in $S$ and that $a,b\in U^A$. With this definition of satisfaction, our definitions of satisfiability, validity, implication, and equivalence for closed monadic quantificational schemata generalize immediately to PQT. For ease of reference, we restate them as follows.
+\begin{itemize}
+\item
+A polyadic schema $S$ is \emph{ valid} if and only if for every structure $A, A
+\models S.$
+\item
+A polyadic schema $S$ is \emph{ satisiable} if and only if for some structure $A,
+A \models S.$
+\item
+A polyadic schema $S$ \emph{ implies} a polyadic schema $T$ if and only if for
+every structure $A,$ if $A \models S,$ then $A \models T.$
+\item
+polyadic schemata $S$ and $T$ are equivalent if and only if $S$ implies $T$, and $T$ implies $S$. 
+\end{itemize}
+Thus, in order to show that a schema $S$ fails to imply a schema $T$, it suffices to exhibit a \emph{counterexample} to the implication, that is, a structure $A$ such that $A\models S$ and $A\not\models T$. We proceed to illustrate this technique by show that among the four schemata $S_1,\ldots,S_4$ discussed above, if $i\neq j$, then $S_i$ does not imply $S_j$ except in case $i=2$ and $j=1$, or $i=3$ and $j=4$.
+
+We begin by specifying three structures $A,B,C$ which act as a counterexamples to various of these implications. First we let $U^A=U^B=U^C=\{1,2\}$. We specify the extension of $L$ in each structure as follows.%Consider the following three structures $A, B, C$.
+\begin{itemize}
+\item $L^A=\{\op{1}{1},\op{2}{2}\}.$
+\item $L^B=\{\op{2}{2},\op{1}{2}\}.$
+\item $L^C=\{\op{2}{2},\op{2}{1}\}.$
+\end{itemize} 
+\iffalse
 \[
 \begin{array}{| c | c | c |}
 \hline
@@ -36,9 +78,11 @@ Aside from the implications $S_2 \implies S_1$ and $S_4 \implies S_3$, no other 
  \hline  
 \end{array}
 \]
+\fi
 Note that $A\models S_1$ and $A\models S_3$, while $A\not\models S_2$ and $A\not\models S_4$, from which it follows, by definition, that $S_1$ does not imply $S_2$, nor does $S_3$ imply $S_4$. Moreover $B\models S_2$, but $B\not\models S_3$, and $C\models S_4$, but $C\not\models S_1$; thus $S_2$ does not imply $S_3$, and $S_4$ does not imply $S_1$. 
 
-Failure of the remaining (non-trivial) implications now follows. For example, $S_1$ does not imply $S_4$. To see this, suppse \emph{ad reductio} that $S_1$ implies $S_4$. Then since $S_2$ implies $S_1$ and $S_4$ implies $S_3$, it follows by the transitivity of implication that $S_2$ implies $S_3$. But we have already seen that $S_2$ does not imply $S_3$ ($B$ was the counterexample), a contradiction.
+Failure of the remaining %(non-trivial) 
+implications now follows. For example, $S_1$ does not imply $S_4$. To see this, suppose, \emph{ad reductio}, that $S_1$ implies $S_4$. Then since $S_2$ implies $S_1$ and $S_4$ implies $S_3$, it follows, by the transitivity of implication, that $S_2$ implies $S_3$. But we have already seen that $S_2$ does not imply $S_3$ ($B$ was the counterexample), a contradiction.
 
 \begin{aside}
     Verify that each of the statements above is true. For example, if we claimed that $A \models S_i$ for some $i$, explain in your own words why, in fact, $A$ actually models $S_i$.  
@@ -64,16 +108,26 @@ We summarize the results of this discussion in the following matrix $\langle a_{
 \]
 
 
-\subsection*{Scope ambiguity}
-As a quick aside, we'll now explore ``scope ambiguities.'' Consider the statement, ``everybody loves a lover.'' Let's use the binary redicate $L$ to denote love, ie ``$x$ is a lover'' can be schematized as $(\exists y)Lxy$\footnote{There are two main styles for how to write an element in a binary relation. Here, we are using $Lxy$ to indicate that the relation $L$ holds between $x$ and $y$; this could also be written as $xLy$. We choose the former. When the relation is more naturally written in the center we will do so - ie for the relation ``less than'', we will write $x < y$ rather than $<xy$}. 
+\subsection*{Quantificational ambiguity}
 
-
-There are two possible\footnote{Well, there are infinitely many \emph{possible} readings of that sentence. There are only two \emph{reasonable} ones} readings of the sentence ``everybody loves a lover'': either we interpret it as ``everybody loves someone who is a lover'', and ``if someone is a lover, then everybody loves her''. Corresponding to these two interpretations, we have the respective schematizations:
+We briefly explore ambiguities that can arise in natural language via the interaction of quantifiers. Consider the statement, 
+\begin{equation}\label{lover}
+\mbox{``everybody loves a lover.''} 
+\end{equation}
+Statement (\ref{lover}) involves such an ambiguity. We can bring this out by offering two schematizations, each of which corresponds to a natural reading of this statement. 
+We may schematize ``$x$ is a lover,'' again using the dyadic predicate letter $L$, as $(\exists y)Lxy$.%\footnote{There are two main styles for how to write an element in a binary relation. Here, we are using $Lxy$ to indicate that the relation $L$ holds between $x$ and $y$; this could also be written as $xLy$. We choose the former. When the relation is more naturally written in the center we will do so - ie for the relation ``less than'', we will write $x < y$ rather than $<xy$}. 
+Now, consider the following two schemata.
+\[(\forall z)(\exists x)((\exists y)Lxy\wedge Lzx)\]
+\[(\forall x)((\exists y)Lxy\supset (\forall z)Lzx)\]
+The first schema corresponds to the reading ``everybody loves someone who is a lover,'' while the second corresponds to the reading ``if someone is a lover, then everybody loves her.''
+\iffalse
+There are two natural %\footnote{Well, there are infinitely many \emph{possible} 
+readings of that sentence. There are only two \emph{reasonable} ones} readings of the sentence ``everybody loves a lover'': either we interpret it as ``everybody loves someone who is a lover'', and ``if someone is a lover, then everybody loves her''. Corresponding to these two interpretations, we have the respective schematizations:
 
 \[(\forall z)(\exists x)((\exists y)Lxy\wedge Lzx)\footnote{A decent reading of this schematization is ``for every person $z$, there is a person $x$ such that $z$ loves $x$ and there is a $y$ that $x$ loves''.}\] 
 and 
 \[(\forall x)((\exists y)Lxy\supset (\forall z)Lzx)\]
-
+\fi
 
 We claim that a structure $A$ satisfies the second schema if and only if either $L^A$ is empty or $L^A=U^A\times U^A$, the cartesian product of the universe of $A$ with itself. 
 
@@ -82,7 +136,8 @@ We claim that a structure $A$ satisfies the second schema if and only if either 
 \end{aside}
 
 On the other hand, if a structure $B$ satisfies the first schema, then $L^B$ is non-empty; moreover, if $B$ consists of a pair of requiting lovers at least one of whom is not a narcissist, $B$ satisfies the first, but not the second, schema. Thus, neither disambiguation of the original sentence implies the other.
-
+\iffalse
 \begin{aside}
     Give two different schematizations of the sentence ``all that glitters is not gold'', corresponding to two different interpretations of the scope of the negation ``not''. 
 \end{aside}
+\fi

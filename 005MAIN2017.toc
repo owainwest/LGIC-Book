@@ -21,7 +21,7 @@
 \contentsline {subsection}{\numberline {2.7}Review}{41}{subsection.2.7}
 \contentsline {section}{\numberline {3}Polyadic Quantification Theory}{48}{section.3}
 \contentsline {subsection}{\numberline {3.1}Introduction to PQT}{48}{subsection.3.1}
-\contentsline {subsection}{\numberline {3.2}Binary Relations, Functions, and Graphs}{51}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.2}Binary Relations, Functions, and Graphs}{52}{subsection.3.2}
 \contentsline {subsection}{\numberline {3.3}The Spectrum of a Schema}{58}{subsection.3.3}
 \contentsline {subsection}{\numberline {3.4}Review}{60}{subsection.3.4}
 \contentsline {subsection}{\numberline {3.5}Equivalence Relations}{68}{subsection.3.5}

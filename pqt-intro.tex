@@ -1,8 +1,8 @@
 \subsection{Introduction to PQT}
-It's now time to turn to the final logic we will study, Polyadic Quantification Theory\footnote{Also called \emph{First Order Logic}}, which allows predicates of arbitrary arity as opposed to just monadic predicates like in MQT. Although it is a straightforward extension of MQT, we will see that allowing relations of any arity changes the properties of the logic substantially. 
+It's now time to turn to the final logic we will study, Polyadic Quantification Theory(PQT).\footnote{Also called \emph{First Order Logic}.} Unlike MQT, PQT allows predicates of arbitrary arity, not just monadic predicates. We will see that this change dramatically affects the complexity of the decision problems for satisfiability and validity, as well as the expressive power of schemata. a%which allows predicates of arbitrary arity as opposed to just monadic predicates like in MQT. Although it is a straightforward extension of MQT, we will see that allowing relations of any arity changes the properties of the logic substantially. As opposed to truth-functional and monadic logic which, as we've seen, are of limited expressive power, 
+Indeed, polyadic quantification theory allows for the faithful schematization of vast tracts of scientific discourse. 
 
-As opposed to truth-functional and monadic logic which, as we've seen, are of limited expressive power, polyadic quantification theory allows for faithful schematization of vast tracts of scientific discourse. For an example, we begin not with science, but with literature.
-
+For an example, we begin not with science, but with literature.
 Consider the sentences
 \begin{itemize}
 \item
@@ -17,7 +17,8 @@ We can schematize the second, by making use of the monadic predicate ``$\bigcirc
 \[(\exists x)(x\ \mathrm{loves\ Juliet}).\]
 And we can schematize the third, by making use of the monadic predicate ``$\mathrm{Romeo\ loves}\ \bigcirc$'' thus
 \[(\exists x)(\mathrm{Romeo\ loves}\ x).\]
-But if we wish to schematize the sentence ``someone loves someone,'' which is also implied by the first sentence above, we need to expand our resources to include \emph{dyadic predicates} - ie, predicates which act on \emph{ordered pairs}, not just single elements (like monadic predicates).
+But if we wish to schematize the sentence ``someone loves someone,'' which is also implied by the first sentence above, we need to expand our resources to include \emph{dyadic predicates}, \emph{i.e.}, predicates which are true of \emph{ordered pairs} of objects, not just individual objects, as in the case of monadic predicates.
+The \emph{extension} of a dyadic predicate is the set of ordered pairs of which it is true.
 \begin{itemize}
 \item
 $\fbox{1}\ \mathrm{loves}\ \fbox{2}$
@@ -44,8 +45,9 @@ Similarly, the extension of a triadic predicate, such as
 further\ from}\ \fbox{2}\ \mathrm{than\ it\ is\ from}\ \fbox{3}$,'' 
 \end{quote}
 is a set of
-ordered triples.
-
-Evidently, this idea generalizes to all dimensions $n \leq 1$; not only just the $2$-variable ordered paris and the $3$-variable ordered triplets. In general, an $n$-ary predicate on a universe $U$ is any subset of the \emph{Cartesian Product} $U^n$, ie the set of tuples of length $n$ whose components are in $U$. 
+ordered triples. In general, the extension of a predicate of arity $n$ is a collection of $n$-tuples. 
+\iffalse
+Evidently, this idea generalizes to all dimensions $1 \leq n$; not only just the $2$-variable ordered paris and the $3$-variable ordered triplets. In general, an $n$-ary predicate on a universe $U$ is any subset of the \emph{Cartesian Product} $U^n$, ie the set of tuples of length $n$ whose components are in $U$. 
 
 For simplicity's sake, we will normally confine ourselves to the binary and ternary cases in examples and exposition. 
+\fi
