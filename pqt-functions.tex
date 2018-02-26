@@ -2,12 +2,12 @@
 You may already have encountered functions, such as the mapping $f$ that sends a real number $x$ to its square $x^2$. You were probably given the following definition of a function:
 
 \begin{definition}
-A function is any mapping $f$ from a \emph{domain} $A$ to a \emph{codomain} $B$ (written $f: A \rightarrow B$) such that no $a \in A$ maps to more than one element in $b$.\footnote{Here, we only consider \emph{unary} functions - eg, functions of one argument. The definition could be amended for general $n$-ary functions by letting $\overline{a} \in A^n$ denote an $n$-tuple of elements in the domain.}
+A function is any mapping $f$ from a \emph{domain} $A$ to a \emph{codomain} $B$ (written $f: A \rightarrow B$) such that no $a \in A$ maps to more than one element in $b$.\footnote{Here, we only consider \emph{unary} functions, that is, functions of one argument. The definition could be amended for general $n$-ary functions by letting $\overline{a} \in A^n$ denote an $n$-tuple of elements in the domain.} If $b=f(a)$, we say that \emph{$b$ is the image of $a$ under $f$}, alternatively, \emph{$b$ is the $f$ image of $a$.} If $X\subseteq A$, we define $f[X]=:\{f{a}\mid a\in X\}$; generalizing the previous terminology, we say that $f[X]$ is the $f$ image of $X$.
 \end{definition}
 
 Herein (unless otherwise noted) we will always consider functions whose domain and codomain are the same; this will allow us to consider functions as special types of binary relations on some universe of discourse. 
 
-You have probably seen the function $f(x) = x^2$ represented in cartesian coordinates via a graph, that is, the set of all ordered pairs of real numbers $\op{x}{x^2}$ for $x\in\R$. This suggests that a function can be thought of as a specific type of binary relation. In the example $f(x) = x^2$, this means that we consider the Cartesian graph as a structure, eg a directed graph $A$ with $U^A=\R$ and $L^A=\{\op{x}{x^2} \mid x\in\R\}$. This structure satisfies the following schemata.
+You have probably seen the function $f(x) = x^2$ represented in cartesian coordinates via a graph, that is, the set of all ordered pairs of real numbers $\op{x}{x^2}$ for $x\in\R$. This suggests that a function can be thought of as a specific type of binary relation. In the example $f(x) = x^2$, this means that we consider the Cartesian graph as a structure, namely the directed graph $A$ with $U^A=\R$ and $L^A=\{\op{x}{x^2} \mid x\in\R\}$. This structure satisfies the following schemata.
 \begin{itemize}
 \item
 \tot: $(\forall x)(\exists y)Lxy$
@@ -38,7 +38,7 @@ You may be familiar with the idea in terms of the ``horizontal line rule'', whic
 
 
 \begin{definition}
-A \emph{surjection} (also called an onto function) is a function in which every element of the codomain is mapped to by some element of the domain. In other words, no element of the codomain is not mapped to. Schematically:
+A \emph{surjection} (also called an onto function) is a function with the property that every element of the codomain is the image of some element of the domain. Schematically:
 \[
     \sur: (\forall x)(\exists y)Lyx
 \]
@@ -61,13 +61,13 @@ A \emph{bijection} is a function which is both injective and surjective. Schemat
 
 We have now seen examples of functions which are either bijective (the cubing function) and functions which are neither injective nor surjective (the squaring function). Is it possible to have a function which is injective but not surjective, or surjective but not injective?
 
-For any structure $A$ with finite universe of discourse, $A \models \fun \land \inj$ iff $A \models \fun \wedge \sur$, ie any injective function on a finite structure is surjective, and vice versa. 
+For any structure $A$ with finite universe of discourse, $A \models \fun \land \inj$ iff $A \models \fun \wedge \sur$, that is, any injective function on a finite structure is surjective, and vice versa. 
 
 \begin{aside}
     Prove this. 
 \end{aside}
 
-The same does not hold for structures with infinite universes - in fact, the influential logician Dedekind used this distinction as his definition of infinitude. For example, consider the structure $A$ where $U^A=\N$ and $L^A=\{\op{n}{n+1}\mid n\in\N\}$ and observe that $A\models\fun\wedge\inj\wedge\neg\sur$. It is similarly easy to construct functions which are surjections but not injections, for example, the function on \N\ that maps a number $n$ to $\lceil n/2\rceil$.  A set $X$ is said to be \emph{Dedekind infinite} if and only if there is a function with domain $X$ and range contained in $X$ which is injective but not surjective.
+The same does not hold for structures with infinite universes - in fact, the prominent nineteenth-century mathematician Richard Dedekind used this distinction as his definition of infinitude. For example, consider the structure $A$ where $U^A=\N$ and $L^A=\{\op{n}{n+1}\mid n\in\N\}$ and observe that $A\models\fun\wedge\inj\wedge\neg\sur$. It is similarly easy to construct functions which are surjections but not injections, for example, the function on \N\ that maps a number $n$ to $\lceil n/2\rceil$.  A set $X$ is said to be \emph{Dedekind infinite} if and only if there is a function with domain $X$ and codomain $X$ which is injective but not surjective.
 
 
 We now touch briefly on the topic of multivariate functions; we restrict our attention to binary functions whose graphs we represent as the interpretation of a triadic predicate symbol $R$. The following schema \bfun\ expresses both totality and single-valuedness, that is, a structure $A$ satisfies \bfun\ if and only if $R^A$ is the graph of a total binary function on $U^A$..
@@ -96,38 +96,38 @@ On the other hand, we noted that the binary function which maps a pair of positi
 
 
 \begin{definition}
-We say that a directed graph is \emph{asymmetric} if no pair of its nodes have ``edges in both directions'', ie
+We say that a directed graph is \emph{asymmetric} if no pair of its nodes have ``edges in both directions'', that is,
 \[
   \asy: (\forall x)(\forall y)(Lxy\supset \neg Lyx)  
 \]
 \end{definition}
 
 \begin{definition}
-We say that a directed graph is \emph{comparable} if every pair of distinct nodes has at least one edge between them, eg
+We say that a directed graph is \emph{comparable} if every pair of distinct nodes has at least one edge between them, that is,
 \[
-    \comp: (\forall x)(\forall y)((x\neq y\supset (Lxy\vee Lyx)
+    \comp: (\forall x)(\forall y)(x\neq y\supset (Lxy\vee Lyx))
 \]
 \end{definition}
 
 \begin{definition}
-We say a directed graph is a \emph{tournament} iff it is both asymmetric and comparable, eg
+We say a directed graph is a \emph{tournament} iff it is both asymmetric and comparable, that is,
 \[
     \tour: \asy \land \comp
 \]
 \end{definition}
-The intuitive justification for the name ``tournament'' is that round-robin tournaments involve each team playing every other team once, and that each game between teams $a, b$ induces an ``edge'' which points from the victor to the loser. 
+The intuitive justification for the name ``tournament'' is that round-robin tournaments involve each team playing every other team once, and that each game between teams  induces an ``edge'' which points from the victor to the loser (games never end in a tie). 
 
-Let's pick out a particularly important class of tournaments, those without cycles. We will these as the \emph{transitive} tournaments. 
+Let's pick out a particularly important class of tournaments, those without cycles. We call these \emph{transitive} tournaments. 
 
 \begin{definition}
-We say that a tournament is \emph{transitive} iff the edge relation is transitive, eg
+We say that a tournament is \emph{transitive} iff the edge relation is transitive, that is,
 \[
     \trans: (\forall x)(\forall y)(\forall z)(Lxy\supset(Lyz\supset Lxz))
 \]
 \end{definition}
 
 \begin{definition}
-A \emph{strict linear order} is a transitive tournament, eg
+A \emph{strict linear order} is a transitive tournament, that is,
 \[
     \slo: \trans \land \tour
 \]

@@ -1,5 +1,5 @@
 \subsection*{Counting Graphs}
-As before, we'll count the number of finite structures with universe of discourse $\{1,\ldots,n\}$ that satisfy various conditions. We already know that there are $2^{n^2}$ graphs and $2^{\binom{n}{2}}$ simple graphs with universe of discourse $\{1,\ldots,n\}$. It is simple to show that
+As before, we'll count the number of finite structures with universe of discourse $\{1,\ldots,n\}$ that satisfy various conditions. We already know that there are $2^{(n^2)}$ graphs and $2^{\binom{n}{2}}$ simple graphs with universe of discourse $\{1,\ldots,n\}$. It is simple to show that
 \begin{itemize}
 \item
 $\card{\modn{\fun}{n}}= n^n$;
@@ -28,10 +28,10 @@ which is equivalent to
     (\forall x)(\exists y)(\exists z)(y\neq z\wedge(\forall w)(Lxw\equiv(w=y\vee w=z)))
 \]
 
-Let $S$ be the conjunction of $\twor$ and $\sg$. Let's calculate $\card{\modn{S}{6}}$, ie the number of 2-regular simple graphs of size 6. 
+Let $S$ be the conjunction of $\twor$ and $\sg$. Let's calculate $\card{\modn{S}{6}}$, that is, the number of 2-regular simple graphs of size 6. 
 
 \begin{example}
-Let $S$ be the conjunction of $\twor$ and $\sg$. What is $\card{\modn{S}{6}}$, ie how many 2-regular simple graphs of size 6 are there? 
+Let $S$ be the conjunction of $\twor$ and $\sg$. What is $\card{\modn{S}{6}}$, that is, how many 2-regular simple graphs of size 6 are there? 
 \end{example}
 
 As discussed earlier, if $A$ is finite (as it is in the question above) and $A \models S$, then $A$ is a disjoint union of cycles. It follows that if $A \in \modn{S}{6}$ then $A$ is either a disjoint union of two triangles, or a single hexagon (since a triangle is the minimal 2-regular cycle, these are the only possibilities). So in order to complete our calculation, we just need to determine how many distinct ways we can label a structure of one or the other of these shapes. How can we do that?
