@@ -2,38 +2,34 @@
 \begin{mdframed}[linewidth=1]
 \section*{Concept Review}
 \textbf{Binary Relations}:
-Given a set $S$, a binary relation $R$ between a domain $A$ and a codomain $B$ is a set of pairs $(a, b)$ where $a \in A, b \in B$. We will normally consider relations whose domain equals their codomain. In this case, a relation $R$ over a set $S$ is a subset of $S^2 = S \times S = \{(s, s') | s, s' \in S\}$ (this is the ``Cartesian product'' of $S$ with itself). 
-
-Common mathematical operators can be thought of as relations - for example, $<$ is a relation on $\mathbb{N}$, since it specifies the subset of $\mathbb{N} \times \mathbb{N}$ for which the proposition ``$a$ is less than $b$'' holds.
-
-We write $Rab$ (or, equivalently, $aRb$) to say that ``$a$ holds the relation $R$ to $b$''.  
-
-Notice that we identified relations with the \emph{extension of the relation}. To define a binary relation is simply to define which pairs $(a, b)$ for which the relation holds. 
-
+Given a set $S$, a binary relation $R$ between a domain $A$ and a codomain $B$ is a set of pairs $(a, b)$ where $a \in A$ and $b \in B$. We will normally consider relations whose domain equals their codomain. In this case, a relation $R$ over a set $S$ is a subset of $S^2 = S \times S = \{(s, s') | s, s' \in S\}$ (this is the ``Cartesian product'' of $S$ with itself, the set of all \emph{ordered pairs} of members of $S$). 
+Notice that we have identified the interpretation of a dyadic predicate letter in a structure with a relation in this sense; this continues our practice of treating our schematic languages \emph{extensionally}.
+For example, let $L$ be a dyadic predicate letter. The structure $A$ with $U^A=\{0,1,\ldots\}$ and $L^A=\{(i,j)\mid i,j\in\mathbb{N}\mbox{ and } i<j\}$ interprets $L$ as the strict linear ordering relation on the set of natural numbers $\mathbb{N}$.
+ 
 \textbf{Arbitrary Relations}:
 Relations need not be just binary. For example, our normal interpretation of the $+$ symbol (along with equality) specifies a relation - we might think of the ternary relation $+abc$ as expressing that $a + b = c$. The extension of this relation is then a set of ordered triples $\{(a, b, c) | a + b = c\}$. 
 
 \textbf{Graphs}:
-A \emph{graph} is a tuple $G = (V, E)$ where $V$ is a set of ``vertices'' or ``nodes'', and $E$ is a binary relation (the edge relation) on $V$ (ie, $E \subseteq V \times V$). 
+A (directed) \emph{graph} is a structure $G = (V,E)$ suitable for interpreting a dyadic predicate symbol $L$.  $V$ is a set of ``vertices'' or ``nodes'', and $E$ is a binary relation (the edge relation) on $V$ (that is, $E \subseteq V \times V$). We will often write $U^G$ for $V$ and $L^G$ for $E$ when we use $G$ to interpret schemata involving only the dyadic predicate symbol $L$.
 
-\textbf{Neighbourhood}: The neighbourhood of a node $n$ of a graph $G$ is the set of all nodes which are adjacent to $n$ in $G$ (ie, $\{n' | nEn' \}$).
+\textbf{Neighborhood}: The neighborhood of a node $n$ of a graph $G=(V,E)$ is the set of all nodes which are adjacent to $n$ in $G$ (that is, $\{n'\in V | (n,n')\in E \}$).
 
-\textbf{Degree}: The degree of a node $n$ is the size of $n$'s neighbourhood. 
+\textbf{Degree}: The degree of a node $n$ is the size of $n$'s neighborhood. 
 
 
 \textbf{Reflexive}: A relation $R$ is said to be \emph{reflexive} iff $(\forall x)Rxx$. 
 
-If we draw our a graph of such a relation, each vertex would have a ``self loop''. If we visualize such a relation as a bit matrix, the main diagonal is all ``1s''. 
+If we draw an arrow diagram of such a relation, each vertex would have a ``self loop.'' If we visualize such a relation as a bit matrix, the main diagonal is all ``1s.'' 
 
-\textbf{Irreflexive}: A relation $R$ is said to be \emph{irreflexive} iff $(\forall x)\lnot Rxx$
+\textbf{Irreflexive}: A relation $R$ is said to be \emph{irreflexive} iff $(\forall x)\lnot Rxx$.
 
-If we draw such a relation out as a graph, this specifies that there are no ``self loops''. 
+If we draw an arrow diagram of such a relation, this specifies that there are no ``self loops.'' 
 
 \textbf{Symmetric}: A relation $R$ is said to be \emph{symmetric} iff $(\forall x)(\forall y)Rxy \supset Ryx$.
 
-This means that there are no one-way relations between elements. Specifically, either $(Rxy \land Ryx) \oplus (\lnot Rxy \land \lnot Ryx)$. When drawing the graph of a symmetric relation, we often omit the arrowheads on our edges to indicate that the relation ``goes both ways''. 
+This means that there are no one-way relations between elements. Specifically, either $(Rxy \land Ryx) \oplus (\lnot Rxy \land \lnot Ryx)$. When drawing an arrow diagram of a symmetric relation, we often omit the arrowheads on our edges to indicate that the relation ``goes both ways.'' 
 
-\textbf{Antisymmetric}: A relation $R$ is said to be \emph{antisymmetric} iff $(\forall x)(\forall y)Rxy \supset \lnot Ryx$
+\textbf{Antisymmetric}: A relation $R$ is said to be \emph{antisymmetric} iff $(\forall x)(\forall y)Rxy \supset \lnot Ryx$.
 
 This means that there are no two-way relationships between elements. 
 
@@ -43,13 +39,13 @@ This means that there are no two-way relationships between elements.
 
 In words: if $x$ and $y$ are unequal, then they have to be related in some way (so every pair of nodes is related somehow). 
 
-\textbf{Simple Graph}: A relation is said to define a \emph{Simple Graph} iff the relation is both irreflexive and symmetric. We abbreviate this $SG$. 
+\textbf{Simple Graph}: A relation is said to be a \emph{Simple Graph} iff the relation is both irreflexive and symmetric. We abbreviate this $\sg$. 
 
-\textbf{Tournament}: A relation is said to define a \emph{Tournament} iff the relation is both antisymmetric and comparable. Think of the nodes in the graph as being teams, and the edge relation as being ``won against'' in a round robin - each team plays each other (so they all have at least one edge between) and only one team wins each game (so if $a$ beats $b$, then $b$ does not beat $a$). We abbreviate this $Tour$. 
+\textbf{Tournament}: A relation is said to be a \emph{Tournament} iff the relation is both antisymmetric and comparable. Think of the nodes in the graph as being teams, and the edge relation as being ``won against'' in a round robin - each team plays each other (so they all have at least one edge between) and only one team wins each game (so if $a$ beats $b$, then $b$ does not beat $a$). We abbreviate this $\tour$. 
 
-\textbf{Strict Linear Order}: A relation is said to define a \emph{Strict Linear Order} iff the relation is antisymmetric, comparable, and transitive (thus, SLOs are a subclass of Tournaments). The extra criterion of transitivity requires that if $a$ ``beats'' $b$, then $a$ also ``beats'' every team which $b$ beats. In this way, the ``1st place team'' beats everyone, 2nd place beats everyone except first, etc, and so there is a strict ordering on the elements of our graph. 
+\textbf{Strict Linear Order}: A relation is said to define a \emph{Strict Linear Order} iff the relation is antisymmetric, comparable, and transitive (thus, SLOs are a subclass of Tournaments). The extra criterion of transitivity requires that if $a$ ``beats'' $b$, then $a$ also ``beats'' every team which $b$ beats. In this way, the ``1st place team'' beats everyone, 2nd place beats everyone except first, \emph{etc.}, and so there is a strict ordering on the elements of our graph. 
 
-\textbf{Equality}: Equality is a special type of relation in that its interpretation is uniform, regardless of which structure it is in. Supposing we are in a structure $A$, equality holds just of the pairs $\{(a, a) | a \in U^A\}$
+\textbf{Equality}: Equality is a special type of relation in that its interpretation is uniform across structures. For every structure $A$, equality holds just of the pairs $\{(a, a) | a \in U^A\}$.
 
 \textbf{Counting Quantifiers}: In MQT, the \emph{Small Model Property} meant we had no way to distinguish between, for example, the two structures 
 \[
@@ -75,49 +71,47 @@ which says that there are at most $k$ elements such that $P$, and
 \]
 which says that there are exactly $k$ elements such that $P$. 
 
-\textbf{k-Regular}: we say that a graph $G$ is $k$-regular iff every node $n \in G$ has degree $k$. Finite $2$-regular simple graphs are composed of a collection of disjoint cycles, and $1$-regular simple graphs are composed of a collection of disjoint pairs of elements. 
+\textbf{k-Regular}: We say that a graph $G=(V,E)$ is $k$-regular iff every node $n \in V$ has degree $k$. Finite $2$-regular simple graphs are composed of a collection of disjoint cycles, and $1$-regular simple graphs are composed of a collection of disjoint ``isolated edges.'' 
 
-\textbf{Counting Graphs}: we defined
+\textbf{Counting Graphs}: We defined
 \[
-    mod(S, n) := \{A | A \models S \land U^A = \{1,...,n\}\}
+    \modn{S}{n} := \{A | A \models S \mbox{ and }U^A = \{1,...,n\}\}
 \]
-That is, $mod(S, n)$ is the collection of all stuctures satisfying a sentence $S$ which have universe $\{1,...,n\}$. 
+That is, $\modn{S}{n}$ is the collection of all structures satisfying a sentence $S$ which have universe $\{1,...,n\}$. 
 
 \textbf{Functions as Relations}:
 Functions are a special subclass of relations. Specifically, they are relations which satisfy the two properties 
 \[
-    Tot: (\forall x)(\exists y)Rxy
+    \tot: (\forall x)(\exists y)Rxy
 \]
+and
 \[
-    SV: (\forall xyz)((Rxy \land Rxz) \supset y = z)
+    \sv: (\forall xyz)((Rxy \land Rxz) \supset y = z).
 \]
 
-The first says that the relation is \emph{total} - for everything in the domain, there is something which it maps to. The second says that the relation is single values - every element of the domain maps to at most one element. Together, $Tot \land SV$ imply that every element of the domain maps to exactly one element of the codomain. 
-
-Strictly, $Tot$ is not required for a relation to be a function (the class of relations axiomatized by only $SV$ are called the \emph{partial functions}). In this class, however, we require functions to be total and always mean ``total function'' whenever we say ``function''. 
+The first says that the relation is \emph{total} - for everything in the domain, there is something to which it maps. The second says that the relation is single valued - every element of the domain maps to at most one element. The conjunction $\tot \land \sv$ implies that every element of the domain maps to exactly one element of the codomain. 
+Strictly, $\tot$ is not required for a relation to be a function (the class of relations axiomatized by only $\sv$ are called the \emph{partial functions}). In this class, however, we restrict our attention to total functions, and will always mean ``total function'' whenever we say ``function.'' 
 
 \textbf{Injectivity}: A function is injective (also sometimes called ``one-to-one'') iff the following holds
 \[
-    Inj: (\forall xyz)((Rxz \land Ryz) \supset x = y) 
+    \inj: (\forall xyz)((Rxz \land Ryz) \supset x = y) 
 \]
-which says that no two elements of the domain map to the same element of the codomain. Note that this is the converse of $SV$. 
+which says that no two elements of the domain map to the same element of the codomain. %Note that this is the converse of $SV$. 
 
 If there is an injection from $S$ to $S'$ then $|S| \leq |S'|$ (prove this for finite sets). 
 
 \textbf{Surjectivity}: A function is surjective (also sometimes called ``onto'') iff the following holds:
 \[
-    Surj: (\forall x)(\exists y)Ryx
+    \sur: (\forall x)(\exists y)Ryx
 \]
-which says that every element of the codomain is mapped to by some element of the domain. Note that this is the converse of $Tot$. 
+which says that every element of the codomain is the image of some element of the domain. %Note that this is the converse of $Tot$. 
 
-Conversely to injectivity, if there is a surjection from $S$ to $S'$, we know that $|S| \geq |S'|$ (prove this for finite sets). 
+If there is a surjection from $S$ to $S'$, we know that $|S| \geq |S'|$ (prove this for finite sets). 
 
-\textbf{Functions on a Single Set}
+\textbf{Functions on a Single Set}:
 We often consider functions with the same domain and codomain (say $S$). In this case, we say that the function is on $S$. 
-
-\textbf{Finite Set implies (Inj iff Surj)}: we proved that, for finite $S$, a function from $S$ to $S$ is an injection iff it is a surjection. 
-
-We showed by example that there are injections on an infinite $S$ which are not surjections, and similarly that there are surjections on an infinite $S$ which are not injections. For example
+We proved that, for finite sets $S$, a function on $S$ is an injection iff it is a surjection. 
+In contrast, we showed that there are injections on an infinite $S$ which are not surjections, and similarly that there are surjections on an infinite $S$ which are not injections. For example
 \[
     f: \mathbb{N} \rightarrow \mathbb{N}
 \]
@@ -133,67 +127,71 @@ is an injection but not a surjection (0 is not mapped to), and
 \]
 is a surjection but not an injection (for all $k$, $2k$ and $2k + 1$ both map to $k$).
 
-We remarked that \emph{the capability of $S$ having an injection on it which is not surjective} was Dedekind's characterization of what it meant for a set $S$ to be infinite. 
+A set $S$ is called \emph{Dedekind infinite} if and only if
+there is an injection on $S$ that is \emph{not} a surjection.
+%We remarked that \emph{the capability of $S$ having an injection on it which is not surjective} was Dedekind's characterization of what it meant for a set $S$ to be infinite. 
 
-\textbf{Binary Function}: to be a function, a relation must be single-valued. We schematize this for binary relations as 
+\textbf{Binary Functions}: Just as the \emph{graph} of a unary function $f$ is the binary relation $\{(a,b)\mid f(a)=b\}$, the \emph{graph} of a binary function $g$ is the ternary relation $\{(a,b,c)\mid g(a,b)=c\}$. The following schema is satisfied by a structure $A$ if and only if $R^A$ is the graph of a total binary function on $U^A$.
 \[
-    Bfun:= (\forall xy)(\exists z)(\forall w)(Rxyw \equiv w = z)
+    \bfun:= (\forall x)(\forall y)(\exists z)(\forall w)(Rxyw \equiv w = z).
 \]
-which says that every pair of $x,y$ maps to a unique $z$. Finding a sentence expressing totality for binary functions is left as an exercise (build the schema by analogy to $Tot$ for unary functions). 
+%which says that every pair of $x,y$ maps to a unique $z$. Finding a sentence expressing totality for binary functions is left as an exercise (build the schema by analogy to $Tot$ for unary functions). 
 
-\textbf{Binary Injection}: similarly, we have the following sentence expressing that a binary function is injective. 
+\textbf{Binary Injection}: Similarly, the following schema expresses that a binary function is injective. 
 \[
-    Binj:= (\forall vwxyz)((Rvwz \land Rxyz) \supset (v = x \land w = y))
+    \binj:= (\forall vwxyz)((Rvwz \land Rxyz) \supset (v = x \land w = y))
 \]
-which says that each $z$ in the codomain is mapped to by exactly one pair $x, y$ from the domain. Finding a sentence expressing surjectivity for binary functions is left as an exercise (build the schema by analogy to $Surj$ for unary functions). 
-
+%which says that each $z$ in the codomain is mapped to by exactly one pair $x, y$ from the domain. 
+\begin{aside}
+Find a schema that expresses surjectivity for binary functions.% is left as an exercise (build the schema by analogy to $Surj$ for unary functions). 
+\end{aside}
 \textbf{Counting Relations}: We have the following:
 \[
-    |mod(Fun, n)| = n^n
+    |\modn{\fun}{n}| = n^n,
 \]
-eg there are $n^n$ functions on a set of size $n$. To see this, note that each of the $n$ elements has $n$ choices for which element it maps to.
+that is, there are $n^n$ functions on a set of size $n$. To see this, note that each for each of the $n$ elements we must choose one of $n$ possible images. In other words, to determine a function on $[n]$, we must make $n$ $n$-ary choices.%there are $n$ has $n$ choices for which element it maps to.
 \[
-    |mod(Fun \land Inj, n)| = n!
+    |\modn{\fun\land\inj}{n}| = n!
 \]
-To see this, note that a function on a set $S$ which is injective maps each of the $n$ elements to a unique element. So there are $n$ choices for the first element, $n-1$ for the second... and $1$ for the last. 
+To see this, note that a function on a set $S$ which is injective maps each of the $n$ elements to a unique element. So there are $n$ choices for the first element, $n-1$ for the second, \textellipsis, and $1$ for the last. 
 \[
-    |mod(Asy, n)| = 3^{\binom{n}{2}}
+    |\modn{\asy}{n}| = 3^{\binom{n}{2}}
 \]
-To see this, note that each pair of elements $(a, b)$ has three possibilities - no edge, edge from $a$ to $b$, or edge from $b$ to $a$. 
+To see this, note that for each pair of elements $\{a, b\}$ there are three mutually exclusive possibilities - no edge, edge from $a$ to $b$, or edge from $b$ to $a$. 
 \[
-    |mod(Tour, n)| = 2^{\binom{n}{2}}
+    |\modn{\tour}{n}| = 2^{\binom{n}{2}}
 \]
-To see this, note that each pair of elements $(a, b)$ must have eiher an edge from $a$ to $b$ or an edge from $b$ to $a$. 
+To see this, note that for each pair of elements $\{a,b\}$ there must be exactly one of the directed edges  from $a$ to $b$ or from $b$ to $a$. 
 \[
-    |mod(SLO, n)| = n!
+    |\modn{\slo}{n}| = n!
 \]
-To see this, note that there are $n!$ ways of ordering $n$ elements. 
+To see this, note that there is a natural one-to-one correspondence between linear orderings of $[n]$ and injections on $[n]$ -- map each $i\in[n]$ to the $i$-th member of the order; thus, there are the same number of strict linear orders of $[n]$ as there are injections on $[n]$.% $n!$ ways of ordering $n$ elements. 
 \[
-    |mod(2Reg, 3)| = 1
+    |\modn{\twor}{3}| = 1
 \]
 To see this, note that a 2-regular graph of size 3 must be a ``triangle'', and there is only one way of making a triangle with three elements. 
 \[
-    |mod(2Reg, 4)| = 3
+    |\modn{\twor}{4}| = 3
 \]
-To see this, note that a 2-regular graph of size 4 must be a ``square''. Fix one element $a$ of the square, and pick the single node from the remaining three which it is not adjacent to (three choices). This uniquely determines the square. 
+To see this, note that a 2-regular graph of size 4 must be a ``square''. Fix one element $a$ of the square, and pick the single node from the remaining three to which it is not adjacent (three choices). This uniquely determines the square. 
 
-Equivalently, consider labelling the four vertices of the square. This can be done in $4!$ ways. However, there are $4$ ways to ``rotate the square'' which result in equivalent graphs. Similarly, the square can be ``flipped'' (flipped vs non-flipped: 2 choices) across a line of symmetry to give an equivalent graph. So there are $\frac{4!}{4\cdot 2} = 24/8 = 3$ such graphs.
+%Equivalently, consider labelling the four vertices of the square. This can be done in $4!$ ways. However, there are $4$ ways to ``rotate the square'' which result in equivalent graphs. Similarly, the square can be ``flipped'' (flipped vs non-flipped: 2 choices) across a line of symmetry to give an equivalent graph. So there are $\frac{4!}{4\cdot 2} = 24/8 = 3$ such graphs.
 
 In general, there are $\frac{n!}{n\cdot 2} = \frac{(n-1)!}{2}$ $n$-cycle graphs. 
 \[
-    |mod(2Reg, 6)| = 70
+    |\modn{\twor}{6}| = 70
 \] 
-Such a graph has to be composed of two ``triangles'' or one ``hexagon''. For the triangles, there are $\binom{6}{3}/2 = 10$ ways to split the six up into two groups of three (we divide by two because, say, picking elements $\{1, 2, 3\}$ for one triangle is the same as picking $\{4, 5, 6\}$ for the other). Each such division corresponds to exactly one graph, so there are 10 graphs which have two disjoint triangles. For the hexagon, there are (reasoning as above) $\frac{6!}{6 \cdot 2} = 60$ ways to label the hexagon, giving $10 + 60 = 70$ total possible graphs. 
-
+Any 2-regular graph of size six must be composed of two ``triangles'' or one ``hexagon.'' For the triangles, there are $\binom{6}{3}/2 = 10$ ways to split the six up into two groups of three (we divide by two because, say, picking elements $\{1, 2, 3\}$ for one triangle is the same as picking $\{4, 5, 6\}$ for the other). Each such division corresponds to exactly one graph, so there are 10 graphs which have two disjoint triangles. For the hexagon, there are (reasoning as above) $\frac{6!}{6 \cdot 2} = 60$ ways to label the hexagon, giving $10 + 60 = 70$ total possible graphs. 
+\iffalse
 \textbf{Spectrum}: We defined the \emph{Spectrum} of a schema $S$ to be the set of all integers $n$ for which that is a model of $S$ of size $n$. We determined that we could find a suitable $S$ such that $Spec(S) = \{n\}$ for an arbitrary given $n$ by writing a sentence $S_n$ which specified that there were exactly $n$ elements in the universe.
 
 We realized that any finite set is the spectrum of some schema. In general, for any finite set $K = \{k_1,...,k_n\}$, $S := S_{k_1} \vee ... \vee S_{k_n}$ has spectrum $K$. 
 
-We called a set $cofinite$ iff its completement is finite (ie, $X$ is cofinite iff $\mathbb{N} - X = \overline{X}$ is finite). Because we can define ever finite set, it followed that we could define every cofinite set. For example, if we wanted a spectrum of $\mathbb{N} - \{1, 5, 7, 11, 23\}$, the schema $S := \lnot(S_1 \vee S_5 \vee S_7 \vee S_{11} \vee S_{23})$ suffices. 
+We called a set $cofinite$ iff its complement is finite (ie, $X$ is cofinite iff $\mathbb{N} - X = \overline{X}$ is finite). Because we can define ever finite set, it followed that we could define every cofinite set. For example, if we wanted a spectrum of $\mathbb{N} - \{1, 5, 7, 11, 23\}$, the schema $S := \lnot(S_1 \vee S_5 \vee S_7 \vee S_{11} \vee S_{23})$ suffices. 
 
 We noted that, in general, $Spec(\lnot S) \neq \overline{Spec(S)}$. For an example, we considered $S := SG \land 1-reg$, so that $Spec(S) = \{2i | i \in \mathbb{Z}^+\}$. Then $\lnot S = \lnot SG \vee \lnot 1-reg$, so $Spec(\lnot S) = \mathbb{Z}^+$. 
 
-
+\fi
 \end{mdframed}
 
 
@@ -202,19 +200,20 @@ We noted that, in general, $Spec(\lnot S) \neq \overline{Spec(S)}$. For an examp
 \begin{mdframed}[linewidth=1]
 \section*{Problems}
 \begin{enumerate}
-    \item We say that a graph $G \in mod(S, n)$ is \emph{size maximal} iff it has the most edges possible given that it satisfies $S$ and has $n$ nodes. Give an example of a size-maximal acyclic member of $mod(SG, 3)$. 
+    \item We say that a graph $G \in \modn{S}{n}$ is \emph{size maximal} iff it has the most edges possible given that it satisfies $S$ and has $n$ nodes. Give an example of a size-maximal acyclic member of $\modn{\sg}{3}$. 
 
-    \item How many size-maximal acyclic members of $mod(SG, 3)$ are there?
+    \item How many size-maximal acyclic members of $\modn{\sg}{3}$ are there?
 
-    \item How many acyclic size maximal members are there of $mod(SG, 4)$?
+    \item How many size-maximal acyclic members of $\modn{\sg}{4}$ are there?
 
-    \item How many size-maximal members of $mod(SG, 6)$ have no 3-cycles? 
+    \item Prove that if every node of a finite graph is of degree at least 2, then the graph contains a cycle. 
+\iffalse
+\item How many size-maximal members of $\modn{\sg}{6}$ have no 3-cycles? 
 
-    \item Prove the handshake lemma, which is the statement that for a graph $G$ with vertices $V$ and edges $E$, $\sum_{v \in V}degree(v) = 2|E|$. 
+    \item Prove the \textbf{Handshake Lemma}: For every graph $G=(V,E)$, $\sum_{v \in V}\deg{v} = 2|E|$. 
 
     \item Prove that in any graph the number of vertices of odd degree is even.
 
-    \item Prove that if every node of a finite graph is of degree at least 2, then the graph contains a cycle. 
 
     \item Let $S$ be the conjunction of 
    \[
@@ -261,6 +260,7 @@ We noted that, in general, $Spec(\lnot S) \neq \overline{Spec(S)}$. For an examp
        \exists x(\forall y \lnot Lyx \land \forall y(y \neq x \supset \exists u \forall w(Lwy \equiv u = w)))
    \]
    what is $Spec(S)$?
+\fi
 \end{enumerate}
 \end{mdframed}
 
@@ -272,18 +272,20 @@ We noted that, in general, $Spec(\lnot S) \neq \overline{Spec(S)}$. For an examp
 
     \item $\binom{3}{2} = 3!/2 = 3$. Note that all size-maximal acyclic members of $mod(SG, 3)$ have two undirected edges (if they had a third, there would have to be a cycle). So to specify such a graph, we simply have to pick which two nodes are not connected. Equivalently, you might note that all such graphs look like a single chain (or, a linear order in which direction doesn't matter). There are $3!$ orders, and we divide by $2$ because reading from right-to-left or left-to-right doesn't matter (we have a simple graph, so the edges are undirected). 
 
-    \item $4!/2 + 4 = 16$. As above, there are $4!/2$ ways to order the elements into a single chain. However, unlike the case above, there are graphs which aren't just a single chain. Picking one element to be the ``parent'' and have undirected edges from it to every other element (draw this!) gives a graph which is also size maximal but not a chain. There are 4 ways to pick such a parent. So the total is $4!/2 + 4 = 16$. 
+    \item $4!/2 + 4 = 16$. As above, there are $4!/2$ ways to order the elements into a single chain. However, unlike the case above, there are graphs which aren't just a single chain. Picking one element to be the ``parent'' and placing undirected edges from it to every other element (draw this!) gives a graph which is also size maximal acyclic, but not a chain. There are 4 ways to pick such a parent. So the total is $4!/2 + 4 = 16$. 
 
-    In general, acyclic size maximal members of $mod(SG, n)$ are \emph{trees} of size $n$ (a ``tree'' is a size-maximal acyclic graph, or equivalently a minimally-sonnected graph). 
+    In general, acyclic size maximal members of $\modn{\sg}{n}$ are \emph{trees} of size $n$ (a ``tree'' is a size-maximal acyclic graph, or equivalently a size-minimal connected graph).
+    
+    \item Consider a maximal length path (an acyclic sequence of edges) in the graph. As the terminal node of that path has degree at least 2, there must be an edge coming from it which is not on our path. As our path was maximal in length, that edge must go back to some previously visited node along our path.   
+\iffalse 
 
     \item There are 10. Complete bipartite graphs which have equal numbers of red/blue elements are the only such graphs (convince yourself of this by drawing out cases/examples). There are $\binom{6}{3}/2 = 10$ ways to split up the nodes into red/blue.
 
-    \item Note that ading any edge to a graph increases the sum of degrees by 2, as it increases the degree of each of its two incident nodes by one. 
+    \item Note that adding any edge to a graph increases the sum of degrees by 2, as it increases the degree of each of its two incident nodes by one. 
 
     \item Suppose there were an odd number of such vertices. Then the sum of degrees would be odd. This contradicts the handshake lemma.
 
-    \item Consider a maximal length path (an acyclic sequence of edges) in the graph. As the terminal node of that path has degree at least 2, there much be an edge coming from it which is not on our path. As our path was maximal in length, that edge must go back to some previously visited node along our path.   
-
+    
     \item $\{2i | i \in \mathbb{Z}^+\}$. 
 
    To answer this question, we interpret $S$ piece by piece. The first conjunct is $\slo$, so we treat this like a linear order from now on (in particular, we can interpret $L$ as meaning ``less than''). 
@@ -326,5 +328,6 @@ We noted that, in general, $Spec(\lnot S) \neq \overline{Spec(S)}$. For an examp
    The third schema says that there is an element which is not related to by anything, and that all other elements are related to by exactly one element.
 
    It follows that models of $S$ look like rooted trees in which every node has either two children of no children. Since each parent corresponds to an even number of children and the only non-child node is the root node, there must be an odd number of nodes. So the result follows. 
+   \fi
 \end{enumerate}
 \end{mdframed}
