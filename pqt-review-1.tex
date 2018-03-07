@@ -182,16 +182,18 @@ In general, there are $\frac{n!}{n\cdot 2} = \frac{(n-1)!}{2}$ $n$-cycle graphs.
     |\modn{\twor}{6}| = 70
 \] 
 Any 2-regular graph of size six must be composed of two ``triangles'' or one ``hexagon.'' For the triangles, there are $\binom{6}{3}/2 = 10$ ways to split the six up into two groups of three (we divide by two because, say, picking elements $\{1, 2, 3\}$ for one triangle is the same as picking $\{4, 5, 6\}$ for the other). Each such division corresponds to exactly one graph, so there are 10 graphs which have two disjoint triangles. For the hexagon, there are (reasoning as above) $\frac{6!}{6 \cdot 2} = 60$ ways to label the hexagon, giving $10 + 60 = 70$ total possible graphs. 
-\iffalse
-\textbf{Spectrum}: We defined the \emph{Spectrum} of a schema $S$ to be the set of all integers $n$ for which that is a model of $S$ of size $n$. We determined that we could find a suitable $S$ such that $Spec(S) = \{n\}$ for an arbitrary given $n$ by writing a sentence $S_n$ which specified that there were exactly $n$ elements in the universe.
 
-We realized that any finite set is the spectrum of some schema. In general, for any finite set $K = \{k_1,...,k_n\}$, $S := S_{k_1} \vee ... \vee S_{k_n}$ has spectrum $K$. 
+\textbf{Spectrum}: We defined the \emph{spectrum} of a schema $S$ to be the set of all integers $n$ for which there is a model of $S$ of size $n$. We determined that for each positive integer $n$, there is a schema $\mathsf{S}_n$ such that $\spec{\mathsf{S}_n} = \{n\}$. The schema $\mathsf{S}_n$ specifies that there are exactly $n$ elements in the universe.
 
-We called a set $cofinite$ iff its complement is finite (ie, $X$ is cofinite iff $\mathbb{N} - X = \overline{X}$ is finite). Because we can define ever finite set, it followed that we could define every cofinite set. For example, if we wanted a spectrum of $\mathbb{N} - \{1, 5, 7, 11, 23\}$, the schema $S := \lnot(S_1 \vee S_5 \vee S_7 \vee S_{11} \vee S_{23})$ suffices. 
+By making use of the schemata $\mathsf{S}_n$, we constructed, for each finite set $F$ and for each cofinite set $C$, schemata $S$ and $T$ with $\spec{S}=F$ and $\spec{T}=C$. (Recall that a set of positive integers $X$ is \emph{cofinite} if and only if $\mathbb{Z}^+ - X = \overline{X}$ is finite)
 
-We noted that, in general, $Spec(\lnot S) \neq \overline{Spec(S)}$. For an example, we considered $S := SG \land 1-reg$, so that $Spec(S) = \{2i | i \in \mathbb{Z}^+\}$. Then $\lnot S = \lnot SG \vee \lnot 1-reg$, so $Spec(\lnot S) = \mathbb{Z}^+$. 
+%We realized that any finite set is the spectrum of some schema. In general, for any finite set $K = \{k_1,...,k_n\}$, $S := S_{k_1} \vee ... \vee S_{k_n}$ has spectrum $K$. 
 
-\fi
+%We called a set $cofinite$ iff its complement is finite (that is, $X$ is cofinite iff $\mathbb{N} - X = \overline{X}$ is finite). Because we can define ever finite set, it followed that we could define every cofinite set. For example, if we wanted a spectrum of $\mathbb{N} - \{1, 5, 7, 11, 23\}$, the schema $S := \lnot(S_1 \vee S_5 \vee S_7 \vee S_{11} \vee S_{23})$ suffices. 
+
+We noted that, in general, $\spec{\lnot S} \neq \overline{\spec{S}}$. For example, let $S := \sg \land \oner$, so that $Spec(S) = \{2i | i \in \mathbb{Z}^+\}$. Then $\lnot S$ is equivalent to $\lnot \sg \vee \lnot \oner$. Therefore, $\spec{\lnot S} = \mathbb{Z}^+$. 
+
+
 \end{mdframed}
 
 
@@ -213,54 +215,54 @@ We noted that, in general, $Spec(\lnot S) \neq \overline{Spec(S)}$. For an examp
     \item Prove the \textbf{Handshake Lemma}: For every graph $G=(V,E)$, $\sum_{v \in V}\deg{v} = 2|E|$. 
 
     \item Prove that in any graph the number of vertices of odd degree is even.
-
+\fi
 
     \item Let $S$ be the conjunction of 
    \[
        \slo
    \]
    \[
-       \forall xy(Lxy \land \lnot \exists z(Lxz \land Lzy)) \supset Fx \oplus Fy
+       (\forall x)(\forall y)((Lxy \land \lnot (\exists z)(Lxz \land Lzy)) \supset Fx \oplus Fy)
    \]
    \[
-       \forall x(\lnot \exists y(Lyx))\supset Fx
+       (\forall x)(\lnot (\exists y)Lyx\supset Fx)
    \]
    \[
-       \forall x(\lnot \exists y(Lxy))\supset \lnot Fx
+       (\forall x)(\lnot (\exists y)Lxy\supset \lnot Fx)
    \]
-   What is $Spec(S)$?
+   What is $\spec{S}$?
 
-   \item Give a schema $S$ such that $Spec(S) = \{2i + 1 | i \in \mathbb{N}\}$, ie the set of odd positive numbers. 
+   \item Give a schema $S$ such that $\spec{S} = \{2i + 1 | i \in \mathbb{N}\}$, that is, the set of odd positive integers. 
 
-   \item What is $Spec(SLO)$?
+   \item What is $\spec{\slo}$?
 
    \item Let $S$ be the conjunction of 
    \[
        \slo
    \]
    \[
-       \forall x \exists y Lxy
+       (\forall x) (\exists y) Lxy
    \]
    \[
-       \forall x \exists y Lyx
+       (\forall x) (\exists y) Lyx
    \]
    \[
-       \forall xy(Lxy \supset \exists z(Lxz \land Lzy))
+       (\forall x)(\forall y)(Lxy \supset (\exists z)(Lxz \land Lzy))
    \]
-   What is $Spec(S)$?
+   What is $\spec{S}$?
 
    \item Let $S$ be the conjunction of
    \[
-       \forall x((\forall y \lnot Lxy) \vee \exists yz((y \neq z) \land \forall u(Lxu \equiv u = y \vee u = z)))
+       (\forall x)((\forall y) \lnot Lxy \vee (\exists y)(\exists z)(y \neq z \land (\forall u)(Lxu \equiv (u = y \vee u = z))))
    \]
    \[
-       \forall xy(Lxy \supset \lnot Lyx)
+       (\forall x)(\forall y)(Lxy \supset \lnot Lyx)
    \]
    \[
-       \exists x(\forall y \lnot Lyx \land \forall y(y \neq x \supset \exists u \forall w(Lwy \equiv u = w)))
+       (\exists x)((\forall y) \lnot Lyx \land (\forall y)(y \neq x \supset (\exists u)(\forall w)(Lwy \equiv u = w)))
    \]
-   what is $Spec(S)$?
-\fi
+   What is $\spec{S}$?
+
 \end{enumerate}
 \end{mdframed}
 
@@ -285,49 +287,49 @@ We noted that, in general, $Spec(\lnot S) \neq \overline{Spec(S)}$. For an examp
 
     \item Suppose there were an odd number of such vertices. Then the sum of degrees would be odd. This contradicts the handshake lemma.
 
-    
+\fi    
     \item $\{2i | i \in \mathbb{Z}^+\}$. 
 
    To answer this question, we interpret $S$ piece by piece. The first conjunct is $\slo$, so we treat this like a linear order from now on (in particular, we can interpret $L$ as meaning ``less than''). 
 
-   The second conjunct says that ``for all x and y, if there isn't a $z$ between them, then exactly one of $x$ and $y$ are in $F$''. Interpreting $Fx$ as meaning ``$x$ is colored red'' and $\lnot Fx$ as meaning ``$x$ is colored blue'', we interpreted this sentence as saying that the coloring of nodes in our order switches from red to blue every element. 
+   The second conjunct says that ``for all $x$ and $y$, if there isn't a $z$ between them, then exactly one of $x$ and $y$ are in $F$''. Interpreting $Fx$ as meaning ``$x$ is colored red'' and $\lnot Fx$ as meaning ``$x$ is colored blue'', we interpreted this sentence as saying that the coloring of nodes in our order switches from red to blue every element. 
 
    The third conjunct says that if there is no element less than $x$ (so $x$ is the minimal element), then $x$ is red.
 
    The final conjunct says that if there is no element greater than $x$ (so $x$ is the maximal element), then $x$ is blue. 
 
-   Putting this all together, we have a SLO whose first node is red, node color switched every adjacent node, and the last node is blue. It followed that we have an even number of nodes, giving us our answer.  
+   Putting this all together, we have a strict linear ordering whose first node is red, node color switched every adjacent node, and the last node is blue. It follows that we have an even number of nodes, giving us our answer.  
 
     \item Let $S$ be the conjunction of 
     \[
        \slo
    \]
    \[
-       \forall xy(Lxy \land \lnot \exists z(Lxz \land Lzy)) \supset Fx \oplus Fy
+       (\forall x)(\forall y)((Lxy \land \lnot (\exists z)(Lxz \land Lzy)) \supset Fx \oplus Fy)
    \]
    \[
-       \forall x(\lnot \exists y(Lyx))\supset Fx
+       (\forall x)(\lnot (\exists y)Lyx\supset Fx)
    \]
    \[
-       \forall x(\lnot \exists y(Lxy))\supset Fx
-   \]
+       (\forall x)(\lnot (\exists y)Lxy\supset  Fx)
+   \]   
    The only difference from before is in the last conjunct; $\lnot Fx$ was replaced with $Fx$. $S$ now says we have a linear order, flipping colors, both ending and starting with red. So only odd-sized orders work now.
 
-    \item $Spec(\slo) = \mathbb{Z}^+$, as there are linear orders of every finite size. 
+    \item $\spec{\slo} = \mathbb{Z}^+$, as there are linear orders of every finite size. 
 
-    \item $Spec(S) = \emptyset$. The second conjunct says that there is no maximim element, the third says there is no minimum, and the final says that each pair of elements has a third element in between the two. Any of these conjuncts requires that all models be infinite. In particular, there is no $n \in \mathbb{Z}^+$ with a model of size $n$, and so by the definition of spectrum, $Spec(S) = \emptyset$. 
+    \item $\spec{S} = \emptyset$. The second conjunct says that there is no maximum element, the third says there is no minimum, and the final says that each pair of elements has a third element in between the two. Any of these conjuncts, together with $\slo$, requires that all models be infinite. In particular, there is no $n \in \mathbb{Z}^+$ with a model of size $n$, and so, by the definition of spectrum, $\spec{S} = \emptyset$. 
 
-   Note, of course, that this does not mean that there are no models of $S$ - if we interpret $L$ as $<$, then $\mathbb{Q}$ is a model of $S$. It only means that there are no finite models. 
+   Note, of course, that this does not mean that there are no models of $S$ - if we interpret $L$ as $<$, then $\mathbb{Q}$, the rational numbers together with its usual strict linear ordering. is a model of $S$. It only means that there are no finite models. 
 
-    \item $Spec(S) = \{2i + 1 | i \in \mathbb{N}\}$. 
+    \item $\spec{S} = \{2i + 1 | i \in \mathbb{N}\}$. 
 
    The first schema says that, for all $x$, either $x$ is related to no element, or $x$ is related to exactly two elements. 
 
-   The second schema says that $L$ is antisymmetric. 
+   The second schema says that $L$ is asymmetric. 
 
    The third schema says that there is an element which is not related to by anything, and that all other elements are related to by exactly one element.
 
-   It follows that models of $S$ look like rooted trees in which every node has either two children of no children. Since each parent corresponds to an even number of children and the only non-child node is the root node, there must be an odd number of nodes. So the result follows. 
-   \fi
+   It follows that models of $S$ look like rooted, directed trees in which every node has either two children or no children. Since each parent corresponds to an even number of children and the only non-child node is the root node, there must be an odd number of nodes. Moreover, we may construct, for each $n$, a structure $T_n$ satisfying $S$ with $2n+1$ nodes. $T_0$ is a single isolated root node. Given $T_n$, we construct $T_{n+1}$ by adding two nodes as children of the leftmost leaf of $T_n$. The result now follows. 
+   
 \end{enumerate}
 \end{mdframed}

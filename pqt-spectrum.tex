@@ -1,5 +1,5 @@
 \subsection{The Spectrum of a Schema}
-Let's introduce a monadic predicate letter $F$ to ``color'' the nodes of our graphs. A new condition, \emph{distinguished end}, says that the ``colouring'' of the nodes in our ordering alternates between adjacent elements. 
+Let's introduce a monadic predicate letter $F$ to ``color'' the nodes of our graphs. A new condition, \emph{distinguished end}, says that the ``coloring'' of the nodes in our graph alternates between adjacent elements. 
 
 \[
   \mathsf{DE}: (\forall x)(\forall y)(Lxy\supset (Fx\oplus Fy))  
@@ -13,24 +13,28 @@ Let $S$ be a schema. Then
 \[
 \spec{S}=\{n\in \mathbb{Z}^+\mid \modn{S}{n}\neq\emptyset\}.
 \]
-ie the spectrum of a schema $S$ is the set of all universe sizes for which $S$ has a model. 
-
-If a schema $S$ has a model whose universe if of positive integer size $n$, we say that $S$ \emph{admits} $n$. Then $\spec{S}$ is exactly the set of positive integers $n$ such that $S$ admits $n$.
+%That is, the spectrum of a schema $S$ is the set of all universe sizes for which $S$ has a model. 
+If a schema $S$ has a model whose universe is of %positive integer 
+size $n$, we say that $S$ \emph{admits} $n$. Then $\spec{S}$ is exactly the set of positive integers $n$ such that $S$ admits $n$.
 \end{definition}
 
 For example, $\spec{T}=\{2i\mid i>1\}$.
-
-Let's calculate $\card{\modn{T}{6}}$. The only shape allowed in this case is the hexagon, and each hexagon admits two possible colorings that satisfy $\mathsf{DE}$ (one where the initial element in our ordering is coloured, and one where it is not). Hence, it follows from our earlier calculation that $\card{\modn{T}{6}}=2\cdot6!/(6\cdot2)=120$.
-
+\begin{example}
+Lest we forget how to count, let's exploit what we learned from Example \ref{hexagon-example} and calculate $\card{\modn{T}{6}}$. The only shape allowed in this case is the hexagon, and each hexagon admits two possible colorings that satisfy $\mathsf{DE}$ (one where the initial element in our ordering is coloured, and one where it is not). Hence, it follows from our earlier calculation that $\card{\modn{T}{6}}=2\cdot6!/(6\cdot2)=120$.
+\end{example}
  
 \subsection*{Finite Sets and Co-finite Sets are Spectra}
 
-Let $F$ be a finite set of positive integers. A basic question which you might ask is: ``is there a schema $S$ such that $\spec{S}=F$?''. In order to begin answering this, we'll start with singletons and show that for every positive integer $n$, there is a schema, call it $\mathsf{S}_n$  such that $\spec{\mathsf{S}_n}=\{n\}$. In particular, we may take $\mathsf{S}_n$ to be the following schema, which says that there are at least $n$ but not at least $n + 1$ elements in any satisfying structure. 
+Let $F$ be a finite set of positive integers. Here is a basic question: 
+\[
+\mbox{``Is there a schema $S$ such that $\spec{S}=F$?''}
+\]
+ In order to begin answering this, we'll start with singletons, and show that for every positive integer $n$, there is a schema, call it $\mathsf{S}_n$,  such that $\spec{\mathsf{S}_n}=\{n\}$. We may take $\mathsf{S}_n$ to be the following schema, which says that there are at least $n$ but not at least $n + 1$ elements in the universe of any satisfying structure. 
 \[
 (\exists x_1)\ldots(\exists x_n)\bigwedge_{1\leq i<j\leq n}x_i\neq x_j\wedge \neg(\exists x_1)\ldots(\exists x_{n+1})\bigwedge_{1\leq i<j\leq n+1}x_i\neq x_j
 \]
 
-It follows at once that every finite set of positive integers $F=\{n_1,\ldots,n_k\}$ is the spectrum of some schema, as
+It follows at once that every finite set of positive integers  is the spectrum of some schema, for if $F=\{n_1,\ldots,n_k\}$, then
 \[
 \spec{\mathsf{S}_{n_1}\vee\ldots\vee\mathsf{S}_{n_k}}= F.
 \]
@@ -50,7 +54,7 @@ Recall the schema $\sg\wedge\oner$ which defines the collection of 1-regular sim
 \end{aside}
 This behavior is actually typical. Later in the course we may be in a position to prove the following important fact: if the spectrum of a schema $S$ is neither finite nor cofinite, then the spectrum of the negation of $S$ is not equal to the complement of the spectrum of $S$. 
 
-You may also ask: ``is there a schema $S$ such that the complement of the spectrum of $S$ is not the spectrum of any schema whatsoever?'' Nobody knows the answer to this question. It is, however, known that a set of positive integers is a spectrum if and only if it is in the complexity class $\mathsf{NE}$, the set of problems solvable in non-deterministic (linear) exponential time on a Turing machine. For those of you who might like to learn more about this open problem, the paper ``Fifty Years of the Spectrum Problem'' is a great place to start. 
+You may also ask: ``is there a schema $S$ such that the complement of the spectrum of $S$ is not the spectrum of any schema whatsoever?'' Nobody knows the answer to this question. It is, however, known that a set of positive integers is a spectrum if and only if it is in the complexity class $\mathsf{NE}$, the set of problems solvable in non-deterministic (linear) exponential time on a Turing machine. For those of you who might like to learn more about this open problem, the paper ``Fifty Years of the Spectrum Problem'' is a great place to start.\footnote{A.~Durand, N.~D.~Jones, J.~A.~Makowsky, and M.~More, Fifty Years of the Spectrum Problem:Survey and New Results, \emph{The Bulletin of Symbolic Logic},Volume 18, Number 4, Dec.~2012, 505-553.} 
 
 \subsection*{Further Examples of Infinite, Co-infinite Spectra}
 One can easily modify the schema $\sg\wedge\oner$ to give an example of a schema whose spectrum is the set of odd numbers. The modified schema states the condition that there is an isolated node $w$, and every node other than $w$ has degree one, in addition to ensuring that any satisfying structure is a simple graph. This suffices to make any satisfying structure a collection of disjoint pairs plus one isolated element, and hence of odd size. 
