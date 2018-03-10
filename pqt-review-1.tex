@@ -193,6 +193,21 @@ By making use of the schemata $\mathsf{S}_n$, we constructed, for each finite se
 
 We noted that, in general, $\spec{\lnot S} \neq \overline{\spec{S}}$. For example, let $S := \sg \land \oner$, so that $Spec(S) = \{2i | i \in \mathbb{Z}^+\}$. Then $\lnot S$ is equivalent to $\lnot \sg \vee \lnot \oner$. Therefore, $\spec{\lnot S} = \mathbb{Z}^+$. 
 
+\textbf{Equivalence Relations}: An equivalence relation is a relation which satisfies the schema \eqr, which is the conjunction of the following schemata.
+\begin{itemize}
+\item
+\refl: $(\forall x)Lxx$
+\item
+\sym: $(\forall x)(\forall y)(Lxy\supset Lyx)$
+\item
+\trans: $(\forall x)(\forall y)(\forall z)(Lxy\supset(Lyz\supset Lxz))$
+\end{itemize}
+If $A\models\eqr$, the set $\hat{a} = \{a' \in U^A | \op{a}{a'}\in L^A\}$ is the \emph{equivalence class of $a$}; it is the set of all $a' \in U^A$ which are equivalent to $a$ under the equivalence relation $L^A$. 
+
+The equivalence classes of an equivalence relation partition the universe, that is, every element of the universe is in some equivalence class (this follows by reflexivity) and distinct equivalence classes are disjoint (this follows by symmetry and transitivity). 
+
+For all $k\in \mathbb{Z}^+$ and $0\leq l<k$, we can define the spectrum $\{(ki + l)\in \mathbb{Z}^+| i \in \mathbb{N}\}$ (the set of all positive integers equivalent to $l$ mod $k$) by specifying that there are exactly $l$ elements in an equivalence class of size $l$, and that all other elements are in size-$k$ equivalence classes. 
+
 
 \end{mdframed}
 
@@ -250,7 +265,7 @@ We noted that, in general, $\spec{\lnot S} \neq \overline{\spec{S}}$. For exampl
        (\forall x)(\forall y)(Lxy \supset (\exists z)(Lxz \land Lzy))
    \]
    What is $\spec{S}$?
-
+\iffalse
    \item Let $S$ be the conjunction of
    \[
        (\forall x)((\forall y) \lnot Lxy \vee (\exists y)(\exists z)(y \neq z \land (\forall u)(Lxu \equiv (u = y \vee u = z))))
@@ -262,7 +277,7 @@ We noted that, in general, $\spec{\lnot S} \neq \overline{\spec{S}}$. For exampl
        (\exists x)((\forall y) \lnot Lyx \land (\forall y)(y \neq x \supset (\exists u)(\forall w)(Lwy \equiv u = w)))
    \]
    What is $\spec{S}$?
-
+\fi
 \end{enumerate}
 \end{mdframed}
 
@@ -320,7 +335,7 @@ We noted that, in general, $\spec{\lnot S} \neq \overline{\spec{S}}$. For exampl
     \item $\spec{S} = \emptyset$. The second conjunct says that there is no maximum element, the third says there is no minimum, and the final says that each pair of elements has a third element in between the two. Any of these conjuncts, together with $\slo$, requires that all models be infinite. In particular, there is no $n \in \mathbb{Z}^+$ with a model of size $n$, and so, by the definition of spectrum, $\spec{S} = \emptyset$. 
 
    Note, of course, that this does not mean that there are no models of $S$ - if we interpret $L$ as $<$, then $\mathbb{Q}$, the rational numbers together with its usual strict linear ordering. is a model of $S$. It only means that there are no finite models. 
-
+\iffalse
     \item $\spec{S} = \{2i + 1 | i \in \mathbb{N}\}$. 
 
    The first schema says that, for all $x$, either $x$ is related to no element, or $x$ is related to exactly two elements. 
@@ -330,6 +345,6 @@ We noted that, in general, $\spec{\lnot S} \neq \overline{\spec{S}}$. For exampl
    The third schema says that there is an element which is not related to by anything, and that all other elements are related to by exactly one element.
 
    It follows that models of $S$ look like rooted, directed trees in which every node has either two children or no children. Since each parent corresponds to an even number of children and the only non-child node is the root node, there must be an odd number of nodes. Moreover, we may construct, for each $n$, a structure $T_n$ satisfying $S$ with $2n+1$ nodes. $T_0$ is a single isolated root node. Given $T_n$, we construct $T_{n+1}$ by adding two nodes as children of the leftmost leaf of $T_n$. The result now follows. 
-   
+ \fi  
 \end{enumerate}
 \end{mdframed}

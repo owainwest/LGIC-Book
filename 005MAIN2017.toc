@@ -23,11 +23,11 @@
 \contentsline {subsection}{\numberline {3.1}Introduction to PQT}{48}{subsection.3.1}
 \contentsline {subsection}{\numberline {3.2}Binary Relations, Functions, and Graphs}{52}{subsection.3.2}
 \contentsline {subsection}{\numberline {3.3}The Spectrum of a Schema}{58}{subsection.3.3}
-\contentsline {subsection}{\numberline {3.4}Review}{60}{subsection.3.4}
-\contentsline {subsection}{\numberline {3.5}Equivalence Relations}{67}{subsection.3.5}
-\contentsline {subsection}{\numberline {3.6}Isomorphisms, Automorphisms, and the Orbit-Stabilizer Theorem}{68}{subsection.3.6}
-\contentsline {subsection}{\numberline {3.7}Definability}{73}{subsection.3.7}
-\contentsline {subsection}{\numberline {3.8}Undefinability}{81}{subsection.3.8}
-\contentsline {subsection}{\numberline {3.9}Proof}{83}{subsection.3.9}
-\contentsline {subsection}{\numberline {3.10}Review}{91}{subsection.3.10}
+\contentsline {subsection}{\numberline {3.4}Equivalence Relations}{60}{subsection.3.4}
+\contentsline {subsection}{\numberline {3.5}Review}{61}{subsection.3.5}
+\contentsline {subsection}{\numberline {3.6}Isomorphisms, Automorphisms, and the Orbit-Stabilizer Theorem}{69}{subsection.3.6}
+\contentsline {subsection}{\numberline {3.7}Definability}{74}{subsection.3.7}
+\contentsline {subsection}{\numberline {3.8}Undefinability}{82}{subsection.3.8}
+\contentsline {subsection}{\numberline {3.9}Proof}{84}{subsection.3.9}
+\contentsline {subsection}{\numberline {3.10}Review}{92}{subsection.3.10}
 \contentsline {section}{\numberline {4}Appendix: A Proof of the Compactness Theorem}{97}{section.4}
