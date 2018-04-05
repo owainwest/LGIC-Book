@@ -14,11 +14,11 @@ In order to apply Theorem \ref{cantordiag-thm} to questions about definable sets
 \begin{theorem}\label{countschema-thm}
 For every structure $C$, there is a sequence $V_1,V_2,\ldots$ of subsets of $U^C$ such that for every set $X$ definable over $C$, there is an $i$ such that $X=V_i$. 
 
-For those who know a little bit of set theory, this says that there are only countably many definable subsets of any given structure.
+%For those who know a little bit of set theory, this says that there are only countably many definable subsets of any given structure.
 \end{theorem}
 \emph{Proof}: Every schema is a finite sequence of symbols drawn from a finite alphabet. Thus, we may arrange all schemata $S(x)$ in a list $S_1(x), S_2(x),\ldots$, first ordered by length, and then within length, alphabetically. We obtain a list $V_1,V_2,\ldots $ of all the sets definable over $C$ by setting $V_i=S_i[C]$ for all $i$. \qed
 
-As Theorems \ref{cantordiag-thm} and Theorem \ref{countschema-thm} entails that we can list all definable subsets of an infinite structure $C$, and theorem \ref{cantordiag-thm} entails that no list can exhaust all the definable subsets of an infinite set. So we have our result:
+Theorem \ref{countschema-thm} entails that we can list all definable subsets of an infinite structure $C$, and Theorem \ref{cantordiag-thm} entails that no list can exhaust all the definable subsets of an infinite set. So we have our result:
 
 \begin{corollary}
 For every infinite structure $C$ there is a subset $X\subseteq U^C$ which is not definable over $C$.
@@ -26,7 +26,7 @@ For every infinite structure $C$ there is a subset $X\subseteq U^C$ which is not
 
 \subsubsection*{The Compactness Theorem and Automorphisms of ``Non-standard Models''}
 
-Of course, this gives us no idea which particular sets are not definable over a given infinite structure. In the case of the graph $B$ introduced above, we will show that if a set is neither finite nor co-finite, it is \emph{not} definable over $B$. In order to establish this, we will deploy one of the fundamental properties of polyadic quantification theory: \emph{compactness}. First, some definitions requisite to the Compactness Theorem for Polyadic Quantification Theory.
+Of course, this gives us no idea which particular sets are not definable over a given infinite structure. In the case of the graph $B$ introduced above, we will show that if a set is neither finite nor co-finite, it is \emph{not} definable over $B$. In order to establish this, we will deploy one of the fundamental properties of polyadic quantification theory: \emph{compactness}. First, some definitions required to state the Compactness Theorem for Polyadic Quantification Theory.
 
 \begin{definition}
 A schema $S$ is \emph{satisfiable} if and only if for some structure $A$, $A\models S$.
@@ -44,21 +44,21 @@ A set of schemata $\Gamma$ is \emph{finitely satisfiable} if and only if for eve
 For every set $\Gamma$ of schemata  of polyadic quantification theory, if $\Gamma$ is finitely satisfiable, then $\Gamma$ is satisfiable. 
 \end{theorem}
 
-Though the Compactness Theorem makes no mention of the notion of a derivation, one of its well-known proofs proceeds via the elaboration of a sound and complete formal system for logical deduction. This development will occupy our attention for much of the remainder of the course. For the moment, let's see how we can apply the Compactness Theorem to complete the analysis of the definable subsets of the structure $B$ specified above.
+Though the Compactness Theorem makes no mention of the notion of a derivation, one of its well-known proofs proceeds via the elaboration of a sound and complete formal system for logical deduction. We will discuss this development in Section \ref{pqt-proof-subsec}. For the moment, let's see how we can apply the Compactness Theorem to complete the analysis of the definable subsets of the structure $B$ specified above.
 \begin{theorem}
 If $V\subseteq U^B$ is definable over $B$, then $V$ is finite or $V$ is co-finite.
 \end{theorem}
 \emph{Proof}:
-Suppose toward a contradiction that a schema $\sigma(x)$ defines a set $V$ which is neither finite nor co-finite over $B$. Let $\Lambda = \{ S\mid B\models S\}$; $\Lambda$ is the set of all schemata true in the structure $B$ and is often called the \emph{complete theory} of $B$. Let $y$ and $z$ be fresh variables which occur nowhere in $\Lambda$, $\sigma(x)$, or any of the schemata $S^n(x)$ for $n\geq 0$ (recall that $S^n(x)$ says that $x$ is the $n^{th}$ successor of the unique element with no predecessors). 
+Suppose toward a contradiction that a schema $T(x)$ defines a set $V$ which is neither finite nor co-finite over $B$. Let $\Lambda = \{ S\mid B\models S\}$; $\Lambda$ is the set of all schemata true in the structure $B$ and is often called the \emph{complete theory} of $B$. Let $y$ and $z$ be fresh variables which occur nowhere in $T(x)$, or any of the schemata $S^n(x)$ for $n\geq 0$ (recall that $S^n(x)$ says that $x$ is the $n^{th}$ successor of the unique element with no predecessors). 
 
 Define the set of schemata $\Gamma$ as follows.
 \[
-\Gamma = \Lambda\cup\{y\neq z \land \sigma(y) \land \neg \sigma(z)\}\cup\{\neg S^n(y) \land \neg S^n(z)\mid n\geq 0\}.
+\Gamma = \Lambda\cup\{y\neq z \land T(y) \land \neg T(z)\}\cup\{\neg S^n(y) \land \neg S^n(z)\mid n\geq 0\}.
 \]
 
-Let $\Delta$ be a finite subset of $\Gamma$. As both $\sigma[B]$ and $\neg \sigma[B]$ are infinite by hypothesis, $\Delta$ can be satisfied by $B$ with suitable assignments from $U^B$ to the variables $y$ and $z$. Hence, by the Compactness Theorem, $\Gamma$ itself is satisfiable. Of course, if the structure $C$ satisfies $\Gamma$, then $C$ is not isomorphic to $B$ since the the elements of $U^C$ assigned to $y$ and $z$ in $C$ (call them $a$ and $b$ respectively) are not reachable in $C$ from the unique element of $C$ with no predecessor (whereas every element $b \in B$ is reachable in this manner). 
+Let $\Delta$ be a finite subset of $\Gamma$. As both $T[B]$ and $\neg T[B]$ are infinite by hypothesis, $\Delta$ can be satisfied by $B$ with suitable assignments from $U^B$ to the variables $y$ and $z$. Hence, by the Compactness Theorem, $\Gamma$ itself is satisfiable. Of course, if the structure $C$ satisfies $\Gamma$, then $C$ is not isomorphic to $B$ since the the elements of $U^C$ assigned to $y$ and $z$ in $C$ (call them $a$ and $b$ respectively) are not reachable in $C$ from the unique element of $C$ with no predecessor (whereas every element $b \in B$ is reachable in this manner). 
 
-We will show that there is an automorphism $h$ of $C$ with $h(a)=b$. This will yield the desired  contradiction, since $C\models \sigma(y|a)$ and $C\models \neg \sigma(z|b)$. 
+We will show that there is an automorphism $h$ of $C$ with $h(a)=b$. This will yield the desired  contradiction, since $C\models T(y|a)$ and $C\models \neg T(z|b)$. 
 
 Note that $B$, and hence $C$, satisfy the following schemata.
 \begin{itemize}

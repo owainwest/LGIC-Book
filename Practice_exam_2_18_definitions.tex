@@ -1,0 +1,40 @@
+\documentclass[12pt]{article}
+\usepackage{amssymb,amsmath}
+\usepackage{latexsym}
+\usepackage{bm}
+\setlength{\textheight}{8.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\headheight}{0in}
+\setlength{\topmargin}{0in}
+\input{newdefs}
+\begin{document}
+\pagestyle{empty}
+%{\bf PRINT NAME}: 
+\begin{center}
+{\bf
+LGIC 010 \& PHIL 005 \\ 
+Definitions for Practice Examination II  \\
+Spring Term, 2018\\
+}
+\end{center}
+\begin{itemize}
+%\item
+%If $X$ and $Y$ are sets, $X\ \triangle\ Y=\{a\mid (a\in X\mbox{ and }a\not\in Y)\mbox{ or }(a\in Y\mbox{ and }a\not\in X)\}$ (the \emph{symmetric difference} of $X$ and $Y$).
+\item 
+A list of pure monadic schemata is \textit{succinct} if and only if no two schemata on the list are equivalent. 
+\item 
+A pure monadic schema \textit{implies a list of schemata} if and only if it implies every schema on the list.
+\item 
+The \textit{power} of a pure monadic schema is the length of a longest succinct list of pure monadic schemata it implies.
+\item
+If $X$ is a finite set, we write $\card{X}$ for the number of members of $X$.
+\item
+If $S$ is a schema, we write $\modn{S}{n}$ for the set of structures $A$ such that $A\models S$ and $U^A=\{1,\ldots, n\}.$
+\item
+$\mathbb{Z}^+$ is the set of positive integers $\{1,2,3,\ldots\}$. 
+\item
+$\spec{S}=\{n\in \mathbb{Z}^+\mid \modn{S}{n}\neq\emptyset\}$.
+\end{itemize}
+\end{document}

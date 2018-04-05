@@ -1,0 +1,23 @@
+\subsubsection*{Defining Infinite Graphs Themselves}
+We've just figured out which subsets of $A$ are definable, but what about $A$ itself - ie, can $A$ be uniquely specified by some schema?
+
+The situation would be simpler if we had a finite graph.
+\begin{theorem}
+If $D$ is a finite graph, then there is a schema $S$ such that for every graph $D'$, 
+\[
+D'\models S \mbox{ if and only if } D'\cong D.
+\]
+\end{theorem}
+
+\begin{aside}
+    Give a proof of this theorem. Intuitively, the idea is that if a graph is finite, you only need to specify finitely many things about it (eg how many nodes there are, which nodes are connected by edges) in order to uniquely pick out the graph. 
+\end{aside}
+
+In sharp contrast, the following theorem shows that \emph{no} infinite structure can be perfectly described by any schema. In order to state the result, we need to define $\theo{D}$, the \emph{complete theory of} $D$:
+\[
+\theo{D} = \{S\mid S \mbox{ is a schema and } D\models S\}. 
+\]
+\begin{theorem}\label{infnotcat-thm}
+For every infinite graph $D$, there is a graph $D'$, $D'\models\theo{D}$ and $D'\not\cong D$.
+\end{theorem}
+Theorem \ref{infnotcat-thm} is a corollary to the Compactness Theorem for PQT, a fundamental\footnote{By many accounts, this is \emph{the} most fundamental result about First-Order Logic (the common name for what we call PQT).} result we will study shortly.

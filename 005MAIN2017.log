@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  10 MAR 2018 06:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  5 APR 2018 15:06
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1402,80 +1402,88 @@ Package mdframed Info: Not enough space on this page on input line 350.
  [67]) [68] (./pqt-isomorphisms.tex
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 13.
+(mdframed)              on input line 14.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 22.
- [69] [70]
+(mdframed)              on input line 24.
+ [69]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 148.
+(mdframed)              on input line 71.
+ [70]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 166.
+(mdframed)              on input line 198.
+ [71]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 217.
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <9> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 170.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 221.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 196.
+(mdframed)              on input line 246.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 211.
- [71] [72]) [73]
-(./pqt-definability.tex [74]
+(mdframed)              on input line 261.
+ [72]) [73]
+(./pqt-definability.tex
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 75.
+(mdframed)              on input line 45.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 54.
+Package mdframed Info: Not enough space on this page on input line 56.
+ [74]
+Package mdframed Info: Not enough space on this page on input line 56.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 98.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 110.
+Package mdframed Info: Not enough space on this page on input line 112.
  [75]
+Package mdframed Info: Not enough space on this page on input line 112.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 368.
+(mdframed)              on input line 129.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 374.
+(mdframed)              on input line 138.
  [76]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 416.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 430.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 450.
-Package mdframed Info: Not enough space on this page on input line 452.
+(mdframed)              on input line 160.
  [77]
-Package mdframed Info: Not enough space on this page on input line 452.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 471.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 481.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 485.
+(mdframed)              on input line 452.
  [78]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 542.
+(mdframed)              on input line 494.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 546.
+(mdframed)              on input line 503.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 515.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 535.
  [79]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 606.
+(mdframed)              on input line 695.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 622.
+(mdframed)              on input line 711.
  [80]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 649.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 701.
+(mdframed)              on input line 790.
 ) [81]
 (./pqt-undefinability.tex
 Package mdframed Info: mdframed detected package amsthm 
@@ -1485,15 +1493,20 @@ Package mdframed Info: mdframed detected package amsthm
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 79.
-) [83] (./pqt-proof.tex
+) [83] (./pqt-elemeq.tex
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 12.
+) [84] (./pqt-proof.tex
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 25.
- [84]
+
+[85]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 49.
- [85] [86]
+ [86] [87]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 117.
@@ -1501,22 +1514,21 @@ Package mdframed Info: mdframed detected package amsthm
  changed the theorem header of amsthm
 (mdframed)              on input line 140.
 Package mdframed Info: Not enough space on this page on input line 142.
- [87]
+ [88]
 Package mdframed Info: Not enough space on this page on input line 142.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 167.
-
-[88] [89]) [90] (./pqt-satisfiability.tex
+ [89] [90]) [91] (./pqt-satisfiability.tex
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 41.
-) [91] (./pqt-review-final.tex
+) [92]
+(./pqt-review-final.tex
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 2.
-
-[92]
+ [93]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 30.
@@ -1524,7 +1536,7 @@ Package mdframed Info: Not enough space on this page on input line 110.
 Package mdframed Info: Box was splittet wrong
  starting loop to iterate the splitting point
 (mdframed)              on input line 110.
- [93] [94]
+ [94] [95]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 113.
@@ -1532,24 +1544,25 @@ Package mdframed Info: Not enough space on this page on input line 282.
 Package mdframed Info: Box was splittet wrong
  starting loop to iterate the splitting point
 (mdframed)              on input line 282.
- [95])) [96] (./appendix.tex
+ [96])) [97] (./appendix.tex
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 30.
-) [97]
+) [98]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 56.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 56.
- (./005MAIN2017.aux)
+
+(./005MAIN2017.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 56.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 56.
 Package rerunfilecheck Info: File `005MAIN2017.out' has not changed.
 (rerunfilecheck)             Checksum: E36C79654101887C19649B9BF43279EB;2368.
  ) 
 Here is how much of TeX's memory you used:
- 26738 strings out of 493089
- 496248 string characters out of 6134842
- 684313 words of memory out of 5000000
- 29185 multiletter control sequences out of 15000+600000
+ 26734 strings out of 493089
+ 496156 string characters out of 6134842
+ 684399 words of memory out of 5000000
+ 29181 multiletter control sequences out of 15000+600000
  30594 words of font info for 121 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,12n,68p,10433b,824s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1589,10 +1602,10 @@ msfonts/cm/cmtt10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/am
 sfonts/euler/eufm10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/
 amsfonts/euler/eufm7.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public
 /amsfonts/symbols/msbm10.pfb>
-Output written on 005MAIN2017.pdf (97 pages, 765455 bytes).
+Output written on 005MAIN2017.pdf (98 pages, 770489 bytes).
 PDF statistics:
- 1315 PDF objects out of 1440 (max. 8388607)
- 1168 compressed objects within 12 object streams
- 491 named destinations out of 1000 (max. 500000)
+ 1318 PDF objects out of 1440 (max. 8388607)
+ 1170 compressed objects within 12 object streams
+ 488 named destinations out of 1000 (max. 500000)
  277 words of extra memory for PDF output out of 10000 (max. 10000000)
 
