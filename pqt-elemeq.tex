@@ -1,23 +1,41 @@
-\subsubsection*{Defining Infinite Graphs Themselves}
-We've just figured out which subsets of $A$ are definable, but what about $A$ itself - ie, can $A$ be uniquely specified by some schema?
+\subsection{The Expressive Power of PQT}
+In the preceding sections we've studied aspects of the expressive power of first-order logic. We've seen that various well-known properties of directed graphs can be expressed using schemata of PQT, for example, reflexivity, transitivity, and symmetry. 
+Moreover, we've exhibited several infinite/co-infinite sets, such as the powers of two, that are spectra of PQT-schemata. Finally, in the immediately preceding section, we've considered which subsets of the universe of a given structure are definable by one variable open schemata over the structure. We gave a complete analysis of the situation for finite structures in terms of automorphisms and showed that PQT is expressive as possible in this case, since no logical language can distinguish objects that lie in the same orbit of the group of automorphisms on a structure. On the other hand, in the infinite case, we saw that there are intrinsic limitations on definability owing to general cardinality considerations. Moreover, we saw that special properties of PQT, in particular compactness, enable us to demonstrate substantial limits to definability over particular infinite structures. In this section, we will explore the expressive power of PQT in greater depth and consider the extent to which the ``whole truth'' about a structure, as expressed by schemata of PQT, can characterize the structure up to isomorphism. Again, we will observe a dramatic difference between the case of finite and infinite structures.
+\subsubsection*{The Theory of a Structure}
 
-The situation would be simpler if we had a finite graph.
-\begin{theorem}
-If $D$ is a finite graph, then there is a schema $S$ such that for every graph $D'$, 
+When we speak of the ``whole truth'' about a structure $A$, we mean the \emph{theory of} $A$ defined as follows.
+\begin{definition}\label{theo-def}
+The \emph{theory of} a structure $A$ is the set of all PQT-schemata that are satisfied by $A$, that is,
 \[
-D'\models S \mbox{ if and only if } D'\cong D.
+\theo{A}=\{S\mid A\models S\}.
+\]
+Structures $A$ and $B$ are \emph{PQT-equivalent} (written $A\equiv_P B$) if and only if
+$\theo{A}=\theo{B}$. That is, $A\equiv_P B$ if and only if $A$ and $B$ are indistinguishable by PQT-schemata.
+\end{definition}
+We have already seen that if structures $A$ and $B$ are isomorphic, then $A\equiv_P B$. We turn now to consider the circumstances under which the converse may hold.
+\subsubsection*{The Finite Case}
+
+In the finite case, non-isomorphic structures are distinguishable by schemata of PQT.
+\begin{theorem}\label{fin-cat-thm}
+If $A$ is a finite graph and $A\equiv_P B$, then $A\cong B$. Indeed, for every finite graph $A$, there is a schema $S$ such that 
+ for every graph $B$, 
+\[
+B\models S \mbox{ if and only if } B\cong A.
 \]
 \end{theorem}
+\textbf{Proof Sketch}: 
+ Intuitively, if a graph is finite, you only need to specify finitely many things about it, that is, how many nodes there are  and which of these are connected by edges, in order to describe it up to isomorphism. In fact, this is exactly what done in the proof sketch of Theorem \ref{fin-aut-def-thm}. We encourage the reader to refer to that proof and supply the necessary details here. \qed
+\subsubsection*{The Infinite Case}
 
-\begin{aside}
-    Give a proof of this theorem. Intuitively, the idea is that if a graph is finite, you only need to specify finitely many things about it (eg how many nodes there are, which nodes are connected by edges) in order to uniquely pick out the graph. 
-\end{aside}
-
-In sharp contrast, the following theorem shows that \emph{no} infinite structure can be perfectly described by any schema. In order to state the result, we need to define $\theo{D}$, the \emph{complete theory of} $D$:
-\[
-\theo{D} = \{S\mid S \mbox{ is a schema and } D\models S\}. 
-\]
+The following result stands in sharp contrast to Theorem \ref{fin-cat-thm}.
+%In sharp contrast, the following theorem shows that \emph{no} infinite structure can be perfectly described by any schema. In order to state the result, we need to define $\theo{D}$, the \emph{complete theory of} $D$:
+%\[\theo{D} = \{S\mid S \mbox{ is a schema and } D\models S\}. \]
 \begin{theorem}\label{infnotcat-thm}
-For every infinite graph $D$, there is a graph $D'$, $D'\models\theo{D}$ and $D'\not\cong D$.
+For every infinite graph $A$, there is a graph $B$, $B\equiv_P A$, but $B\not\cong A$.
 \end{theorem}
-Theorem \ref{infnotcat-thm} is a corollary to the Compactness Theorem for PQT, a fundamental\footnote{By many accounts, this is \emph{the} most fundamental result about First-Order Logic (the common name for what we call PQT).} result we will study shortly.
+Theorem \ref{infnotcat-thm} is a corollary to Theorem \ref{cantordiag-thm} and the following proposition, which is a version of the L\"{o}wenheim-Skolem Theorem.
+\begin{theorem}\label{LS-thm}
+For every infinite graph $A$ and every infinite set $X$, there is an infinite graph $B$ such that $U^B=X$, and $A\equiv_P B$.
+\end{theorem}
+\textbf{Proof Sketch of Theorem \ref{infnotcat-thm}}: It follows at once from Theorem \ref{cantordiag-thm} that for every infinite graph $A$ there is an infinite set $X$ such that there is no bijection from $U^A$ onto $X$. By Theorem \ref{LS-thm}, there is a graph $B$ such that $U^B=X$ and $A\equiv_P B$. But then there is no bijection from $U^A$ onto $U^B$, hence $B\not\cong A$. \qed
+%Compactness Theorem for PQT, a fundamental\footnote{By many accounts, this is \emph{the} most fundamental result about First-Order Logic (the common name for what we call PQT).} result we will study shortly.
