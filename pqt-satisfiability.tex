@@ -1,8 +1,15 @@
-\subsection*{Showing Satisfiability}
+%\subsection*{Showing Satisfiability}
+\subsection{Satisfiability and Implication}
 
-Our last consideration will be the problem of establishing that a set of schemata $X$ is satisfiable. As we have noted, there is no uniform approach to this problem, since the collection of satisfiable schemata is \emph{not} semi-decidable. As such, showing satisfiability of a sentence $X$ amounts to constructing a structure $A$ such that $A \models X$. 
-
-We give an example. Let $S$ be the conjunction of the following schemata.
+Up to this point, we have focussed primarily on questions surrounding the expressive power of polyadic quantification theory. Which classes of structures can be characterized by (sets of) schemata of polyadic quantification theory? Which sets of numbers are the spectra of schemata? What subsets of the universe of discourse of a structure can be defined by schemata? We now turn to the study of satisfiability and implication in the context of polyadic quantification theory. 
+%Our last consideration will be the problem of establishing that a set of schemata $X$ is satisfiable. As we have noted, there is no uniform approach to this problem, since the collection of satisfiable schemata is \emph{not} semi-decidable. As such, showing satisfiability of a sentence $X$ amounts to constructing a structure $A$ such that $A \models X$. 
+\begin{definition}\label{sat-imp-def}
+A structure $A$ satisfies a set of PQT schemata $X$ ($A\models X$) if and only if for every schema $S\in X$, $A\models X$. A set of PQT schemata is satisfiable if and only if there is a structure $A$ such that $A\models X$. A set of PQT schemata $X$ implies a schema $S$ if and only if for all structures $A$, if $A\models X$, then $A\models S$.
+\end{definition}
+ Thus, in order to show that a schema $S$ is \emph{not} implied by a set of schemata $X$, it suffices to present a \emph{counterexample}, that is, a structure $A$ such that $A\models X$ and $A\not\models S$, in other words, a structure $A$ that satisfies $X\cup\{\neg S\}$. Moreover, a set of schemata $X$ is satisfiable if and only if it \emph{does not imply} an unsatisfiable schema, for example, $(\exists x)x\neq x$. Hence, questions concerning satisfiability and questions concerning failure of implication can be reduced to one another. 
+ We give an example here to illustrate the subtlety of questions concerning the satisfiability of sets of schemata; in later sections we will explore implication and satisfiability more systematically.
+ 
+  Let $S$ be the conjunction of the following schemata.
 \begin{itemize}
 \item 
 $(\forall x)(\forall y)(\forall z)((Lxy \wedge Lyz) \supset Lxz)$
@@ -25,11 +32,15 @@ For each $n\geq 2$, let $R^n$ be the schema,
 \]
 Finally, let $X=\{S\}\cup\{R^n\mid n\geq 2\}$.
 
-Is $X$ satisfiable? The first conjunct denotes transitivity, the second comparability, and the third irreflexivity, so we know we are working with a strict linear order. The fourth and fifth conjuncts say that successor and predecessor are both discrete. The sizth and seventh conjuncts say that there is a first and last element, respectively. The last set of schemata suffices to say that we must have infinitely many elements. 
+Is there a structure $A$ that satisfies $X$? The conjunction of the first three schemata require of any such structure $A$ that $L^A$ be a strict linear ordering of $U^A$. %first conjunct denotes transitivity, the second comparability, and the third irreflexivity, so we know we are working with a strict linear order. 
+The fourth and fifth conjuncts require that this order be ``discrete,'' that is, every element with a predecessor has an immediate predecessor, and every element with a successor has an immediate successor. The sixth and seventh conjuncts say that there is a first and last element with respect to the order. The last set of schemata require that $U^A$ is an infinite set.% have infinitely many elements. 
 
-At first, you may think that $X$ is not satisfiable - after all, a discrete linear order with endpoints certainly sounds like it must be finite. Intuition is often tricky when dealing with the infinite, though, so it's best to be careful. In fact, the union of the first seven schemata with any finite subset $\Delta$ of the set $\{R^n \mid n \geq 2\}$ is satisfiable - if $m$ is the largest integer for which $R^m$ appears in $\Delta$, a strict linear order of size $m$ suffices. So ever finite subset of $X$ is satisfiable, and hence by the Compactness Theorem, $X$ itself is satisfiable. 
+At first, you may think that $X$ is not satisfiable - after all, a discrete linear order with endpoints certainly sounds like it must be finite. Intuition is often tricky when dealing with the infinite, though, so it's best to be careful. In fact, the union of the first seven schemata with any finite subset $\Delta$ of the set $\{R^n \mid n \geq 2\}$ is satisfiable - if $m$ is the largest integer for which $R^m$ appears in $\Delta$, a strict linear order of size $m$ suffices. So every finite subset of $X$ is satisfiable, and hence, by the Compactness Theorem, $X$ itself is satisfiable. 
 
-Since $X$ is satisfiable, we must be able to construct some model for $A$ it. One such structure $A$ is defined as follows. 
+Since $X$ is satisfiable, 
+there is a structure $A$ such that $A\models X$. In general, even if we can show that a set of sentences is satisfiable, it may be quite difficult to exhibit a structure that satisfies it.\footnote{This may even be the case when we can prove that there is a finite structure $A$ satisfying a given schema $S$, as we discuss further below.}
+%we must be able to construct some model for $A$ it. 
+In the current example, we may easily exhibit a structure $A$ satisfying $X$. 
 
 \begin{itemize}
 \item
